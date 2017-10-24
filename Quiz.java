@@ -56,7 +56,7 @@ public class Quiz
         System.out.println("C");
         System.out.println("C++");
         System.out.println("Java");
-        System.out.println("PC\n");
+        System.out.println("What do you tink?!\n");
 
         i=scan.nextLine();
 
