@@ -13,7 +13,7 @@ public class Quiz
 // hej Anton How are you
 // Hvasåder
 //request
-//Doh
+
         
 /**
  * A simple Java sound file example (i.e., Java code to play a sound file).
