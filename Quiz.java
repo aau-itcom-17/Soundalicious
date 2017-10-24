@@ -22,7 +22,7 @@ public class Quiz
  */
 
                 // open the sound file as a Java input stream
-                String gongFile = "/Users/lasseskjotthansen/Documents/Quiz/K.au";
+                String gongFile = "P1/K.au";
                 InputStream in = new FileInputStream(gongFile);
 
                 // create an audiostream from the inputstream
