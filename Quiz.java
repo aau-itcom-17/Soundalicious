@@ -11,6 +11,7 @@ public class Quiz
         System.out.println("Who is this?\n");
 // Hello my name is Anton 
 // hej Anton How are you
+// Hvasåder
 
 /**
  * A simple Java sound file example (i.e., Java code to play a sound file).
