@@ -7,8 +7,10 @@ import java.io.FileWriter;
 public class LoginTest {
 
     public static void writeToFile(ArrayList<String> username, ArrayList<String> password) throws IOException {
+        // append "true" saves the input to the text.txt file. Also when the application opens again.
+        // We need to make a way for a user to delete itself.
         BufferedWriter out = new BufferedWriter(new FileWriter("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", true));
-        out.write(username + "#" + password);
+        out.write(username + "" + password);
         out.newLine();
         out.close();
     }
@@ -25,11 +27,6 @@ public class LoginTest {
             File file = new File ("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt");
             Scanner s = new Scanner (file);
 
-            while (s.hasNext()){
-                username.add(s.next());
-                password.add(s.next());
-            }
-            s.close();
 
             {
                 do {
@@ -37,7 +34,7 @@ public class LoginTest {
                     username.add(scanner.next());
                     System.out.println("Please enter your password: ");
                     password.add(scanner.next());
-                    System.out.println("Create new user yes/no?");
+                    System.out.println("Create another user yes/no?");
                     answer = scanner.next();
                 } while (answer.equals("yes"));
 
@@ -54,7 +51,7 @@ public class LoginTest {
 
                     }
                 }
-
+// java file appending
             }
         }
 
