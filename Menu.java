@@ -34,6 +34,12 @@ public class Menu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton a = new JButton("Costum game");
+        a.addActionListener(new ActionListener() { //Make the custom game button go to the Custom Game java class. 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CustomGame qPB = new CustomGame();
+            }
+        });
 
         frame.add(a);
 
