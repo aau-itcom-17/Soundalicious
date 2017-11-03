@@ -1,3 +1,6 @@
+import com.codebird.QuickPlay;
+import com.sun.xml.internal.bind.v2.model.annotation.Quick;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +10,6 @@ import java.awt.event.ItemListener;
 
 
 public class CustomGame {
-
 
 
     CustomGame() {
@@ -27,17 +29,29 @@ public class CustomGame {
         frame.add(uNS);
         uNS.setBounds(350, 250, 200, 50);
 
+        JButton backP1 = new JButton("Back");
+        backP1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu menu = new Menu();
+            }
+        });
+        frame.add(backP1);
+        backP1.setBounds(50, 500, 100, 20);
+
+
+
         JButton quickPlay = new JButton("Next"); // Making the button "next" go to the 'quick play' page.
         // We have to make the quick play page overtake the current page, instead of opening a new quick play page.
         quickPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                final JPanel pan = new JPanel();
                 QuickPlayButton qPB = new QuickPlayButton();
-
             }
         });
         frame.add(quickPlay);
-        quickPlay.setBounds(500, 500, 200, 50);
+        quickPlay.setBounds(750, 500, 100, 20);
 
 //        frame.setLayout(null);
 //        frame.setVisible(true);
