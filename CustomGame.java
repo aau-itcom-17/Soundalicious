@@ -28,6 +28,7 @@ public class CustomGame {
         uNS.setBounds(350, 250, 200, 50);
 
         JButton quickPlay = new JButton("Next"); // Making the button "next" go to the 'quick play' page.
+        // We have to make the quick play page overtake the current page, instead of opening a new quick play page.
         quickPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
