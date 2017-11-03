@@ -7,7 +7,7 @@ import java.io.FileWriter;
 public class LoginTest {
 
     public static void writeToFile(ArrayList<String> username, ArrayList<String> password) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt"));
+        BufferedWriter out = new BufferedWriter(new FileWriter("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", true));
         out.write(username + "#" + password);
         out.newLine();
         out.close();
@@ -22,7 +22,7 @@ public class LoginTest {
             Scanner scanner = new Scanner(System.in);
             String answer = "";
 
-            File file = new File ("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", true);
+            File file = new File ("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt");
             Scanner s = new Scanner (file);
 
             while (s.hasNext()){
