@@ -14,6 +14,13 @@ public class Menu {
 
         // Creating Button          
         JButton b = new JButton("Quick Play");
+        b.addActionListener(new ActionListener() { //Makes the Quick Play button go to the Quick Play page (class)
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                QuickPlayButton qPB = new QuickPlayButton();
+            }
+        }); 
+       
         /* This method specifies the location and size
          * of button. In method setBounds(x, y, width, height)
          * x,y) are coordinates from the top left
