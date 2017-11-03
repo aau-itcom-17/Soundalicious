@@ -22,7 +22,7 @@ public class LoginTest {
             Scanner scanner = new Scanner(System.in);
             String answer = "";
 
-            File file = new File ("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt");
+            File file = new File ("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", true);
             Scanner s = new Scanner (file);
 
             while (s.hasNext()){
