@@ -104,6 +104,7 @@ public class Main extends Application {
 
         //Custom game next button
         Button buttonCustomGameNext = new Button("Next Page");
+        buttonCustomGameNext.setOnAction(e -> window.setScene(quickplayScene));
 
         //Button back to front on custom game page
         Button frontpageButton2 = new Button("Go back to front page");
