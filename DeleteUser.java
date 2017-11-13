@@ -50,6 +50,9 @@ public class DeleteUser {
 
         System.out.println("If you want to delete your account write account name");
         String deleteUser = scanner.next();
+        // username is deleted in lowercase
+        deleteUser = deleteUser.toLowerCase();
+        System.out.println(deleteUser);
         System.out.println("Are you sure?");
         System.out.println("Write password");
         String deletePass = scanner.next();
@@ -63,13 +66,12 @@ public class DeleteUser {
 
 
         if (s.indexOf(userAndPass) != 0) {
-            System.out.println("Password was not identical with username");
-        } else {
-
-
             util.removeLineFromFile("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", deleteUser + " " + deletePass);
-
             System.out.println("Your user has been deleted.");
+        } else {
+            System.out.println("Password was not identical with username");
+
+
 
         }
 
