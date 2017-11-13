@@ -15,7 +15,7 @@ public class Main extends Application {
 
 
     Stage window;
-    Scene frontpageScene, quickplayScene, customgameScene, loginpageScene, playGameScene;
+    Scene frontpageScene, quickplayScene, customgameScene, loginpageScene, signupScene, playGameScene;
     String enteredUsername, enteredPass;
 
 
@@ -138,7 +138,6 @@ public class Main extends Application {
 
         Label loginError = new Label("Password is not correct. Try again.");
         loginError.setVisible(false);
-        TextField passwordInput = new TextField();
 
         Button loginButton = new Button("Log In");
         loginButton.setOnAction(new EventHandler<ActionEvent>(){
@@ -147,14 +146,18 @@ public class Main extends Application {
             enteredUsername = usernameInput.getText();
             enteredPass = passwordInput.getText();
           //  if (){
- 
+
           //  }
           //  else {
               passwordInput.setText("");
               loginError.setVisible(true);
            // }
           }
-        });        Button signupButton = new Button("Sign Up");
+        });
+
+        Button signupButton = new Button("Sign Up");
+        signupButton.setOnAction(e -> window.setScene(signupScene));
+
 
         //Button back to front on login page
         Button frontpageButton3 = new Button("Go back to front page");
@@ -165,6 +168,38 @@ public class Main extends Application {
         loginpageLayout.setAlignment(Pos.CENTER);
         loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginButton, signupButton, frontpageButton3);
         loginpageScene = new Scene(loginpageLayout, 400, 600);
+
+
+        //Sign up Scene
+        //Label login page
+        Label labelSignup = new Label("Sign up");
+
+        //Username label
+        Label usernameSignupLabel = new Label("New username:");
+
+        //Username input
+        TextField usernameSignupInput = new TextField();
+
+        //Password label
+        Label passwordSignupLabel = new Label("Your password:");
+
+        //Password input
+        TextField passwordSignupInput = new TextField();
+
+        //Repeat password label
+        Label passwordRepeatSignupLabel = new Label("Repeat password:");
+
+        //Repeat password input
+        TextField passwordRepeatSignupInput = new TextField();
+
+        //Create new user Button
+        Button createuserButton = new Button("Create a new user");
+
+
+        VBox signupLayout = new VBox(20);
+        signupLayout.setAlignment(Pos.CENTER);
+        signupLayout.getChildren().addAll(labelSignup, usernameSignupLabel, usernameSignupInput, passwordSignupLabel, passwordSignupInput, passwordRepeatSignupLabel, passwordRepeatSignupInput, createuserButton, frontpageButton3);
+        signupScene = new Scene(signupLayout, 400, 600);
 
 
         //ALL THIS IS PLAYING THE GAME:
