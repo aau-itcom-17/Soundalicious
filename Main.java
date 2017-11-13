@@ -146,13 +146,13 @@ public class Main extends Application {
           public void handle(ActionEvent event) {
             enteredUsername = usernameInput.getText();
             enteredPass = passwordInput.getText();
-            if (LoginTest.login(enteredUsername, enteredPass)){
-              loginError = 
-            }
-            else {
+          //  if (){
+ 
+          //  }
+          //  else {
               passwordInput.setText("");
               loginError.setVisible(true);
-            }
+           // }
           }
         });        Button signupButton = new Button("Sign Up");
 
