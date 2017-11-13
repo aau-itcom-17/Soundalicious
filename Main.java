@@ -134,7 +134,7 @@ public class Main extends Application {
         Label passwordLabel = new Label("Password:");
 
         //Password input
-        TextField passwordInput = new TextField();
+        TextField passwordInput = new PasswordField();
 
         Label loginError = new Label("Password is not correct. Try again.");
         loginError.setVisible(false);
@@ -184,13 +184,13 @@ public class Main extends Application {
         Label passwordSignupLabel = new Label("Your password:");
 
         //Password input
-        TextField passwordSignupInput = new TextField();
+        TextField passwordSignupInput = new PasswordField();
 
         //Repeat password label
         Label passwordRepeatSignupLabel = new Label("Repeat password:");
 
         //Repeat password input
-        TextField passwordRepeatSignupInput = new TextField();
+        TextField passwordRepeatSignupInput = new PasswordField();
 
         //Create new user Button
         Button createuserButton = new Button("Create a new user");
