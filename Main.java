@@ -16,6 +16,8 @@ public class Main extends Application {
 
     Stage window;
     Scene frontpageScene, quickplayScene, customgameScene, loginpageScene, playGameScene;
+    String enteredUsername, enteredPass;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -134,8 +136,25 @@ public class Main extends Application {
         //Password input
         TextField passwordInput = new TextField();
 
+        Label loginError = new Label("Password is not correct. Try again.");
+        loginError.setVisible(false);
+        TextField passwordInput = new TextField();
+
         Button loginButton = new Button("Log In");
-        Button signupButton = new Button("Sign Up");
+        loginButton.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event) {
+            enteredUsername = usernameInput.getText();
+            enteredPass = passwordInput.getText();
+            if (LoginTest.login(enteredUsername, enteredPass)){
+              loginError = 
+            }
+            else {
+              passwordInput.setText("");
+              loginError.setVisible(true);
+            }
+          }
+        });        Button signupButton = new Button("Sign Up");
 
         //Button back to front on login page
         Button frontpageButton3 = new Button("Go back to front page");
@@ -144,7 +163,7 @@ public class Main extends Application {
         //Layout custom game
         VBox loginpageLayout = new VBox(20);
         loginpageLayout.setAlignment(Pos.CENTER);
-        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel, passwordInput, loginButton, signupButton, frontpageButton3);
+        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginButton, signupButton, frontpageButton3);
         loginpageScene = new Scene(loginpageLayout, 400, 600);
 
 
