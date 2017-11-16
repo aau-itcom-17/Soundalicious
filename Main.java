@@ -62,7 +62,7 @@ public class Main extends Application {
         //Amount of questions in a choice box
         Label labelChoiceBox2 = new Label("Choose amount of questions:");
         ChoiceBox<String> choiceBox2 = new ChoiceBox<>();
-        choiceBox2.getItems().addAll("chose a value", "10 Questions", "20 Questions", "30 Questions");
+        choiceBox2.getItems().addAll("chose a value", "1 Question", "2 Questions", "3 Questions");
         //Set default value
         choiceBox2.setValue("chose a value");
 
@@ -150,7 +150,168 @@ public class Main extends Application {
 
             choiceBox2.setOnAction(e -> {
                 Soundfiles.getChoice(choiceBox2);
-                if (Soundfiles.getChoice(choiceBox2).equals("10 Questions"))
+                if (Soundfiles.getChoice(choiceBox2).equals("1 Question"))
+                {
+                    startGame.setOnAction (f -> window.setScene(playGameScene));
+                    //Label
+                    Label whoIsThis = new Label("Who is this?");
+
+                    //Buttons
+                    //Play Sound
+                    Button playSound = new Button("Play Sound");
+                    playSound.setOnAction(f -> Soundfiles.kanyeSound());
+
+                    //Buttons
+                    RadioButton kanyeBut = new RadioButton("Kanye West");
+                    RadioButton beyonceBut = new RadioButton("Beyonce");
+                    RadioButton jayzBut = new RadioButton("Jay-Z");
+                    RadioButton eminemBut = new RadioButton("Eminem");
+
+                    ToggleGroup question1 = new ToggleGroup();
+
+                    kanyeBut.setToggleGroup(question1);
+                    beyonceBut.setToggleGroup(question1);
+                    jayzBut.setToggleGroup(question1);
+                    eminemBut.setToggleGroup(question1);
+
+                    //Button back to front on custom game page
+                    Button frontpageButton4 = new Button("Go back to front page");
+                    frontpageButton4.setOnAction(f -> window.setScene(frontpageScene));
+
+                    //Next Question button
+                    Button nextQuestion = new Button("Next Question");
+                    nextQuestion.setOnAction(f -> {
+                        if (kanyeBut.isSelected())
+                        {
+                            Soundfiles.countPoints();
+                        }
+                        //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
+                        else
+                        {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information Dialog");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Wrong answer!");
+                            alert.showAndWait();
+                        }
+                        window.setScene(frontpageScene);
+                        Soundfiles.resetCountPoints();
+                    });
+
+                    //Layout for playing the game
+                    VBox playGameLayout = new VBox(20);
+                    playGameLayout.setAlignment(Pos.CENTER);
+                    playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, nextQuestion, frontpageButton4);
+                    playGameScene = new Scene(playGameLayout, 400, 600);
+                }
+
+                else if (Soundfiles.getChoice(choiceBox2).equals("2 Questions"))
+                {
+                    startGame.setOnAction (f -> window.setScene(playGameScene));
+                    //Label
+                    Label whoIsThis = new Label("Who is this?");
+
+                    //Buttons
+                    //Play Sound
+                    Button playSound = new Button("Play Sound");
+                    playSound.setOnAction(f -> Soundfiles.kanyeSound());
+
+                    //Buttons
+                    RadioButton kanyeBut = new RadioButton("Kanye West");
+                    RadioButton beyonceBut = new RadioButton("Beyonce");
+                    RadioButton jayzBut = new RadioButton("Jay-Z");
+                    RadioButton eminemBut = new RadioButton("Eminem");
+
+                    ToggleGroup question1 = new ToggleGroup();
+
+                    kanyeBut.setToggleGroup(question1);
+                    beyonceBut.setToggleGroup(question1);
+                    jayzBut.setToggleGroup(question1);
+                    eminemBut.setToggleGroup(question1);
+
+                    //Button back to front on custom game page
+                    Button frontpageButton4 = new Button("Go back to front page");
+                    frontpageButton4.setOnAction(f -> window.setScene(frontpageScene));
+
+                    //Next Question button
+                    Button nextQuestion = new Button("Next Question");
+                    nextQuestion.setOnAction(f -> {
+                        if (kanyeBut.isSelected())
+                        {
+                            Soundfiles.countPoints();
+                        }
+                        //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
+                        else
+                        {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information Dialog");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Wrong answer!");
+                            alert.showAndWait();
+                        }
+                        window.setScene(playGameScene2);
+                    });
+
+                    //Layout for playing the game
+                    VBox playGameLayout = new VBox(20);
+                    playGameLayout.setAlignment(Pos.CENTER);
+                    playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, nextQuestion, frontpageButton4);
+                    playGameScene = new Scene(playGameLayout, 400, 600);
+
+
+                    //Layout for question set nr. 2
+
+                    //Label
+                    Label whoIsThis2 = new Label("Who made this song?");
+                    //Buttons
+                    //Play Sound
+                    Button playSound2 = new Button ("Play Sound");
+                    playSound2.setOnAction(f -> Soundfiles.darudeSound());
+
+                    //Buttons
+                    RadioButton newName2 = new RadioButton("Darude");
+                    RadioButton newName = new RadioButton("Eiffel 65");
+                    RadioButton newName1 = new RadioButton("Gigi D'Agostino");
+                    RadioButton newName3 = new RadioButton("Sash!");
+
+                    ToggleGroup question2 = new ToggleGroup();
+
+                    newName.setToggleGroup(question2);
+                    newName1.setToggleGroup(question2);
+                    newName2.setToggleGroup(question2);
+                    newName3.setToggleGroup(question2);
+
+                    //Button back to front on custom game page
+                    Button frontpageButton5 = new Button("Go back to front page");
+                    frontpageButton5.setOnAction(f -> window.setScene(frontpageScene));
+
+                    //Next Question button
+                    Button nextQuestion2 = new Button("Next Question");
+                    nextQuestion2.setOnAction(f -> {
+                        if (newName2.isSelected())
+                        {
+                            Soundfiles.countPoints();
+                        }
+                        //if (newName.isSelected() || newName1.isSelected() || newName3.isSelected())
+                        else
+                        {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information Dialog");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Wrong answer!");
+                            alert.showAndWait();
+                        }
+                        window.setScene(frontpageScene);
+                        Soundfiles.resetCountPoints();
+                    });
+
+                    VBox playGameLayout2 = new VBox(20);
+                    playGameLayout2.setAlignment(Pos.CENTER);
+                    playGameLayout2.getChildren().addAll(whoIsThis2,playSound2,newName,newName1,newName2,newName3, nextQuestion2, frontpageButton5); //Write the questions in here like above.
+                    playGameScene2 = new Scene(playGameLayout2, 400, 600);
+                }
+
+                else if (Soundfiles.getChoice(choiceBox2).equals("3 Questions"))
                 {
                     startGame.setOnAction (f -> window.setScene(playGameScene));
                     //Label
@@ -297,7 +458,8 @@ public class Main extends Application {
                             alert.setContentText("Wrong answer!");
                             alert.showAndWait();
                         }
-
+                        window.setScene(frontpageScene);
+                        Soundfiles.resetCountPoints();
                     });
 
                     //Layout for playing the game
@@ -306,93 +468,14 @@ public class Main extends Application {
                     playGameLayout3.getChildren().addAll(whoIsThis3, playSound3, queenBut, michaelBut, brunoBut, otherBut, nextQuestion3, frontpageButton6);
                     playGameScene3 = new Scene(playGameLayout3, 400, 600);
                 }
-
-                else if (Soundfiles.getChoice(choiceBox2).equals("20 Questions"))
-                {
-                    startGame.setOnAction(f -> window.setScene(playGameScene));
-                    //Label
-                    Label whoIsThis = new Label("Who is this test?");
-
-                    //Buttons
-                    //Play Sound
-                    Button playSound = new Button("Play Sound");
-                    playSound.setOnAction(f -> Soundfiles.kanyeSound());
-
-                    //Correct Answer
-                    Button kanyeBut = new Button("Kanye West");
-                    //Count Points
-                    kanyeBut.setOnAction(f -> Soundfiles.countPoints());
-                    Button beyonceBut = new Button("Beyonce");
-                    Button jayzBut = new Button("Jay-Z");
-                    Button eminemBut = new Button("Eminem");
-
-                    //Button back to front on custom game page
-                    Button frontpageButton4 = new Button("Go back to front page");
-                    frontpageButton4.setOnAction(f -> window.setScene(frontpageScene));
-
-
-                    //Layout for playing the game
-                    VBox playGameLayout = new VBox(20);
-                    playGameLayout.setAlignment(Pos.CENTER);
-                    playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, frontpageButton4);
-                    playGameScene = new Scene(playGameLayout, 400, 600);
-                }
-
-                else if (Soundfiles.getChoice(choiceBox2).equals("30 Questions"))
-                {
-                    startGame.setOnAction(f -> window.setScene(playGameScene));
-                    //Label
-                    Label whoIsThis = new Label("Who is this test2?");
-
-                    //Buttons
-                    //Play Sound
-                    Button playSound = new Button("Play Sound");
-                    playSound.setOnAction(f -> Soundfiles.kanyeSound());
-
-                    //Correct Answer
-                    Button kanyeBut = new Button("Kanye West");
-                    //Count Points
-                    kanyeBut.setOnAction(f -> Soundfiles.countPoints());
-                    Button beyonceBut = new Button("Beyonce");
-                    Button jayzBut = new Button("Jay-Z");
-                    Button eminemBut = new Button("Eminem");
-
-                    //Button back to front on custom game page
-                    Button frontpageButton4 = new Button("Go back to front page");
-                    frontpageButton4.setOnAction(f -> window.setScene(frontpageScene));
-
-
-                    //Layout for playing the game
-                    VBox playGameLayout = new VBox(20);
-                    playGameLayout.setAlignment(Pos.CENTER);
-                    playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, frontpageButton4);
-                    playGameScene = new Scene(playGameLayout, 400, 600);
-                }
-                else
-                {
-                    startGame.setOnAction(f -> window.setScene(quickplayScene));
-
-                }
             });
-
-
-
-
-
-
-
-
 
 
         //THIS MAKES THE WINDOW OPEN:
         window.setScene(frontpageScene);
         window.setTitle("Soundalicous");
         window.show();
-
-
     }
-
-
 }
 
 

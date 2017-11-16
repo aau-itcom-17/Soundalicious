@@ -90,10 +90,14 @@ public class Soundfiles
         alert.showAndWait();
     }
 
+    public static void resetCountPoints()
+    {
+        count = 0;
+    }
+
     public static String getChoice(ChoiceBox<String> choiceBox2)
     {
         String questions = choiceBox2.getValue();
-        //System.out.println(questions);
         return questions;
     }
 
