@@ -27,10 +27,12 @@ public class DeleteUser {
                     pw.flush();
                 }
             }
+
+
             pw.close();
             br.close();
 
-            //Delete the original file
+
             if (!inFile.delete()) {
                 System.out.println("Could not delete file");
                 return;
@@ -39,14 +41,29 @@ public class DeleteUser {
             if (!tempFile.renameTo(inFile))
                 System.out.println("Could not rename file");
 
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+
+
+
+
+
     }
 
     public static void main(String[] args) throws IOException {
         DeleteUser util = new DeleteUser();
         Scanner scanner = new Scanner(System.in);
+
+
+        FileReader fileReader = new FileReader("text.txt");
+
+        byte[] bytes = Files.readAllBytes(Paths.get("text.txt"));
+        String s = new String(bytes);
+
+
 
         System.out.println("If you want to delete your account write account name");
         String deleteUser = scanner.next();
@@ -57,23 +74,28 @@ public class DeleteUser {
         System.out.println("Write password");
         String deletePass = scanner.next();
 
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (s.contains(deleteUser + " " + deletePass)) {
+                    util.removeLineFromFile("text.txt", deleteUser + " " + deletePass);
+                    System.out.println("Your user has been deleted.");
+                } else {
+                    System.out.println("Password was not identical with username");
 
-        byte[] bytes = Files.readAllBytes(Paths.get("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt"));
-        String s = new String(bytes);
-
-
-        String userAndPass = deleteUser + " " + deletePass;
-
-
-        if (s.indexOf(userAndPass) != 0) {
-            util.removeLineFromFile("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", deleteUser + " " + deletePass);
-            System.out.println("Your user has been deleted.");
-        } else {
-            System.out.println("Password was not identical with username");
-
-
-
+                }
+                // process the line.
+            }
         }
+
+
+
+
+
+
+
+
+
 
     }
 }
