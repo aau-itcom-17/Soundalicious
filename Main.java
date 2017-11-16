@@ -137,22 +137,32 @@ public class Main extends Application {
         TextField passwordInput = new PasswordField();
 
         Label loginError = new Label("Password is not correct. Try again.");
+        loginError.setStyle("-fx-text-fill: red");
         loginError.setVisible(false);
+        Label loginMessage = new Label("You are logged in");
+        loginMessage.setStyle("-fx-text-fill: green");
+        loginMessage.setVisible(false);
 
         Button loginButton = new Button("Log In");
         loginButton.setOnAction(new EventHandler<ActionEvent>(){
           @Override
           public void handle(ActionEvent event) {
             enteredUsername = usernameInput.getText();
+            enteredUsername = enteredUsername.toLowerCase();
             enteredPass = passwordInput.getText();
-          //  if (){
-
-          //  }
-          //  else {
-              passwordInput.setText("");
-              loginError.setVisible(true);
-           // }
-          }
+            try {
+                if (Login.login(enteredUsername, enteredPass)){
+                    loginMessage.setVisible(true);
+                    loginError.setVisible(false);
+                }
+                else {
+                     passwordInput.setText("");
+                     loginError.setVisible(true);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+           }
         });
 
         Button signupButton = new Button("Sign Up");
