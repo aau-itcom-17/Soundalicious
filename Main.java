@@ -71,15 +71,15 @@ public class Main extends Application {
         //This if-statement makes the amount of answers per question equal to amount of teams, so all teams get the chance to answer the question.
         choiceBox.getSelectionModel().selectedItemProperty().addListener((V, oldValue, newValue) -> {
             if ("1 Team".equals(newValue)){
-                tClick = 1;
+                nrOfTeams = 1;
             } else if ("2 Teams".equals(newValue)) {
-                tClick = 2;
+                nrOfTeams = 2;
             } else if ("3 Teams.equals(newValue)) {
-                tClick = 3;
+                nrOfTeams = 3;
             } else if ("4 Teams".equals(newValue)) {
-                tClick = 4;
+                nrOfTeams = 4;
             } else if ("5 Teams".equals(newValue)) {
-                tClick = 5;
+                nrOfTeams = 5;
             }
         } );
         
