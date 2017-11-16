@@ -17,6 +17,7 @@ public class Main extends Application {
     Stage window;
     Scene frontpageScene, quickplayScene, customgameScene, loginpageScene, signupScene, playGameScene;
     String enteredUsername, enteredPass;
+    int nrOfTeams;
 
 
     public static void main(String[] args) {
@@ -66,7 +67,22 @@ public class Main extends Application {
         ChoiceBox<String> choiceBox = new ChoiceBox<>();
         choiceBox.getItems().addAll("1 Team", "2 Teams", "3 Teams", "4 Teams", "5 Teams");
         //Set default value
-        choiceBox.setValue("1 Team");
+//        choiceBox.setValue("1 Team");
+        //This if-statement makes the amount of answers per question equal to amount of teams, so all teams get the chance to answer the question.
+        choiceBox.getSelectionModel().selectedItemProperty().addListener((V, oldValue, newValue) -> {
+            if ("1 Team".equals(newValue)){
+                tClick = 1;
+            } else if ("2 Teams".equals(newValue)) {
+                tClick = 2;
+            } else if ("3 Teams.equals(newValue)) {
+                tClick = 3;
+            } else if ("4 Teams".equals(newValue)) {
+                tClick = 4;
+            } else if ("5 Teams".equals(newValue)) {
+                tClick = 5;
+            }
+        } );
+        
 
         //Amount of questions in a choice box
         Label labelChoiceBox2 = new Label("Choose amount of questions:");
