@@ -42,13 +42,17 @@ public class Main extends Application {
         customgameButton.setOnAction(e -> window.setScene(customgameScene));
 
         //Login page button -> Goes to login page
-        Button loginpageButton = new Button("Log In/Sign Up");
+        Button loginpageButton = new Button("Log In");
         loginpageButton.setOnAction(e -> window.setScene(loginpageScene));
+
+        //Login page button -> Goes to login page
+        Button signupButton = new Button("Sign Up");
+        signupButton.setOnAction(e -> window.setScene(signupScene));
 
         //Layout Front Page
         VBox layoutFrontpage = new VBox(20);
         layoutFrontpage.setAlignment(Pos.CENTER);
-        layoutFrontpage.getChildren().addAll(labelFront, quickplayButton, customgameButton, loginpageButton);
+        layoutFrontpage.getChildren().addAll(labelFront, quickplayButton, customgameButton, loginpageButton, signupButton);
         frontpageScene = new Scene(layoutFrontpage, 400, 600);
 
 
@@ -81,13 +85,13 @@ public class Main extends Application {
         Button buttonHowToPlay = new Button("How To Play");
 
         //Button back to front on Quick play page
-        Button frontpageButton1 = new Button("Go back to front page");
-        frontpageButton1.setOnAction(e -> window.setScene(frontpageScene));
+        Button frontPageButton1 = new Button("Go back to front page");
+        frontPageButton1.setOnAction(e -> window.setScene(frontpageScene));
 
         //Layout quickplay
         VBox quickplayLayout = new VBox(20);
         quickplayLayout.setAlignment(Pos.CENTER);
-        quickplayLayout.getChildren().addAll(labelQuick, labelChoiceBox, choiceBox, labelChoiceBox2, choiceBox2, quickplayPlay, buttonHowToPlay, frontpageButton1);
+        quickplayLayout.getChildren().addAll(labelQuick, labelChoiceBox, choiceBox, labelChoiceBox2, choiceBox2, quickplayPlay, buttonHowToPlay, frontPageButton1);
         quickplayScene = new Scene(quickplayLayout, 500, 500);
 
 
@@ -109,13 +113,13 @@ public class Main extends Application {
         buttonCustomGameNext.setOnAction(e -> window.setScene(quickplayScene));
 
         //Button back to front on custom game page
-        Button frontpageButton2 = new Button("Go back to front page");
-        frontpageButton2.setOnAction(e -> window.setScene(frontpageScene));
+        Button frontPageButton2 = new Button("Go back to front page");
+        frontPageButton2.setOnAction(e -> window.setScene(frontpageScene));
 
         //Layout custom game
         VBox customgameLayout = new VBox(20);
         customgameLayout.setAlignment(Pos.CENTER);
-        customgameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, box1, box2, box3, buttonCustomGameNext, frontpageButton2);
+        customgameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, box1, box2, box3, buttonCustomGameNext, frontPageButton2);
         customgameScene = new Scene(customgameLayout, 400, 600);
 
 
@@ -145,38 +149,38 @@ public class Main extends Application {
 
         Button loginButton = new Button("Log In");
         loginButton.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event) {
-            enteredUsername = usernameInput.getText();
-            enteredUsername = enteredUsername.toLowerCase();
-            enteredPass = passwordInput.getText();
-            try {
-                if (Login.login(enteredUsername, enteredPass)){
-                    loginMessage.setVisible(true);
-                    loginError.setVisible(false);
+            @Override
+            public void handle(ActionEvent event) {
+                enteredUsername = usernameInput.getText();
+                enteredUsername = enteredUsername.toLowerCase();
+                enteredPass = passwordInput.getText();
+                try {
+                    if (Login.login(enteredUsername, enteredPass)){
+                        loginMessage.setVisible(true);
+                        loginError.setVisible(false);
+                    }
+                    else {
+                        passwordInput.setText("");
+                        loginMessage.setVisible(false);
+                        loginError.setVisible(true);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                else {
-                     passwordInput.setText("");
-                     loginError.setVisible(true);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-           }
         });
 
-        Button signupButton = new Button("Sign Up");
-        signupButton.setOnAction(e -> window.setScene(signupScene));
+
 
 
         //Button back to front on login page
-        Button frontpageButton3 = new Button("Go back to front page");
-        frontpageButton3.setOnAction(e -> window.setScene(frontpageScene));
+        Button frontPageButton3 = new Button("Go back to front page");
+        frontPageButton3.setOnAction(e -> window.setScene(frontpageScene));
 
         //Layout custom game
         VBox loginpageLayout = new VBox(20);
         loginpageLayout.setAlignment(Pos.CENTER);
-        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginButton, loginMessage, signupButton, frontpageButton3);
+        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginMessage, loginButton, frontPageButton3);
         loginpageScene = new Scene(loginpageLayout, 400, 600);
 
 
@@ -203,13 +207,16 @@ public class Main extends Application {
         TextField passwordRepeatSignupInput = new PasswordField();
 
         //Create new user Button
-        Button createuserButton = new Button("Create a new user");
+        Button createUserButton = new Button("Create a new user");
 
+        //Button back to front on login page
+        Button frontPageButton4 = new Button("Go back to front page");
+        frontPageButton4.setOnAction(e -> window.setScene(frontpageScene));
 
-        VBox signupLayout = new VBox(20);
-        signupLayout.setAlignment(Pos.CENTER);
-        signupLayout.getChildren().addAll(labelSignup, usernameSignupLabel, usernameSignupInput, passwordSignupLabel, passwordSignupInput, passwordRepeatSignupLabel, passwordRepeatSignupInput, createuserButton, frontpageButton3);
-        signupScene = new Scene(signupLayout, 400, 600);
+        VBox signUpLayout = new VBox(20);
+        signUpLayout.setAlignment(Pos.CENTER);
+        signUpLayout.getChildren().addAll(labelSignup, usernameSignupLabel, usernameSignupInput, passwordSignupLabel, passwordSignupInput, passwordRepeatSignupLabel, passwordRepeatSignupInput, createUserButton, frontPageButton4);
+        signupScene = new Scene(signUpLayout, 400, 600);
 
 
         //ALL THIS IS PLAYING THE GAME:
@@ -226,7 +233,7 @@ public class Main extends Application {
                     Soundfiles.kanyeSound();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+               }
             }
         });
         Button beyonceBut = new Button("Beyonce");
@@ -235,13 +242,13 @@ public class Main extends Application {
         Button eminemBut = new Button("Eminem");
 
         //Button back to front on custom game page
-        Button frontpageButton4 = new Button("Go back to front page");
-        frontpageButton4.setOnAction(e -> window.setScene(frontpageScene));
+        Button frontPageButton5 = new Button("Go back to front page");
+        frontPageButton5.setOnAction(e -> window.setScene(frontpageScene));
 
         //Layout for playing the game
         VBox playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, frontpageButton4);
+        playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
 

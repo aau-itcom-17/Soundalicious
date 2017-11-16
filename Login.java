@@ -15,26 +15,28 @@ public class Login {
 
 
     public static boolean login(String enteredUsername, String enteredPass) throws IOException {
-        FileReader fileReader = new FileReader("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt");
+        FileReader fileReader = new FileReader("text.txt");
 
 
-        byte[] bytes = Files.readAllBytes(Paths.get("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt"));
+        byte[] bytes = Files.readAllBytes(Paths.get("text.txt"));
         String s = new String(bytes);
 
 
         try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (s.indexOf(enteredUsername + " " + enteredPass) != 0) {
-                    return true;
-                } else {
+                if (enteredUsername.equals("") || enteredPass.equals("")) {
                     return false;
+                } else if (s.contains(enteredUsername + " " + enteredPass)) {
+                    return true;
                 }
                 // process the line.
             }
         }
         return false;
     }
+
+
 }
 
 /**
