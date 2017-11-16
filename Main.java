@@ -18,6 +18,7 @@ public class Main extends Application {
     Scene frontpageScene, quickplayScene, customgameScene, loginpageScene, signupScene, playGameScene;
     String enteredUsername, enteredPass;
     int nrOfTeams;
+    int click = 0;
 
 
     public static void main(String[] args) {
@@ -266,6 +267,39 @@ public class Main extends Application {
         playGameLayout.setAlignment(Pos.CENTER);
         playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
+            
+        kanyeBut.setOnAction(e -> {
+            click++;
+            //System.out.println(click);
+            if (click == nrOfTeams) {
+                click = 0;
+ //               window.setScene(playGameScene1); Go to next question when all teams have answered
+            }
+        });
+        beyonceBut.setOnAction(e -> {
+            click++;
+            //System.out.println(click);
+            if (click == nrOfTeams) {
+                click = 0;
+//                window.setScene(playGameScene1); Go to next question when all teams have answered
+            }
+        });
+        jayzBut.setOnAction(e -> {
+            click++;
+            //System.out.println(click);
+            if (click == nrOfTeams) {
+                click = 0;
+ //               window.setScene(playGameScene1); Go to next question when all teams have answered
+            }
+        });
+        eminemBut.setOnAction(e -> {
+            click++;
+            //System.out.println(click);
+            if (click == nrOfTeams) {
+                click = 0;
+//                window.setScene(playGameScene1); Go to next question when all teams have answered
+            }
+        });
 
 
 
