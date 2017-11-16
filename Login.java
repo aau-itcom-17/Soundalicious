@@ -12,7 +12,16 @@ import static java.lang.System.out;
 
 
 public class Login {
+    
+    //checks if string contains special chars including space " ". Returns true if there are, returns false if it's only a-z, 0-9
+    public static boolean containsSpecChar (String enteredString){
+          Pattern p = Pattern.compile("[^a-z0-9]");
+          Matcher m = p.matcher(enteredString);
+          boolean b = m.find();
 
+          if(b) return true;
+          return false;
+      }
 
     public static boolean login(String enteredUsername, String enteredPass) throws IOException {
         FileReader fileReader = new FileReader("text.txt");
