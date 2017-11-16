@@ -6,11 +6,27 @@ import java.io.FileWriter;
 
 
 public class SignUp {
+        
+      //check if user already exists. True - if exists, false - does not.
+      public static boolean userExists(String enteredUsername) throws IOException {
+          BufferedReader bufferedReader = new BufferedReader(new FileReader("text.txt"));
+          String existingUser;
+
+          while ((existingUser = bufferedReader.readLine()) != null)
+          {
+                existingUser = existingUser.substring(0, existingUser.indexOf(" "));
+                System.out.println(existingUser);
+                if(existingUser.equals(enteredUsername)){
+                  return true;
+                }
+          }
+          return false;
+      }
 
     public static void writeToFile(String username, String password) throws IOException {
         // append "true" saves the input to the text.txt file. Also when the application opens again.
         // We need to make a way for a user to delete itself.
-        BufferedWriter out = new BufferedWriter(new FileWriter("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt", true));
+        BufferedWriter out = new BufferedWriter(new FileWriter("text.txt", true));
         out.write(username + " " + password);
         out.newLine();
         out.close();
