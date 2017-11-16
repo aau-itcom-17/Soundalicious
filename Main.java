@@ -68,7 +68,7 @@ public class Main extends Application {
         Button loginpageButton = new Button("Log In");
         loginpageButton.setOnAction(e -> window.setScene(loginpageScene));
 
-        //Sign up page button -> Goes to sig nup page
+        //sign up button -> Goes to sign up page
         Button signupButton = new Button("Sign Up");
         signupButton.setOnAction(e -> window.setScene(signupScene));
 
@@ -183,6 +183,7 @@ public class Main extends Application {
                     loginMessage.setVisible(true);
                     loginError.setVisible(false);
                     loginButton.setOnAction(e -> window.setScene(frontPageSceneLoggedIn));
+
                     if (Login.login("admin", "password")){
                         // admin properties so that the admin can delete files and questions if he wants. but only stuff thats uploaded by users.
                         // the login should be assigned to a User with name and stuff. That user should be allowed to upload sound files and make questions.
@@ -215,6 +216,7 @@ public class Main extends Application {
 
 
         //Sign up Scene
+        //Label login page
         Label labelSignup = new Label("Sign up");
 
         //Username label
@@ -235,8 +237,68 @@ public class Main extends Application {
         //Repeat password input
         TextField passwordRepeatSignupInput = new PasswordField();
 
+        //signup error/message
+        Label signupError = new Label("Passwords do not match");
+        signupError.setVisible(false);
+
         //Create new user Button
         Button createUserButton = new Button("Create a new user");
+        //Action when the button is clicked on
+        createUserButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                signupError.setVisible(false); //do not show message from the previous time
+                enteredUsername = usernameSignupInput.getText(); //save text from TextField to String
+                enteredUsername = enteredUsername.toLowerCase(); //convert String to lowercase
+                enteredPass = passwordSignupInput.getText(); //save password to String
+                try{
+                    if(enteredUsername.isEmpty() || enteredUsername.isEmpty() || passwordRepeatSignupInput.getText().isEmpty()){ //checks if any line is empty
+                        signupError.setText("You left some fields empty");
+                        signupError.setStyle("-fx-text-fill: red");
+                        signupError.setVisible(true);
+                    }
+                    else
+                    if(Login.containsSpecChar(enteredUsername)){ //checks if username contains spec chars
+                        signupError.setText("Username should not contain special characters");
+                        signupError.setStyle("-fx-text-fill: red");
+                        signupError.setVisible(true);
+                    }
+                    else if(Login.containsSpecChar(enteredPass)){ //checks if username contains spec chars
+                        signupError.setText("Password should not contain special characters");
+                        signupError.setStyle("-fx-text-fill: red");
+                        signupError.setVisible(true);
+                    }
+                    else if(passwordSignupInput.getText().equals((passwordRepeatSignupInput.getText()))){ //checking if two TextFields with passwords match
+                        if(!SignUp.userExists(enteredUsername)){ //checking if username does not exist
+                            signupError.setStyle("-fx-text-fill: green");
+                            signupError.setText("New user created");  //changing error message
+                            signupError.setVisible(true); //showing error message
+                            SignUp.writeToFile(enteredUsername, enteredPass);
+                        }
+                        else{
+                            signupError.setText("Username already exists");
+                            signupError.setStyle("-fx-text-fill: red");
+                            signupError.setVisible(true);
+                            usernameSignupInput.setText("");
+                            passwordSignupInput.setText("");
+                            passwordRepeatSignupInput.setText("");
+                        }
+                    }
+                    else {
+                        signupError.setText("Passwords do not match");
+                        signupError.setStyle("-fx-text-fill: red");
+                        signupError.setVisible(true);
+                        passwordSignupInput.setText("");
+                        passwordRepeatSignupInput.setText("");
+                    }
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
         //Button back to front on login page
         Button frontPageButton4 = new Button("Go back to front page");
@@ -244,7 +306,7 @@ public class Main extends Application {
 
         VBox signUpLayout = new VBox(20);
         signUpLayout.setAlignment(Pos.CENTER);
-        signUpLayout.getChildren().addAll(labelSignup, usernameSignupLabel, usernameSignupInput, passwordSignupLabel, passwordSignupInput, passwordRepeatSignupLabel, passwordRepeatSignupInput, createUserButton, frontPageButton4);
+        signUpLayout.getChildren().addAll(labelSignup, usernameSignupLabel, usernameSignupInput, passwordSignupLabel, passwordSignupInput, passwordRepeatSignupLabel, passwordRepeatSignupInput, signupError, createUserButton, frontPageButton4);
         signupScene = new Scene(signUpLayout, 400, 600);
 
 
@@ -262,7 +324,7 @@ public class Main extends Application {
                     Soundfiles.kanyeSound();
                 } catch (IOException e) {
                     e.printStackTrace();
-               }
+                }
             }
         });
         Button beyonceBut = new Button("Beyonce");
