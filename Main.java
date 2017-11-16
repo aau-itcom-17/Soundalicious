@@ -176,7 +176,7 @@ public class Main extends Application {
         //Layout custom game
         VBox loginpageLayout = new VBox(20);
         loginpageLayout.setAlignment(Pos.CENTER);
-        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginButton, signupButton, frontpageButton3);
+        loginpageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, loginError, loginButton, loginMessage, signupButton, frontpageButton3);
         loginpageScene = new Scene(loginpageLayout, 400, 600);
 
 
