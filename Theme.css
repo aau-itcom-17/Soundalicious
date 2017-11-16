@@ -1,14 +1,41 @@
 // This is the general theme for the game. Remember it is css
 
 .root{
-    -fx-background-color: #383838;
-    -fx-font-size: 10pt;
+    -fx-background-color: #383838; /* sets the background colour */
+    -fx-font-size: 10pt; /*sets font size of text*/
 }
 .label{
-    -fx-text-fill: ivory;
+    -fx-text-fill: ivory; /*sets text colour*/
+    -fx-font-style: italic;
 }
 .button{
-    -fx-background-color: linear-gradient(crimson, maroon);
+    -fx-background-color: linear-gradient(crimson, maroon); /*grade from one colour to another*/
+    -fx-text-fill: #FFFFFF; /*sets text colour*/
+    -fx-background-radius: 10; /*adds roundness to the buttons */
+
+}
+.button-sound{
+    -fx-background-color: #7cafc2;
+    -fx-text-fill: black;
+    -fx-background-radius: 50;
+    -fx-font-size: 20; /*changing the text size will change the general size of the button*/
+}
+.choice-box{
+    -fx-background-color: black;
+}
+.choice-box .context-menu{
+    -fx-background-color: black; /*select the dropdown menu background*/
+}
+.label-headline{
+    -fx-text-fill: #7cafc2; /*sets text colour*/
+    -fx-font-size: 28pt; /* sets the size of the text */
+    -fx-font-weight: bold; /*adds bold texture to the text */
+    -fx-font-style: oblique; /* adds a different text style*/
+}
+.check-box{
     -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 10;
+    -fx-font-size: 12;
+}
+.text-field{
+
 }
