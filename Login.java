@@ -16,20 +16,27 @@ public class Login {
 
     public static boolean login(String enteredUsername, String enteredPass) throws IOException {
         FileReader fileReader = new FileReader("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
 
         byte[] bytes = Files.readAllBytes(Paths.get("/Users/akroghp/IdeaProjects/P1 LoginUser/src/text.txt"));
         String s = new String(bytes);
 
-        if (s.indexOf(enteredUsername + " " + enteredPass) == 0) {
-            return true;
-        } else {
-            return false;
+
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (s.indexOf(enteredUsername + " " + enteredPass) != 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+                // process the line.
+            }
         }
-
-
+        return false;
     }
 }
+
 /**
     public static void main (String[] args ) throws IOException{
         Scanner scanner = new Scanner(System.in);
