@@ -25,9 +25,12 @@ public class GameRules extends Application {
         window = primaryStage;
 
         Label labelHeadline = new Label("Soundalicious");
+        // Gets the css class "label-headline" instead of the normal layout
         labelHeadline.getStyleClass().add("label-headline");
 
         Button buttonDrinking = new Button ("Drinking Rules");
+        
+        // Gets the normal layout from the css stylesheet
         buttonDrinking.getStylesheets().add("Theme.css");
 
         Label labelHowToPlay = new Label("Fuck, people can see me.");
