@@ -1,4 +1,4 @@
-// This is the general theme for the game. Remember it is css
+/* This is the general theme for the game. Remember it is css */
 
 /* the general design of the window*/
 .root{
@@ -21,6 +21,13 @@
 .button:hover{
     -fx-background-color: linear-gradient(maroon, crimson);
 }
+/*edits the radiobuttons (different choices in the game)*/
+
+.radio-button{
+    -fx-background-insets: 0px;
+    -fx-text-fill: ivory;
+}
+
 
 .button-sound{
     -fx-background-radius: 5em;
@@ -67,5 +74,5 @@
     -fx-font-size: 12pt;
     -fx-font-weight: bold;
     -fx-text-fill: aliceblue;
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1); /*make fancy desigg (I'm just toying around*/
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1); /*make fancy design (I'm just toying around*/
 }
