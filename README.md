@@ -27,3 +27,9 @@ Start of the game.
 
 ### Constants.java
 All not dynamic strings should be here and used through out other classes.
+
+### Theme.css
+Stylesheet
+
+### Soundfiles.java
+Class that deals with the sound playback.
