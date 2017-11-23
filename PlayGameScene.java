@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class PlayGameScene extends FrontPageScene {
 
-  RadioButton radioBut1, radioBut2, radioBut3, radioBut3;
+  RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
   ToggleGroup question1;
   Label whoIsThis;
   Button playSound, nextQuestion, frontPageButton5;
@@ -62,7 +62,7 @@ public class PlayGameScene extends FrontPageScene {
         //Next Question button
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
-            if (kanyeBut.isSelected())
+            if (radioBut1.isSelected())
             {
                 //Soundfiles.countPoints();
             }
@@ -86,7 +86,7 @@ public class PlayGameScene extends FrontPageScene {
         //Layout for playing the game
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(whoIsThis, playSound, beyonceBut, kanyeBut, jayzBut, eminemBut, nextQuestion, frontPageButton5);
+        playGameLayout.getChildren().addAll(whoIsThis, playSound, radioBut1, radioBut2, radioBut3, radioBut4, nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
         window.setScene(playGameScene);

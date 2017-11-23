@@ -44,7 +44,7 @@ public class CustomGameScene extends FrontPageScene {
         frontPageButton2.setOnAction(e -> window.setScene(frontPageScene));
 
         //Layout custom game
-        custoGameLayout = new VBox(20);
+        customGameLayout = new VBox(20);
         customGameLayout.setAlignment(Pos.CENTER);
         customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, box1, box2, box3, buttonCustomGameNext, frontPageButton2);
         customGameScene = new Scene(customGameLayout, 400, 600);
