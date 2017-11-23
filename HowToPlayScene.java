@@ -20,13 +20,9 @@ public class HowToPlayScene extends QuickPlayScene{
     public HowToPlayScene(){
         Label labelHeadline = new Label(Constants.gameName);
         // Gets the css class "label-headline" instead of the normal layout
-            labelHeadline.getStyleClass().add("label-headline");
-
         buttonDrinking = new Button (Constants.rulesTitle1);
 
         // Gets the normal layout from the css stylesheet
-        buttonDrinking.getStylesheets().add("Theme.css");
-
         labelHowToPlay = new Label(Constants.rulesText2);
 
             labelHowToPlay.setVisible(false);

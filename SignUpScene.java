@@ -120,7 +120,9 @@ public class SignUpScene extends FrontPageScene {
         signUpLayout.setAlignment(Pos.CENTER);
         signUpLayout.getChildren().addAll(labelSignUp, usernameSignUpLabel, usernameSignUpInput, passwordSignUpLabel, passwordSignUpInput, passwordRepeatSignUpLabel, passwordRepeatSignUpInput, signUpError, createUserButton, frontPageButton4);
         signUpScene = new Scene(signUpLayout, 400, 600);
-        window.setScene(signUpScene);
+
+      signUpScene.getStylesheets().add("Theme.css");
+      window.setScene(signUpScene);
   }
 
   public static boolean userExists(String enteredUsername) throws IOException {

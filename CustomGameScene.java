@@ -49,6 +49,7 @@ public class CustomGameScene extends FrontPageScene {
         customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, box1, box2, box3, buttonCustomGameNext, frontPageButton2);
         customGameScene = new Scene(customGameLayout, 400, 600);
 
+        customGameScene.getStylesheets().add("Theme.css");
         window.setScene(customGameScene);
     }
 }

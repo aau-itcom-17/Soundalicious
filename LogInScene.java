@@ -97,6 +97,7 @@ public class LogInScene extends FrontPageScene {
         logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInError, logInMessage, logInButton, frontPageButton3);
         logInPageScene = new Scene(logInPageLayout, 400, 600);
 
+        logInPageScene.getStylesheets().add("Theme.css");
         window.setScene(logInPageScene);
     }
 

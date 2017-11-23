@@ -89,7 +89,8 @@ public class PlayGameScene extends FrontPageScene {
         playGameLayout.getChildren().addAll(whoIsThis, playSound, radioBut1, radioBut2, radioBut3, radioBut4, nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
-        window.setScene(playGameScene);
+      playGameScene.getStylesheets().add("Theme.css");
+      window.setScene(playGameScene);
 
     }
 

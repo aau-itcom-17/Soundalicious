@@ -58,6 +58,7 @@ public class QuickPlayScene extends Main {
     quickPlayLayout.getChildren().addAll(labelQuick, labelChoiceBox, choiceBox, labelChoiceBox2, choiceBox2, startGameButton, buttonHowToPlay, frontPageButton1);
     quickPlayScene = new Scene(quickPlayLayout, 500, 500);
 
+    quickPlayScene.getStylesheets().add("Theme.css");
     window.setScene(quickPlayScene);
 
   }
