@@ -50,7 +50,7 @@ public class QuickPlayScene extends Main {
 
     //Button back to front on Quick play page
     frontPageButton1 = new Button(Constants.goToMainText);
-    frontPageButton1.setOnAction(e -> new FrontPageScene());
+    frontPageButton1.setOnAction(e -> window.setScene(frontPageScene));
 
     //Layout quickplay
     quickPlayLayout = new VBox(20);

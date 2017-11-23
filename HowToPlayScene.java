@@ -39,7 +39,8 @@ public class HowToPlayScene extends QuickPlayScene{
 
         });
 
-        frontpageButton4 = new Button(Constants.goToMainText);
+        frontpageButton4 = new Button("Go back to Quick Play");
+        frontpageButton4.setOnAction(e -> window.setScene(quickPlayScene));
 
         layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
