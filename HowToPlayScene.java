@@ -1,3 +1,4 @@
+import com.sun.tools.javac.code.Attribute;
 import javafx.application.*;
 import javafx.geometry.Pos;
 import javafx.stage.*;
@@ -21,12 +22,12 @@ public class HowToPlayScene extends QuickPlayScene{
         // Gets the css class "label-headline" instead of the normal layout
             labelHeadline.getStyleClass().add("label-headline");
 
-        buttonDrinking = new Button ("Drinking Rules");
+        buttonDrinking = new Button (Constants.rulesTitle1);
 
         // Gets the normal layout from the css stylesheet
         buttonDrinking.getStylesheets().add("Theme.css");
 
-        labelHowToPlay = new Label("Fuck, people can see me.");
+        labelHowToPlay = new Label(Constants.rulesText2);
 
             labelHowToPlay.setVisible(false);
 
@@ -39,7 +40,7 @@ public class HowToPlayScene extends QuickPlayScene{
 
         });
 
-        frontpageButton4 = new Button("Go back to Quick Play");
+        frontpageButton4 = new Button(Constants.goToQuickPlayText);
         frontpageButton4.setOnAction(e -> window.setScene(quickPlayScene));
 
         layout = new VBox(20);

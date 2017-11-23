@@ -55,5 +55,16 @@ public class Constants {
   public static String answer3 = "Jay-Z";
   public static String answer4 = "Eminem";
 
+  //how to play
+  public static String rulesTitle1 = "Drinking game rules";
+  public static String rulesTitle2 = "Not drinking game rules";
+
+  public static String rulesText1 = "Fuck, people can see me.";
+  public static String rulesText2 = "Fuck, people can see me.";
+
+  public static String goToQuickPlayText = "Go back to Quick Play";
+
+
+
 
 }
