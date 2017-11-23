@@ -181,6 +181,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion = new Button("Next Question");
                     nextQuestion.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (kanyeBut.isSelected())
                         {
                             Soundfiles.countPoints();
@@ -236,6 +237,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion = new Button("Next Question");
                     nextQuestion.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (kanyeBut.isSelected())
                         {
                             Soundfiles.countPoints();
@@ -288,6 +290,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion2 = new Button("Next Question");
                     nextQuestion2.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (newName2.isSelected())
                         {
                             Soundfiles.countPoints();
@@ -342,6 +345,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion = new Button("Next Question");
                     nextQuestion.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (kanyeBut.isSelected())
                         {
                             Soundfiles.countPoints();
@@ -394,6 +398,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion2 = new Button("Next Question");
                     nextQuestion2.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (newName2.isSelected())
                         {
                             Soundfiles.countPoints();
@@ -445,6 +450,7 @@ public class Main extends Application {
                     //Next Question button
                     Button nextQuestion3 = new Button("Next Question");
                     nextQuestion3.setOnAction(f -> {
+                        Soundfiles.noSound(); // Stop the music from the previous question
                         if (brunoBut.isSelected())
                         {
                             Soundfiles.countPoints();
