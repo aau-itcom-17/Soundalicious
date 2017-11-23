@@ -12,7 +12,7 @@ Creates frontPageScene that can go to quickPlayScene, customGameScene, logInScen
 Creates quickPlayScene with options to choose teams and questions number. Can go to to the playGameScene or back to the frontPageScene.
 
 ### CustomGameScene.java
-Firstly redirects to logInScene, after login you can select topics. Before starting game goes to the quickPlayScene or can go back to the frontPageScene.
+Firstly redirects to logInScene, after login you can select topics. Before starting game goes to the quickPlayScene, howToPlayScene or can go back to the frontPageScene.
 
 ### LogInScene.java
 Logs you in if the data is correct or can go back to the frontPageScene.
@@ -22,6 +22,9 @@ Can create a new user or go back to the frontPageScene.
 
 ### PlayGameScene.java
 Start of the game.
+
+### HowToPlayScene.java
+Scene that goes from the quickPlayScene to show the rules. Goes back to the quickPlayScene.
 
 ## Other files:
 
