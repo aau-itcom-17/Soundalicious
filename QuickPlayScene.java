@@ -45,6 +45,8 @@ public class QuickPlayScene extends Main {
 
     //How to play button button
     buttonHowToPlay = new Button(Constants.howToPlayText);
+    buttonHowToPlay.setOnAction(e -> new HowToPlayScene());
+
 
     //Button back to front on Quick play page
     frontPageButton1 = new Button(Constants.goToMainText);

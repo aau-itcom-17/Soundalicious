@@ -18,7 +18,7 @@ public class Main extends Application {
 
 
     public static Stage window;
-    public static Scene frontPageScene, frontPageSceneLoggedIn, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene;
+    public static Scene frontPageScene, frontPageSceneLoggedIn, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, gameRulesScene;
     public static String enteredUsername, enteredPass;
     public static boolean loggedIn = false;
 
