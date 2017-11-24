@@ -21,7 +21,10 @@ public class Soundfiles
     public static void kanyeSound() {
         //Play sound
         try {
-            audio = AudioSystem.getAudioInputStream(new File("/Users/Nius/IdeaProjects/P1/src/K.au"));
+             String homePath = System.getProperty("user.home");
+            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + "K.au");
+            String soundFolderName = soundFolder.getPath();
+            audio = AudioSystem.getAudioInputStream(new File(soundFolderName));
             clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
