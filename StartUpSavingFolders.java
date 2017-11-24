@@ -44,8 +44,7 @@ public class StartUpSavingFolders {
 
             try {
 
-                File soundPackageFile = new File(homePath + File.separator +
-                        "downloads" + File.separator + "P1-divided" + k + File.separator + "Sounds");
+                File soundPackageFile = new File(homePath + File.separator + "downloads" + File.separator + "P1-master" + k + File.separator + "Sounds");
 
                 System.out.println("File path to sound folder in downloads: " + soundPackageFile);
 
