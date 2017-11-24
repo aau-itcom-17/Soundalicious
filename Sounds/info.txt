@@ -1,2 +1,0 @@
-All the sounds we upload should be inside this folder.
-The program will take the files from this folder and copy to the /Users/"useronethecomputer/p1/Sounds file
