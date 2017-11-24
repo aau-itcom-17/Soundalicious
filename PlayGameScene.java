@@ -64,7 +64,7 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setOnAction(f -> {
             if (radioBut1.isSelected())
             {
-                //Soundfiles.countPoints();
+                Soundfiles.countPoints();
                 Soundfiles.noSound();
             }
             //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
@@ -77,7 +77,7 @@ public class PlayGameScene extends FrontPageScene {
                 alert.showAndWait();
             }
             window.setScene(frontPageScene);
-          //  Soundfiles.resetCountPoints();
+            Soundfiles.resetCountPoints();
         });
 
         //Button back to front on custom game page
