@@ -119,6 +119,8 @@ public class LogInScene extends FrontPageScene {
                 if (enteredUsername.equals("") || enteredPass.equals("")) {
                     return false;
                 } else if (s.contains(enteredUsername + " " + enteredPass)) {
+                    loggedUser = enteredUsername;
+                    loggedUsersPass = enteredPass;
                     return true;
                 }
                 // process the line.
@@ -126,4 +128,6 @@ public class LogInScene extends FrontPageScene {
         }
         return false;
     }
+
+
 }

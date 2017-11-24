@@ -22,6 +22,7 @@ public class Constants {
   public static String adminLoggedIn = "You are logged in as administrator";
 
   public static String newUserText = "New username:";
+  public static String deleteUserText = "Delete your user and log out";
 
   //custom game
   public static String customGameText = "Custom game";
@@ -63,6 +64,7 @@ public class Constants {
   public static String rulesText2 = "Fuck, people can see me.";
 
   public static String goToQuickPlayText = "Go back to Quick Play";
+
 
 
 

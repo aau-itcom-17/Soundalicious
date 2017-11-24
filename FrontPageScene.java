@@ -11,17 +11,17 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
-import java.io.IOException;
+import java.io.*;
 
 public class FrontPageScene extends Main {
 
   Label labelFront;
   Button quickPlayButton, customGameButton, logInPageButton, signUpButton;
-  Button quickPlayButton1, customGameButton1, logOutButton;
+  Button quickPlayButton1, customGameButton1, logOutButton, deleteButton;
   VBox layoutFrontpage, layoutFrontpage1;
 
 
-  public FrontPageScene(){
+  public FrontPageScene() {
 
     //Label front page
     labelFront = new Label(Constants.gameName);
@@ -46,11 +46,19 @@ public class FrontPageScene extends Main {
     logOutButton = new Button(Constants.logOutText);
     logOutButton.setOnAction(e -> window.setScene(frontPageScene));
 
+    //delete your user button
+    deleteButton = new Button(Constants.deleteUserText);
+    deleteButton.setOnAction(e -> {
+      removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
+      window.setScene(frontPageScene);
+    });
+
     //Layout Front Page when logged in
     layoutFrontpage1 = new VBox(20);
     layoutFrontpage1.setAlignment(Pos.CENTER);
-    layoutFrontpage1.getChildren().addAll(labelFront, quickPlayButton1, customGameButton1, logOutButton);
+    layoutFrontpage1.getChildren().addAll(labelFront, quickPlayButton1, customGameButton1, logOutButton, deleteButton);
     frontPageSceneLoggedIn = new Scene(layoutFrontpage1, 400, 600);
+    frontPageSceneLoggedIn.getStylesheets().add("Theme.css");
 
     //Login page button -> Goes to login page
     logInPageButton = new Button(Constants.logInText);
@@ -68,5 +76,40 @@ public class FrontPageScene extends Main {
 
     frontPageScene.getStylesheets().add("Theme.css");
     window.setScene(frontPageScene);
+  }
+
+  private void removeLineFromFile(String file, String lineToRemove) {
+    System.out.println(lineToRemove);
+    try {
+      File inFile = new File(file);
+      //Construct the new file that will later be renamed to the original filename.
+      // ".tmp makes sure we don't delete the entire .txt file"
+      File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+      BufferedReader br = new BufferedReader(new FileReader(file));
+      PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+      String line;
+      //Read from the original file and write to the new
+      //unless content matches data to be removed.
+      while ((line = br.readLine()) != null) {
+        if (!line.trim().equals(lineToRemove)) {
+          pw.println(line);
+          pw.flush();
+        }
+      }
+
+      pw.close();
+      br.close();
+
+      if (!inFile.delete()) {
+        System.out.println("Could not delete file");
+        return;
+      }
+      //Rename the new file to the filename the original file had.
+      if (!tempFile.renameTo(inFile))
+        System.out.println("Could not rename file");
+
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
   }
 }
