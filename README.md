@@ -6,7 +6,7 @@
 The main function that creates window.
 
 ### FrontPageScene.java 
-Creates frontPageScene that can go to quickPlayScene, customGameScene, logInScene or signUpScene.
+Creates frontPageScene that can go to quickPlayScene, customGameScene, logInScene or signUpScene. Also, an option to delete your user and log out, then application goes to the first screen of frontPageScene.
 
 ### QuickPlayScene.java
 Creates quickPlayScene with options to choose teams and questions number. Can go to to the playGameScene or back to the frontPageScene.
