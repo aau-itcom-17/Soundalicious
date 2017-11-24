@@ -20,6 +20,7 @@ public class Main extends Application {
     public static Stage window;
     public static Scene frontPageScene, frontPageSceneLoggedIn, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, gameRulesScene;
     public static String enteredUsername, enteredPass;
+    public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
 
     public static void main(String[] args) {
