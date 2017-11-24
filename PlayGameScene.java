@@ -51,7 +51,7 @@ public class PlayGameScene extends FrontPageScene {
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                  //  Soundfiles.kanyeSound();
+                  Soundfiles.kanyeSound();
             }
         });
         //Button beyonceBut = new Button("Beyonce");
@@ -65,6 +65,7 @@ public class PlayGameScene extends FrontPageScene {
             if (radioBut1.isSelected())
             {
                 //Soundfiles.countPoints();
+                Soundfiles.noSound();
             }
             //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
             else
