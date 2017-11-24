@@ -2,6 +2,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
+
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
