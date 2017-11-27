@@ -1,15 +1,19 @@
-import java.io.Serializable;
-
-public class Question implements Comparable<Question> {
-
+public class Question implements Comparable<Question>
+{
     private int id;
-    private String questionName;
-    private String soundFilePath;
+    private String soundFile;
+    private String textOfQuestion;
     private String correctAnswer;
-    private String[] dummyAnswers;
+    private String dummyAnswers1;
+    private String dummyAnswers2;
+    private String dummyAnswers3;
 
     Question(int id) {
         this.id = id;
+    }
+
+    Question(){
+        this.id = -1;
     }
 
     public int getId() {
@@ -20,20 +24,20 @@ public class Question implements Comparable<Question> {
         this.id = id;
     }
 
-    public String getName() {
-        return questionName;
+    public String getSoundfile() {
+        return soundFile;
     }
 
-    public void setName(String name) {
-        this.questionName = name;
+    public void setSoundfile(String soundFile) {
+        this.soundFile = soundFile;
     }
 
-    public String getText() {
-        return soundFilePath;
+    public String getTextOfQuestion() {
+        return textOfQuestion;
     }
 
-    public void setText(String text) {
-        this.soundFilePath = text;
+    public void setTextOfQuestion(String text) {
+        this.textOfQuestion = textOfQuestion;
     }
 
     public String getCorrectAnswer() {
@@ -44,12 +48,23 @@ public class Question implements Comparable<Question> {
         this.correctAnswer = correctAnswer;
     }
 
-    public String[] getDummyAnswers() {
-        return dummyAnswers;
+    public String getDummyAnswers1() {
+        return dummyAnswers1;
     }
 
-    public void setDummyAnswers(String[] dummyAnswers) {
-        this.dummyAnswers = dummyAnswers;
+    public String getDummyAnswers2() {
+        return dummyAnswers2;
+    }
+
+    public String getDummyAnswers3() {
+        return dummyAnswers3;
+    }
+
+    public void setDummyAnswers(String dummyAnswers1, String dummyAnswers2, String dummyAnswers3) {
+        this.dummyAnswers1 = dummyAnswers1;
+        this.dummyAnswers2 = dummyAnswers2;
+        this.dummyAnswers3 = dummyAnswers3;
+
     }
 
     @Override
@@ -57,3 +72,4 @@ public class Question implements Comparable<Question> {
         return 0;
     }
 }
+

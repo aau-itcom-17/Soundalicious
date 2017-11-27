@@ -29,10 +29,10 @@ public class PlayGameScene extends FrontPageScene {
 
   public PlayGameScene(){
     //Buttons
-        radioBut1 = new RadioButton(Constants.answer1);
-        radioBut2 = new RadioButton(Constants.answer2);
-        radioBut3 = new RadioButton(Constants.answer3);
-        radioBut4 = new RadioButton(Constants.answer4);
+        radioBut1 = new RadioButton(questions.get(0).getCorrectAnswer());
+        radioBut2 = new RadioButton(questions.get(0).getDummyAnswers1());
+        radioBut3 = new RadioButton(questions.get(0).getDummyAnswers2());
+        radioBut4 = new RadioButton(questions.get(0).getDummyAnswers3());
         question1 = new ToggleGroup();
 
         radioBut1.setToggleGroup(question1);
@@ -64,7 +64,7 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setOnAction(f -> {
             if (radioBut1.isSelected())
             {
-                Soundfiles.countPoints();
+                //Soundfiles.countPoints();
                 Soundfiles.noSound();
             }
             //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
@@ -77,7 +77,7 @@ public class PlayGameScene extends FrontPageScene {
                 alert.showAndWait();
             }
             window.setScene(frontPageScene);
-            Soundfiles.resetCountPoints();
+          //  Soundfiles.resetCountPoints();
         });
 
         //Button back to front on custom game page

@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main extends Application {
@@ -22,6 +24,7 @@ public class Main extends Application {
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
+    public static List<Question> questions;
 
     public static void main(String[] args) {
         launch(args);
@@ -29,10 +32,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        StartUpSavingFolders.startUpSavingFolders();
-        window = primaryStage;
-        new FrontPageScene();
-        window.setTitle("Soundalicous");
-        window.show();
+
+      window = primaryStage;
+      new FrontPageScene();
+      window.setTitle("Soundalicous");
+      window.show();
+
+      questions = new ArrayList<>();
+     Questions.readQuestionsFromFile(questions);
+     System.out.println(questions.get(0).getSoundfile());
   }
 }

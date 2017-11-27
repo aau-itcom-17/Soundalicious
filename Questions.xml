@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Questions>
+	<Question>
+		<id>0</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>K.au</soundfile>
+		<correctAnswer> West</correctAnswer>
+		<dummyAnswer1>Jay-Z</dummyAnswer1>
+		<dummyAnswer2>Eminem</dummyAnswer2>
+		<dummyAnswer3>Beyonce</dummyAnswer3>
+	</Question>
+
+
+	<Question>
+		<id>1</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>K.au</soundfile>
+		<correctAnswer>Darude</correctAnswer>
+		<dummyAnswer1>Eiffel 65</dummyAnswer1>
+		<dummyAnswer2>Gigi D’Agostino</dummyAnswer2>
+		<dummyAnswer3>Sash!</dummyAnswer3>
+	</Question>
+</Questions>
