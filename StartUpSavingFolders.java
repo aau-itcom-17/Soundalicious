@@ -40,7 +40,7 @@ public class StartUpSavingFolders {
         // copy the sounds folder to the computer
 
         String k = "";
-        for (int i  = 50; i > 0; i--) {
+        for (int i  = 15; i > 0; i--) {
 
             try {
 
