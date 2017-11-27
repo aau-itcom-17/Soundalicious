@@ -28,7 +28,7 @@ public class FrontPageScene extends Main {
 
     //Quick play button -> Goes to Quickplay page
     quickPlayButton = new Button(Constants.quickPlayName);
-    quickPlayButton.getStyleClass().add("button-quickplay")
+    quickPlayButton.getStyleClass().add("button-quickplay");
     quickPlayButton.setOnAction(e -> new QuickPlayScene());
 
     //Quick play button when logged in -> Goes to Quickplay page
