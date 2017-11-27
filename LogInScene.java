@@ -19,6 +19,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.scene.input.KeyCode;
+import com.sun.javafx.scene.control.behavior.BehaviorBase;
+import javafx.scene.control.SkinBase;
+
 
 import javax.swing.*;
 import java.io.IOException;
@@ -40,6 +44,12 @@ public class LogInScene extends FrontPageScene {
 
         //Username input
         usernameInput = new TextField();
+        usernameInput.setOnKeyPressed((event) -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                passwordInput.requestFocus();
+            }
+        });
+
 
         //Password label
         passwordLabel = new Label(Constants.passwordText);
@@ -57,44 +67,31 @@ public class LogInScene extends FrontPageScene {
 
         logInButton = new Button(Constants.logInText);
         // The addEventHandler handles more than one event, which makes it so we don't have to click the login button twice.
+        passwordInput.setOnKeyPressed((event) -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                {
+                    startingLogin();
+                }
+                }});
+
+
+
+
         logInButton.addEventHandler(ActionEvent.ACTION, event -> {
-            enteredUsername = usernameInput.getText();
-            enteredUsername = enteredUsername.toLowerCase();
-            enteredPass = passwordInput.getText();
-            try {
-                if (login(enteredUsername, enteredPass)){
-                    loggedIn = true;
-                    logInMessage.setVisible(true);
-                    logInError.setVisible(false);
-                    logInButton.setOnAction(e -> window.setScene(frontPageSceneLoggedIn));
-
-                    if (login(Constants.adminUsername, Constants.adminPass)){
-                        // admin properties so that the admin can delete files and questions if he wants. but only stuff thats uploaded by users.
-                        // the login should be assigned to a User with name and stuff. That user should be allowed to upload sound files and make questions.
-                        // the User should be allowed to customize own questions and to delete his how shizzle.
-
-                        adminMessage = new Label (Constants.adminLoggedIn);
-                        adminMessage.setVisible(true);
-                    }
-                }
-                else {
-                    passwordInput.setText("");
-                    logInMessage.setVisible(false);
-                    logInError.setVisible(true);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            startingLogin();
         });
 
         //Button back to front on login page
         frontPageButton3 = new Button(Constants.goToMainText);
         frontPageButton3.setOnAction(e -> window.setScene(frontPageScene));
 
+        adminMessage = new Label (Constants.adminLoggedIn);
+        adminMessage.setVisible(false);
+
         //Layout custom game
         logInPageLayout = new VBox(20);
         logInPageLayout.setAlignment(Pos.CENTER);
-        logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInError, logInMessage, logInButton, frontPageButton3);
+        logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInError, logInMessage, logInButton, frontPageButton3, adminMessage);
         logInPageScene = new Scene(logInPageLayout, 400, 600);
 
         logInPageScene.getStylesheets().add("Theme.css");
@@ -108,6 +105,36 @@ public class LogInScene extends FrontPageScene {
           if(b) return true;
           return false;
       }
+
+    public void startingLogin(){
+        enteredUsername = usernameInput.getText();
+        enteredUsername = enteredUsername.toLowerCase();
+        enteredPass = passwordInput.getText();
+        try {
+            if (login(enteredUsername, enteredPass)) {
+                loggedIn = true;
+                logInMessage.setVisible(true);
+                logInError.setVisible(false);
+                window.setScene(frontPageSceneLoggedIn);
+            }
+
+               else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){
+                    // admin properties so that the admin can delete files and questions if he wants. but only stuff thats uploaded by users.
+                    // the login should be assigned to a User with name and stuff. That user should be allowed to upload sound files and make questions.
+                    // the User should be allowed to customize own questions and to delete his how shizzle.
+
+                    adminMessage.setVisible(true);
+                }
+
+            else {
+                passwordInput.setText("");
+                logInMessage.setVisible(false);
+                logInError.setVisible(true);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static boolean login(String enteredUsername, String enteredPass) throws IOException {
         FileReader fileReader = new FileReader("text.txt");

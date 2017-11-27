@@ -19,7 +19,7 @@ public class Constants {
   public static String userExistsText = "Username already exsits";
   public static String adminUsername = "admin";
   public static String adminPass = "password";
-  public static String adminLoggedIn = "You are logged in as administrator";
+  public static String adminLoggedIn = "You are logged in as administrator, but you can not do anything";
 
   public static String newUserText = "New username:";
   public static String deleteUserText = "Delete your user and log out";
@@ -69,9 +69,4 @@ public class Constants {
   public static String rulesText2 = "Fuck, people can see me.";
 
   public static String goToQuickPlayText = "Go back to Quick Play";
-
-
-
-
-
 }

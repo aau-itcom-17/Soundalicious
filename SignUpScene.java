@@ -1,5 +1,6 @@
 import javafx.application.*;
 import javafx.geometry.Pos;
+import javafx.scene.input.KeyCode;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -22,7 +23,7 @@ import java.io.IOException;
 
 public class SignUpScene extends FrontPageScene {
 
-  Label labelSignUp, usernameSignUpLabel, passwordSignUpLabel, passwordRepeatSignUpLabel;
+  Label labelSignUp, usernameSignUpLabel, passwordSignUpLabel, passwordRepeatSignUpLabel, signUpError;
   TextField usernameSignUpInput, passwordSignUpInput;
   PasswordField passwordRepeatSignUpInput;
 
@@ -36,21 +37,37 @@ public class SignUpScene extends FrontPageScene {
 
         //Username input
         usernameSignUpInput = new TextField();
+        usernameSignUpInput.setOnKeyPressed((event) -> {
+          if(event.getCode() == KeyCode.ENTER) {
+              passwordSignUpInput.requestFocus();
+          }
+      });
 
         //Password label
         passwordSignUpLabel = new Label("Your password:");
 
         //Password input
         passwordSignUpInput = new PasswordField();
+         passwordSignUpInput.setOnKeyPressed((event) -> {
+          if(event.getCode() == KeyCode.ENTER) {
+              passwordRepeatSignUpInput.requestFocus();
+          }
+         });
 
         //Repeat password label
         passwordRepeatSignUpLabel = new Label("Repeat password:");
 
         //Repeat password input
         passwordRepeatSignUpInput = new PasswordField();
+          passwordRepeatSignUpInput.setOnKeyPressed((event) -> {
+              if(event.getCode() == KeyCode.ENTER) {
+                  signUp();
+              }
+          });
+
 
         //signup error/message
-        Label signUpError = new Label("Passwords do not match");
+        signUpError = new Label("Passwords do not match");
         signUpError.setVisible(false);
 
         //Create new user Button
@@ -59,56 +76,7 @@ public class SignUpScene extends FrontPageScene {
         createUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                signUpError.setVisible(false); //do not show message from the previous time
-                enteredUsername = usernameSignUpInput.getText(); //save text from TextField to String
-                enteredUsername = enteredUsername.toLowerCase(); //convert String to lowercase
-                enteredPass = passwordSignUpInput.getText(); //save password to String
-               try{
-                    if(enteredUsername.isEmpty() || enteredUsername.isEmpty() || passwordRepeatSignUpInput.getText().isEmpty()){ //checks if any line is empty
-                        signUpError.setText("You left some fields empty");
-                        signUpError.setStyle("-fx-text-fill: red");
-                        signUpError.setVisible(true);
-                    }
-                    else
-                    if(containsSpecChar(enteredUsername)){ //checks if username contains spec chars
-                        signUpError.setText("Username should not contain special characters");
-                        signUpError.setStyle("-fx-text-fill: red");
-                        signUpError.setVisible(true);
-                    }
-                    else if(containsSpecChar(enteredPass)){ //checks if username contains spec chars
-                        signUpError.setText("Password should not contain special characters");
-                        signUpError.setStyle("-fx-text-fill: red");
-                        signUpError.setVisible(true);
-                    }
-                    else if(passwordSignUpInput.getText().equals((passwordRepeatSignUpInput.getText()))){ //checking if two TextFields with passwords match
-                        if(!userExists(enteredUsername)){ //checking if username does not exist
-                            signUpError.setStyle("-fx-text-fill: green");
-                            signUpError.setText("New user created");  //changing error message
-                            signUpError.setVisible(true); //showing error message
-                            writeToFile(enteredUsername, enteredPass);
-                        }
-                        else{
-                            signUpError.setText("Username already exists");
-                            signUpError.setStyle("-fx-text-fill: red");
-                            signUpError.setVisible(true);
-                            usernameSignUpInput.setText("");
-                            passwordSignUpInput.setText("");
-                            passwordRepeatSignUpInput.setText("");
-                        }
-                    }
-                    else {
-                        signUpError.setText("Passwords do not match");
-                        signUpError.setStyle("-fx-text-fill: red");
-                        signUpError.setVisible(true);
-                        passwordSignUpInput.setText("");
-                        passwordRepeatSignUpInput.setText("");
-                    }
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
+                signUp();
             }
         });
 
@@ -123,6 +91,60 @@ public class SignUpScene extends FrontPageScene {
 
       signUpScene.getStylesheets().add("Theme.css");
       window.setScene(signUpScene);
+  }
+
+  public void signUp (){
+      signUpError.setVisible(false); //do not show message from the previous time
+      enteredUsername = usernameSignUpInput.getText(); //save text from TextField to String
+      enteredUsername = enteredUsername.toLowerCase(); //convert String to lowercase
+      enteredPass = passwordSignUpInput.getText(); //save password to String
+      try{
+          if(enteredUsername.isEmpty() || enteredUsername.isEmpty() || passwordRepeatSignUpInput.getText().isEmpty()){ //checks if any line is empty
+              signUpError.setText("You left some fields empty");
+              signUpError.setStyle("-fx-text-fill: red");
+              signUpError.setVisible(true);
+          }
+          else
+          if(containsSpecChar(enteredUsername)){ //checks if username contains spec chars
+              signUpError.setText("Username should not contain special characters");
+              signUpError.setStyle("-fx-text-fill: red");
+              signUpError.setVisible(true);
+          }
+          else if(containsSpecChar(enteredPass)){ //checks if username contains spec chars
+              signUpError.setText("Password should not contain special characters");
+              signUpError.setStyle("-fx-text-fill: red");
+              signUpError.setVisible(true);
+          }
+          else if(passwordSignUpInput.getText().equals((passwordRepeatSignUpInput.getText()))){ //checking if two TextFields with passwords match
+              if(!userExists(enteredUsername)){ //checking if username does not exist
+                  signUpError.setStyle("-fx-text-fill: green");
+                  signUpError.setText("New user created");  //changing error message
+                  signUpError.setVisible(true); //showing error message
+                  writeToFile(enteredUsername, enteredPass);
+                  new LogInScene();
+              }
+              else{
+                  signUpError.setText("Username already exists");
+                  signUpError.setStyle("-fx-text-fill: red");
+                  signUpError.setVisible(true);
+                  usernameSignUpInput.setText("");
+                  passwordSignUpInput.setText("");
+                  passwordRepeatSignUpInput.setText("");
+              }
+          }
+          else {
+              signUpError.setText("Passwords do not match");
+              signUpError.setStyle("-fx-text-fill: red");
+              signUpError.setVisible(true);
+              passwordSignUpInput.setText("");
+              passwordRepeatSignUpInput.setText("");
+          }
+      }
+      catch (IOException e) {
+          e.printStackTrace();
+      }
+
+
   }
 
   public static boolean userExists(String enteredUsername) throws IOException {
