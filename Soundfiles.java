@@ -25,7 +25,7 @@ public class Soundfiles
         //Play sound
         try {
              String homePath = System.getProperty("user.home");
-            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.questions.get(0).getSoundfile());
+            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.rQuestions.get(0).getSoundfile());
             String soundFolderName = soundFolder.getPath();
             audio = AudioSystem.getAudioInputStream(new File(soundFolderName));
             clip = AudioSystem.getClip();

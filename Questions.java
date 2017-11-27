@@ -79,7 +79,7 @@ public class Questions
         {
             r = new SecureRandom();
             q = new Question();
-            System.out.println(r);
+
             //readQuestionsFromFile(questions);
             q = questions.get(r.nextInt(questions.size()));
 
@@ -88,8 +88,6 @@ public class Questions
                 rQuestions.add(q);
             }
         }
-
-
     }
 
     void saveQuestionsOnFile() {
