@@ -28,6 +28,20 @@
     -fx-text-fill: ivory;
 }
 
+.button-quickplay{
+    -fx-text-fill: #383838;
+    -fx-background-radius: 2em;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-height: 100px;
+    -fx-max-width: 200px;
+    -fx-background-color: linear-gradient(ivory, navajowhite);
+    -fx-background-insets: 10px;
+    -fx-padding: 10px;
+}
+.button-quickplay:hover{
+    -fx-background-color: linear-gradient(navajowhite, ivory);
+}
 
 .button-sound{
     -fx-background-radius: 5em;
