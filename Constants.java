@@ -34,6 +34,11 @@ public class Constants {
   public static String teamChoice3 = "3 Teams";
   public static String teamChoice4 = "4 Teams";
   public static String teamChoice5 = "5 Teams";
+  public static int teamChoice1Num = 1;
+  public static int teamChoice2Num = 2;
+  public static int teamChoice3Num = 3;
+  public static int teamChoice4Num = 4;
+  public static int teamChoice5Num = 5;
 
   public static String questionChoice1 = "10 questions";
   public static String questionChoice2 = "20 questions";
