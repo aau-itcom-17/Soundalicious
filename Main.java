@@ -24,25 +24,25 @@ public class Main extends Application {
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
-    public static List<Question> questions;
-    public static int numOfQuestions = 10;
-    public static int numOfTeams = 1;
+    public static List<Question> questions, rQuestions;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-      StartUpSavingFolders.startUpSavingFolders();
+        StartUpSavingFolders.startUpSavingFolders();
       window = primaryStage;
       new FrontPageScene();
       window.setTitle("Soundalicous");
       window.show();
 
       questions = new ArrayList<>();
-     Questions.readQuestionsFromFile(questions);
-     System.out.println(questions.get(0).getSoundfile());
+      rQuestions = new ArrayList<>();
+     Questions.readQuestionsFromFile(questions, rQuestions);
+     Questions.getRandomQuestions(questions, rQuestions);
   }
 }

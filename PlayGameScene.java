@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
+import org.xml.sax.SAXException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.nio.file.Files;
@@ -17,6 +19,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.io.FileWriter;
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class PlayGameScene extends FrontPageScene {
@@ -27,12 +30,12 @@ public class PlayGameScene extends FrontPageScene {
   Button playSound, nextQuestion, frontPageButton5;
   VBox playGameLayout;
 
-  public PlayGameScene(){
+  public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
     //Buttons
-        radioBut1 = new RadioButton(questions.get(0).getCorrectAnswer());
-        radioBut2 = new RadioButton(questions.get(0).getDummyAnswers1());
-        radioBut3 = new RadioButton(questions.get(0).getDummyAnswers2());
-        radioBut4 = new RadioButton(questions.get(0).getDummyAnswers3());
+        radioBut1 = new RadioButton(rQuestions.get(0).getCorrectAnswer());
+        radioBut2 = new RadioButton(rQuestions.get(0).getDummyAnswers1());
+        radioBut3 = new RadioButton(rQuestions.get(0).getDummyAnswers2());
+        radioBut4 = new RadioButton(rQuestions.get(0).getDummyAnswers3());
         question1 = new ToggleGroup();
 
         radioBut1.setToggleGroup(question1);
