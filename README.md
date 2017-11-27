@@ -36,3 +36,36 @@ Stylesheet
 
 ### Soundfiles.java
 Class that deals with the sound playback.
+
+### text.txt
+Text file for saving usernames and passwords
+
+### StartUpSavingFolders.java
+Called in the Main.java, moves files to user's directories.
+
+#### CopyFolder.java
+Used in StartUpSavingFolders.java
+
+### SaveFiles.java
+Class that deals with uploading sounds to the game. Not implemented in actual game yet.
+
+### Questions.xml 
+Database for questions
+
+#### Questions.java 
+Class that deals with reading/saving questions from file, should create a random list that can be used in game.
+
+### Question.java
+Constructor of class question, used in Questions.java
+
+### Sounds folder
+All sounds are here
+
+### Plugin for StartUpSavingFolder folder
+Plugin that you need to install
+
+#### How to install.txt
+Instructions how to do it
+
+
+
