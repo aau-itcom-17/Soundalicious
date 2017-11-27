@@ -6,9 +6,9 @@ Import the entire program to intelliJ IDEA
 
 5. Select "File" in intelliJ IDEA
 6. Select "Project Structure"
-7. Modules -> and click the "+" (button)
+7. Libraries -> and click the "+" (button)
 8. Find the folder "commons-io-2.6" in the "Plugin for StartUpSavingFolder and add it
-9. Go to libraries before exiting the window
+9. Go to Modules before exiting the window
 10. Go to "Dependencies"
 11. Check the checkbox and press "OK"
 
