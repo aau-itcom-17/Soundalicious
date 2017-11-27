@@ -49,14 +49,13 @@ public class StartUpSavingFolders {
                 File soundPackageFileWithSlash = new File(homePath + File.separator + "downloads" + File.separator + "P1-master" + k1 + File.separator + "Sounds");
                 File soundPackageFileWithSlashIdea = new File(homePath + File.separator + "IdeaProjects" + File.separator + "P1-master" + k1 + File.separator + "Sounds");
 
+
                 if (!soundPackageFile.exists()){
                     soundPackageFile = soundPackageFileWithSlash;
                 }
                 if (!soundPackageFileWithSlash.exists()){
                     soundPackageFile = soundPackageFileWithSlashIdea;
                 }
-
-                System.out.println("File path to sound folder in downloads: " + soundPackageFile);
 
                 // Change files to byte to check if they are the same.
                 long f1 = FileUtils.sizeOfDirectory(soundPackageFile);
@@ -70,6 +69,10 @@ public class StartUpSavingFolders {
                     CopyFolder.copyFolder(soundPackageFile, soundFolder);
                     System.out.println("Folder from github has been copied to this computer");
                 }
+
+                System.out.println("File path to sound folder in downloads: " + soundPackageFile);
+                
+
                 if (soundPackageFile.exists()){
                     break;
                 }
