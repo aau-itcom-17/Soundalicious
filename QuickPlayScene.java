@@ -41,7 +41,46 @@ public class QuickPlayScene extends Main {
 
     //Quick Play play button button
     startGameButton = new Button(Constants.startGameText);
-    startGameButton.setOnAction(e -> new PlayGameScene());
+    startGameButton.setOnAction(e -> {
+      //sets numOfTeams according to choice box
+      switch (choiceBox.getValue()){
+        case "1 Team":
+          numOfTeams = Constants.teamChoice1Num;
+          break;
+        case "2 Teams":
+          numOfTeams = Constants.teamChoice2Num;
+          break;
+        case "3 Teams":
+          numOfTeams = Constants.teamChoice3Num;
+          break;
+        case "4 Teams":
+          numOfTeams = Constants.teamChoice4Num;
+          break;
+        case "5 Teams":
+          numOfTeams = Constants.teamChoice4Num;
+          break;
+        default:
+          numOfTeams = Constants.teamChoice1Num;
+          break;
+      }
+
+      //sets numOfQuestions according to choice box
+      switch (choiceBox2.getValue()){
+        case "10 questions":
+          numOfQuestions = 10;
+          break;
+        case "20 questions":
+          numOfQuestions = 20;
+          break;
+        case "30 questions":
+          numOfQuestions = 30;
+          break;
+        default:
+          numOfQuestions = 10;
+          break;
+      }
+      new PlayGameScene();
+    });
 
     //How to play button button
     buttonHowToPlay = new Button(Constants.howToPlayText);
