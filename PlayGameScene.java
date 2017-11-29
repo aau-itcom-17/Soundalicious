@@ -65,10 +65,11 @@ public class PlayGameScene extends FrontPageScene {
         //Next Question button
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
+          Soundfiles.noSound();
             if (radioBut1.isSelected())
             {
                 //Soundfiles.countPoints();
-                Soundfiles.noSound();
+                
             }
             //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
             else
