@@ -39,6 +39,7 @@ public class Constants {
   public static int teamChoice3Num = 3;
   public static int teamChoice4Num = 4;
   public static int teamChoice5Num = 5;
+  public static int click = 0;
 
   public static String questionChoice1 = "10 questions";
   public static String questionChoice2 = "20 questions";
