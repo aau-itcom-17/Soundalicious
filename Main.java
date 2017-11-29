@@ -27,6 +27,7 @@ public class Main extends Application {
     public static int numOfQuestions = 10;
     public static int numOfTeams = 1;
     public static List<Question> questions, rQuestions;
+    public static List<RadioButton> answers;
 
     public static void main(String[] args)
     {
