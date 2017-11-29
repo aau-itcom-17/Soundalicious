@@ -79,7 +79,15 @@ public class QuickPlayScene extends Main {
           numOfQuestions = 10;
           break;
       }
-      new PlayGameScene();
+      try {
+        new PlayGameScene();
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      } catch (SAXException e1) {
+        e1.printStackTrace();
+      } catch (ParserConfigurationException e1) {
+        e1.printStackTrace();
+      }
     });
 
     //How to play button button
