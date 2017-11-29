@@ -65,7 +65,29 @@ public class PlayGameScene extends FrontPageScene {
         //Next Question button
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
-          Soundfiles.noSound();
+          
+          if (Constants.click < QuickPlayScene.numOfTeams) { //Multiple click on answers
+                Constants.click++;
+                /*if (Constants.click == QuickPlayScene.numOfTeams) {
+                    window.setScene(playGameScene);
+                } else {*/
+                if (radioBut1.isSelected()) {
+                    System.out.println("Good job");
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Wrong answer!");
+                    alert.showAndWait();
+                }
+                if (Constants.click == QuickPlayScene.numOfTeams) {
+                    window.setScene(frontPageScene);
+                    Soundfiles.noSound();
+                    Constants.click = 0;
+                }
+            }
+          
+/*          Soundfiles.noSound();
             if (radioBut1.isSelected())
             {
                 //Soundfiles.countPoints();
@@ -81,7 +103,7 @@ public class PlayGameScene extends FrontPageScene {
                 alert.showAndWait();
             }
             window.setScene(frontPageScene);
-          //  Soundfiles.resetCountPoints();
+          //  Soundfiles.resetCountPoints(); */
         });
 
         //Button back to front on custom game page
