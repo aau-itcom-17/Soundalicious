@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import org.xml.sax.SAXException;
 
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.nio.file.Files;
@@ -42,6 +43,14 @@ public class PlayGameScene extends FrontPageScene {
         radioBut2.setToggleGroup(question1);
         radioBut3.setToggleGroup(question1);
         radioBut4.setToggleGroup(question1);
+    
+        answers.add(radioBut1);
+        answers.add(radioBut2);
+        answers.add(radioBut3);
+        answers.add(radioBut4);
+
+        Collections.shuffle(answers);
+    
         //ALL THIS IS PLAYING THE GAME:
         //Button frontPageButton4 = new Button("Go back to front page");
         //frontPageButton4.setOnAction(f -> window.setScene(frontpageScene));
@@ -113,7 +122,7 @@ public class PlayGameScene extends FrontPageScene {
         //Layout for playing the game
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(whoIsThis, playSound, radioBut1, radioBut2, radioBut3, radioBut4, nextQuestion, frontPageButton5);
+        playGameLayout.getChildren().addAll(whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
       playGameScene.getStylesheets().add("Theme.css");
