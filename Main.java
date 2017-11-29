@@ -24,7 +24,6 @@ public class Main extends Application {
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
-    public static List<Question> questions;
     public static int numOfQuestions = 10;
     public static int numOfTeams = 1;
     public static List<Question> questions, rQuestions;
