@@ -75,6 +75,11 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
           
+            radioBut1.setSelected(false);
+            radioBut2.setSelected(false);
+            radioBut3.setSelected(false);
+            radioBut4.setSelected(false);
+          
           if (Constants.click < QuickPlayScene.numOfTeams) { //Multiple click on answers
                 Constants.click++;
                 /*if (Constants.click == QuickPlayScene.numOfTeams) {
