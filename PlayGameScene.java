@@ -63,7 +63,7 @@ public class PlayGameScene extends FrontPageScene {
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                Soundfiles.kanyeSound();
+                Soundfiles.readingSounds();
             }
         });
         //Button beyonceBut = new Button("Beyonce");
