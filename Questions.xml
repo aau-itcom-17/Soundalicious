@@ -49,7 +49,7 @@
     <Question>
         <id>5</id>
         <textOfQuestion>Who dis mayn?</textOfQuestion>
-        <soundfile>TChristianoRonaldo.wav</soundfile>
+        <soundfile>ChristianoRonaldo.wav</soundfile>
         <correctAnswer>Christiano Ronaldo</correctAnswer>
         <dummyAnswer1>Zlatan Ibrahimovic</dummyAnswer1>
         <dummyAnswer2>Usain Bold</dummyAnswer2>
