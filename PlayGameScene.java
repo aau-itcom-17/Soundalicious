@@ -25,14 +25,14 @@ import java.io.IOException;
 
 public class PlayGameScene extends FrontPageScene {
 
-  RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
-  ToggleGroup question1;
-  Label whoIsThis;
-  Button playSound, nextQuestion, frontPageButton5;
-  VBox playGameLayout;
+    RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
+    ToggleGroup question1;
+    Label whoIsThis;
+    Button playSound, nextQuestion, frontPageButton5;
+    VBox playGameLayout;
 
-  public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
-    //Buttons
+    public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
+        //Buttons
         radioBut1 = new RadioButton(rQuestions.get(0).getCorrectAnswer());
         radioBut2 = new RadioButton(rQuestions.get(0).getDummyAnswers1());
         radioBut3 = new RadioButton(rQuestions.get(0).getDummyAnswers2());
@@ -43,14 +43,14 @@ public class PlayGameScene extends FrontPageScene {
         radioBut2.setToggleGroup(question1);
         radioBut3.setToggleGroup(question1);
         radioBut4.setToggleGroup(question1);
-    
+
         answers.add(radioBut1);
         answers.add(radioBut2);
         answers.add(radioBut3);
         answers.add(radioBut4);
 
         Collections.shuffle(answers);
-    
+
         //ALL THIS IS PLAYING THE GAME:
         //Button frontPageButton4 = new Button("Go back to front page");
         //frontPageButton4.setOnAction(f -> window.setScene(frontpageScene));
@@ -63,7 +63,7 @@ public class PlayGameScene extends FrontPageScene {
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                  Soundfiles.kanyeSound();
+                Soundfiles.kanyeSound();
             }
         });
         //Button beyonceBut = new Button("Beyonce");
@@ -74,13 +74,9 @@ public class PlayGameScene extends FrontPageScene {
         //Next Question button
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
-          
-            radioBut1.setSelected(false);
-            radioBut2.setSelected(false);
-            radioBut3.setSelected(false);
-            radioBut4.setSelected(false);
-          
-          if (Constants.click < QuickPlayScene.numOfTeams) { //Multiple click on answers
+
+
+            if (Constants.click < QuickPlayScene.numOfTeams) { //Multiple click on answers
                 Constants.click++;
                 /*if (Constants.click == QuickPlayScene.numOfTeams) {
                     window.setScene(playGameScene);
@@ -100,12 +96,17 @@ public class PlayGameScene extends FrontPageScene {
                     Constants.click = 0;
                 }
             }
-          
+
+            radioBut1.setSelected(false);
+            radioBut2.setSelected(false);
+            radioBut3.setSelected(false);
+            radioBut4.setSelected(false);
+
 /*          Soundfiles.noSound();
             if (radioBut1.isSelected())
             {
                 //Soundfiles.countPoints();
-                
+
             }
             //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
             else
@@ -130,8 +131,8 @@ public class PlayGameScene extends FrontPageScene {
         playGameLayout.getChildren().addAll(whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
-      playGameScene.getStylesheets().add("Theme.css");
-      window.setScene(playGameScene);
+        playGameScene.getStylesheets().add("Theme.css");
+        window.setScene(playGameScene);
 
     }
 
