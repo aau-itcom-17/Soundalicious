@@ -64,7 +64,7 @@ public class StartUpSavingFolders {
                 System.out.println("Size of sound folder from github: "+f1);
                 System.out.println("Size of the user folder: "+f2);
 
-                if (f1 != f2) {
+                if (f1 > f2) {
                     // copies the folder on startup
                     CopyFolder.copyFolder(soundPackageFile, soundFolder);
                     System.out.println("Folder from github has been copied to this computer");
