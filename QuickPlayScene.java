@@ -59,7 +59,7 @@ public class QuickPlayScene extends Main {
           numOfTeams = Constants.teamChoice4Num;
           break;
         case "5 Teams":
-          numOfTeams = Constants.teamChoice4Num;
+          numOfTeams = Constants.teamChoice5Num;
           break;
         default:
           numOfTeams = Constants.teamChoice1Num;
