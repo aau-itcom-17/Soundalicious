@@ -14,11 +14,49 @@
 
 	<Question>
 		<id>1</id>
-		<textOfQuestion>Who is this?</textOfQuestion>
-		<soundfile>K.au</soundfile>
+		<textOfQuestion>Who made this song?</textOfQuestion>
+		<soundfile>Darude.wav</soundfile>
 		<correctAnswer>Darude</correctAnswer>
 		<dummyAnswer1>Eiffel 65</dummyAnswer1>
 		<dummyAnswer2>Gigi D’Agostino</dummyAnswer2>
 		<dummyAnswer3>Sash!</dummyAnswer3>
 	</Question>
+
+
+
+
+	<Question>
+		<id>2</id>
+		<textOfQuestion>Who is the person behind this voice?</textOfQuestion>
+		<soundfile>Terminator.wav</soundfile>
+		<dummyAnswer1> Brad Pitt</dummyAnswer1>
+		<correctAnswer>Arnold Schwarznegger</correctAnswer>
+		<dummyAnswer2>George Clooney</dummyAnswer2>
+		<dummyAnswer3>Bruce Willis</dummyAnswer3>
+	</Question>
+
+
+
+	<Question>
+		<id>3</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>Gordon.wav</soundfile>
+		<dummyAnswer1>Jamie Oliver</dummyAnswer1>
+		<dummyAnswer2>Wolfgang Puck</dummyAnswer2>
+		<dummyAnswer3>Donald Trump</dummyAnswer3>
+		<correctAnswer>Gordon Ramsey</correctAnswer>
+	</Question>
+
+
+	<Question>
+		<id>4</id>
+		<textOfQuestion>Which movie is this song from?</textOfQuestion>
+		<soundfile>HarryPotter.wav</soundfile>
+		<dummyAnswer1>Fantastic Beasts and Where to Find Them</dummyAnswer1>
+		<dummyAnswer2>Lord Of The Rings</dummyAnswer2>
+		<correctAnswer>Harry Potter</correctAnswer>
+		<dummyAnswer3>Monsters Inc.</dummyAnswer3>
+	</Question>
+
+
 </Questions>
