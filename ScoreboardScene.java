@@ -10,26 +10,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 
-public class ScoreboardScene extends Application{
-    public int score1 = 0;
-    public int score2 = 0;
-    public int score3 = 0;
-    public int score4 = 0;
-    public int score5 = 0;
+public class ScoreboardPageScene extends Main{
 
-    Scene Scoreboardscene;
-    VBox scoreboard;
+    VBox layoutScoreboard;
     Label gameName, team1, team2, team3, team4, team5, t1, t2, t3, t4, t5;
-    Button nextQuest;
+    Button nextQuest, finGame;
 
-    public static void main (String[] args){
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage){
+    public ScoreboardPageScene(){
 
         gameName = new Label(Constants.gameName);
         gameName.getStyleClass().add("label-headline");
@@ -46,7 +39,7 @@ public class ScoreboardScene extends Application{
 
         team3 = new Label("Team 3");
 
-        t3 = new Label();
+        t3 = new Label("0");
         t3.setText(Integer.toString(score3));
 
         team4 = new Label("Team 4");
@@ -56,20 +49,21 @@ public class ScoreboardScene extends Application{
 
         team5 = new Label("Team 5");
 
-        t5 = new Label();
+        t5 = new Label("0");
         t5.setText(Integer.toString(score5));
 
         nextQuest = new Button("Next Question");
+        nextQuest.setOnAction(e -> window.setScene(playGameScene));
 
-        scoreboard = new VBox(20);
-        scoreboard.setPrefSize(400, 600);
-        scoreboard.setAlignment(Pos.CENTER);
-        scoreboard.getChildren().addAll(gameName, team1, t1, team2, t2, team3, t3, team4, t4, team5, t5, nextQuest);
-        scoreboard.getStylesheets().add("Theme.css");
+        finGame = new Button("Finish game");
+        finGame.setOnAction(e -> window.setScene(frontPageScene));
 
-        Scoreboardscene = new Scene(scoreboard);
-        primaryStage.setScene(Scoreboardscene);
-        primaryStage.show();
+        layoutScoreboard = new VBox(20);
+        layoutScoreboard.setAlignment(Pos.CENTER);
+        layoutScoreboard.getChildren().addAll(gameName, team1, t1, team2, t2, team3, t3, team4, t4, team5, t5, nextQuest, finGame);
+        Scene scoreboardScene = new Scene(layoutScoreboard, 400, 600);
+        scoreboardScene.getStylesheets().add("Theme.css");
 
+        window.setScene(scoreboardScene);
     }
 }
