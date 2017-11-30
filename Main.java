@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class Main extends Application {
 
       questions = new ArrayList<>();
       rQuestions = new ArrayList<>();
+      answers = new ArrayList<>();
      Questions.readQuestionsFromFile(questions, rQuestions);
      Questions.getRandomQuestions(questions, rQuestions);
   }
