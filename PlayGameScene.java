@@ -25,18 +25,22 @@ import java.io.IOException;
 
 public class PlayGameScene extends FrontPageScene {
 
+    private int i;
     RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
     ToggleGroup question1;
     Label whoIsThis;
     Button playSound, nextQuestion, frontPageButton5;
     VBox playGameLayout;
 
+
+
     public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
+
         //Buttons
-        radioBut1 = new RadioButton(rQuestions.get(0).getCorrectAnswer());
-        radioBut2 = new RadioButton(rQuestions.get(0).getDummyAnswers1());
-        radioBut3 = new RadioButton(rQuestions.get(0).getDummyAnswers2());
-        radioBut4 = new RadioButton(rQuestions.get(0).getDummyAnswers3());
+        radioBut1 = new RadioButton(rQuestions.get(n).getCorrectAnswer());
+        radioBut2 = new RadioButton(rQuestions.get(n).getDummyAnswers1());
+        radioBut3 = new RadioButton(rQuestions.get(n).getDummyAnswers2());
+        radioBut4 = new RadioButton(rQuestions.get(n).getDummyAnswers3());
         question1 = new ToggleGroup();
 
         radioBut1.setToggleGroup(question1);
@@ -51,6 +55,7 @@ public class PlayGameScene extends FrontPageScene {
 
         Collections.shuffle(answers);
 
+
         //ALL THIS IS PLAYING THE GAME:
         //Button frontPageButton4 = new Button("Go back to front page");
         //frontPageButton4.setOnAction(f -> window.setScene(frontpageScene));
@@ -63,62 +68,78 @@ public class PlayGameScene extends FrontPageScene {
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                Soundfiles.readingSounds();
+                Soundfiles.kanyeSound();
             }
         });
-        //Button beyonceBut = new Button("Beyonce");
-        //Button kanyeBut = new Button("Kanye West");
-        //Button jayzBut = new Button("Jay-Z");
-        //Button eminemBut = new Button("Eminem");
 
         //Next Question button
         nextQuestion = new Button("Next Question");
         nextQuestion.setOnAction(f -> {
 
+            if (radioBut1.isSelected())
+            {
+                PointSystem.countPoints();
+            }
+                    n++;
+                    Soundfiles.noSound();
+                    answers.clear();
 
-            if (Constants.click < QuickPlayScene.numOfTeams) { //Multiple click on answers
-                Constants.click++;
-                /*if (Constants.click == QuickPlayScene.numOfTeams) {
-                    window.setScene(playGameScene);
-                } else {*/
-                if (radioBut1.isSelected()) {
-                    System.out.println("Good job");
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wrong answer!");
-                    alert.showAndWait();
+                    try {
+                        new PlayGameScene();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (SAXException e) {
+                        e.printStackTrace();
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    }
+
+            if (n == QuickPlayScene.numOfQuestions)
+            {
+                window.setScene(frontPageScene);
+                PointSystem.showPoints();
+                PointSystem.resetCountPoints();
+
+                n = 0;
+                rQuestions.clear();
+                answers.clear();
+                try {
+                    Questions.getRandomQuestions(questions, rQuestions);
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            }
+
+            /*
+            //MORE TEAMS
+
+            if (Constants.click < QuickPlayScene.numOfTeams) {
+                //Multiple click on answers
+                System.out.println("I'm here");
+                Constants.click++;
+
+                window.setScene(playGameScene);
+                if (radioBut1.isSelected())
+                {
+                    PointSystem.countPoints();
+                }
+
                 if (Constants.click == QuickPlayScene.numOfTeams) {
-                    window.setScene(frontPageScene);
+                    //window.setScene(frontPageScene);
                     Soundfiles.noSound();
                     Constants.click = 0;
                 }
             }
+            */
 
             radioBut1.setSelected(false);
             radioBut2.setSelected(false);
             radioBut3.setSelected(false);
             radioBut4.setSelected(false);
-
-/*          Soundfiles.noSound();
-            if (radioBut1.isSelected())
-            {
-                //Soundfiles.countPoints();
-
-            }
-            //if (beyonceBut.isSelected() || jayzBut.isSelected() || eminemBut.isSelected())
-            else
-            {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Wrong answer!");
-                alert.showAndWait();
-            }
-            window.setScene(frontPageScene);
-          //  Soundfiles.resetCountPoints(); */
         });
 
         //Button back to front on custom game page
@@ -133,7 +154,5 @@ public class PlayGameScene extends FrontPageScene {
 
         playGameScene.getStylesheets().add("Theme.css");
         window.setScene(playGameScene);
-
     }
-
 }

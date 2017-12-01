@@ -15,16 +15,14 @@ import java.util.Random;
 
 public class Questions
 {
-    static SecureRandom r;
-    static Random random;
+
+
     static Question temp;
 
     Questions(List<Question> questions, List<Question> rQuestions) throws IOException, SAXException, ParserConfigurationException
     {
-        //r = new SecureRandom();
-        random = new Random();
-        readQuestionsFromFile(questions, rQuestions);
 
+        readQuestionsFromFile(questions, rQuestions);
 
     }
 
@@ -49,35 +47,19 @@ public class Questions
                 temp.setDummyAnswers((document.getElementsByTagName("dummyAnswer1").item(i).getTextContent()), document.getElementsByTagName("dummyAnswer2").item(i).getTextContent(), document.getElementsByTagName("dummyAnswer3").item(i).getTextContent());
 
 
-           // System.out.println(temp.getCorrectAnswer());
-
                 questions.add(temp);
         }
-        //System.out.println(getRandomQuestions(questions, rQuestions).get(0).getCorrectAnswer());
-        //System.out.println(getRandomQuestions(questions, rQuestions).get(1).getCorrectAnswer());
-        //System.out.println(getRandomQuestions(questions, rQuestions).get(2).getCorrectAnswer());
-
-        //System.out.println(getRandomQuestions(questions, rQuestions).get(0).getCorrectAnswer());
     }
 
 
     public static void getRandomQuestions(List<Question> questions, List<Question> rQuestions) throws ParserConfigurationException, SAXException, IOException {
-/*
-        File file = new File("Questions.xml");
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
-                .newInstance();
-        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse(file);
-        NodeList list = document.getElementsByTagName("Question");
-        */
-
 
 
         Question q;
 
-        for (int i = 0; i < 2; i++)
+        while (questions.size() != rQuestions.size())
         {
-            r = new SecureRandom();
+            SecureRandom r = new SecureRandom();
             q = new Question();
 
             //readQuestionsFromFile(questions);
