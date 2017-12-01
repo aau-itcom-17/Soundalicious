@@ -68,17 +68,17 @@ public class QuickPlayScene extends Main {
 
       //sets numOfQuestions according to choice box
       switch (choiceBox2.getValue()){
+        case "2 questions":
+          numOfQuestions = Constants.questionChoice1Num;
+          break;
         case "10 questions":
-          numOfQuestions = 10;
+          numOfQuestions = Constants.questionChoice2Num;
           break;
-        case "20 questions":
-          numOfQuestions = 20;
-          break;
-        case "30 questions":
-          numOfQuestions = 30;
+        case "15 questions":
+          numOfQuestions = Constants.questionChoice3Num;
           break;
         default:
-          numOfQuestions = 10;
+          numOfQuestions = Constants.questionChoice1Num;
           break;
       }
       try {

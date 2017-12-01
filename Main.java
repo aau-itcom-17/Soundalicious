@@ -25,10 +25,11 @@ public class Main extends Application {
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
-    public static int numOfQuestions = 10;
+    public static int numOfQuestions = 2;
     public static int numOfTeams = 1;
     public static List<Question> questions, rQuestions;
     public static List<RadioButton> answers;
+    public static int n;
 
     public static void main(String[] args)
     {
@@ -47,6 +48,9 @@ public class Main extends Application {
       questions = new ArrayList<>();
       rQuestions = new ArrayList<>();
       answers = new ArrayList<>();
+      n = 0;
+
+
      Questions.readQuestionsFromFile(questions, rQuestions);
      Questions.getRandomQuestions(questions, rQuestions);
   }

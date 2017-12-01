@@ -14,7 +14,7 @@ public class PointSystem
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Finished!\n" + "You have " + count + " correct answers");
+        alert.setContentText("Finished!\n" + "You have " + count + " correct answers out of " + QuickPlayScene.numOfQuestions + "!");
 
         alert.showAndWait();
     }

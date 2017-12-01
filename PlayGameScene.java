@@ -81,18 +81,10 @@ public class PlayGameScene extends FrontPageScene {
                 PointSystem.countPoints();
             }
                     n++;
+            System.out.println(n);
                     Soundfiles.noSound();
                     answers.clear();
 
-                    try {
-                        new PlayGameScene();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    }
 
             if (n == QuickPlayScene.numOfQuestions)
             {
@@ -113,6 +105,18 @@ public class PlayGameScene extends FrontPageScene {
                     e.printStackTrace();
                 }
             }
+
+                    try {
+                        new PlayGameScene();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (SAXException e) {
+                        e.printStackTrace();
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    }
+
+
 
             /*
             //MORE TEAMS
