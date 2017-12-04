@@ -16,13 +16,15 @@ import java.util.Random;
 public class Questions
 {
 
-
+    static Random random;
     static Question temp;
 
     Questions(List<Question> questions, List<Question> rQuestions) throws IOException, SAXException, ParserConfigurationException
     {
-
+        //r = new SecureRandom();
+        random = new Random();
         readQuestionsFromFile(questions, rQuestions);
+
 
     }
 
@@ -47,20 +49,26 @@ public class Questions
                 temp.setDummyAnswers((document.getElementsByTagName("dummyAnswer1").item(i).getTextContent()), document.getElementsByTagName("dummyAnswer2").item(i).getTextContent(), document.getElementsByTagName("dummyAnswer3").item(i).getTextContent());
 
 
+           // System.out.println(temp.getCorrectAnswer());
+
                 questions.add(temp);
         }
+        //System.out.println(getRandomQuestions(questions, rQuestions).get(0).getCorrectAnswer());
+        //System.out.println(getRandomQuestions(questions, rQuestions).get(1).getCorrectAnswer());
+        //System.out.println(getRandomQuestions(questions, rQuestions).get(2).getCorrectAnswer());
+
+        //System.out.println(getRandomQuestions(questions, rQuestions).get(0).getCorrectAnswer());
     }
 
 
     public static void getRandomQuestions(List<Question> questions, List<Question> rQuestions) throws ParserConfigurationException, SAXException, IOException {
-
 
         Question q;
 
         while (questions.size() != rQuestions.size())
         {
             SecureRandom r = new SecureRandom();
-            q = new Question();
+
 
             //readQuestionsFromFile(questions);
             q = questions.get(r.nextInt(questions.size()));
@@ -68,6 +76,7 @@ public class Questions
             if (!rQuestions.contains(q))
             {  // should implement the Comparable interface.
                 rQuestions.add(q);
+                System.out.println("rQuestions " +rQuestions);
             }
         }
     }

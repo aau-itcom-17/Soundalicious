@@ -1,46 +1,36 @@
-import javafx.application.*;
 import javafx.geometry.Pos;
-import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.AnchorPane;
 import org.xml.sax.SAXException;
 
 import java.util.Collections;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Scanner;
-import java.io.*;
-import java.io.FileWriter;
-import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class PlayGameScene extends FrontPageScene {
 
-    private int i;
+    private int i = 0;
+    private int counter =1;
     RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
     ToggleGroup question1;
     Label whoIsThis;
     Button playSound, nextQuestion, frontPageButton5;
     VBox playGameLayout;
-
+    String teamOrQuestion = null;
 
 
     public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
-
         //Buttons
-        radioBut1 = new RadioButton(rQuestions.get(n).getCorrectAnswer());
+
+
         radioBut2 = new RadioButton(rQuestions.get(n).getDummyAnswers1());
         radioBut3 = new RadioButton(rQuestions.get(n).getDummyAnswers2());
         radioBut4 = new RadioButton(rQuestions.get(n).getDummyAnswers3());
+        radioBut1 = new RadioButton(rQuestions.get(n).getCorrectAnswer());
         question1 = new ToggleGroup();
 
         radioBut1.setToggleGroup(question1);
@@ -55,43 +45,78 @@ public class PlayGameScene extends FrontPageScene {
 
         Collections.shuffle(answers);
 
-
-        //ALL THIS IS PLAYING THE GAME:
-        //Button frontPageButton4 = new Button("Go back to front page");
-        //frontPageButton4.setOnAction(f -> window.setScene(frontpageScene));
-
-        //Label
         whoIsThis = new Label("Who is this?");
         //Buttons
         //Play Sound
+
         playSound = new Button ("Play Sound");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                Soundfiles.kanyeSound();
+                Soundfiles.readingSound();
             }
         });
 
         //Next Question button
-        nextQuestion = new Button("Next Question");
+
+        if (teams.size() > 1){
+            teamOrQuestion = "Team";
+        } else{
+            teamOrQuestion = "Question";
+        }
+        nextQuestion = new Button("Next " + teamOrQuestion);
         nextQuestion.setOnAction(f -> {
 
-            if (radioBut1.isSelected())
-            {
-                PointSystem.countPoints();
+            if (counter == teams.size()){
+                teamOrQuestion = "Question";
             }
-                    n++;
-            System.out.println(n);
-                    Soundfiles.noSound();
-                    answers.clear();
 
 
-            if (n == QuickPlayScene.numOfQuestions)
-            {
+
+            System.out.println("n " + n);
+            Soundfiles.noSound();
+            answers.clear();
+
+            if (radioBut1.isSelected()) {
+                teams.get(i).setPointScore(teams.get(i).getPointScore() + 1);
+            } else {
+                /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Wrong Answer");
+                alert.showAndWait();
+                */
+            }
+            i++;
+            if (counter == teams.size()) {
+                n++;
+                i = 0;
+                new ScoreboardPageScene();
+                /*
+                try {
+                    new PlayGameScene();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                }
+                */
+
+
+            }
+            for (int j = 0; j < teams.size(); j++) {
+                System.out.println(teams.get(j).getPointScore());
+            }
+
+            counter++;
+
+
+
+
+            if (n == QuickPlayScene.numOfQuestions){
                 window.setScene(frontPageScene);
-                PointSystem.showPoints();
-                PointSystem.resetCountPoints();
-
                 n = 0;
                 rQuestions.clear();
                 answers.clear();
@@ -104,49 +129,19 @@ public class PlayGameScene extends FrontPageScene {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
-
-                    try {
-                        new PlayGameScene();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    }
-
-
-
-            /*
-            //MORE TEAMS
-
-            if (Constants.click < QuickPlayScene.numOfTeams) {
-                //Multiple click on answers
-                System.out.println("I'm here");
-                Constants.click++;
-
-                window.setScene(playGameScene);
-                if (radioBut1.isSelected())
-                {
-                    PointSystem.countPoints();
-                }
-
-                if (Constants.click == QuickPlayScene.numOfTeams) {
-                    //window.setScene(frontPageScene);
-                    Soundfiles.noSound();
-                    Constants.click = 0;
-                }
-            }
-            */
-
             radioBut1.setSelected(false);
             radioBut2.setSelected(false);
             radioBut3.setSelected(false);
             radioBut4.setSelected(false);
+
         });
 
-        //Button back to front on custom game page
+
+
+
+            //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> window.setScene(frontPageScene));
 
@@ -158,5 +153,8 @@ public class PlayGameScene extends FrontPageScene {
 
         playGameScene.getStylesheets().add("Theme.css");
         window.setScene(playGameScene);
+
+
     }
+
 }

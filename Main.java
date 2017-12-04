@@ -21,7 +21,7 @@ public class Main extends Application {
 
 
     public static Stage window;
-    public static Scene frontPageScene, frontPageSceneLoggedIn, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, gameRulesScene;
+    public static Scene frontPageScene, frontPageSceneLoggedIn, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, gameRulesScene, scoreBoardPageScene;
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
@@ -29,6 +29,7 @@ public class Main extends Application {
     public static int numOfTeams = 1;
     public static List<Question> questions, rQuestions;
     public static List<RadioButton> answers;
+    public static List<Team> teams;
     public static int n;
 
     public static void main(String[] args)
@@ -48,7 +49,9 @@ public class Main extends Application {
       questions = new ArrayList<>();
       rQuestions = new ArrayList<>();
       answers = new ArrayList<>();
+      teams = new ArrayList<>();
       n = 0;
+
 
 
      Questions.readQuestionsFromFile(questions, rQuestions);
