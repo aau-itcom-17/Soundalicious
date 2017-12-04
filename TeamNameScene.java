@@ -4,10 +4,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,8 @@ public class TeamNameScene extends QuickPlayScene {
     public TeamNameScene() {
 
         labelHeadline = new Label(Constants.gameName);
-        labelHeadline.getStyleClass().add("label-headline");
         labelSelectTeamName = new Label("Customize your team name");
+
         teamNumber = new Label("Team " + 1);
 
         teamNameError = new Label("Please enter a team name.");
@@ -33,7 +35,7 @@ public class TeamNameScene extends QuickPlayScene {
         teamNameError.setVisible(false);
 
         selectYourTeamName = new TextField();
-        selectYourTeamName.setOnKeyPressed((event) -> {
+        selectYourTeamName.setOnAction(e -> {
 
         });
 
@@ -41,47 +43,14 @@ public class TeamNameScene extends QuickPlayScene {
         for (int i = 1; i <= QuickPlayScene.numOfTeams; i++) {
 
             saveTeams = new Button("Save Team");
-            saveTeams.setOnAction(e -> {
-                Team teamClassTemp = new Team(null, 0, 0);
+            selectYourTeamName.setOnKeyPressed(event -> {
+                if(event.getCode() == KeyCode.ENTER) {
+                    nextTeamName();
 
-
-                    //checks if user type anything at all.
-                    if (!selectYourTeamName.getText().equals("")){
-                        teamNameError.setVisible(false);
-                        //changes team number for player.
-                        teamNr++;
-                        teamNumber.setText("Team " + teamNr);
-
-
-
-                        teamClassTemp.setID(teams.size() + 1);
-                        teamClassTemp.setTeamName(selectYourTeamName.getText());
-                        teams.add(teamClassTemp);
-                        selectYourTeamName.clear();
-
-
-                        System.out.println("number of teams chosen " + QuickPlayScene.numOfTeams);
-                        System.out.println(teams.size());
-                        System.out.println(QuickPlayScene.numOfTeams);
-
-                    if (QuickPlayScene.numOfTeams == teams.size()) {
-                        // method that show the user number of teams chosen in the quickplayScene.
-                        try {
-                            new PlayGameScene();
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        } catch (SAXException e1) {
-                            e1.printStackTrace();
-                        } catch (ParserConfigurationException e1) {
-                            e1.printStackTrace();
-                        }
-
-                    }
-
-            }else{
-                teamNameError.setVisible(true);
-            }
+                }
             });
+
+            saveTeams.setOnAction(e -> nextTeamName());
 
         }
 
@@ -97,7 +66,46 @@ public class TeamNameScene extends QuickPlayScene {
 
     }
 
-}
+    public void nextTeamName(){
+        Team teamClassTemp = new Team(null, 0, 0);
+
+
+        //checks if user type anything at all.
+        if (!selectYourTeamName.getText().equals("")){
+            teamNameError.setVisible(false);
+            //changes team number for player.
+            teamNr++;
+            teamNumber.setText("Team " + teamNr);
 
 
 
+
+            teamClassTemp.setID(teams.size() + 1);
+            teamClassTemp.setTeamName(selectYourTeamName.getText());
+            teams.add(teamClassTemp);
+            selectYourTeamName.clear();
+
+
+            System.out.println("number of teams chosen " + QuickPlayScene.numOfTeams);
+            System.out.println(teams.size());
+            System.out.println(QuickPlayScene.numOfTeams);
+
+            if (QuickPlayScene.numOfTeams == teams.size()) {
+                // method that show the user number of teams chosen in the quickplayScene.
+                try {
+                    new PlayGameScene();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (SAXException e1) {
+                    e1.printStackTrace();
+                } catch (ParserConfigurationException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+
+        }else{
+            teamNameError.setVisible(true);
+        }
+    }
+    }
