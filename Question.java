@@ -36,8 +36,8 @@ public class Question implements Comparable<Question>
         return textOfQuestion;
     }
 
-    public void this.textOfQuestionsetTextOfQuestion(String textOfQuestion) {
-         = textOfQuestion;
+    public void setTextOfQuestion(String textOfQuestion) {
+         this.textOfQuestion = textOfQuestion;
     }
 
     public String getCorrectAnswer() {
