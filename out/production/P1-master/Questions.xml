@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Questions>
+	<Question>
+		<id>0</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>Kanye_IAmShakespeare.wav</soundfile>
+		<correctAnswer>Kanye West</correctAnswer>
+		<dummyAnswer1>Jay-Z</dummyAnswer1>
+		<dummyAnswer2>Walt Disney</dummyAnswer2>
+		<dummyAnswer3>Steve Harvey</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>1</id>
+		<textOfQuestion>Where is this from?</textOfQuestion>
+		<soundfile>TheXFiles_Illuminati.wav</soundfile>
+		<correctAnswer>The X Files</correctAnswer>
+		<dummyAnswer1>Illuminati</dummyAnswer1>
+		<dummyAnswer2>Shrek</dummyAnswer2>
+		<dummyAnswer3>Breaking Bad</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>2</id>
+		<textOfQuestion>Who is telling you to never play yourself?</textOfQuestion>
+		<soundfile>DjKhaled_YouPlayedYourself.wav</soundfile>
+		<correctAnswer>Dj Khaled</correctAnswer>
+		<dummyAnswer1>Kanye West</dummyAnswer1>
+		<dummyAnswer2>Jay-Z</dummyAnswer2>
+		<dummyAnswer3>Kevin Hart</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>3</id>
+		<textOfQuestion>Who is dead?</textOfQuestion>
+		<soundfile>Kanye_IsDead.wav</soundfile>
+		<correctAnswer>Kanye West</correctAnswer>
+		<dummyAnswer1>P-Diddy</dummyAnswer1>
+		<dummyAnswer2>Beyoncé's boyfriend</dummyAnswer2>
+		<dummyAnswer3>The Rock</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>4</id>
+		<textOfQuestion>Who is dis guy?</textOfQuestion>
+		<soundfile>TRUMP_GrabEmByThePussy.wav</soundfile>
+		<correctAnswer>The President of USA</correctAnswer>
+		<dummyAnswer1>A guy that likes cats</dummyAnswer1>
+		<dummyAnswer2>Bill Cosby</dummyAnswer2>
+		<dummyAnswer3>Mike Tyson</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>5</id>
+		<textOfQuestion>Who dis mayn?</textOfQuestion>
+		<soundfile>ChristianoRonaldo.wav</soundfile>
+		<correctAnswer>Christiano Ronaldo</correctAnswer>
+		<dummyAnswer1>Zlatan Ibrahimovic</dummyAnswer1>
+		<dummyAnswer2>Usain Bold</dummyAnswer2>
+		<dummyAnswer3>Conor McGregor</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>6</id>
+		<textOfQuestion>From what cartoon is this from?</textOfQuestion>
+		<soundfile>TRUMP_CartmanSwearing.wav</soundfile>
+		<correctAnswer>South Park</correctAnswer>
+		<dummyAnswer1>The Simpsons</dummyAnswer1>
+		<dummyAnswer2>Rick and Morty</dummyAnswer2>
+		<dummyAnswer3>Bojack Horseman</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>7</id>
+		<textOfQuestion>From what cartoon is this from?</textOfQuestion>
+		<soundfile>Morty_OhGeez.wav</soundfile>
+		<correctAnswer>Rick and Morty</correctAnswer>
+		<dummyAnswer1>Futurama</dummyAnswer1>
+		<dummyAnswer2>South Park</dummyAnswer2>
+		<dummyAnswer3>The Simpsons</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>8</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>BigShaq.wav</soundfile>
+		<correctAnswer>Big Shaq</correctAnswer>
+		<dummyAnswer1>Stormzy</dummyAnswer1>
+		<dummyAnswer2>Skepta</dummyAnswer2>
+		<dummyAnswer3>Dj Khaled</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>9</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>BeetleJuice_IGetThePussy.wav</soundfile>
+		<correctAnswer>Beetlejuice</correctAnswer>
+		<dummyAnswer1>Gary the retard</dummyAnswer1>
+		<dummyAnswer2>Rich Chigga</dummyAnswer2>
+		<dummyAnswer3>Jayden Smith</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>10</id>
+		<textOfQuestion>Who is the person behind this voice?</textOfQuestion>
+		<soundfile>ArnoldSchwarzeneger_IllBeBack.wav</soundfile>
+		<correctAnswer>Arnold Schwarznegger</correctAnswer>
+		<dummyAnswer1>Brad Pitt</dummyAnswer1>
+		<dummyAnswer2>George Clooney</dummyAnswer2>
+		<dummyAnswer3>Bruce Willis</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>11</id>
+		<textOfQuestion>Who is this?</textOfQuestion>
+		<soundfile>Gordon_WhereIsTheLambSauce.wav</soundfile>
+		<correctAnswer>Gordon Ramsey</correctAnswer>
+		<dummyAnswer1>Jamie Oliver</dummyAnswer1>
+		<dummyAnswer2>Wolfgang Puck</dummyAnswer2>
+		<dummyAnswer3>Donald Trump</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>12</id>
+		<textOfQuestion>Which movie is this song from?</textOfQuestion>
+		<soundfile>HarryPotter_Flute.wav</soundfile>
+		<correctAnswer>Harry Potter</correctAnswer>
+		<dummyAnswer1>Fantastic Beasts and Where to Find Them</dummyAnswer1>
+		<dummyAnswer2>Lord Of The Rings</dummyAnswer2>
+		<dummyAnswer3>Monsters Inc.</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>13</id>
+		<textOfQuestion>Which movie is this song from?</textOfQuestion>
+		<soundfile>KillBill.wav</soundfile>
+		<correctAnswer>Kill Bill</correctAnswer>
+		<dummyAnswer1>Django Unchained</dummyAnswer1>
+		<dummyAnswer2>Inglorious Bastards</dummyAnswer2>
+		<dummyAnswer3>Pulp Fiction</dummyAnswer3>
+	</Question>
+	<Question>
+		<id>14</id>
+		<textOfQuestion>Which character from Starwars is this?</textOfQuestion>
+		<soundfile>DarthVader.wav</soundfile>
+		<correctAnswer>Anakin Skywalker</correctAnswer>
+		<dummyAnswer1>Luke Skywalker</dummyAnswer1>
+		<dummyAnswer2>Kylo Ren</dummyAnswer2>
+		<dummyAnswer3>Yoda</dummyAnswer3>
+	</Question>
+
+
+
+</Questions>
