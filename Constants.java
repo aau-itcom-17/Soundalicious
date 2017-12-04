@@ -59,13 +59,6 @@ public class Constants {
   public static String topicText2 = "Actors";
   public static String topicText3 = "Athletes";
 
-  //play game
-  public static String question = "Who is this?";
-  public static String answer1 = "Kanye West";
-  public static String answer2 = "Beyonce";
-  public static String answer3 = "Jay-Z";
-  public static String answer4 = "Eminem";
-
   //how to play
   public static String rulesTitle1 = "Drinking game rules";
   public static String rulesTitle2 = "Not drinking game rules";
