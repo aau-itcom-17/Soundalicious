@@ -50,7 +50,7 @@ public class PlayGameScene extends FrontPageScene {
         //Buttons
         //Play Sound
 
-        playSound = new Button ("Play Sound");
+        playSound = new Button (rQuestions.get(n).getTextOfQuestion());
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
