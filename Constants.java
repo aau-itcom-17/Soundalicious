@@ -29,7 +29,7 @@ public class Constants {
   public static String numOfTeamsTitle = "Choose amount of teams:";
   public static String numOfQuestionsTitle = "Choose amount of questions:";
 
-  public static String teamChoice0 = "Choose a team";
+  public static String teamChoice0 = "Choose number of teams";
   public static String teamChoice1 = "1 Team";
   public static String teamChoice2 = "2 Teams";
   public static String teamChoice3 = "3 Teams";
