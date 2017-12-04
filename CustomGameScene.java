@@ -26,6 +26,7 @@ public class CustomGameScene extends FrontPageScene {
 
         //Label Custom page
         labelCustom = new Label(Constants.gameName);
+        labelCustom.getStyleClass().add("label-headline");
 
         //Label choose cards
         labelChooseQuestions = new Label(Constants.chooseTopicTitle);

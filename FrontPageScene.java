@@ -25,6 +25,7 @@ public class FrontPageScene extends Main {
 
     //Label front page
     labelFront = new Label(Constants.gameName);
+    labelFront.getStyleClass().add("label-headline");
 
     //Quick play button -> Goes to Quickplay page
     quickPlayButton = new Button(Constants.quickPlayName);
