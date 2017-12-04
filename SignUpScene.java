@@ -31,6 +31,7 @@ public class SignUpScene extends FrontPageScene {
     //Sign up Scene
         //Label login page
        labelSignUp = new Label(Constants.signUpText);
+       labelSignUp.getStyleClass().add("label-headline");
 
         //Username label
         usernameSignUpLabel = new Label(Constants.newUserText);

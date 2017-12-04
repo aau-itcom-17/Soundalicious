@@ -1,0 +1,15 @@
+Import the entire program to intelliJ IDEA
+1. Open intelliJ
+2. Import
+3. Find the folder downloaded from GitHub
+4. next next next next
+
+5. Select "File" in intelliJ IDEA
+6. Select "Project Structure"
+7. Libraries -> and click the "+" (button)
+8. Find the folder "commons-io-2.6" in the "Plugin for StartUpSavingFolder and add it
+9. Go to Modules before exiting the window
+10. Go to "Dependencies"
+11. Check the checkbox and press "OK"
+
+DONE

@@ -24,6 +24,7 @@ public class TeamNameScene extends QuickPlayScene {
     public TeamNameScene() {
 
         labelHeadline = new Label(Constants.gameName);
+        labelHeadline.getStyleClass().add("label-headline");
         labelSelectTeamName = new Label("Customize your team name");
         teamNumber = new Label("Team " + 1);
 
