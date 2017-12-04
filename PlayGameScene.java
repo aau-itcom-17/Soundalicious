@@ -47,10 +47,8 @@ public class PlayGameScene extends FrontPageScene {
         Collections.shuffle(answers);
         teamName = new Label();
 
-
-        whoIsThis = new Label("Who is this?");
-        //Buttons
-        //Play Sound
+        whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
+        whoIsThis.getStyleClass().add("label-who");
 
         playSound = new Button ("Play Sound");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
