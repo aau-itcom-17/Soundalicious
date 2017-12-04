@@ -15,9 +15,10 @@ public class PlayGameScene extends FrontPageScene {
 
     private int i = 0;
     private int counter =1;
+    private int counter2 = 0;
     RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
     ToggleGroup question1;
-    Label whoIsThis;
+    Label whoIsThis, teamName;
     Button playSound, nextQuestion, frontPageButton5;
     VBox playGameLayout;
     String teamOrQuestion = null;
@@ -44,6 +45,8 @@ public class PlayGameScene extends FrontPageScene {
         answers.add(radioBut4);
 
         Collections.shuffle(answers);
+        teamName = new Label();
+
 
         whoIsThis = new Label("Who is this?");
         //Buttons
@@ -56,7 +59,7 @@ public class PlayGameScene extends FrontPageScene {
                 Soundfiles.readingSound();
             }
         });
-
+        teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
         //Next Question button
 
         if (teams.size() > 1){
@@ -66,6 +69,10 @@ public class PlayGameScene extends FrontPageScene {
         }
         nextQuestion = new Button("Next " + teamOrQuestion);
         nextQuestion.setOnAction(f -> {
+            counter2++;
+            if (teams.size() > counter2) {
+                teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
+            }
 
             if (counter == teams.size()){
                 teamOrQuestion = "Question";
@@ -148,7 +155,7 @@ public class PlayGameScene extends FrontPageScene {
         //Layout for playing the game
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
+        playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
         playGameScene.getStylesheets().add("Theme.css");
