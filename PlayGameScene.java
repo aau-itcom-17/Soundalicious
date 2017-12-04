@@ -45,12 +45,12 @@ public class PlayGameScene extends FrontPageScene {
 
         Collections.shuffle(answers);
 
-        whoIsThis = new Label("Who is this?");
+        whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
         //Buttons
         //Play Sound
 
-        playSound = new Button (rQuestions.get(n).getTextOfQuestion());
+        playSound = new Button ("Play Sound");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
