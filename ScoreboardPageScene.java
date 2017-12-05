@@ -105,5 +105,10 @@ public class ScoreboardPageScene extends Main{
         scoreBoardPageScene.getStylesheets().add("Theme.css");
 
         window.setScene(scoreBoardPageScene);
+        
+        if (n == QuickPlayScene.numOfQuestions){
+            nextQuest.setVisible(false);
+            System.out.println("I'm here!");
+        }
     }
 }
