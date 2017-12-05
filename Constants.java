@@ -42,12 +42,12 @@ public class Constants {
   public static int teamChoice5Num = 5;
   public static int click = 1;
 
-  public static String questionChoice1 = "2 questions";
-  public static String questionChoice2 = "10 questions";
-  public static String questionChoice3 = "17 questions";
-  public static int questionChoice1Num = 2;
-  public static int questionChoice2Num = 10;
-  public static int questionChoice3Num = 17;
+  public static String questionChoice1 = "10 questions";
+  public static String questionChoice2 = "15 questions";
+  public static String questionChoice3 = "25 questions";
+  public static int questionChoice1Num = 10;
+  public static int questionChoice2Num = 15;
+  public static int questionChoice3Num = 25;
 
   public static String startGameText = "Start game";
   public static String howToPlayText = "How to play";
