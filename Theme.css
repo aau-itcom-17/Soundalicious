@@ -70,7 +70,8 @@
     -fx-text-fill: #7cafc2; /*sets text colour*/
     -fx-font-size: 28pt; /* sets the size of the text */
     -fx-font-weight: bold; /*adds bold texture to the text */
-    -fx-font-style: oblique; /* adds a different text style*/
+    /*-fx-font-style: oblique; /* adds a different text style*/
+    -fx-font-family: Copperplate;
 }
 
 .check-box{
@@ -176,13 +177,6 @@
 
 .choice-box .context-menu{
     -fx-background-color: black; /*select the dropdown menu background*/
-}
-
-.label-headline{
-    -fx-text-fill: #7cafc2; /*sets text colour*/
-    -fx-font-size: 28pt; /* sets the size of the text */
-    -fx-font-weight: bold; /*adds bold texture to the text */
-    -fx-font-style: oblique; /* adds a different text style*/
 }
 
 .check-box{
