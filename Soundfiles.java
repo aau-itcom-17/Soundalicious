@@ -16,9 +16,16 @@ public class Soundfiles
     private static AudioInputStream audio;
     private static Clip clip = null;
 // Makes the sound stop. 
-    public static void noSound() {
+    public static void noSound() throws NullPointerException {
+        try {
 
             clip.stop();
+
+        }
+        catch (Exception e){
+            System.out.println("No sound were played before pressing next");
+
+        }
 
     }
 
