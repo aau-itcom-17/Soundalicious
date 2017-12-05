@@ -108,7 +108,6 @@ public class ScoreboardPageScene extends Main{
         
         if (n == QuickPlayScene.numOfQuestions){
             nextQuest.setVisible(false);
-            System.out.println("I'm here!");
         }
     }
 }
