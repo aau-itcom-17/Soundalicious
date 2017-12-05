@@ -22,6 +22,10 @@ public class PlayGameScene extends FrontPageScene {
     Button playSound, nextQuestion, frontPageButton5;
     VBox playGameLayout;
     String teamOrQuestion = null;
+    public static String [] playersChoices = new String[5];
+    public static String checkCorrect;
+    public int playersNum = 0;
+
 
 
     public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
@@ -33,6 +37,8 @@ public class PlayGameScene extends FrontPageScene {
         radioBut4 = new RadioButton(rQuestions.get(n).getDummyAnswers3());
         radioBut1 = new RadioButton(rQuestions.get(n).getCorrectAnswer());
         question1 = new ToggleGroup();
+        checkCorrect = rQuestions.get(n).getCorrectAnswer();
+
 
         radioBut1.setToggleGroup(question1);
         radioBut2.setToggleGroup(question1);
@@ -69,6 +75,11 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion = new Button("Next " + teamOrQuestion);
         nextQuestion.setOnAction(f -> {
             counter2++;
+            if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
+            if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
+            if(radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
+            if(radioBut4.isSelected()) playersChoices[playersNum] = radioBut4.getText();
+            playersNum++;
             if (teams.size() > counter2) {
                 teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
             }
