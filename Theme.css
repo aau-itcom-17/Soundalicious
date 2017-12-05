@@ -131,7 +131,7 @@
     -fx-background-insets: 10px;
     -fx-padding: 10px;
     -fx-font-size: 15pt;
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
 }
 .button-quickplay:hover{
     -fx-background-color: linear-gradient(darkgreen, green);
@@ -148,7 +148,7 @@
     -fx-background-insets: 10px;
     -fx-padding: 8px;
     -fx-font-size: 11pt;
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
 }
 .button-continue:hover{
     -fx-background-color: linear-gradient(darkgreen, green);
