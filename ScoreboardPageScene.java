@@ -90,6 +90,10 @@ public class ScoreboardPageScene extends Main{
         });
 
         finGame = new Button("Finish game");
+        teams.clear();
+        n = 0;
+        rQuestions.clear();
+        answers.clear();
         finGame.setOnAction(e -> window.setScene(frontPageScene));
 
         layoutScoreboard = new VBox(20);
