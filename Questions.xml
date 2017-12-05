@@ -399,7 +399,7 @@
 	</Question>
 	<Question>
 		<id>44</id>
-		<textOfQuestion>Which cartoon is this from?</textOfQuestion>
+		<textOfQuestion>Who said this?</textOfQuestion>
 		<soundfile>TRUMP_IDidTryAndFuckHer.wav</soundfile>
 		<correctAnswer>Donald Trump</correctAnswer>
 		<dummyAnswer1>Bill Clinton</dummyAnswer1>
