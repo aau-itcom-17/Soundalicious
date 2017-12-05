@@ -30,7 +30,7 @@
 	</Question>
 	<Question>
 		<id>3</id>
-		<textOfQuestion>Who is dead?</textOfQuestion>
+		<textOfQuestion>Who is behind this voice?</textOfQuestion>
 		<soundfile>Kanye_IsDead.wav</soundfile>
 		<correctAnswer>Kanye West</correctAnswer>
 		<dummyAnswer1>P-Diddy</dummyAnswer1>
