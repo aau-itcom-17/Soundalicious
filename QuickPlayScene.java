@@ -71,7 +71,8 @@ public class QuickPlayScene extends Main {
     startGameButton.setOnAction(e -> {
       //sets numOfTeams according to choice box
 
-      //sets numOfQuestions according to choice box
+      //sets numOfQuestions according
+      //to choice box
       switch (choiceBox2.getValue()){
         case "10 questions":
           numOfQuestions = Constants.questionChoice1Num;
