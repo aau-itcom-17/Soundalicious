@@ -236,15 +236,6 @@
 		<dummyAnswer3>Demi Lovato</dummyAnswer3>
 	</Question>
 	<Question>
-		<id>26</id>
-		<textOfQuestion>What TV show is this?</textOfQuestion>
-		<soundfile>FamilyGuy_Stewie.wav</soundfile>
-		<correctAnswer>Family Guy</correctAnswer>
-		<dummyAnswer1>The Simpsons</dummyAnswer1>
-		<dummyAnswer2>Futurama</dummyAnswer2>
-		<dummyAnswer3>Scooby-Doo</dummyAnswer3>
-	</Question>
-	<Question>
 		<id>27</id>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>leonardodicaprio.wav</soundfile>
