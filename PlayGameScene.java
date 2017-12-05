@@ -103,6 +103,7 @@ public class PlayGameScene extends FrontPageScene {
                 */
             }
             i++;
+
             if (counter == teams.size()) {
                 n++;
                 i = 0;
