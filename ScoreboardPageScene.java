@@ -128,12 +128,22 @@ public class ScoreboardPageScene extends Main{
         });
 
         finGame = new Button("Finish game");
-        finGame.setOnAction(e -> {
+        finGame.setOnAction(f -> {
             teams.clear();
             n = 0;
             rQuestions.clear();
             answers.clear();
-            window.setScene(frontPageScene);
+            new FrontPageScene();
+
+            try {
+                Questions.getRandomQuestions(questions, rQuestions);
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         layoutScoreboard = new VBox(20);
