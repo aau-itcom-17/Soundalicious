@@ -24,18 +24,28 @@ public class ScoreboardPageScene extends Main{
 
     public ScoreboardPageScene(){
 
-        gameName = new Label(Constants.gameName);
-        gameName.getStyleClass().add("label-headline");
+        gameName = new Label("Scoreboard");
+        gameName.getStyleClass().add("label-board");
         team1 = new Label();
+        team1.getStyleClass().add("label-scores");
         team2 = new Label();
+        team2.getStyleClass().add("label-scores");
         team3 = new Label();
+        team3.getStyleClass().add("label-scores");
         team4 = new Label();
+        team4.getStyleClass().add("label-scores");
         team5 = new Label();
+        team5.getStyleClass().add("label-scores");
         t1 = new Label();
+        t1.getStyleClass().add("label-team");
         t2 = new Label();
+        t2.getStyleClass().add("label-team");
         t3 = new Label();
+        t3.getStyleClass().add("label-team");
         t4 = new Label();
+        t4.getStyleClass().add("label-team");
         t5 = new Label();
+        t5.getStyleClass().add("label-team");
 
         if (teams.size() >= 1) {
             team1.setText(teams.get(0).getTeamName());
