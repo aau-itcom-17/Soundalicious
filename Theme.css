@@ -121,19 +121,39 @@
 }
 
 .button-quickplay{
-    -fx-text-fill: #383838;
-    -fx-background-radius: 2em;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
     -fx-min-width: 100px;
     -fx-min-height: 100px;
     -fx-max-height: 100px;
-    -fx-max-width: 200px;
-    -fx-background-color: linear-gradient(ivory, navajowhite);
+    -fx-max-width: 250px;
+    -fx-background-color: linear-gradient(green, darkgreen);
     -fx-background-insets: 10px;
     -fx-padding: 10px;
+    -fx-font-size: 15pt;
+    -fx-font-style: bold;
 }
 .button-quickplay:hover{
-    -fx-background-color: linear-gradient(navajowhite, ivory);
+    -fx-background-color: linear-gradient(darkgreen, green);
 }
+
+.button-continue{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 100px;
+    -fx-min-height: 80px;
+    -fx-max-height: 80px;
+    -fx-max-width: 180px;
+    -fx-background-color: linear-gradient(green, darkgreen);
+    -fx-background-insets: 10px;
+    -fx-padding: 8px;
+    -fx-font-size: 11pt;
+    -fx-font-style: bold;
+}
+.button-continue:hover{
+    -fx-background-color: linear-gradient(darkgreen, green);
+}
+
 
 .button-sound{
     -fx-background-radius: 5em;
@@ -184,8 +204,9 @@
 }
 .label-scores{
     -fx-text-fill: seashell;
-    -fx-font-size: 12pt;
+    -fx-font-size: 15pt;
     -fx-font-weight: bold;
+    -fx-padding: -10 0 -10 0;
 }
 .label-scores2{
     -fx-text-fill: crimson;
@@ -211,6 +232,7 @@
     -fx-text-fill: aliceblue;
     -fx-font-size: 12pt;
     -fx-font-weight: bold;
+    -fx-padding: -10 0 -10 0;
 }
 .label-who{
     -fx-font-weight: bold;
