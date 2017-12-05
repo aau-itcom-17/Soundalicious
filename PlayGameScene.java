@@ -116,25 +116,6 @@ public class PlayGameScene extends FrontPageScene {
 
             counter++;
 
-
-
-
-            if (n == QuickPlayScene.numOfQuestions){
-                new ScoreboardPageScene();
-                n = 0;
-                rQuestions.clear();
-                answers.clear();
-                try {
-                    Questions.getRandomQuestions(questions, rQuestions);
-                } catch (ParserConfigurationException e) {
-                    e.printStackTrace();
-                } catch (SAXException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
             radioBut1.setSelected(false);
             radioBut2.setSelected(false);
             radioBut3.setSelected(false);
