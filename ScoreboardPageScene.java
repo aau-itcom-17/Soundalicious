@@ -133,7 +133,7 @@ public class ScoreboardPageScene extends Main{
             rQuestions.clear();
             answers.clear();
             new FrontPageScene();
-
+            Constants.click = 1;
             try {
                 Questions.getRandomQuestions(questions, rQuestions);
             } catch (ParserConfigurationException e) {
