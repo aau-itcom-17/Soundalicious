@@ -57,7 +57,7 @@ public class PlayGameScene extends FrontPageScene {
                 Soundfiles.readingSound();
             }
         });
-        
+
         teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
         //Next Question button
 
@@ -120,7 +120,7 @@ public class PlayGameScene extends FrontPageScene {
 
 
             if (n == QuickPlayScene.numOfQuestions){
-                window.setScene(frontPageScene);
+                new ScoreboardPageScene();
                 n = 0;
                 rQuestions.clear();
                 answers.clear();
@@ -145,7 +145,7 @@ public class PlayGameScene extends FrontPageScene {
 
 
 
-            //Button back to front on custom game page
+        //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> window.setScene(frontPageScene));
 
