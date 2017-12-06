@@ -80,6 +80,7 @@ public class PlayGameScene extends FrontPageScene {
         question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(true));
 
         nextQuestion.setOnAction(f -> {
+            question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
             counter2++;
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
             if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
@@ -138,6 +139,7 @@ public class PlayGameScene extends FrontPageScene {
             radioBut2.setSelected(false);
             radioBut3.setSelected(false);
             radioBut4.setSelected(false);
+            question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(true));
 
         });
 
