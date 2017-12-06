@@ -32,9 +32,9 @@ public class QuickPlayScene extends Main {
     //Amount of teams in a choice box
     labelChoiceBox = new Label(Constants.numOfTeamsTitle);
     choiceBox = new ChoiceBox<>();
-    choiceBox.getItems().addAll(Constants.teamChoice0, Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
+    choiceBox.getItems().addAll(Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
     //Set default value
-    choiceBox.setValue(Constants.teamChoice0);
+    choiceBox.setValue(Constants.teamChoice1);
     choiceBox.setOnAction(e -> {
       switch (choiceBox.getValue()){
         case "1 Team":
