@@ -59,11 +59,15 @@ public class FrontPageScene extends Main {
       removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
       window.setScene(frontPageScene);
     });
+    
+    //Upload a sound button
+    uploadButton = new Button(Constants.uploadSound);
+    uploadButton.setOnAction(e -> new SaveFiles());
 
     //Layout Front Page when logged in
     layoutFrontpage1 = new VBox(20);
     layoutFrontpage1.setAlignment(Pos.CENTER);
-    layoutFrontpage1.getChildren().addAll(labelFront, quickPlayButton1, customGameButton1, logOutButton, deleteButton);
+    layoutFrontpage1.getChildren().addAll(labelFront, quickPlayButton1, customGameButton1, logOutButton, deleteButton, uploadButton);
     frontPageSceneLoggedIn = new Scene(layoutFrontpage1, 400, 600);
     frontPageSceneLoggedIn.getStylesheets().add("Theme.css");
 
