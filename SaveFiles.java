@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -9,11 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
@@ -43,6 +40,15 @@ public class SaveFiles
 
         primaryStage.setTitle(titleTxt);
 
+        // The question for the sound
+        Label Question = new Label("Question:");
+        Question.setTextFill(Color.BLACK);
+        Question.setFont(Font.font("Calibri", FontWeight.BOLD, 20));
+        TextField textField = new TextField();
+        HBox questionHb = new HBox(10);
+        questionHb.getChildren().addAll(Question, textField);
+
+
         // Window label
         Label label = new Label("Save File Chooser");
         label.setTextFill(Color.DARKBLUE);
@@ -58,6 +64,13 @@ public class SaveFiles
         buttonHb1.setAlignment(Pos.CENTER);
         buttonHb1.getChildren().addAll(btn1);
 
+        Button frontPageButton = new Button("Back to frontpage");
+        frontPageButton.setOnAction(e -> new FrontPageScene());
+        HBox frontButton1 = new HBox(10);
+        frontButton1.setAlignment(Pos.CENTER);
+        frontButton1.getChildren().addAll(frontPageButton);
+
+
         // Status message text
         actionStatus = new Text();
         actionStatus.setFont(Font.font("Calibri", FontWeight.NORMAL, 20));
@@ -66,7 +79,7 @@ public class SaveFiles
         // Vbox
         VBox vbox = new VBox(30);
         vbox.setPadding(new Insets(25, 25, 25, 25));
-        vbox.getChildren().addAll(labelHb, buttonHb1, actionStatus);
+        vbox.getChildren().addAll(labelHb, questionHb, buttonHb1, actionStatus, frontButton1);
 
         // Scene
         Scene scene = new Scene(vbox, 600, 400); // w x h
@@ -150,14 +163,12 @@ public class SaveFiles
 
             }
 
-            } else {
-                actionStatus.setText("Filetype is not supported");
-            }
+        } else {
+            actionStatus.setText("Filetype is not supported");
+        }
 
 
     }
 
 
 }
-
-
