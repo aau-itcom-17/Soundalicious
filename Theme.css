@@ -22,25 +22,6 @@
 }
 /*edits the radiobuttons (different choices in the game)*/
 
-.radio-button{
-    -fx-background-insets: 0px;
-    -fx-text-fill: ivory;
-}
-
-.button-menu{
-    -fx-text-fill: #000;
-    -fx-background-radius: 2em;
-    -fx-min-width: 100px;
-    -fx-min-height: 100px;
-    -fx-max-height: 100px;
-    -fx-max-width: 200px;
-    -fx-background-color: linear-gradient(ivory, navajowhite);
-    -fx-background-insets: 10px;
-    -fx-padding: 10px;
-}
-.button-menu:hover{
-    -fx-background-color: linear-gradient(navajowhite, ivory);
-}
 
 .button-quickplay{
     -fx-text-fill: #383838;
@@ -221,21 +202,6 @@
     -fx-background-color: #004A8C;
 }
 
-
-.button-sound{
-    -fx-background-radius: 5em;
-    -fx-min-width: 100px;
-    -fx-min-height: 100px;
-    -fx-max-height: 100px;
-    -fx-max-width: 100px;
-    -fx-background-color: linear-gradient(#7cafc2, paleturquoise);
-    -fx-background-insets: 0px;
-    -fx-padding: 0px;
-}
-
-.button-sound:hover{
-    -fx-background-color: linear-gradient(paleturquoise, #7cafc2);
-}
 
 .choice-box{
     -fx-background-color: #7AC0FF;
