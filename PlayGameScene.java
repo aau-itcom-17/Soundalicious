@@ -56,18 +56,6 @@ public class PlayGameScene extends FrontPageScene {
         whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
 
-        playSound = new Button ("♫ Play Sound");
-        playSound.getStyleClass().add("button-menu");
-        playSound.setOnAction(new EventHandler<ActionEvent>()  {
-            @Override
-            public void handle(ActionEvent event) {
-                Soundfiles.readingSound();
-            }
-        });
-
-        teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
-        //Next Question button
-
         if (teams.size() > 1){
             teamOrQuestion = "Team";
         } else{
@@ -75,6 +63,22 @@ public class PlayGameScene extends FrontPageScene {
         }
         nextQuestion = new Button("☞ Next " + teamOrQuestion);
         nextQuestion.getStyleClass().add("button-menu");
+
+        playSound = new Button ("♫ Play Sound");
+        playSound.getStyleClass().add("button-menu");
+        nextQuestion.setVisible(false);
+        playSound.setOnAction(new EventHandler<ActionEvent>()  {
+            @Override
+            public void handle(ActionEvent event) {
+                nextQuestion.setVisible(true);
+                Soundfiles.readingSound();
+            }
+        });
+
+        teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
+        //Next Question button
+
+
 
 
         nextQuestion.setOnAction(f -> {
