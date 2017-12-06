@@ -338,8 +338,8 @@
 		<id>38</id>
 		<textOfQuestion>From which movie is this?</textOfQuestion>
 		<soundfile>youshallnotpass.wav</soundfile>
-		<correctAnswer>Star Wars</correctAnswer>
-		<dummyAnswer1>Lord of the Rings</dummyAnswer1>
+		<correctAnswer>Lord of the Rings</correctAnswer>
+		<dummyAnswer1>Star Wars</dummyAnswer1>
 		<dummyAnswer2>Harry Potter</dummyAnswer2>
 		<dummyAnswer3>Hunger Games</dummyAnswer3>
 	</Question>
