@@ -23,6 +23,7 @@ public class Constants {
 
   public static String newUserText = "New username:";
   public static String deleteUserText = "Delete your user and log out";
+  public static String uploadSound = "Upload sound";
 
   //custom game
   public static String customGameText = "Custom game";

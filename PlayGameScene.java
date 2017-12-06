@@ -56,21 +56,10 @@ public class PlayGameScene extends FrontPageScene {
         whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
 
-        if (teams.size() > 1){
-            teamOrQuestion = "Team";
-        } else{
-            teamOrQuestion = "Question";
-        }
-        nextQuestion = new Button("☞ Next " + teamOrQuestion);
-        nextQuestion.getStyleClass().add("button-menu");
-
-        playSound = new Button ("♫ Play Sound");
-        playSound.getStyleClass().add("button-menu");
-        nextQuestion.setVisible(false);
+        playSound = new Button ("Play Sound");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
-                nextQuestion.setVisible(true);
                 Soundfiles.readingSound();
             }
         });
@@ -78,45 +67,47 @@ public class PlayGameScene extends FrontPageScene {
         teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
         //Next Question button
 
-
-
-
+        if (teams.size() > 1){
+            teamOrQuestion = "Team";
+        } else{
+            teamOrQuestion = "Question";
+        }
+        nextQuestion = new Button("Next " + teamOrQuestion);
         nextQuestion.setOnAction(f -> {
-                if (radioBut1.isSelected() || radioBut2.isSelected() || radioBut3.isSelected() || radioBut4.isSelected()) {
-                    counter2++;
-                    if (radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
-                    if (radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
-                    if (radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
-                    if (radioBut4.isSelected()) playersChoices[playersNum] = radioBut4.getText();
-                    playersNum++;
-                    if (teams.size() > counter2) {
-                        teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
-                    }
+            counter2++;
+            if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
+            if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
+            if(radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
+            if(radioBut4.isSelected()) playersChoices[playersNum] = radioBut4.getText();
+            playersNum++;
+            if (teams.size() > counter2) {
+                teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
+            }
 
-                    if (counter == teams.size()) {
-                        teamOrQuestion = "Question";
-                    }
+            if (counter == teams.size()){
+                teamOrQuestion = "Question";
+            }
 
-                    System.out.println("n " + n);
-                    Soundfiles.noSound();
-                    answers.clear();
+            System.out.println("n " + n);
+            Soundfiles.noSound();
+            answers.clear();
 
-                    if (radioBut1.isSelected()) {
-                        teams.get(i).setPointScore(teams.get(i).getPointScore() + 1);
-                    } else {
+            if (radioBut1.isSelected()) {
+                teams.get(i).setPointScore(teams.get(i).getPointScore() + 1);
+            } else {
                 /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
                 alert.setHeaderText(null);
                 alert.setContentText("Wrong Answer");
                 alert.showAndWait();
                 */
-                    }
-                    i++;
+            }
+            i++;
 
-                    if (counter == teams.size()) {
-                        n++;
-                        i = 0;
-                        new ScoreboardPageScene();
+            if (counter == teams.size()) {
+                n++;
+                i = 0;
+                new ScoreboardPageScene();
                 /*
                 try {
                     new PlayGameScene();
@@ -130,21 +121,19 @@ public class PlayGameScene extends FrontPageScene {
                 */
 
 
-                    }
-                    for (int j = 0; j < teams.size(); j++) {
-                        System.out.println(teams.get(j).getPointScore());
-                    }
+            }
+            for (int j = 0; j < teams.size(); j++) {
+                System.out.println(teams.get(j).getPointScore());
+            }
 
-                    counter++;
+            counter++;
 
-                    radioBut1.setSelected(false);
-                    radioBut2.setSelected(false);
-                    radioBut3.setSelected(false);
-                    radioBut4.setSelected(false);
+            radioBut1.setSelected(false);
+            radioBut2.setSelected(false);
+            radioBut3.setSelected(false);
+            radioBut4.setSelected(false);
 
-                }
-
-            });
+        });
 
 
 
@@ -156,7 +145,7 @@ public class PlayGameScene extends FrontPageScene {
         //Layout for playing the game
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion);
+        playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
         playGameScene.getStylesheets().add("Theme.css");
