@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import org.apache.commons.io.FileUtils;
 import sun.applet.AppletListener;
 import java.io.File;
 import java.io.FileWriter;
@@ -113,30 +114,39 @@ public class SaveFiles
         System.out.println("Source: " + source);
         System.out.println("Destination " + dest);
 
+        long destSize = FileUtils.sizeOf(dest);
+        long sourceFile = FileUtils.sizeOf(source);
+        System.out.println(destSize);
+        System.out.println(sourceFile);
+
 
         if (sF.equals("au") || sF.equals("wav")) {
-            if (!dest.equals(source)) {
-                fileChooser.setTitle(selectedFile.getName());
-                fileChooser.setInitialDirectory(dest);
-                fileChooser.setInitialFileName(fileChooser.getTitle());
+            if (destSize != sourceFile) {
+                if (!dest.equals(source)) {
+                    fileChooser.setTitle(selectedFile.getName());
+                    fileChooser.setInitialDirectory(dest);
+                    fileChooser.setInitialFileName(fileChooser.getTitle());
 
-                if (selectedFile != null) {
-                    try {
-                        CopyFile(source, dest);
-                    } catch (IOException e) {
+                    if (selectedFile != null) {
+                        try {
+                            CopyFile(source, dest);
+                        } catch (IOException e) {
 
-                        e.printStackTrace();
-                        actionStatus.setText("An ERROR occurred while saving the file!" +
-                                selectedFile.toString());
-                        return;
+                            e.printStackTrace();
+                            actionStatus.setText("An ERROR occurred while saving the file!" +
+                                    selectedFile.toString());
+                            return;
+                        }
+                        actionStatus.setText("File is saved to Sound folder");
+                    } else {
+                        actionStatus.setText("File save cancelled.");
                     }
-                    actionStatus.setText("File is saved to Sound folder");
-                } else {
-                    actionStatus.setText("File save cancelled.");
+                } else{
+                    actionStatus.setText("Filename already exists");
                 }
 
             } else {
-                actionStatus.setText("Filename already exist... change name of file");
+                actionStatus.setText("File already exist...");
 
             }
 
