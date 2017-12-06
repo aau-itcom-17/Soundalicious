@@ -51,7 +51,7 @@ public class Constants {
   public static int questionChoice3Num = 25;
 
   public static String startGameText = "☞ Start game";
-  public static String howToPlayText = "How to play";
+  public static String howToPlayText = "¿ How to play";
 
   //quickplay
   public static String quickPlayName = "⚔ Quickplay ⚔";
