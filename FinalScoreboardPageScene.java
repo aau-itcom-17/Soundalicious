@@ -1,32 +1,23 @@
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import org.xml.sax.SAXException;
 
-import javax.print.attribute.standard.Finishings;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-public class ScoreboardPageScene extends Main{
-
-    VBox layoutScoreboard;
+public class FinalScoreboardPageScene extends Main
+{
+    VBox layoutFinalScoreboard;
     Label gameName, team1, team2, team3, team4, team5, t1, t2, t3, t4, t5;
     Label answer1, answer2, answer3, answer4, answer5, correctA;
     Button nextQuest, finGame;
-    String finalOrQuest = null;
 
-    public ScoreboardPageScene(){
+    public FinalScoreboardPageScene(){
 
-        gameName = new Label("Scoreboard");
+        gameName = new Label("FinalScoreboard");
         gameName.getStyleClass().add("label-board");
         correctA = new Label("Correct answer: " + PlayGameScene.checkCorrect);
         team1 = new Label();
@@ -56,9 +47,9 @@ public class ScoreboardPageScene extends Main{
         answer5 = new Label();
 
 
-         if (teams.size() >= 1) {
+        if (teams.size() >= 1) {
             team1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " points");
-           // t1.setText(Integer.toString(teams.get(0).getPointScore()));
+            // t1.setText(Integer.toString(teams.get(0).getPointScore()));
             if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[0])){
                 answer1.setStyle("-fx-text-fill: green");
             } else  {
@@ -78,7 +69,7 @@ public class ScoreboardPageScene extends Main{
         }
         if (teams.size() >= 3) {
             team3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " points");
-           // t3.setText(Integer.toString(teams.get(2).getPointScore()));
+            // t3.setText(Integer.toString(teams.get(2).getPointScore()));
             if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[2])){
                 answer3.setStyle("-fx-text-fill: green");
             } else  {
@@ -109,15 +100,10 @@ public class ScoreboardPageScene extends Main{
         }
 
 
-        if (n == QuickPlayScene.numOfQuestions){
-            finalOrQuest = "Go to final scoreboard";
-        } else{
-            finalOrQuest = "Next Question";
-        }
-        nextQuest = new Button(finalOrQuest);
+        nextQuest = new Button("Next Question");
         nextQuest.setOnAction(e -> {
-            if (n == QuickPlayScene.numOfQuestions) {
-                new FinalScoreboardPageScene();
+            if (Constants.click == QuickPlayScene.numOfQuestions) {
+                window.setScene(frontPageScene);
             } else {
                 try {
                     new PlayGameScene();
@@ -152,14 +138,16 @@ public class ScoreboardPageScene extends Main{
             }
         });
 
-        layoutScoreboard = new VBox(20);
-        layoutScoreboard.setAlignment(Pos.CENTER);
-        layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
-        scoreBoardPageScene = new Scene(layoutScoreboard, 400, 600);
-        scoreBoardPageScene.getStylesheets().add("Theme.css");
+        layoutFinalScoreboard = new VBox(20);
+        layoutFinalScoreboard.setAlignment(Pos.CENTER);
+        layoutFinalScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
+        finalScoreBoardPageScene = new Scene(layoutFinalScoreboard, 400, 600);
+        finalScoreBoardPageScene.getStylesheets().add("Theme.css");
 
-        window.setScene(scoreBoardPageScene);
-        
+        window.setScene(finalScoreBoardPageScene);
 
+        if (n == QuickPlayScene.numOfQuestions){
+            nextQuest.setVisible(false);
+        }
     }
 }
