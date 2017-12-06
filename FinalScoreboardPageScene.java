@@ -122,6 +122,7 @@ public class FinalScoreboardPageScene extends Main
 
         finGame = new Button("Finish game");
         finGame.getStyleClass().add("button-menu");
+
         finGame.setOnAction(f -> {
             teams.clear();
             n = 0;
