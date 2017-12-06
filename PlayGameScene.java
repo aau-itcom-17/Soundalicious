@@ -75,6 +75,10 @@ public class PlayGameScene extends FrontPageScene {
         }
         nextQuestion = new Button("☞ Next " + teamOrQuestion);
         nextQuestion.getStyleClass().add("button-menu");
+        nextQuestion.setVisible(false);
+
+        question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(true));
+
         nextQuestion.setOnAction(f -> {
             counter2++;
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
