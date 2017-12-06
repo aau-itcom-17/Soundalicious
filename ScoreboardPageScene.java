@@ -108,6 +108,7 @@ public class ScoreboardPageScene extends Main{
 
 
         nextQuest = new Button("Next Question");
+        nextQuest.getStyleClass().add("button-continue");
         nextQuest.setOnAction(e -> {
             if (Constants.click == QuickPlayScene.numOfQuestions) {
                 window.setScene(frontPageScene);
@@ -127,6 +128,7 @@ public class ScoreboardPageScene extends Main{
         });
 
         finGame = new Button("Finish game");
+        finGame.getStyleClass().add("button-menu");
         finGame.setOnAction(f -> {
             teams.clear();
             n = 0;
@@ -147,7 +149,7 @@ public class ScoreboardPageScene extends Main{
 
         layoutScoreboard = new VBox(20);
         layoutScoreboard.setAlignment(Pos.CENTER);
-        layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
+        layoutScoreboard.getChildren().addAll(correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest);
         scoreBoardPageScene = new Scene(layoutScoreboard, 400, 600);
         scoreBoardPageScene.getStylesheets().add("Theme.css");
 

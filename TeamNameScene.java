@@ -35,6 +35,7 @@ public class TeamNameScene extends QuickPlayScene {
         teamNameError.setVisible(false);
 
         selectYourTeamName = new TextField();
+        selectYourTeamName.requestFocus();
         selectYourTeamName.setOnAction(e -> {
 
         });
@@ -42,7 +43,8 @@ public class TeamNameScene extends QuickPlayScene {
 
         for (int i = 1; i <= QuickPlayScene.numOfTeams; i++) {
 
-            saveTeams = new Button("Save Team");
+            saveTeams = new Button("✮ Save Team");
+            saveTeams.getStyleClass().add("button-continue");
             selectYourTeamName.setOnKeyPressed(event -> {
                 if(event.getCode() == KeyCode.ENTER) {
                     nextTeamName();
@@ -73,6 +75,7 @@ public class TeamNameScene extends QuickPlayScene {
         //checks if user type anything at all.
         if (!selectYourTeamName.getText().equals("")){
             teamNameError.setVisible(false);
+
             //changes team number for player.
             teamNr++;
             teamNumber.setText("Team " + teamNr);

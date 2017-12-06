@@ -73,7 +73,8 @@ public class SignUpScene extends FrontPageScene {
 
         //Create new user Button
         Button createUserButton = new Button("Create a new user");
-        //Action when the button is clicked on
+      createUserButton.getStyleClass().add("button-menu");
+      //Action when the button is clicked on
         createUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -83,7 +84,8 @@ public class SignUpScene extends FrontPageScene {
 
         //Button back to front on login page
         Button frontPageButton4 = new Button("Go back to front page");
-        frontPageButton4.setOnAction(e -> window.setScene(frontPageScene));
+      frontPageButton4.getStyleClass().add("button-menu");
+      frontPageButton4.setOnAction(e -> window.setScene(frontPageScene));
 
         VBox signUpLayout = new VBox(20);
         signUpLayout.setAlignment(Pos.CENTER);

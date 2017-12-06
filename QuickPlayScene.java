@@ -68,6 +68,7 @@ public class QuickPlayScene extends Main {
 
     //Quick Play play button button
     startGameButton = new Button(Constants.startGameText);
+    startGameButton.getStyleClass().add("button-continue");
     startGameButton.setOnAction(e -> {
       //sets numOfTeams according to choice box
 
@@ -93,17 +94,19 @@ public class QuickPlayScene extends Main {
 
     //How to play button button
     buttonHowToPlay = new Button(Constants.howToPlayText);
+    buttonHowToPlay.getStyleClass().add("button-menu");
     buttonHowToPlay.setOnAction(e -> new HowToPlayScene());
 
 
     //Button back to front on Quick play page
     frontPageButton1 = new Button(Constants.goToMainText);
+    frontPageButton1.getStyleClass().add("button-menu");
     frontPageButton1.setOnAction(e -> window.setScene(frontPageScene));
 
     //Layout quickplay
     quickPlayLayout = new VBox(20);
     quickPlayLayout.setAlignment(Pos.CENTER);
-    quickPlayLayout.getChildren().addAll(labelQuick, labelChoiceBox, choiceBox, labelChoiceBox2, choiceBox2, startGameButton, buttonHowToPlay, frontPageButton1);
+    quickPlayLayout.getChildren().addAll(labelQuick, labelChoiceBox, choiceBox, labelChoiceBox2, choiceBox2, startGameButton, buttonHowToPlay);
     quickPlayScene = new Scene(quickPlayLayout, 400, 600);
 
     quickPlayScene.getStylesheets().add("Theme.css");

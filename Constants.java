@@ -50,11 +50,11 @@ public class Constants {
   public static int questionChoice2Num = 15;
   public static int questionChoice3Num = 25;
 
-  public static String startGameText = "Start game";
+  public static String startGameText = "☞ Start game";
   public static String howToPlayText = "How to play";
 
   //quickplay
-  public static String quickPlayName = "Quickplay";
+  public static String quickPlayName = "⚔ Quickplay ⚔";
   public static String chooseTopicTitle = "Choose which questions you want to play with";
   public static String topicText1 = "Musicians";
   public static String topicText2 = "Actors";

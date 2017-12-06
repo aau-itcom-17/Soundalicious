@@ -56,7 +56,8 @@ public class PlayGameScene extends FrontPageScene {
         whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
 
-        playSound = new Button ("Play Sound");
+        playSound = new Button ("♬ Play Sound");
+        playSound.getStyleClass().add("button-menu");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
@@ -72,7 +73,8 @@ public class PlayGameScene extends FrontPageScene {
         } else{
             teamOrQuestion = "Question";
         }
-        nextQuestion = new Button("Next " + teamOrQuestion);
+        nextQuestion = new Button("☞ Next " + teamOrQuestion);
+        nextQuestion.getStyleClass().add("button-menu");
         nextQuestion.setOnAction(f -> {
             counter2++;
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
@@ -140,12 +142,13 @@ public class PlayGameScene extends FrontPageScene {
 
         //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
+        frontPageButton5.getStyleClass().add("button-menu");
         frontPageButton5.setOnAction(e -> window.setScene(frontPageScene));
 
         //Layout for playing the game
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
-        playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
+        playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion);
         playGameScene = new Scene(playGameLayout, 400, 600);
 
         playGameScene.getStylesheets().add("Theme.css");

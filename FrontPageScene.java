@@ -34,22 +34,27 @@ public class FrontPageScene extends Main {
 
     //Quick play button when logged in -> Goes to Quickplay page
     quickPlayButton1 = new Button(Constants.quickPlayName);
+    quickPlayButton1.getStyleClass().add("button-quickplay");
     quickPlayButton1.setOnAction(e -> new QuickPlayScene());
 
     //Custom game button -> Goes to login page  page
     customGameButton = new Button(Constants.customGameText);
+    customGameButton.getStyleClass().add("button-menu");
     customGameButton.setOnAction(e -> new LogInScene());
 
     //Custom game button1 goes to custom game
     customGameButton1 = new Button(Constants.customGameText);
+    customGameButton1.getStyleClass().add("button-menu");
     customGameButton1.setOnAction(e -> new CustomGameScene());
 
     //Logout button
     logOutButton = new Button(Constants.logOutText);
+    logOutButton.getStyleClass().add("button-menu");
     logOutButton.setOnAction(e -> window.setScene(frontPageScene));
 
     //delete your user button
     deleteButton = new Button(Constants.deleteUserText);
+    deleteButton.getStyleClass().add("button-menu");
     deleteButton.setOnAction(e -> {
       removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
       window.setScene(frontPageScene);
@@ -64,10 +69,12 @@ public class FrontPageScene extends Main {
 
     //Login page button -> Goes to login page
     logInPageButton = new Button(Constants.logInText);
+    logInPageButton.getStyleClass().add("button-menu");
     logInPageButton.setOnAction(e -> new LogInScene());
 
     //sign up button -> Goes to sign up page
     signUpButton = new Button(Constants.signUpText);
+    signUpButton.getStyleClass().add("button-menu");
     signUpButton.setOnAction(e -> new SignUpScene());
 
     //Layout Front Page

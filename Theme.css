@@ -2,20 +2,19 @@
 
 /* the general design of the window*/
 .root{
-    -fx-background-color: #383838; /* sets the background colour */
+    -fx-background-color: #FFFFFF; /* sets the background colour */
     -fx-font-size: 10pt; /*sets font size of text*/
 }
 
 .label{
-    -fx-text-fill: ivory; /*sets text colour*/
+    -fx-text-fill: #7AC0FF; /*sets text colour*/
     -fx-font-style: italic;
 }
 
 .button{
-    -fx-background-color: linear-gradient(crimson, maroon); /*grade from one colour to another*/
     -fx-text-fill: #FFFFFF; /*sets text colour*/
-    -fx-background-radius: 10; /*adds roundness to the buttons */
-
+    /*-fx-background-color: linear-gradient(#7cafc2, paleturquoise);*/
+    -fx-background-color: #AAD7FF;
 }
 /* edits the way the button looks, when you hover the mouse over it*/
 .button:hover{
@@ -26,6 +25,21 @@
 .radio-button{
     -fx-background-insets: 0px;
     -fx-text-fill: ivory;
+}
+
+.button-menu{
+    -fx-text-fill: #000;
+    -fx-background-radius: 2em;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-height: 100px;
+    -fx-max-width: 200px;
+    -fx-background-color: linear-gradient(ivory, navajowhite);
+    -fx-background-insets: 10px;
+    -fx-padding: 10px;
+}
+.button-menu:hover{
+    -fx-background-color: linear-gradient(navajowhite, ivory);
 }
 
 .button-quickplay{
@@ -49,7 +63,8 @@
     -fx-min-height: 100px;
     -fx-max-height: 100px;
     -fx-max-width: 100px;
-    -fx-background-color: linear-gradient(#7cafc2, paleturquoise);
+    /*-fx-background-color: linear-gradient(#7cafc2, paleturquoise);*/
+    -fx-background-color: #AAD7FF;
     -fx-background-insets: 0px;
     -fx-padding: 0px;
 }
@@ -80,9 +95,19 @@
 }
 
 .text-field{
-    -fx-background-color: azure;
+    -fx-background-color: #AAD7FF;
+    -fx-background-radius: 5em;
     -fx-text-fill: black;
+    -fx-min-width: 100px;
+    -fx-min-height: 50px;
+    -fx-max-height: 80px;
+    -fx-max-width: 300px;
+    -fx-font-size: 20pt;
+    -fx-focus-color: #7AC0FF ;
+    -fx-text-fill: #004A8C;
+
 }
+
 
 /* this set the design of the "username" and "password" labels*/
 .label-signinpage{
@@ -95,12 +120,12 @@
 
 /* the general design of the window*/
 .root{
-    -fx-background-color: #383838; /* sets the background colour */
+    -fx-background-color: #FFFFFF; /* sets the background colour */
     -fx-font-size: 10pt; /*sets font size of text*/
 }
 
 .label{
-    -fx-text-fill: ivory; /*sets text colour*/
+    -fx-text-fill: #00396C; /*sets text colour*/
     -fx-font-style: italic;
 }
 
@@ -118,7 +143,21 @@
 
 .radio-button{
     -fx-background-insets: 0px;
-    -fx-text-fill: ivory;
+    -fx-text-fill:  #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 100px;
+    -fx-min-height: 60px;
+    -fx-max-height: 60px;
+    -fx-max-width: 250px;
+    -fx-background-color: #078AFF;
+    -fx-padding: 30px;
+
+
+}
+
+.radio-button:hover{
+    -fx-background-color: #004A8C;
+    -fx-text-fill: #FFFFFF;
 }
 
 .button-quickplay{
@@ -128,31 +167,58 @@
     -fx-min-height: 100px;
     -fx-max-height: 100px;
     -fx-max-width: 250px;
-    -fx-background-color: linear-gradient(green, darkgreen);
+    /*-fx-background-color: linear-gradient(deepskyblue, dodgerblue);*/
+    -fx-background-color: #128FFF;
+
     -fx-background-insets: 10px;
     -fx-padding: 10px;
     -fx-font-size: 15pt;
     -fx-font-weight: bold;
 }
 .button-quickplay:hover{
-    -fx-background-color: linear-gradient(darkgreen, green);
+    /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
+    -fx-background-color: #004A8C;
+
+}
+
+
+.button-menu{
+    -fx-text-fill: #004A8C;
+    -fx-background-radius: 4em;
+    -fx-min-width: 100px;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-max-width: 200px;
+    /*-fx-background-color: linear-gradient(deepskyblue, dodgerblue);*/
+    -fx-background-color: #AAD7FF;
+    -fx-background-insets: 10px;
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-border-insets: -3px;
+    -fx-background-insets: -3px;
+    -fx-padding: 10px;
+}
+.button-menu:hover{
+    /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
+    -fx-background-color: #7AC0FF;
+
 }
 
 .button-continue{
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4em;
-    -fx-min-width: 100px;
-    -fx-min-height: 80px;
-    -fx-max-height: 80px;
-    -fx-max-width: 180px;
-    -fx-background-color: linear-gradient(green, darkgreen);
+    -fx-min-width: 250px;
+    -fx-min-height: 90px;
+    -fx-max-height: 90px;
+    -fx-max-width: 250px;
+    -fx-background-color: #128FFF;
     -fx-background-insets: 10px;
     -fx-padding: 8px;
     -fx-font-size: 11pt;
-    -fx-font-weight: bold;
+    weight: bold;
 }
 .button-continue:hover{
-    -fx-background-color: linear-gradient(darkgreen, green);
+    -fx-background-color: #004A8C;
 }
 
 
@@ -172,11 +238,21 @@
 }
 
 .choice-box{
-    -fx-background-color: black;
+    -fx-background-color: #7AC0FF;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 220px;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-max-width: 220px;
 }
 
+
 .choice-box .context-menu{
-    -fx-background-color: black; /*select the dropdown menu background*/
+    -fx-background-color: #128FFF; /*select the dropdown menu background*/
+    -fx-text-fill: #FFFFFF;
+    -fx-min-width: 200px;
+    -fx-max-width: 200px;
 }
 
 .check-box{
@@ -185,22 +261,21 @@
 }
 
 .text-field{
-    -fx-background-color: azure;
-    -fx-text-fill: black;
+    -fx-text-fill: #004A8C;
 }
 
 /* this set the design of the "username" and "password" labels*/
 .label-signinpage{
     -fx-font-size: 12pt;
     -fx-font-weight: bold;
-    -fx-text-fill: aliceblue;
+    -fx-text-fill: #004A8C;
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1); /*make fancy design (I'm just toying around*/
 }
 .label-scores{
-    -fx-text-fill: seashell;
+    -fx-text-fill: #004A8C;
     -fx-font-size: 15pt;
     -fx-font-weight: bold;
-    -fx-padding: -10 0 -10 0;
+    -fx-padding: -10;
 }
 .label-scores2{
     -fx-text-fill: crimson;
