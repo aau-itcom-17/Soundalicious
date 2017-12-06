@@ -115,6 +115,7 @@ public class ScoreboardPageScene extends Main{
             finalOrQuest = "Next Question";
         }
         nextQuest = new Button(finalOrQuest);
+        nextQuest.getStyleClass().add("button-continue");
         nextQuest.setOnAction(e -> {
             if (n == QuickPlayScene.numOfQuestions) {
                 new FinalScoreboardPageScene();
@@ -134,6 +135,7 @@ public class ScoreboardPageScene extends Main{
         });
 
         finGame = new Button("Finish game");
+        finGame.getStyleClass().add("button-menu");
         finGame.setOnAction(f -> {
             teams.clear();
             n = 0;
