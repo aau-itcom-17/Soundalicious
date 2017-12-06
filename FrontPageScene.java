@@ -17,7 +17,7 @@ public class FrontPageScene extends Main {
 
   Label labelFront;
   Button quickPlayButton, customGameButton, logInPageButton, signUpButton;
-  Button quickPlayButton1, customGameButton1, logOutButton, deleteButton;
+  Button quickPlayButton1, customGameButton1, logOutButton, deleteButton, uploadButton;
   VBox layoutFrontpage, layoutFrontpage1;
 
 
