@@ -254,15 +254,6 @@
 		<dummyAnswer3>Need for Speed: Most Wanted</dummyAnswer3>
 	</Question>
 	<Question>
-		<id>29</id>
-		<textOfQuestion>What TV show is this?</textOfQuestion>
-		<soundfile>Community_HaGay.wav</soundfile>
-		<correctAnswer>Community</correctAnswer>
-		<dummyAnswer1>The Simpsons</dummyAnswer1>
-		<dummyAnswer2>The Office </dummyAnswer2>
-		<dummyAnswer3>South Park</dummyAnswer3>
-	</Question>
-	<Question>
 		<id>30</id>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>desiigner.wav</soundfile>
