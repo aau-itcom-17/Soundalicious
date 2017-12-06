@@ -23,8 +23,10 @@ public class HowToPlayScene extends QuickPlayScene{
 
         // Gets the normal layout from the css stylesheet
         labelHowToPlay = new Label(Constants.rulesText2);
+        buttonDrinking.getStyleClass().add("button-menu");
 
-            labelHowToPlay.setVisible(false);
+
+        labelHowToPlay.setVisible(false);
 
             buttonDrinking.setOnAction(e -> {
             if(labelHowToPlay.isVisible()) {
@@ -36,6 +38,7 @@ public class HowToPlayScene extends QuickPlayScene{
         });
 
         frontpageButton4 = new Button(Constants.goToQuickPlayText);
+        frontpageButton4.getStyleClass().add("button-continue");
         frontpageButton4.setOnAction(e -> window.setScene(quickPlayScene));
 
         layout = new VBox(20);

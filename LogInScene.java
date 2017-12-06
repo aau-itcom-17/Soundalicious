@@ -67,7 +67,7 @@ public class LogInScene extends FrontPageScene {
         logInMessage.setVisible(false);
 
         logInButton = new Button(Constants.logInText);
-        logInButton.getStyleClass().add("button-menu");
+        logInButton.getStyleClass().add("button-continue");
 
         // The addEventHandler handles more than one event, which makes it so we don't have to click the login button twice.
         passwordInput.setOnKeyPressed((event) -> {
