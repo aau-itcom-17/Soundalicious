@@ -110,7 +110,7 @@ public class ScoreboardPageScene extends Main{
 
 
         if (n == QuickPlayScene.numOfQuestions){
-            finalOrQuest = "Go to final scoreboard";
+            finalOrQuest = "Leaderboard";
         } else{
             finalOrQuest = "Next Question";
         }

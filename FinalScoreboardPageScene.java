@@ -17,7 +17,7 @@ public class FinalScoreboardPageScene extends Main
 
     public FinalScoreboardPageScene(){
 
-        gameName = new Label("FinalScoreboard");
+        gameName = new Label("Leaderboard");
         gameName.getStyleClass().add("label-board");
         correctA = new Label("Correct answer: " + PlayGameScene.checkCorrect);
         team1 = new Label();
@@ -120,7 +120,7 @@ public class FinalScoreboardPageScene extends Main
 
         });
 
-        finGame = new Button("Finish game");
+        finGame = new Button("Exit game");
         finGame.getStyleClass().add("button-menu");
 
         finGame.setOnAction(f -> {
