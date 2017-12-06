@@ -149,7 +149,7 @@ public class PlayGameScene extends FrontPageScene {
         playGameLayout = new VBox(20);
         playGameLayout.setAlignment(Pos.CENTER);
         playGameLayout.getChildren().addAll(teamName, whoIsThis, playSound, answers.get(0), answers.get(1), answers.get(2), answers.get(3), nextQuestion, frontPageButton5);
-        playGameScene = new Scene(playGameLayout, 400, 600);
+        playGameScene = new Scene(playGameLayout, 400, 700);
 
         playGameScene.getStylesheets().add("Theme.css");
         window.setScene(playGameScene);

@@ -144,7 +144,7 @@ public class FinalScoreboardPageScene extends Main
         layoutFinalScoreboard = new VBox(20);
         layoutFinalScoreboard.setAlignment(Pos.CENTER);
         layoutFinalScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
-        finalScoreBoardPageScene = new Scene(layoutFinalScoreboard, 400, 600);
+        finalScoreBoardPageScene = new Scene(layoutFinalScoreboard, 400, 700);
         finalScoreBoardPageScene.getStylesheets().add("Theme.css");
 
         window.setScene(finalScoreBoardPageScene);

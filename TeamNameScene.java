@@ -60,7 +60,7 @@ public class TeamNameScene extends QuickPlayScene {
         teamNameSceneLayout = new VBox(20);
         teamNameSceneLayout.setAlignment(Pos.CENTER);
         teamNameSceneLayout.getChildren().addAll(labelHeadline, labelSelectTeamName, teamNumber, selectYourTeamName, saveTeams, teamNameError);
-        logInPageScene = new Scene(teamNameSceneLayout, 400, 600);
+        logInPageScene = new Scene(teamNameSceneLayout, 400, 700);
 
         logInPageScene.getStylesheets().add("Theme.css");
         window.setScene(logInPageScene);

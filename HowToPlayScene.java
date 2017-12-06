@@ -44,7 +44,7 @@ public class HowToPlayScene extends QuickPlayScene{
         layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(labelHeadline, buttonDrinking, labelHowToPlay, frontpageButton4);
-        Scene gameRulesScene = new Scene(layout, 400, 600);
+        Scene gameRulesScene = new Scene(layout, 400, 700);
         gameRulesScene.getStylesheets().add("Theme.css");
 
         window.setScene(gameRulesScene);

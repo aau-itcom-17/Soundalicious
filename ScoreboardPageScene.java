@@ -157,7 +157,7 @@ public class ScoreboardPageScene extends Main{
         layoutScoreboard = new VBox(20);
         layoutScoreboard.setAlignment(Pos.CENTER);
         layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
-        scoreBoardPageScene = new Scene(layoutScoreboard, 400, 600);
+        scoreBoardPageScene = new Scene(layoutScoreboard, 400, 700);
         scoreBoardPageScene.getStylesheets().add("Theme.css");
 
         window.setScene(scoreBoardPageScene);

@@ -85,7 +85,7 @@ public class FrontPageScene extends Main {
     layoutFrontpage = new VBox(20);
     layoutFrontpage.setAlignment(Pos.CENTER);
     layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, logInPageButton, signUpButton);
-    frontPageScene = new Scene(layoutFrontpage, 400, 600);
+    frontPageScene = new Scene(layoutFrontpage, 400, 700);
     frontPageScene.getStylesheets().add("Theme.css");
     window.setScene(frontPageScene);
   }

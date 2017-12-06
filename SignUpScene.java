@@ -90,7 +90,7 @@ public class SignUpScene extends FrontPageScene {
         VBox signUpLayout = new VBox(20);
         signUpLayout.setAlignment(Pos.CENTER);
         signUpLayout.getChildren().addAll(labelSignUp, usernameSignUpLabel, usernameSignUpInput, passwordSignUpLabel, passwordSignUpInput, passwordRepeatSignUpLabel, passwordRepeatSignUpInput, signUpError, createUserButton, frontPageButton4);
-        signUpScene = new Scene(signUpLayout, 400, 600);
+        signUpScene = new Scene(signUpLayout, 400, 700);
 
       signUpScene.getStylesheets().add("Theme.css");
       window.setScene(signUpScene);
