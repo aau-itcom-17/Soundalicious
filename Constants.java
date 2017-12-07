@@ -27,10 +27,8 @@ public class Constants {
 
   //custom game
   public static String customGameText = "Custom game";
-  public static String numOfTeamsTitle = "Choose amount of teams:";
-  public static String numOfQuestionsTitle = "Choose amount of questions:";
 
-  public static String teamChoice0 = "Choose number of teams";
+  public static String teamChoice0 = "Choose amount of teams";
   public static String teamChoice1 = "1 Team";
   public static String teamChoice2 = "2 Teams";
   public static String teamChoice3 = "3 Teams";
@@ -43,6 +41,7 @@ public class Constants {
   public static int teamChoice5Num = 5;
   public static int click = 1;
 
+  public static String questionChoice0 = "Choose amount of questions";
   public static String questionChoice1 = "10 questions";
   public static String questionChoice2 = "15 questions";
   public static String questionChoice3 = "25 questions";

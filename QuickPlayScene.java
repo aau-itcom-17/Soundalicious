@@ -30,11 +30,10 @@ public class QuickPlayScene extends Main {
     labelQuick.getStyleClass().add("label-headline");
 
     //Amount of teams in a choice box
-    labelChoiceBox = new Label(Constants.numOfTeamsTitle);
     choiceBox = new ChoiceBox<>();
-    choiceBox.getItems().addAll(Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
+    choiceBox.getItems().addAll(Constants.teamChoice0, Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
     //Set default value
-    choiceBox.setValue(Constants.teamChoice1);
+    choiceBox.setValue(Constants.teamChoice0);
     choiceBox.setOnAction(e -> {
       switch (choiceBox.getValue()){
         case "1 Team":
@@ -60,11 +59,10 @@ public class QuickPlayScene extends Main {
     });
 
     //Amount of questions in a choice box
-    labelChoiceBox2 = new Label(Constants.numOfQuestionsTitle);
     choiceBox2 = new ChoiceBox<>();
-    choiceBox2.getItems().addAll(Constants.questionChoice1, Constants.questionChoice2, Constants.questionChoice3);        //Set default value
+    choiceBox2.getItems().addAll(Constants.questionChoice0, Constants.questionChoice1, Constants.questionChoice2, Constants.questionChoice3);        //Set default value
     //Set default value
-    choiceBox2.setValue(Constants.questionChoice1);
+    choiceBox2.setValue(Constants.questionChoice0);
 
     //Quick Play play button button
     startGameButton = new Button(Constants.startGameText);
