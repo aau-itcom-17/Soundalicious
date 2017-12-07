@@ -28,7 +28,6 @@ public class PlayGameScene extends FrontPageScene {
     public int playersNum = 0;
 
 
-
     public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
         //Buttons
 
@@ -155,7 +154,6 @@ public class PlayGameScene extends FrontPageScene {
         frontPageButton5.setOnAction(e -> {
             teams.clear();
             n = 0;
-            rQuestions.clear();
             answers.clear();
             window.setScene(frontPageScene);
         });
