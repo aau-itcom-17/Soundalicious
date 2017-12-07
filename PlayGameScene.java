@@ -154,6 +154,9 @@ public class PlayGameScene extends FrontPageScene {
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {
             teams.clear();
+            n = 0;
+            rQuestions.clear();
+            answers.clear();
             window.setScene(frontPageScene);
         });
         frontPageButton5.getStyleClass().add("button-menu");
