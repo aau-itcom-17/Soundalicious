@@ -83,7 +83,9 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setOnAction(f -> {
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
             counter2++;
-            counterQuestion++;
+            /*counterQuestion++;
+            WHERE TO PUT THIS COUNTER??
+             */
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
             if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
             if(radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
