@@ -16,6 +16,7 @@ public class PlayGameScene extends FrontPageScene {
     private int i = 0;
     private int counter =1;
     private int counter2 = 0;
+    private int counterQuestion = 1;
     RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
     ToggleGroup question1;
     Label whoIsThis, teamName;
@@ -65,7 +66,7 @@ public class PlayGameScene extends FrontPageScene {
             }
         });
 
-        teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
+        teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (counterQuestion));
         //Next Question button
 
         if (teams.size() > 1){
@@ -82,13 +83,14 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setOnAction(f -> {
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
             counter2++;
+            counterQuestion++;
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
             if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
             if(radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
             if(radioBut4.isSelected()) playersChoices[playersNum] = radioBut4.getText();
             playersNum++;
             if (teams.size() > counter2) {
-                teamName.setText("Team Playing: " + teams.get(counter2).getTeamName());
+                teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (counterQuestion));
             }
 
             if (counter == teams.size()){
