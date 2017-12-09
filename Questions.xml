@@ -75,12 +75,12 @@
 	</Question>
 	<Question>
 		<id>8</id>
-		<textOfQuestion>From what cartoon is this from?</textOfQuestion>
-		<soundfile>Morty_OhGeez.wav</soundfile>
-		<correctAnswer>Rick and Morty</correctAnswer>
-		<dummyAnswer1>Futurama</dummyAnswer1>
-		<dummyAnswer2>South Park</dummyAnswer2>
-		<dummyAnswer3>The Simpsons</dummyAnswer3>
+		<textOfQuestion>Who said this?</textOfQuestion>
+		<soundfile>TRUMP_IDidTryAndFuckHer.wav</soundfile>
+		<correctAnswer>Donald Trump</correctAnswer>
+		<dummyAnswer1>Bill Clinton</dummyAnswer1>
+		<dummyAnswer2>Hugh Hefner</dummyAnswer2>
+		<dummyAnswer3>Harvey Weinstein</dummyAnswer3>
 	</Question>
 	<Question>
 		<id>9</id>
@@ -379,15 +379,7 @@
 		<dummyAnswer2>The Simpons</dummyAnswer2>
 		<dummyAnswer3>Futurama</dummyAnswer3>
 	</Question>
-	<Question>
-		<id>44</id>
-		<textOfQuestion>Who said this?</textOfQuestion>
-		<soundfile>TRUMP_IDidTryAndFuckHer.wav</soundfile>
-		<correctAnswer>Donald Trump</correctAnswer>
-		<dummyAnswer1>Bill Clinton</dummyAnswer1>
-		<dummyAnswer2>Hugh Hefner</dummyAnswer2>
-		<dummyAnswer3>Harvey Weinstein</dummyAnswer3>
-	</Question>
+
 	
 	
 	
