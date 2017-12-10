@@ -42,7 +42,7 @@ public class CustomGameScene extends FrontPageScene {
 
         //Button back to front on custom game page
         frontPageButton2 = new Button(Constants.goToMainText);
-        frontPageButton2.setOnAction(e -> window.setScene(frontPageScene));
+        frontPageButton2.setOnAction(e -> window.setScene(frontPageSceneLoggedIn));
 
         //Layout custom game
         customGameLayout = new VBox(20);
