@@ -134,33 +134,11 @@ public class ScoreboardPageScene extends Main{
 
         });
 
-        finGame = new Button("Finish game");
-        finGame.getStyleClass().add("button-menu");
-        finGame.setOnAction(f -> {
-            teams.clear();
-            n = 0;
-            rQuestions.clear();
-            answers.clear();
-            if (LogInScene.loggedIn == true) {
-                window.setScene(frontPageSceneLoggedIn);
-            } else {
-                window.setScene(frontPageScene);
-            }
-            Constants.click = 1;
-            try {
-                Questions.getRandomQuestions(questions, rQuestions);
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+
 
         layoutScoreboard = new VBox(20);
         layoutScoreboard.setAlignment(Pos.CENTER);
-        layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
+        layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest);
         scoreBoardPageScene = new Scene(layoutScoreboard, 400, 700);
         scoreBoardPageScene.getStylesheets().add("Theme.css");
 

@@ -71,7 +71,7 @@ public class FinalScoreboardPageScene extends Main
             } else {
                 window.setScene(frontPageScene);
             }
-            /*
+
             Constants.click = 1;
             try {
                 Questions.getRandomQuestions(questions, rQuestions);
@@ -82,7 +82,7 @@ public class FinalScoreboardPageScene extends Main
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            */
+
         });
 
         layoutFinalScoreboard = new VBox(20);
