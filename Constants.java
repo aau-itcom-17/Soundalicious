@@ -3,7 +3,7 @@ public class Constants {
 
   public static String userDatabase = "text.txt";
 
-  public static String gameName = "Soundalicous";
+  public static String gameName = "Soundalicious";
   public static String goToMainText = "Go back to the front page";
   public static String goToNextText = "Go to next page";
 

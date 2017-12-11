@@ -65,7 +65,7 @@ public class PlayGameScene extends FrontPageScene {
             }
         });
 
-        teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (counterQuestion));
+        teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (n+1));
         //Next Question button
 
         if (teams.size() > 1){
@@ -82,20 +82,19 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setOnAction(f -> {
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
             counter2++;
-            /*counterQuestion++;
-            WHERE TO PUT THIS COUNTER??
-             */
+
             if(radioBut1.isSelected()) playersChoices[playersNum] = radioBut1.getText();
             if(radioBut2.isSelected()) playersChoices[playersNum] = radioBut2.getText();
             if(radioBut3.isSelected()) playersChoices[playersNum] = radioBut3.getText();
             if(radioBut4.isSelected()) playersChoices[playersNum] = radioBut4.getText();
             playersNum++;
             if (teams.size() > counter2) {
-                teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (counterQuestion));
+                teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (n+1));
             }
 
             if (counter == teams.size()){
                 teamOrQuestion = "Question";
+
             }
 
             System.out.println("n " + n);
