@@ -50,7 +50,10 @@ public class FrontPageScene extends Main {
     //Logout button
     logOutButton = new Button(Constants.logOutText);
     logOutButton.getStyleClass().add("button-menu");
-    logOutButton.setOnAction(e -> window.setScene(frontPageScene));
+    logOutButton.setOnAction(e -> {
+      loggedIn = false;
+      window.setScene(frontPageScene);
+    });
 
     //delete your user button
     deleteButton = new Button(Constants.deleteUserText);
