@@ -41,9 +41,8 @@ public class Team {
     public static int getWinner()
     {
         for (int i = 0; i < Main.teams.size(); i++) {
-            int value = Main.teams.get(i).getPointScore();
-            if (value > max) {
-                max = value;
+            if (Main.teams.get(i).getPointScore() > max) {
+                max = Main.teams.get(i).getPointScore();
                 maxPos = i;
             }
         }
@@ -55,7 +54,10 @@ public class Team {
     {
 
         for (int i = 0; i < Main.teams.size(); i++) {
-
+            if (Main.teams.get(i).getPointScore() > max) {
+                max = Main.teams.get(i).getPointScore();
+                maxPos = i;
+            }
             if(Main.teams.get(i).getPointScore() > secondLargest && Main.teams.get(i).getPointScore() != max) {
                 secondLargest = Main.teams.get(i).getPointScore();
                 secondPos = i;
@@ -67,7 +69,14 @@ public class Team {
     public static int get3rdPlace()
     {
         for (int i = 0; i < Main.teams.size(); i++) {
-
+            if (Main.teams.get(i).getPointScore() > max) {
+                max = Main.teams.get(i).getPointScore();
+                maxPos = i;
+            }
+            if(Main.teams.get(i).getPointScore() > secondLargest && Main.teams.get(i).getPointScore() != max) {
+                secondLargest = Main.teams.get(i).getPointScore();
+                secondPos = i;
+            }
             if(Main.teams.get(i).getPointScore() > thirdLargest && Main.teams.get(i).getPointScore() != secondLargest && Main.teams.get(i).getPointScore() != max) {
                 thirdLargest = Main.teams.get(i).getPointScore();
                 thirdPos = i;
