@@ -29,8 +29,8 @@ import java.io.IOException;
 
 public class LogInScene extends FrontPageScene {
 
-    Label labelLogin, usernameLabel, passwordLabel, logInError, logInMessage, adminMessage;
-    TextField usernameInput, passwordInput;
+    public static Label labelLogin, usernameLabel, passwordLabel, logInError, logInMessage, adminMessage;
+    public static TextField usernameInput, passwordInput;
     VBox logInPageLayout;
     Button logInButton, frontPageButton3;
 
