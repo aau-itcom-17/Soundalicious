@@ -118,7 +118,11 @@ public class ScoreboardPageScene extends Main{
         nextQuest.getStyleClass().add("button-continue");
         nextQuest.setOnAction(e -> {
             if (n == QuickPlayScene.numOfQuestions) {
-                new FinalScoreboardPageScene();
+                if (LogInScene.loggedIn == true){
+                    window.setScene(frontPageSceneLoggedIn);
+                } else {
+                    window.setScene(frontPageScene);
+                }
             } else {
                 try {
                     new PlayGameScene();
@@ -141,7 +145,11 @@ public class ScoreboardPageScene extends Main{
             n = 0;
             rQuestions.clear();
             answers.clear();
-            new FrontPageScene();
+            if (LogInScene.loggedIn == true) {
+                window.setScene(frontPageSceneLoggedIn);
+            } else {
+                window.setScene(frontPageScene);
+            }
             Constants.click = 1;
             try {
                 Questions.getRandomQuestions(questions, rQuestions);
