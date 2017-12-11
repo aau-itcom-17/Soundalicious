@@ -96,15 +96,27 @@ public class QuickPlayScene extends Main {
     buttonHowToPlay.setOnAction(e -> new HowToPlayScene());
 
 
-    //Button back to front on Quick play page
+    //Button back to front on custom game page
     frontPageButton1 = new Button(Constants.goToMainText);
+    frontPageButton1.setOnAction(e -> {
+      if (LogInScene.loggedIn == true){
+        window.setScene(frontPageSceneLoggedIn);
+        teams.clear();
+        n = 0;
+        answers.clear();
+      } else {
+        teams.clear();
+        n = 0;
+        answers.clear();
+        window.setScene(frontPageScene);
+      }
+    });
     frontPageButton1.getStyleClass().add("button-menu");
-    frontPageButton1.setOnAction(e -> window.setScene(frontPageScene));
 
     //Layout quickplay
     quickPlayLayout = new VBox(20);
     quickPlayLayout.setAlignment(Pos.CENTER);
-    quickPlayLayout.getChildren().addAll(labelQuick, choiceBox, choiceBox2, startGameButton, buttonHowToPlay);
+    quickPlayLayout.getChildren().addAll(labelQuick, choiceBox, choiceBox2, startGameButton, buttonHowToPlay, frontPageButton1);
     quickPlayScene = new Scene(quickPlayLayout, 400, 700);
 
     quickPlayScene.getStylesheets().add("Theme.css");

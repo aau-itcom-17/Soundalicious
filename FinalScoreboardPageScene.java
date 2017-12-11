@@ -12,7 +12,6 @@ public class FinalScoreboardPageScene extends Main
 {
     VBox layoutFinalScoreboard;
     Label gameName, gold, silver, bronze, t1, t2, t3;
-    Label answer1, answer2, answer3;
     Button finGame;
 
     public FinalScoreboardPageScene(){
@@ -42,19 +41,46 @@ public class FinalScoreboardPageScene extends Main
             gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
             gold.setStyle("-fx-text-fill: #ffd700");
 
-            silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
-            silver.setStyle("-fx-text-fill: #c0c0c0");
+            if (Team.getSameScore() != 0) //If two teams have same amount of points
+            {
+                silver.setText("Gold: " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #ffd700");
+            }
+            else
+            {
+                silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #c0c0c0");
+            }
         }
         if (teams.size() >= 3) {
 
             gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
             gold.setStyle("-fx-text-fill: #ffd700");
 
-            silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
-            silver.setStyle("-fx-text-fill: #c0c0c0");
+            if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.getWinner()).getPointScore()) //If two teams have same amount of points
+            {
+                silver.setText("Gold: " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #ffd700");
 
-            bronze.setText("Bronze: " + teams.get(Team.get3rdPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get3rdPlace()).getPointScore()) + " points");
-            bronze.setStyle("-fx-text-fill: #cd7f32");
+                bronze.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+                bronze.setStyle("-fx-text-fill: #c0c0c0");
+            }
+            else if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.get2ndPlace()).getPointScore())
+            {
+                silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #c0c0c0");
+
+                bronze.setText("Silver: " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " points");
+                bronze.setStyle("-fx-text-fill: #c0c0c0");
+            }
+            else
+            {
+                silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #c0c0c0");
+
+                bronze.setText("Bronze: " + teams.get(Team.get3rdPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get3rdPlace()).getPointScore()) + " points");
+                bronze.setStyle("-fx-text-fill: #cd7f32");
+            }
         }
 
 
