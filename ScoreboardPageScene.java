@@ -118,11 +118,7 @@ public class ScoreboardPageScene extends Main{
         nextQuest.getStyleClass().add("button-continue");
         nextQuest.setOnAction(e -> {
             if (n == QuickPlayScene.numOfQuestions) {
-                if (LogInScene.loggedIn == true){
-                    window.setScene(frontPageSceneLoggedIn);
-                } else {
-                    window.setScene(frontPageScene);
-                }
+                new FinalScoreboardPageScene();
             } else {
                 try {
                     new PlayGameScene();

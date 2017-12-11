@@ -148,7 +148,6 @@ public class PlayGameScene extends FrontPageScene {
 
 
 
-
         //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {

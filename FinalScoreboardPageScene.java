@@ -11,114 +11,52 @@ import java.io.IOException;
 public class FinalScoreboardPageScene extends Main
 {
     VBox layoutFinalScoreboard;
-    Label gameName, team1, team2, team3, team4, team5, t1, t2, t3, t4, t5;
-    Label answer1, answer2, answer3, answer4, answer5, correctA;
-    Button nextQuest, finGame;
+    Label gameName, gold, silver, bronze, t1, t2, t3;
+    Label answer1, answer2, answer3;
+    Button finGame;
 
     public FinalScoreboardPageScene(){
 
         gameName = new Label("Leaderboard");
         gameName.getStyleClass().add("label-board");
-        correctA = new Label("Correct answer: " + PlayGameScene.checkCorrect);
-        team1 = new Label();
-        team1.getStyleClass().add("label-scores");
-        team2 = new Label();
-        team2.getStyleClass().add("label-scores");
-        team3 = new Label();
-        team3.getStyleClass().add("label-scores");
-        team4 = new Label();
-        team4.getStyleClass().add("label-scores");
-        team5 = new Label();
-        team5.getStyleClass().add("label-scores");
+        gold = new Label();
+        gold.getStyleClass().add("label-scores");
+        silver = new Label();
+        silver.getStyleClass().add("label-scores");
+        bronze = new Label();
+        bronze.getStyleClass().add("label-scores");
         t1 = new Label();
         t1.getStyleClass().add("label-team");
         t2 = new Label();
         t2.getStyleClass().add("label-team");
         t3 = new Label();
         t3.getStyleClass().add("label-team");
-        t4 = new Label();
-        t4.getStyleClass().add("label-team");
-        t5 = new Label();
-        t5.getStyleClass().add("label-team");
-        answer1 = new Label();
-        answer2 = new Label();
-        answer3 = new Label();
-        answer4 = new Label();
-        answer5 = new Label();
 
 
-        if (teams.size() >= 1) {
-            team1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " points");
-            // t1.setText(Integer.toString(teams.get(0).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[0])){
-                answer1.setStyle("-fx-text-fill: green");
-            } else  {
-                answer1.setStyle("-fx-text-fill: red");
-            }
-            answer1.setText("Selected answer: " + PlayGameScene.playersChoices[0]);
+        if (teams.size() == 1) {
+            gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
+            gold.setStyle("-fx-text-fill: #ffd700");
         }
-        if (teams.size() >= 2) {
-            team2.setText(teams.get(1).getTeamName() + ": " + Integer.toString(teams.get(1).getPointScore()) + " points");
-            //t2.setText(Integer.toString(teams.get(1).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[1])){
-                answer2.setStyle("-fx-text-fill: green");
-            } else  {
-                answer2.setStyle("-fx-text-fill: red");
-            }
-            answer2.setText("Selected answer: " + PlayGameScene.playersChoices[1]);
+        if (teams.size() == 2) {
+
+            gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
+            gold.setStyle("-fx-text-fill: #ffd700");
+
+            silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+            silver.setStyle("-fx-text-fill: #c0c0c0");
         }
         if (teams.size() >= 3) {
-            team3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " points");
-            // t3.setText(Integer.toString(teams.get(2).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[2])){
-                answer3.setStyle("-fx-text-fill: green");
-            } else  {
-                answer3.setStyle("-fx-text-fill: red");
-            }
-            answer3.setText("Selected answer: " + PlayGameScene.playersChoices[2]);
-        }
-        if (teams.size() >= 4) {
-            team4.setText(teams.get(3).getTeamName() + ": " + Integer.toString(teams.get(3).getPointScore()) + " points");
-            //t4.setText(Integer.toString(teams.get(3).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[3])){
-                answer4.setStyle("-fx-text-fill: green");
-            } else  {
-                answer4.setStyle("-fx-text-fill: red");
-            }
-            answer4.setText("Selected answer: " + PlayGameScene.playersChoices[3]);
+
+            gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
+            gold.setStyle("-fx-text-fill: #ffd700");
+
+            silver.setText("Silver: " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " points");
+            silver.setStyle("-fx-text-fill: #c0c0c0");
+
+            bronze.setText("Bronze: " + teams.get(Team.get3rdPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get3rdPlace()).getPointScore()) + " points");
+            bronze.setStyle("-fx-text-fill: #cd7f32");
         }
 
-        if (teams.size() == 5) {
-            team5.setText(teams.get(4).getTeamName() + ": " + Integer.toString(teams.get(4).getPointScore()) + " points");
-            //t5.setText(Integer.toString(teams.get(4).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[4])){
-                answer5.setStyle("-fx-text-fill: green");
-            } else  {
-                answer5.setStyle("-fx-text-fill: red");
-            }
-            answer5.setText("Selected answer: " + PlayGameScene.playersChoices[4]);
-        }
-
-
-        nextQuest = new Button("Next Question");
-        nextQuest.getStyleClass().add("button-continue");
-        nextQuest.setOnAction(e -> {
-            if (Constants.click == QuickPlayScene.numOfQuestions) {
-                window.setScene(frontPageScene);
-            } else {
-                try {
-                    new PlayGameScene();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (SAXException e1) {
-                    e1.printStackTrace();
-                } catch (ParserConfigurationException e1) {
-                    e1.printStackTrace();
-                }
-                Constants.click++;
-            }
-
-        });
 
         finGame = new Button("Exit game");
         finGame.getStyleClass().add("button-menu");
@@ -128,7 +66,12 @@ public class FinalScoreboardPageScene extends Main
             n = 0;
             rQuestions.clear();
             answers.clear();
-            new FrontPageScene();
+            if (LogInScene.loggedIn == true){
+                window.setScene(frontPageSceneLoggedIn);
+            } else {
+                window.setScene(frontPageScene);
+            }
+            /*
             Constants.click = 1;
             try {
                 Questions.getRandomQuestions(questions, rQuestions);
@@ -139,18 +82,16 @@ public class FinalScoreboardPageScene extends Main
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            */
         });
 
         layoutFinalScoreboard = new VBox(20);
         layoutFinalScoreboard.setAlignment(Pos.CENTER);
-        layoutFinalScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest, finGame);
+        layoutFinalScoreboard.getChildren().addAll(gameName, t1, gold, t2, silver, t3,  bronze, finGame);
         finalScoreBoardPageScene = new Scene(layoutFinalScoreboard, 400, 700);
         finalScoreBoardPageScene.getStylesheets().add("Theme.css");
 
         window.setScene(finalScoreBoardPageScene);
-
-        if (n == QuickPlayScene.numOfQuestions){
-            nextQuest.setVisible(false);
         }
     }
-}
+
