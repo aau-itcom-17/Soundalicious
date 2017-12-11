@@ -1,9 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
@@ -11,71 +9,78 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import org.apache.commons.io.FileUtils;
-import sun.applet.AppletListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import java.io.*;
 import java.nio.file.*;
+import java.util.Collections;
 
 public class SaveFiles
-        extends Application {
+        extends Main {
 
     private Text actionStatus;
     private Stage savedStage;
     private TextArea txtArea;
     private static final String titleTxt = "Save your sounds";
-    private TextField question, correctAnswer, wronganswer1, wronganswer2, wronganswer3;
+    private TextField questionText, correctAnswer, wronganswer1, wronganswer2, wronganswer3;
     private Label questionLabel, correctAnswerLabel, wrongAnswerLabel, label, soundFile;
-    UploadQuestions uploadQuestions = new UploadQuestions();
+    Question question = new Question();
     private Button btn1, btn2;
     private int number = 1000;
-    public static void main(String [] args) {
+    private VBox saveFilesLayout;
 
-        Application.launch(args);
-    }
+    // Make a method that makes sure the ID is different each time you upload a question!!!!!!!!!!!!!
+    public SaveFiles() {
 
-    @Override // interface
-    public void start(Stage primaryStage) {
+        actionStatus = new Text();
+        actionStatus.setFont(Font.font("Calibri", FontWeight.NORMAL, 18));
+        actionStatus.setFill(Color.FIREBRICK);
 
 
-        primaryStage.setTitle(titleTxt);
+        //primaryStage.setTitle(titleTxt);
 
-        questionLabel = new Label("Write question below: ");
+        questionLabel = new Label("Write questionText below: ");
         //Username input
-        question = new TextField();
-        question.setOnKeyPressed((event) -> {
-            uploadQuestions.setQuestionFromScene(question.getText());
+        questionText = new TextField();
+        questionText.setOnKeyPressed((event) -> {
+            question.setTextOfQuestion(questionText.getText());
         });
 
-        correctAnswerLabel = new Label ("Write the correct answer below: ");
+        correctAnswerLabel = new Label("Write the correct answer below: ");
         correctAnswer = new TextField();
         correctAnswer.setOnKeyPressed((event) -> {
-            uploadQuestions.setCorrectAnswer(correctAnswer.getText());
+            question.setCorrectAnswer(correctAnswer.getText());
         });
 
-        wrongAnswerLabel = new Label ("Write the wrong answers below: ");
+        wrongAnswerLabel = new Label("Write the wrong answers below: ");
         wronganswer1 = new TextField();
         wronganswer1.setOnKeyPressed((event) -> {
-            uploadQuestions.setWrongAnswer1(wronganswer1.getText());
+            question.setDummyAnswers1(wronganswer1.getText());
         });
         wronganswer2 = new TextField();
         wronganswer2.setOnKeyPressed((event) -> {
-            uploadQuestions.setWrongAnswer2(wronganswer2.getText());
+            question.setDummyAnswers2(wronganswer2.getText());
         });
         wronganswer3 = new TextField();
         wronganswer3.setOnKeyPressed((event) -> {
-            uploadQuestions.setWrongAnswer3(wronganswer3.getText());
+            question.setDummyAnswers3(wronganswer3.getText());
         });
 
 
 /*
-        // The question for the sound
+        // The questionText for the sound
         Label Question = new Label("Question:");
         Question.setTextFill(Color.BLACK);
         Question.setFont(Font.font("Calibri", FontWeight.BOLD, 20));
@@ -110,6 +115,7 @@ public class SaveFiles
         // Button 2
         btn2 = new Button("Save Question");
         btn2.setOnAction(new SaveQuestionListener());
+
         HBox buttonHb2 = new HBox(10);
         buttonHb2.setAlignment(Pos.CENTER);
         buttonHb2.getChildren().addAll(btn2);
@@ -122,38 +128,40 @@ public class SaveFiles
 
 
         // Status message text
-        actionStatus = new Text();
-        actionStatus.setFont(Font.font("Calibri", FontWeight.NORMAL, 20));
-        actionStatus.setFill(Color.FIREBRICK);
 
         // Vbox
-        VBox vbox = new VBox(30);
-        vbox.setPadding(new Insets(25, 25, 25, 25));
-        vbox.getChildren().addAll(labelHb, questionLabel, question, correctAnswerLabel, correctAnswer, wrongAnswerLabel, wronganswer1, wronganswer2, wronganswer3, buttonHb1, buttonHb2, frontButton1, actionStatus);
+        saveFilesLayout = new VBox(30);
+        saveFilesLayout.setPadding(new Insets(25, 25, 25, 25));
+        saveFilesLayout.getChildren().addAll(labelHb, questionLabel, questionText, correctAnswerLabel, correctAnswer, wrongAnswerLabel, wronganswer1, wronganswer2, wronganswer3, buttonHb1, buttonHb2, frontButton1, actionStatus);
 
         // Scene
-        Scene scene = new Scene(vbox, 400, 700); // w x h
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        saveFilesScene = new Scene(saveFilesLayout,400, 700); // w x h
+        //saveFilesScene.getStylesheets().add("Theme.css");
+        window.setScene(saveFilesScene);
 
-        savedStage = primaryStage;
+
     }
     private class SaveQuestionListener implements  EventHandler<ActionEvent>{
 
         public void handle(ActionEvent e) {
-            number--;
-            System.out.println("number: " + number);
-            try {
-                uploadQuestions.writeToFile(number, uploadQuestions.getQuestionFromScene(), uploadQuestions.getSoundFileName(), uploadQuestions.getCorrectAnswer(), uploadQuestions.getWrongAnswer1(), uploadQuestions.getWrongAnswer2(), uploadQuestions.getWrongAnswer3());
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            if (question.getSoundFile() != null) {
+
+                try {
+                    question.writeToFile(question.getId(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
+                            question.getDummyAnswers1(), question.getDummyAnswers2(), question.getDummyAnswers3());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                questionText.clear();
+                correctAnswer.clear();
+                wronganswer1.clear();
+                wronganswer2.clear();
+                wronganswer3.clear();
+                question.setSoundFile(null);
+                actionStatus.setText(null);
+            } else{
+                actionStatus.setText("You need to choose a file");
             }
-            question.clear();
-            correctAnswer.clear();
-            wronganswer1.clear();
-            wronganswer2.clear();
-            wronganswer3.clear();
-            actionStatus.setText(null);
 
         }
     }
@@ -216,7 +224,7 @@ public class SaveFiles
                     if (selectedFile != null) {
                         try {
                             CopyFile(source, dest);
-                            uploadQuestions.setSoundFileName(source.getName());
+                            question.setSoundFile(source.getName());
                         } catch (IOException e) {
 
                             e.printStackTrace();

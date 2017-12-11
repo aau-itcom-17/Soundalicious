@@ -4,12 +4,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -44,9 +41,11 @@ public class Questions
                 temp.setId(Integer.parseInt(document.getElementsByTagName("id").item(i).getTextContent()));
 
                 temp.setTextOfQuestion(document.getElementsByTagName("textOfQuestion").item(i).getTextContent());
-                temp.setSoundfile(document.getElementsByTagName("soundfile").item(i).getTextContent());
+                temp.setSoundFile(document.getElementsByTagName("soundfile").item(i).getTextContent());
                 temp.setCorrectAnswer(document.getElementsByTagName("correctAnswer").item(i).getTextContent());
-                temp.setDummyAnswers((document.getElementsByTagName("dummyAnswer1").item(i).getTextContent()), document.getElementsByTagName("dummyAnswer2").item(i).getTextContent(), document.getElementsByTagName("dummyAnswer3").item(i).getTextContent());
+                temp.setDummyAnswers1(document.getElementsByTagName("dummyAnswer1").item(i).getTextContent());
+                temp.setDummyAnswers2(document.getElementsByTagName("dummyAnswer2").item(i).getTextContent());
+                temp.setDummyAnswers3(document.getElementsByTagName("dummyAnswer3").item(i).getTextContent());
 
 
            // System.out.println(temp.getCorrectAnswer());

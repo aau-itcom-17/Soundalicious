@@ -34,7 +34,7 @@ public class Soundfiles
         //Play sound
         try {
              String homePath = System.getProperty("user.home");
-            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.rQuestions.get(Main.n).getSoundfile());
+            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.rQuestions.get(Main.n).getSoundFile());
             String soundFolderName = soundFolder.getPath();
             System.out.println(soundFolderName);
             audio = AudioSystem.getAudioInputStream(new File(soundFolderName));

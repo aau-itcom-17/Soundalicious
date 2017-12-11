@@ -71,7 +71,7 @@ public class FrontPageScene extends Main {
     layoutFrontpage1 = new VBox(20);
     layoutFrontpage1.setAlignment(Pos.CENTER);
     layoutFrontpage1.getChildren().addAll(labelFront, quickPlayButton1, customGameButton1, logOutButton, deleteButton, uploadButton);
-    frontPageSceneLoggedIn = new Scene(layoutFrontpage1, 400, 600);
+    frontPageSceneLoggedIn = new Scene(layoutFrontpage1, 400, 700);
     frontPageSceneLoggedIn.getStylesheets().add("Theme.css");
 
     //Login page button -> Goes to login page
@@ -93,7 +93,7 @@ public class FrontPageScene extends Main {
     window.setScene(frontPageScene);
   }
 
-  private void removeLineFromFile(String file, String lineToRemove) {
+  public static void  removeLineFromFile(String file, String lineToRemove) {
     System.out.println(lineToRemove);
     try {
       File inFile = new File(file);
