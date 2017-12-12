@@ -1,22 +1,16 @@
-import javafx.application.*;
 import javafx.geometry.Pos;
-import javafx.stage.*;
+import javafx.scene.control.Label;
 import javafx.scene.*;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 
-import javax.swing.*;
 import java.io.*;
 
 public class FrontPageScene extends Main {
 
   Label labelFront;
-  Button quickPlayButton, customGameButton, logInPageButton, signUpButton;
+  Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
   Button quickPlayButton1, customGameButton1, logOutButton, deleteButton, uploadButton;
   VBox layoutFrontpage, layoutFrontpage1;
 
@@ -75,9 +69,9 @@ public class FrontPageScene extends Main {
     frontPageSceneLoggedIn.getStylesheets().add("Theme.css");
 
     //Login page button -> Goes to login page
-    logInPageButton = new Button(Constants.logInText);
-    logInPageButton.getStyleClass().add("button-menu");
-    logInPageButton.setOnAction(e -> new LogInScene());
+    loginPageButton = new Button(Constants.logInText);
+    loginPageButton.getStyleClass().add("button-menu");
+    loginPageButton.setOnAction(e -> new LogInScene());
 
     //sign up button -> Goes to sign up page
     signUpButton = new Button(Constants.signUpText);
@@ -87,7 +81,7 @@ public class FrontPageScene extends Main {
     //Layout Front Page
     layoutFrontpage = new VBox(20);
     layoutFrontpage.setAlignment(Pos.CENTER);
-    layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, logInPageButton, signUpButton);
+    layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);
     frontPageScene = new Scene(layoutFrontpage, 400, 700);
     frontPageScene.getStylesheets().add("Theme.css");
     window.setScene(frontPageScene);
