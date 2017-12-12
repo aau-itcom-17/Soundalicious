@@ -100,11 +100,8 @@ public class FinalScoreboardPageScene extends Main
             n = 0;
             rQuestions.clear();
             answers.clear();
-            if (LogInScene.loggedIn == true){
-                window.setScene(frontPageSceneLoggedIn);
-            } else {
-                window.setScene(frontPageScene);
-            }
+            window.setScene(frontPageScene);
+
 
             Constants.click = 1;
             try {

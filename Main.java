@@ -35,6 +35,8 @@ public class Main extends Application {
     public static List<RadioButton> answers;
     public static List<Team> teams;
     public static int n;
+    public static User user = new User();
+
 
     public static void main(String[] args)
     {
@@ -45,19 +47,20 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         StartUpSavingFolders.startUpSavingFolders();
-        window = primaryStage;
-        new FrontPageScene();
-        window.setTitle("Soundalicous");
-        window.show();
-        questions = new ArrayList<>();
-        rQuestions = new ArrayList<>();
-        answers = new ArrayList<>();
-        teams = new ArrayList<>();
-        n = 0;
+      window = primaryStage;
+      new FrontPageScene();
+      window.setTitle("Soundalicous");
+      window.show();
 
-        Questions.readQuestionsFromFile(questions, rQuestions);
-        Questions.getRandomQuestions(questions, rQuestions);
+      questions = new ArrayList<>();
+      rQuestions = new ArrayList<>();
+      answers = new ArrayList<>();
+      teams = new ArrayList<>();
+      n = 0;
 
 
+
+     Questions.readQuestionsFromFile(questions, rQuestions);
+     Questions.getRandomQuestions(questions, rQuestions);
   }
 }

@@ -1,28 +1,20 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class User {
-    public String username;
-    public String password;
-    public int ID;
-    public boolean ifLoggedIn;
+    private String username;
+    private String password;
+    private int ID;
+    private boolean isLoggedIn;
 
 
-    public User(String username, String password, int ID, boolean ifLoggedIn){
-        this.username = username;
-        this.password = password;
-        this.ID = ID;
-        this.ifLoggedIn = ifLoggedIn;
+    public User(){
 
     }
 
-    public boolean isIfLoggedIn() {
-        return ifLoggedIn;
+    public boolean isLoggedIn() {
+        return isLoggedIn;
     }
 
-    public void setIfLoggedIn(boolean ifLoggedIn) {
-        this.ifLoggedIn = ifLoggedIn;
+    public void setLoggedIn(boolean loggedIn) {
+        this.isLoggedIn = loggedIn;
     }
 
     public String getUserName() {

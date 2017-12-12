@@ -113,19 +113,12 @@ public class QuickPlayScene extends Main {
     //Button back to front on custom game page
     frontPageButton1 = new Button(Constants.goToMainText);
     frontPageButton1.setOnAction(e -> {
-      if (LogInScene.loggedIn == true){
-        teams.clear();
-        n = 0;
-        answers.clear();
-        numOfTeams = Constants.teamChoice1Num;
-        window.setScene(frontPageSceneLoggedIn);
-      } else {
         teams.clear();
         n = 0;
         answers.clear();
         numOfTeams = Constants.teamChoice1Num;
         window.setScene(frontPageScene);
-      }
+
     });
     frontPageButton1.getStyleClass().add("button-menu");
 

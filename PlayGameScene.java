@@ -150,21 +150,13 @@ public class PlayGameScene extends FrontPageScene {
         //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {
-            if (LogInScene.loggedIn == true){
-                teams.clear();
-                n = 0;
-                answers.clear();
-                numOfTeams = Constants.teamChoice1Num;
-                numOfQuestions = Constants.questionChoice1Num;
-                window.setScene(frontPageSceneLoggedIn);
-            } else {
                 teams.clear();
                 n = 0;
                 answers.clear();
                 numOfTeams = Constants.teamChoice1Num;
                 numOfQuestions = Constants.questionChoice1Num;
                 window.setScene(frontPageScene);
-            }
+
         });
         frontPageButton5.getStyleClass().add("button-menu");
 

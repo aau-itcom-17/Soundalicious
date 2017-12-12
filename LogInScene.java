@@ -1,30 +1,18 @@
-import javafx.application.*;
 import javafx.geometry.Pos;
-import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.layout.AnchorPane;
+
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.input.KeyCode;
-import com.sun.javafx.scene.control.behavior.BehaviorBase;
-import javafx.scene.control.SkinBase;
 
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class LogInScene extends FrontPageScene {
@@ -117,9 +105,12 @@ public class LogInScene extends FrontPageScene {
         try {
             if (login(enteredUsername, enteredPass)) {
                 loggedIn = true;
+                user.setLoggedIn(true);
+                System.out.println(user.isLoggedIn());
+                System.out.println("You are logged in");
                 logInMessage.setVisible(true);
                 logInError.setVisible(false);
-                window.setScene(frontPageSceneLoggedIn);
+                new FrontPageScene();
             }
 
                else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){

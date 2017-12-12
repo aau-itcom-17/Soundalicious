@@ -75,7 +75,6 @@ public class Questions
             if (!rQuestions.contains(q))
             {  // should implement the Comparable interface.
                 rQuestions.add(q);
-                System.out.println("rQuestions " +rQuestions);
             }
         }
     }
