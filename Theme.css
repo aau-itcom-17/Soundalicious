@@ -185,6 +185,28 @@
 
 }
 
+.button-menuSelected{
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4em;
+    -fx-min-width: 100px;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-max-width: 200px;
+    /*-fx-background-color: linear-gradient(deepskyblue, dodgerblue);*/
+    -fx-background-color: #128FFF;
+    -fx-background-insets: 10px;
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-border-insets: -3px;
+    -fx-background-insets: -3px;
+    -fx-padding: 10px;
+}
+.button-menuSelected:hover{
+    /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
+    -fx-background-color: #004A8C;
+
+}
+
 .button-continue{
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4em;
