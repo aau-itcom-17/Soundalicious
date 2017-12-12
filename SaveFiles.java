@@ -150,10 +150,7 @@ public class SaveFiles
         public void handle(ActionEvent e) {
             if (question.getSoundFile() != null) {
                 question.setId(Main.questions.size()+2);
-                System.out.println(Main.questions.size()+2);
                 try {
-                    System.out.println(questions.size());
-
                     question.writeToFile(question.getId(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
                             question.getDummyAnswers1(), question.getDummyAnswers2(), question.getDummyAnswers3());
 
@@ -177,7 +174,7 @@ public class SaveFiles
                 wronganswer3.clear();
                 question.setSoundFile(null);
                 actionStatus.setText(null);
-            } else{
+            } else {
                 actionStatus.setText("You need to choose a file");
             }
 

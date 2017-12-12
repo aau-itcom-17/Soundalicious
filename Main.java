@@ -45,20 +45,19 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         StartUpSavingFolders.startUpSavingFolders();
-      window = primaryStage;
-      new FrontPageScene();
-      window.setTitle("Soundalicous");
-      window.show();
+        window = primaryStage;
+        new FrontPageScene();
+        window.setTitle("Soundalicous");
+        window.show();
+        questions = new ArrayList<>();
+        rQuestions = new ArrayList<>();
+        answers = new ArrayList<>();
+        teams = new ArrayList<>();
+        n = 0;
 
-      questions = new ArrayList<>();
-      rQuestions = new ArrayList<>();
-      answers = new ArrayList<>();
-      teams = new ArrayList<>();
-      n = 0;
+        Questions.readQuestionsFromFile(questions, rQuestions);
+        Questions.getRandomQuestions(questions, rQuestions);
 
 
-
-     Questions.readQuestionsFromFile(questions, rQuestions);
-     Questions.getRandomQuestions(questions, rQuestions);
   }
 }
