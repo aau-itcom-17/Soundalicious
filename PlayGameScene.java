@@ -21,6 +21,7 @@ public class PlayGameScene extends FrontPageScene {
     ToggleGroup question1;
     Label whoIsThis, teamName;
     Button playSound, nextQuestion, frontPageButton5;
+    ;
     VBox playGameLayout;
     String teamOrQuestion = null;
     public static String [] playersChoices = new String[5];
@@ -150,12 +151,16 @@ public class PlayGameScene extends FrontPageScene {
         //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {
-                teams.clear();
-                n = 0;
-                answers.clear();
-                numOfTeams = Constants.teamChoice1Num;
-                numOfQuestions = Constants.questionChoice1Num;
-                window.setScene(frontPageScene);
+                frontPageButton5.setText("Are you sure want to exit?");
+                frontPageButton5.setStyle("-fx-background-color: red; -fx-text-fill: #FFFFFF;");
+            frontPageButton5.setOnAction(f -> {
+                    teams.clear();
+                    n = 0;
+                    answers.clear();
+                    numOfTeams = Constants.teamChoice1Num;
+                    numOfQuestions = Constants.questionChoice1Num;
+                    window.setScene(frontPageScene);
+                });
 
         });
         frontPageButton5.getStyleClass().add("button-menu");

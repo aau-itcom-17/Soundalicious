@@ -4,7 +4,7 @@ public class Constants {
   public static String userDatabase = "text.txt";
 
   public static String gameName = "Soundalicious";
-  public static String goToMainText = "Go back to the front page";
+  public static String goToMainText = "⌫ Go back to the front page";
   public static String goToNextText = "Go to next page";
 
   //log in and sign up
@@ -21,9 +21,9 @@ public class Constants {
   public static String adminPass = "password";
   public static String adminLoggedIn = "You are logged in as administrator, but you can not do anything";
 
-  public static String newUserText = "New username:";
-  public static String deleteUserText = "Delete your user and log out";
-  public static String uploadSound = "Upload sound";
+  public static String newUserText = "✓ New username:";
+  public static String deleteUserText = "⌦ Delete your user and log out";
+  public static String uploadSound = "↑ Upload sound";
 
   //custom game
   public static String customGameText = "Custom game";
