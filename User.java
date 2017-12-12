@@ -3,11 +3,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class User {
-    private String username;
-    private String password;
-    private int ID;
-    private boolean ifLoggedIn;
+    public String username;
+    public String password;
+    public int ID;
+    public boolean ifLoggedIn;
 
+
+    public User(String username, String password, int ID, boolean ifLoggedIn){
+        this.username = username;
+        this.password = password;
+        this.ID = ID;
+        this.ifLoggedIn = ifLoggedIn;
+
+    }
 
     public boolean isIfLoggedIn() {
         return ifLoggedIn;
