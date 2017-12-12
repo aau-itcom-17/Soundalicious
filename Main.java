@@ -36,6 +36,7 @@ public class Main extends Application {
     public static List<Team> teams;
     public static int n;
     public static User user = new User();
+    public static Admin admin = new Admin();
 
 
     public static void main(String[] args)

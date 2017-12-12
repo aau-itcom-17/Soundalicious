@@ -3,6 +3,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -16,8 +18,9 @@ public class FrontPageScene extends Main {
 
   Label labelFront;
   Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
-  Button  logOutButton, deleteButton, uploadButton;
+  Button  logOutButton, deleteButton, uploadButton, deleteUserButton;
   VBox layoutFrontpage ;
+  TableView table;
 
 
   public FrontPageScene() {
@@ -27,8 +30,10 @@ public class FrontPageScene extends Main {
     labelFront = new Label(Constants.gameName);
     labelFront.getStyleClass().add("label-headline");
 
-    if(user.isLoggedIn()){
-      labelFront.setText("Hi " + user.getUserName().toUpperCase() + "!");
+    if(user.isLoggedIn){
+      labelFront.setText("HI " + user.getUserName().toUpperCase() + "!");
+    }else if (admin.isLoggedIn){
+      labelFront.setText("HI ADMIN!");
     }
 
     //Quick play button -> Goes to Quickplay page
@@ -42,13 +47,13 @@ public class FrontPageScene extends Main {
     customGameButton.getStyleClass().add("button-menu");
 
 
-    if(user.isLoggedIn()){
+    if(user.isLoggedIn || admin.isLoggedIn){
       customGameButton.setOnAction(e -> new CustomGameScene());
     }else{
       customGameButton.setOnAction(e -> new LogInScene());
     }
 
-    if (user.isLoggedIn()) {
+    if (user.isLoggedIn || admin.isLoggedIn) {
       //Logout button
       logOutButton = new Button(Constants.logOutText);
       logOutButton.getStyleClass().add("button-menu");
@@ -61,7 +66,7 @@ public class FrontPageScene extends Main {
 
 
     //delete your user button
-    if(user.isLoggedIn()) {
+    if(user.isLoggedIn || admin.isLoggedIn) {
       deleteButton = new Button(Constants.deleteUserText);
       deleteButton.getStyleClass().add("button-menu");
       deleteButton.setOnAction(e -> {
@@ -69,11 +74,25 @@ public class FrontPageScene extends Main {
         window.setScene(frontPageScene);
       });
 
-
       //Upload a sound button
       uploadButton = new Button(Constants.uploadSound);
       uploadButton.getStyleClass().add("button-menu");
       uploadButton.setOnAction(e -> new SaveFiles());
+
+    }
+    if(admin.isLoggedIn){
+      deleteUserButton = new Button("Delete a user");
+      deleteUserButton.getStyleClass().add("button-menu");
+      deleteUserButton.setOnAction(event -> {
+        table = new TableView();
+        table.setEditable(true);
+        TableColumn usernameCol = new TableColumn("Username");
+        TableColumn passwordCol = new TableColumn("Password");
+        table.getColumns().addAll(usernameCol, passwordCol);
+
+
+
+              });
 
     }
 
@@ -90,15 +109,18 @@ public class FrontPageScene extends Main {
 
 
     System.out.println("USER IS LOGGED IN/OUT :" + user.isLoggedIn());
+    System.out.println("ADMIN IS LOGGED IN/OUT :" + admin.isLoggedIn());
     //Layout Front Page
     layoutFrontpage = new VBox(20);
-    layoutFrontpage.setPadding(new Insets(150, 0, 150, 0));
-
     layoutFrontpage.setAlignment(Pos.CENTER);
-    if (user.isLoggedIn()){
-      System.out.println("hey");
+    if (user.isLoggedIn) {
+      System.out.println("user is logged in");
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton);
-    }else {
+    }else if(admin.isLoggedIn) {
+      System.out.println("admin is logged in");
+      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton);
+    }
+    else {
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);
     }
     frontPageScene = new Scene(layoutFrontpage, 400, 700);

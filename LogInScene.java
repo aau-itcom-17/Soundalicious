@@ -103,28 +103,16 @@ public class LogInScene extends FrontPageScene {
         enteredUsername = enteredUsername.toLowerCase();
         enteredPass = passwordInput.getText();
         try {
-            if (login(enteredUsername, enteredPass)) {
-                loggedIn = true;
+            if (login(enteredUsername, enteredPass) && !enteredUsername.equals("admin")) {
                 user.setLoggedIn(true);
-                System.out.println(user.isLoggedIn());
-                System.out.println("You are logged in");
                 user.setUserName(enteredUsername);
-                System.out.println(user.getUserName());
                 logInMessage.setVisible(true);
                 logInError.setVisible(false);
                 new FrontPageScene();
-            }
-
-               else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){
-                    // admin properties so that the admin can delete files and questions if he wants. but only stuff thats uploaded by users.
-                    // the login should be assigned to a User with name and stuff. That user should be allowed to upload sound files and make questions.
-                    // the User should be allowed to customize own questions and to delete his how shizzle.
-
-                    adminMessage.setVisible(true);
-                    //admom
-                }
-
-            else {
+            } else if (login("admin","password")){
+                    admin.setLoggedIn(true);
+                    new FrontPageScene();
+            } else {
                 passwordInput.setText("");
                 logInMessage.setVisible(false);
                 logInError.setVisible(true);
