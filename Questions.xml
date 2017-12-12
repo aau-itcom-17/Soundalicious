@@ -49,10 +49,10 @@
 	<Question>
 		<id>5</id>
 		<textOfQuestion>Who dis mayn?</textOfQuestion>
-		<soundfile>ChristianoRonaldo.wav</soundfile>
-		<correctAnswer>Christiano Ronaldo</correctAnswer>
+		<soundfile>CristianoRonaldo.wav</soundfile>
+		<correctAnswer>Cristiano Ronaldo</correctAnswer>
 		<dummyAnswer1>Zlatan Ibrahimovic</dummyAnswer1>
-		<dummyAnswer2>Usain Bold</dummyAnswer2>
+		<dummyAnswer2>Usain Bolt</dummyAnswer2>
 		<dummyAnswer3>Conor McGregor</dummyAnswer3>
 	</Question>
 	<Question>
