@@ -59,6 +59,7 @@ public class FrontPageScene extends Main {
     
     //Upload a sound button
     uploadButton = new Button(Constants.uploadSound);
+    uploadButton.getStyleClass().add("button-menu");
     uploadButton.setOnAction(e -> new SaveFiles());
 
     //Layout Front Page when logged in
