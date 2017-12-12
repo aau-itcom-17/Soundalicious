@@ -85,7 +85,7 @@ public class Question implements Comparable<Question> {
         out.write("\t<Question>\n" + "\t\t<id>" + ID + "</id>\n" + "\t\t<textOfQuestion>" + questionFromScene + "</textOfQuestion>\n" +
                 "\t\t<soundfile>" + soundFileName + "</soundfile>\n" + "\t\t<correctAnswer>" + correctAnswer + "</correctAnswer>\n" +
                 "\t\t<dummyAnswer1>" + wrongAnswer1 + "</dummyAnswer1>\n" + "\t\t<dummyAnswer2>" + wrongAnswer2 + "</dummyAnswer2>\n" +
-                "\t\t<dummyAnswer3>" + wrongAnswer3 + "</dummyAnswer3>\n" + "\t</Question>\n" + "</Questions>\n");
+                "\t\t<dummyAnswer3>" + wrongAnswer3 + "</dummyAnswer3>\n" + "\t</Question>\n" + "</Questions>");
         out.newLine();
         out.close();
     }

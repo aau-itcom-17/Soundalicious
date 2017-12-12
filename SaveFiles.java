@@ -16,15 +16,18 @@ import javafx.event.EventHandler;
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.nio.file.*;
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class SaveFiles
@@ -113,6 +116,7 @@ public class SaveFiles
         buttonHb1.setAlignment(Pos.CENTER);
         buttonHb1.getChildren().addAll(btn1);
         // Button 2
+        System.out.println(questions.size());
         btn2 = new Button("Save Question");
         btn2.setOnAction(new SaveQuestionListener());
 
@@ -145,11 +149,25 @@ public class SaveFiles
 
         public void handle(ActionEvent e) {
             if (question.getSoundFile() != null) {
-
+                question.setId(Main.questions.size()+2);
+                System.out.println(Main.questions.size()+2);
                 try {
+                    System.out.println(questions.size());
+
                     question.writeToFile(question.getId(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
                             question.getDummyAnswers1(), question.getDummyAnswers2(), question.getDummyAnswers3());
+
                 } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                Main.questions = new ArrayList<>();
+                try {
+                    Questions.readQuestionsFromFile(questions, rQuestions);
+                } catch (ParserConfigurationException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (SAXException e1) {
                     e1.printStackTrace();
                 }
                 questionText.clear();
