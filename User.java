@@ -1,8 +1,8 @@
 public class User {
-    private String username;
-    private String password;
-    private int ID;
-    private boolean isLoggedIn;
+    public String username;
+    public String password;
+    public int ID;
+    public boolean isLoggedIn;
 
 
     public User(){

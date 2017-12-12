@@ -1,27 +1,35 @@
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import java.io.*;
 
 public class FrontPageScene extends Main {
 
-  Label labelFront, test;
+  Label labelFront;
   Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
   Button  logOutButton, deleteButton, uploadButton;
-  VBox layoutFrontpage;
+  VBox layoutFrontpage ;
 
 
   public FrontPageScene() {
 
-    test = new Label();
-    test.setText("Wazzup Bitch");
 
     //Label front page
     labelFront = new Label(Constants.gameName);
     labelFront.getStyleClass().add("label-headline");
+
+    if(user.isLoggedIn()){
+      labelFront.setText("Hi " + user.getUserName().toUpperCase() + "!");
+    }
 
     //Quick play button -> Goes to Quickplay page
     quickPlayButton = new Button(Constants.quickPlayName);
@@ -32,6 +40,8 @@ public class FrontPageScene extends Main {
     //Custom game button -> Goes to login page  page
     customGameButton = new Button(Constants.customGameText);
     customGameButton.getStyleClass().add("button-menu");
+
+
     if(user.isLoggedIn()){
       customGameButton.setOnAction(e -> new CustomGameScene());
     }else{
@@ -44,8 +54,9 @@ public class FrontPageScene extends Main {
       logOutButton.getStyleClass().add("button-menu");
       logOutButton.setOnAction(e -> {
         user.setLoggedIn(false);
-        window.setScene(frontPageScene);
+        new FrontPageScene();
       });
+
     }
 
 
@@ -58,10 +69,12 @@ public class FrontPageScene extends Main {
         window.setScene(frontPageScene);
       });
 
+
       //Upload a sound button
       uploadButton = new Button(Constants.uploadSound);
       uploadButton.getStyleClass().add("button-menu");
       uploadButton.setOnAction(e -> new SaveFiles());
+
     }
 
     //Login page button -> Goes to login page
@@ -69,18 +82,22 @@ public class FrontPageScene extends Main {
     loginPageButton.getStyleClass().add("button-menu");
     loginPageButton.setOnAction(e -> new LogInScene());
 
+
     //sign up button -> Goes to sign up page
     signUpButton = new Button(Constants.signUpText);
     signUpButton.getStyleClass().add("button-menu");
     signUpButton.setOnAction(e -> new SignUpScene());
 
+
     System.out.println("USER IS LOGGED IN/OUT :" + user.isLoggedIn());
     //Layout Front Page
     layoutFrontpage = new VBox(20);
+    layoutFrontpage.setPadding(new Insets(150, 0, 150, 0));
+
     layoutFrontpage.setAlignment(Pos.CENTER);
     if (user.isLoggedIn()){
       System.out.println("hey");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton,customGameButton, uploadButton, deleteButton, logOutButton);
+      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton);
     }else {
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);
     }

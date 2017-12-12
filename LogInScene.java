@@ -108,6 +108,8 @@ public class LogInScene extends FrontPageScene {
                 user.setLoggedIn(true);
                 System.out.println(user.isLoggedIn());
                 System.out.println("You are logged in");
+                user.setUserName(enteredUsername);
+                System.out.println(user.getUserName());
                 logInMessage.setVisible(true);
                 logInError.setVisible(false);
                 new FrontPageScene();
@@ -119,6 +121,7 @@ public class LogInScene extends FrontPageScene {
                     // the User should be allowed to customize own questions and to delete his how shizzle.
 
                     adminMessage.setVisible(true);
+                    //admom
                 }
 
             else {

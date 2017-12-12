@@ -81,16 +81,6 @@ public class SaveFiles
             question.setDummyAnswers3(wronganswer3.getText());
         });
 
-
-/*
-        // The questionText for the sound
-        Label Question = new Label("Question:");
-        Question.setTextFill(Color.BLACK);
-        Question.setFont(Font.font("Calibri", FontWeight.BOLD, 20));
-        TextField textField = new TextField();
-        HBox questionHb = new HBox(10);
-        questionHb.getChildren().addAll(Question, textField);
-        */
         // Window label
         label = new Label("Make your own questions");
         label.setTextFill(Color.BLACK);
@@ -98,15 +88,6 @@ public class SaveFiles
         HBox labelHb = new HBox();
         labelHb.setAlignment(Pos.CENTER);
         labelHb.getChildren().add(label);
-
-        /* Just a label
-        soundFile = new Label("Upload sound (only .au and .wav files supported)");
-        soundFile.setTextFill(Color.BLACK);
-        soundFile.setFont(Font.font("Calibri", FontWeight.BOLD, 12));
-        HBox soundFileHb = new HBox();
-        soundFileHb.setAlignment(Pos.CENTER);
-        soundFileHb.getChildren().add(soundFile);
-        */
 
 
         // Button
@@ -119,7 +100,6 @@ public class SaveFiles
         System.out.println(questions.size());
         btn2 = new Button("Save Question");
         btn2.setOnAction(new SaveQuestionListener());
-
         HBox buttonHb2 = new HBox(10);
         buttonHb2.setAlignment(Pos.CENTER);
         buttonHb2.getChildren().addAll(btn2);
