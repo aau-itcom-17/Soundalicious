@@ -95,15 +95,15 @@ public class PlayGameScene extends FrontPageScene {
         nextQuestion.setVisible(false);
 
         question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
-          {
-              playSound.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-              radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-              radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-              radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-              radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-              nextQuestion.getStyleClass().add("button-menuSelected");
-              nextQuestion.setVisible(true);
-          });
+        {
+            playSound.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            nextQuestion.getStyleClass().add("button-menuSelected");
+            nextQuestion.setVisible(true);
+        });
 
 
 
@@ -186,16 +186,9 @@ public class PlayGameScene extends FrontPageScene {
         //Button back to front on custom game page
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {
-                frontPageButton5.setText("Are you sure want to exit?");
-                frontPageButton5.setStyle("-fx-background-color: red; -fx-text-fill: #FFFFFF;");
-            frontPageButton5.setOnAction(f -> {
-                    teams.clear();
-                    n = 0;
-                    answers.clear();
-                    numOfTeams = Constants.teamChoice1Num;
-                    numOfQuestions = Constants.questionChoice1Num;
-                    window.setScene(frontPageScene);
-                });
+            frontPageButton5.setText("Are you sure want to exit?");
+            frontPageButton5.setStyle("-fx-background-color: red; -fx-text-fill: #FFFFFF;");
+            frontPageButton5.setOnAction(PlayGameScene::handle);
 
         });
         frontPageButton5.getStyleClass().add("button-menu");
@@ -212,4 +205,21 @@ public class PlayGameScene extends FrontPageScene {
 
     }
 
+    private static void handle(ActionEvent f) {
+        teams.clear();
+        n = 0;
+        rQuestions.clear();
+        answers.clear();
+        numOfTeams = Constants.teamChoice1Num;
+        numOfQuestions = Constants.questionChoice1Num;
+        window.setScene(frontPageScene);
+
+
+        Constants.click = 1;
+        try {
+            Questions.getRandomQuestions(questions, rQuestions);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+        }
+    }
 }
