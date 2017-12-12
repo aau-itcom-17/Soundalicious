@@ -7,6 +7,7 @@ public class Team {
     static int thirdLargest = Integer.MIN_VALUE;
     static int thirdPos = 0;
     static int sameScorePos = 0;
+    static int sameScoreForThreePos = -1;
     private int ID;
     private int pointScore;
     private String teamName;
@@ -100,10 +101,36 @@ public class Team {
             }
         }
         for (int i = 0; i < Main.teams.size(); i++) {
-            if (Main.teams.get(i).getPointScore() == max && i != maxPos || Main.teams.get(i).getPointScore() == secondLargest && i != secondPos || Main.teams.get(i).getPointScore() == thirdLargest && i != thirdPos) {
+            if (Main.teams.get(i).getPointScore() == max && i != maxPos || Main.teams.get(i).getPointScore() == secondLargest && i != secondPos
+                    || Main.teams.get(i).getPointScore() == thirdLargest && i != thirdPos) {
                 sameScorePos = i;
             }
         }
         return sameScorePos;
+    }
+
+    public static int getSameScoreForThree() {
+        for (int i = 0; i < Main.teams.size(); i++) {
+            if (Main.teams.get(i).getPointScore() > max) {
+                max = Main.teams.get(i).getPointScore();
+                maxPos = i;
+            }
+            if (Main.teams.get(i).getPointScore() > secondLargest && Main.teams.get(i).getPointScore() != max) {
+                secondLargest = Main.teams.get(i).getPointScore();
+                secondPos = i;
+            }
+            if (Main.teams.get(i).getPointScore() > thirdLargest && Main.teams.get(i).getPointScore() != secondLargest && Main.teams.get(i).getPointScore() != max) {
+                thirdLargest = Main.teams.get(i).getPointScore();
+                thirdPos = i;
+            }
+        }
+        for (int i = 0; i < Main.teams.size(); i++) {
+            if (Main.teams.get(i).getPointScore() == max && i != getSameScore() && i != maxPos
+                    || Main.teams.get(i).getPointScore() == secondLargest && i != getSameScore() && i != secondPos
+                    || Main.teams.get(i).getPointScore() == thirdLargest && i != getSameScore() && i != thirdPos) {
+                sameScoreForThreePos = i;
+            }
+        }
+        return sameScoreForThreePos;
     }
 }

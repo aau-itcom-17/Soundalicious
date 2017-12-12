@@ -57,7 +57,15 @@ public class FinalScoreboardPageScene extends Main
             gold.setText("Gold: " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " points");
             gold.setStyle("-fx-text-fill: #ffd700");
 
-            if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.getWinner()).getPointScore()) //If two teams have same amount of points
+            if (Team.getSameScoreForThree() > -1)
+            {
+                silver.setText("Gold: " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " points");
+                silver.setStyle("-fx-text-fill: #ffd700");
+
+                bronze.setText("Gold: " + teams.get(Team.getSameScoreForThree()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScoreForThree()).getPointScore()) + " points");
+                bronze.setStyle("-fx-text-fill: #ffd700");
+            }
+            else if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.getWinner()).getPointScore()) //If two teams have same amount of points
             {
                 silver.setText("Gold: " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " points");
                 silver.setStyle("-fx-text-fill: #ffd700");
