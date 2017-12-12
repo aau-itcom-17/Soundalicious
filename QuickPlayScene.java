@@ -34,6 +34,7 @@ public class QuickPlayScene extends Main {
     choiceBox.getItems().addAll(Constants.teamChoice0, Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
     //Set default value
     choiceBox.setValue(Constants.teamChoice0);
+    //Amount of questions in a choice box
     choiceBox.setOnAction(e -> {
       switch (choiceBox.getValue()){
         case "1 Team":
@@ -60,7 +61,7 @@ public class QuickPlayScene extends Main {
 
     //Amount of questions in a choice box
     choiceBox2 = new ChoiceBox<>();
-    choiceBox2.getItems().addAll(Constants.questionChoice0, Constants.questionChoice1, Constants.questionChoice2, Constants.questionChoice3);        //Set default value
+    choiceBox2.getItems().addAll(Constants.questionChoice0, Constants.questionChoice1, Constants.questionChoice2, Constants.questionChoice3);
     //Set default value
     choiceBox2.setValue(Constants.questionChoice0);
 
@@ -68,10 +69,7 @@ public class QuickPlayScene extends Main {
     startGameButton = new Button(Constants.startGameText);
     startGameButton.getStyleClass().add("button-continue");
     startGameButton.setOnAction(e -> {
-      //sets numOfTeams according to choice box
-
-      //sets numOfQuestions according
-      //to choice box
+      //sets numOfQuestions according to choice box
       switch (choiceBox2.getValue()){
         case "10 questions":
           numOfQuestions = Constants.questionChoice1Num;
@@ -93,21 +91,39 @@ public class QuickPlayScene extends Main {
     //How to play button button
     buttonHowToPlay = new Button(Constants.howToPlayText);
     buttonHowToPlay.getStyleClass().add("button-menu");
-    buttonHowToPlay.setOnAction(e -> new HowToPlayScene());
+    buttonHowToPlay.setOnAction(e -> {
+      switch (choiceBox2.getValue()){
+        case "10 questions":
+          numOfQuestions = Constants.questionChoice1Num;
+          break;
+        case "15 questions":
+          numOfQuestions = Constants.questionChoice2Num;
+          break;
+        case "25 questions":
+          numOfQuestions = Constants.questionChoice3Num;
+          break;
+        default:
+          numOfQuestions = Constants.questionChoice1Num;
+          break;
+      }
+      new HowToPlayScene();
+    });
 
 
     //Button back to front on custom game page
     frontPageButton1 = new Button(Constants.goToMainText);
     frontPageButton1.setOnAction(e -> {
       if (LogInScene.loggedIn == true){
-        window.setScene(frontPageSceneLoggedIn);
         teams.clear();
         n = 0;
         answers.clear();
+        numOfTeams = Constants.teamChoice1Num;
+        window.setScene(frontPageSceneLoggedIn);
       } else {
         teams.clear();
         n = 0;
         answers.clear();
+        numOfTeams = Constants.teamChoice1Num;
         window.setScene(frontPageScene);
       }
     });

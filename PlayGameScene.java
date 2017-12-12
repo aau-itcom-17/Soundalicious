@@ -151,14 +151,18 @@ public class PlayGameScene extends FrontPageScene {
         frontPageButton5 = new Button(Constants.goToMainText);
         frontPageButton5.setOnAction(e -> {
             if (LogInScene.loggedIn == true){
-                window.setScene(frontPageSceneLoggedIn);
                 teams.clear();
                 n = 0;
                 answers.clear();
+                numOfTeams = Constants.teamChoice1Num;
+                numOfQuestions = Constants.questionChoice1Num;
+                window.setScene(frontPageSceneLoggedIn);
             } else {
                 teams.clear();
                 n = 0;
                 answers.clear();
+                numOfTeams = Constants.teamChoice1Num;
+                numOfQuestions = Constants.questionChoice1Num;
                 window.setScene(frontPageScene);
             }
         });

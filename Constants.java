@@ -45,7 +45,6 @@ public class Constants {
   public static String questionChoice1 = "3 questions";
   public static String questionChoice2 = "15 questions";
   public static String questionChoice3 = "25 questions";
-
   public static int questionChoice1Num = 3;
   public static int questionChoice2Num = 15;
   public static int questionChoice3Num = 25;

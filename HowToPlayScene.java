@@ -39,7 +39,34 @@ public class HowToPlayScene extends QuickPlayScene{
 
         frontpageButton4 = new Button(Constants.goToQuickPlayText);
         frontpageButton4.getStyleClass().add("button-continue");
-        frontpageButton4.setOnAction(e -> window.setScene(quickPlayScene));
+        frontpageButton4.setOnAction(e -> {
+            System.out.println("This is how many teams are selected: " + numOfTeams);
+            System.out.println("This is how many questions are selected: " + numOfQuestions);
+
+            if      (numOfTeams == Constants.teamChoice1Num)
+                choiceBox.setValue(Constants.teamChoice1);
+            else if (numOfTeams == Constants.teamChoice2Num)
+                choiceBox.setValue(Constants.teamChoice2);
+            else if (numOfTeams == Constants.teamChoice3Num)
+                choiceBox.setValue(Constants.teamChoice3);
+            else if (numOfTeams == Constants.teamChoice4Num)
+                choiceBox.setValue(Constants.teamChoice4);
+            else if (numOfTeams == Constants.teamChoice5Num)
+                choiceBox.setValue(Constants.teamChoice5);
+            else {
+                choiceBox.setValue(Constants.teamChoice0);
+            }
+            if      (numOfQuestions == Constants.questionChoice1Num)
+                choiceBox2.setValue(Constants.questionChoice1);
+            else if (numOfQuestions == Constants.questionChoice2Num)
+                choiceBox2.setValue(Constants.questionChoice2);
+            else if (numOfQuestions == Constants.questionChoice3Num)
+                choiceBox2.setValue(Constants.questionChoice3);
+            else {
+                choiceBox2.setValue(Constants.questionChoice0);
+            }
+            window.setScene(quickPlayScene);
+        });
 
         layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
