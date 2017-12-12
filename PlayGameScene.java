@@ -58,24 +58,27 @@ public class PlayGameScene extends FrontPageScene {
         whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
 
-        radioBut1.getStyleClass().add("button-menu");
-        radioBut2.getStyleClass().add("button-menu");
-        radioBut3.getStyleClass().add("button-menu");
-        radioBut4.getStyleClass().add("button-menu");
+        radioBut1.getStyleClass().add("button-menuSelected");
+        radioBut2.getStyleClass().add("button-menuSelected");
+        radioBut3.getStyleClass().add("button-menuSelected");
+        radioBut4.getStyleClass().add("button-menuSelected");
+        radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+        radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+        radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+        radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
 
         playSound = new Button ("♫ Play Sound");
         playSound.getStyleClass().add("button-menuSelected");
-        radioBut1.getStyleClass().add("button-menu");
         playSound.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
 
                 Soundfiles.readingSound();
                 playSound.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-                radioBut1.getStyleClass().add("button-menuSelected");
-                radioBut2.getStyleClass().add("button-menuSelected");
-                radioBut3.getStyleClass().add("button-menuSelected");
-                radioBut4.getStyleClass().add("button-menuSelected");
+                radioBut1.setStyle(null);
+                radioBut2.setStyle(null);
+                radioBut3.setStyle(null);
+                radioBut4.setStyle(null);
             }
         });
 
@@ -105,6 +108,7 @@ public class PlayGameScene extends FrontPageScene {
 
 
         nextQuestion.setOnAction(f -> {
+            playSound.getStyleClass().add("button-menuSelected");
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
             counter2++;
 
@@ -166,6 +170,13 @@ public class PlayGameScene extends FrontPageScene {
             radioBut2.setSelected(false);
             radioBut3.setSelected(false);
             radioBut4.setSelected(false);
+            playSound.setStyle(null);
+            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+
+
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(true));
 
         });
