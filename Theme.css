@@ -126,17 +126,34 @@
     -fx-background-insets: 0px;
     -fx-text-fill:  #FFFFFF;
     -fx-background-radius: 4em;
-    -fx-min-width: 100px;
+    -fx-min-width: 300px;
     -fx-min-height: 60px;
     -fx-max-height: 60px;
-    -fx-max-width: 250px;
+    -fx-max-width: 300px;
     -fx-background-color: #078AFF;
     -fx-padding: 20px;
-
-
 }
 
 .radio-button:hover{
+    -fx-background-color: #004A8C;
+    -fx-text-fill: #FFFFFF;
+}
+
+
+
+.radio-button-selected{
+    -fx-background-insets: 0px;
+    -fx-text-fill:  #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 300px;
+    -fx-min-height: 60px;
+    -fx-max-height: 60px;
+    -fx-max-width: 300px;
+    -fx-background-color: #078AFF;
+    -fx-padding: 20px;
+}
+
+.radio-button-selected:hover{
     -fx-background-color: #004A8C;
     -fx-text-fill: #FFFFFF;
 }

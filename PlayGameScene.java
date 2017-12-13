@@ -58,10 +58,10 @@ public class PlayGameScene extends FrontPageScene {
         whoIsThis = new Label(rQuestions.get(n).getTextOfQuestion());
         whoIsThis.getStyleClass().add("label-who");
 
-        radioBut1.getStyleClass().add("button-menuSelected");
-        radioBut2.getStyleClass().add("button-menuSelected");
-        radioBut3.getStyleClass().add("button-menuSelected");
-        radioBut4.getStyleClass().add("button-menuSelected");
+        radioBut1.getStyleClass().add("radio-button-Selected");
+        radioBut2.getStyleClass().add("radio-button-Selected");
+        radioBut3.getStyleClass().add("radio-button-Selected");
+        radioBut4.getStyleClass().add("radio-button-Selected");
         radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
         radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
         radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
@@ -92,6 +92,7 @@ public class PlayGameScene extends FrontPageScene {
         }
         nextQuestion = new Button("☞ Next " + teamOrQuestion);
         nextQuestion.getStyleClass().add("button-menu");
+        nextQuestion.setStyle("-fx-max-width: 250px");
         nextQuestion.setVisible(false);
 
         question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
