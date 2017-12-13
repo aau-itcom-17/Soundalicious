@@ -56,7 +56,6 @@ public class CustomGameScene extends FrontPageScene {
         radioBut5.getStyleClass().add("button-menuSelected");
 
 
-
         //Custom game next button
         buttonCustomGameNext = new Button(Constants.goToNextText);
         buttonCustomGameNext.getStyleClass().add("button-menu");
