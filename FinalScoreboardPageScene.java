@@ -92,6 +92,7 @@ public class FinalScoreboardPageScene extends Main
         }
 
 
+
         finGame = new Button("Exit game");
         finGame.getStyleClass().add("button-menu");
 
