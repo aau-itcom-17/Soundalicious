@@ -107,7 +107,7 @@ public class FinalScoreboardPageScene extends Main
 
             Constants.click = 1;
             try {
-                Questions.getRandomQuestions(questions, rQuestions);
+                Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             } catch (SAXException e) {

@@ -56,7 +56,6 @@ public class QuickPlayScene extends Main {
           numOfTeams = Constants.teamChoice1Num;
           break;
       }
-
     });
 
     //Amount of questions in a choice box

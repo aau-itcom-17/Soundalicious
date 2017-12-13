@@ -31,7 +31,7 @@ public class Main extends Application {
     public static boolean loggedIn = false;
     public static int numOfQuestions = 2;
     public static int numOfTeams = 1;
-    public static List<Question> questions, rQuestions;
+    public static List<Question> questions, rQuestions, themeQuestions;
     public static List<RadioButton> answers;
     public static List<Team> teams;
     public static int n;
@@ -55,6 +55,7 @@ public class Main extends Application {
 
       questions = new ArrayList<>();
       rQuestions = new ArrayList<>();
+      themeQuestions = new ArrayList<>();
       answers = new ArrayList<>();
       teams = new ArrayList<>();
       n = 0;
@@ -62,6 +63,6 @@ public class Main extends Application {
 
 
      Questions.readQuestionsFromFile(questions, rQuestions);
-     Questions.getRandomQuestions(questions, rQuestions);
+
   }
 }
