@@ -109,7 +109,7 @@ public class LogInScene extends FrontPageScene {
                 logInMessage.setVisible(true);
                 logInError.setVisible(false);
                 new FrontPageScene();
-            } else if (login("admin","password")){
+            } else if (enteredUsername.equals("admin") && enteredPass.equals("password")){
                     admin.setLoggedIn(true);
                     new FrontPageScene();
             } else {
