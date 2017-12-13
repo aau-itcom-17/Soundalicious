@@ -17,6 +17,8 @@ public class CustomGameScene extends FrontPageScene {
 
     Label labelCustom, labelChooseQuestions;
     CheckBox box1, box2, box3;
+    RadioButton radioBut1, radioBut2, radioBut3;
+    ToggleGroup theme;
     Button buttonCustomGameNext, frontPageButton2;
     VBox customGameLayout;
 
@@ -31,23 +33,43 @@ public class CustomGameScene extends FrontPageScene {
         //Label choose cards
         labelChooseQuestions = new Label(Constants.chooseTopicTitle);
 
-        //Checkboxes for choosing cards
-        box1 = new CheckBox(Constants.topicText1);
-        box2 = new CheckBox(Constants.topicText2);
-        box3 = new CheckBox(Constants.topicText3);
+        //Radiobuttons for choosing cards
+        radioBut1 = new RadioButton(Constants.topicText1);
+        radioBut2 = new RadioButton(Constants.topicText2);
+        radioBut3 = new RadioButton(Constants.topicText3);
+        theme = new ToggleGroup();
+
+        radioBut1.setToggleGroup(theme);
+        radioBut2.setToggleGroup(theme);
+        radioBut3.setToggleGroup(theme);
+
+        radioBut1.getStyleClass().add("button-menuSelected");
+        radioBut2.getStyleClass().add("button-menuSelected");
+        radioBut3.getStyleClass().add("button-menuSelected");
 
         //Custom game next button
         buttonCustomGameNext = new Button(Constants.goToNextText);
+        buttonCustomGameNext.getStyleClass().add("button-menu");
         buttonCustomGameNext.setOnAction(e -> new QuickPlayScene());
+
+        theme.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
+        {
+            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            buttonCustomGameNext.getStyleClass().add("button-menuSelected");
+        });
+
 
         //Button back to front on custom game page
         frontPageButton2 = new Button(Constants.goToMainText);
+        frontPageButton2.getStyleClass().add("button-menu");
         frontPageButton2.setOnAction(e -> new FrontPageScene());
 
         //Layout custom game
         customGameLayout = new VBox(20);
         customGameLayout.setAlignment(Pos.CENTER);
-        customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, box1, box2, box3, buttonCustomGameNext, frontPageButton2);
+        customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, radioBut1, radioBut2, radioBut3, buttonCustomGameNext, frontPageButton2);
         customGameScene = new Scene(customGameLayout, 400, 600);
 
         customGameScene.getStylesheets().add("Theme.css");

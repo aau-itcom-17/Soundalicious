@@ -244,8 +244,20 @@
 }
 
 .check-box{
-    -fx-text-fill: #FFFFFF;
-    -fx-font-size: 12;
+    -fx-text-fill: #004A8C;
+    -fx-background-radius: 4em;
+    -fx-min-width: 100px;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-max-width: 200px;
+    /*-fx-background-color: linear-gradient(deepskyblue, dodgerblue);*/
+    -fx-background-color: #AAD7FF;
+    -fx-background-insets: 10px;
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-border-insets: -3px;
+    -fx-background-insets: -3px;
+    -fx-padding: 10px;
 }
 
 .text-field{
