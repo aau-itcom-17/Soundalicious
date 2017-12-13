@@ -58,6 +58,8 @@ public class Constants {
   public static String topicText1 = "Musicians";
   public static String topicText2 = "Actors";
   public static String topicText3 = "Athletes";
+  public static String topicText4 = "Memes";
+  public static String topicText5 = "Other";
 
   //how to play
   public static String rulesTitle1 = "Drinking game rules";

@@ -11,7 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 
 public class FrontPageScene extends Main {
@@ -37,7 +39,18 @@ public class FrontPageScene extends Main {
     //Quick play button -> Goes to Quickplay page
     quickPlayButton = new Button(Constants.quickPlayName);
     quickPlayButton.getStyleClass().add("button-quickplay");
-    quickPlayButton.setOnAction(e -> new QuickPlayScene());
+    quickPlayButton.setOnAction(e -> {
+      try {
+        Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
+      } catch (ParserConfigurationException e1) {
+        e1.printStackTrace();
+      } catch (SAXException e1) {
+        e1.printStackTrace();
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      }
+      new QuickPlayScene();
+    });
 
 
     //Custom game button -> Goes to login page  page

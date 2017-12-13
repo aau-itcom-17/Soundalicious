@@ -217,10 +217,12 @@ public class PlayGameScene extends FrontPageScene {
 
 
         Constants.click = 1;
+        /*
         try {
-            Questions.getRandomQuestions(questions, rQuestions);
+            Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
+        */
     }
 }
