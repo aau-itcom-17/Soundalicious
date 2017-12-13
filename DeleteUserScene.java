@@ -1,6 +1,7 @@
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -32,6 +33,24 @@ public class DeleteUserScene extends FrontPageScene{
 
         deleteButton = new Button("Delete user");
         deleteButton.getStyleClass().add("button-continue");
+        usernameInput.setOnKeyPressed((event) -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                username = usernameInput.getText();
+                try {
+                    if(findAndDeleteUser(username)) {
+                        deleteButton.setText("User deleted");
+                        deleteButton.setStyle("-fx-background-color: green");
+                        usernameInput.setText("");
+                    }
+                    else {
+                        deleteButton.setText("User was not found");
+                        deleteButton.setStyle("-fx-background-color: red");
+                        usernameInput.setText("");
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }});
         deleteButton.setOnAction(e -> {
             username = usernameInput.getText();
             try {
