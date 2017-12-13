@@ -59,6 +59,7 @@ public class FrontPageScene extends Main {
       logOutButton.getStyleClass().add("button-menu");
       logOutButton.setOnAction(e -> {
         user.setLoggedIn(false);
+        admin.setLoggedIn(false);
         new FrontPageScene();
       });
 
