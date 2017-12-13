@@ -8,6 +8,9 @@ public class User {
     public User(){
 
     }
+    public User(String username, String password){
+
+    }
 
     public boolean isLoggedIn() {
         return isLoggedIn;
