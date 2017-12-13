@@ -39,7 +39,7 @@ public class Questions
             temp = new Question();
 
                 temp.setId(Integer.parseInt(document.getElementsByTagName("id").item(i).getTextContent()));
-
+                temp.setTheme(document.getElementsByTagName("theme").item(i).getTextContent());
                 temp.setTextOfQuestion(document.getElementsByTagName("textOfQuestion").item(i).getTextContent());
                 temp.setSoundFile(document.getElementsByTagName("soundfile").item(i).getTextContent());
                 temp.setCorrectAnswer(document.getElementsByTagName("correctAnswer").item(i).getTextContent());

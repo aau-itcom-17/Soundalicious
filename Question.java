@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class Question implements Comparable<Question> {
     private int id;
+    private String theme;
     private String soundFile;
     private String textOfQuestion;
     private String correctAnswer;
@@ -26,6 +27,10 @@ public class Question implements Comparable<Question> {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getTheme () { return theme;}
+
+    public void setTheme (String theme) { this.theme = theme; }
 
     public String getSoundFile() {
         return soundFile;
