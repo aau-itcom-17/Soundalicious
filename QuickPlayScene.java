@@ -26,7 +26,7 @@ public class QuickPlayScene extends Main {
   public QuickPlayScene(){
 
     //Label Quick play
-    labelQuick = new Label(Constants.gameName);
+    labelQuick = new Label(Constants.quickPlayName);
     labelQuick.getStyleClass().add("label-headline");
 
     //Amount of teams in a choice box

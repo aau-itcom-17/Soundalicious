@@ -16,7 +16,6 @@ import java.io.IOException;
 public class CustomGameScene extends FrontPageScene {
 
     Label labelCustom, labelChooseQuestions;
-    CheckBox box1, box2, box3;
     RadioButton radioBut1, radioBut2, radioBut3;
     ToggleGroup theme;
     Button buttonCustomGameNext, frontPageButton2;
