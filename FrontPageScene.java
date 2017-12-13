@@ -85,9 +85,13 @@ public class FrontPageScene extends Main {
       deleteUserButton = new Button("Delete a user");
       deleteUserButton.getStyleClass().add("button-menu");
       deleteUserButton.setOnAction(event -> {
-      new DeleteUserScene();
+        try {
+          new DeleteUserScene();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
 
-              });
+      });
 
     }
 
@@ -113,7 +117,7 @@ public class FrontPageScene extends Main {
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton);
     }else if(admin.isLoggedIn) {
       System.out.println("admin is logged in");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton, table);
+      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton);
     }
     else {
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);
