@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class LogInScene extends FrontPageScene {
 
-    public static Label labelLogin, usernameLabel, passwordLabel, logInError, logInMessage, adminMessage;
+    public static Label labelLogin, usernameLabel, passwordLabel;
     public static TextField usernameInput, passwordInput;
     VBox logInPageLayout;
     Button logInButton, frontPageButton3;
@@ -46,16 +46,20 @@ public class LogInScene extends FrontPageScene {
         //Password input
         passwordInput = new PasswordField();
 
-        // Error and message labels
-        logInError = new Label(Constants.wrongPasswordText);
-        logInError.setStyle("-fx-text-fill: red");
-        logInError.setVisible(false);
-        logInMessage = new Label(Constants.succesfulLogInText);
-        logInMessage.setStyle("-fx-text-fill: green");
-        logInMessage.setVisible(false);
-
         logInButton = new Button(Constants.logInText);
         logInButton.getStyleClass().add("button-continue");
+        usernameInput.setOnMouseClicked(e -> {
+            usernameInput.setStyle(null);
+            passwordInput.setStyle(null);
+            logInButton.setStyle(null);
+            logInButton.setText(Constants.logInText);
+        });
+        passwordInput.setOnMouseClicked(e -> {
+            usernameInput.setStyle(null);
+            passwordInput.setStyle(null);
+            logInButton.setStyle(null);
+            logInButton.setText(Constants.logInText);
+        });
 
         // The addEventHandler handles more than one event, which makes it so we don't have to click the login button twice.
         passwordInput.setOnKeyPressed((event) -> {
@@ -77,13 +81,10 @@ public class LogInScene extends FrontPageScene {
         frontPageButton3.getStyleClass().add("button-menu");
         frontPageButton3.setOnAction(e -> window.setScene(frontPageScene));
 
-        adminMessage = new Label (Constants.adminLoggedIn);
-        adminMessage.setVisible(false);
-
         //Layout custom game
         logInPageLayout = new VBox(20);
         logInPageLayout.setAlignment(Pos.CENTER);
-        logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInError, logInMessage, logInButton, frontPageButton3, adminMessage);
+        logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInButton, frontPageButton3);
         logInPageScene = new Scene(logInPageLayout, 400, 700);
 
         logInPageScene.getStylesheets().add("Theme.css");
@@ -106,16 +107,25 @@ public class LogInScene extends FrontPageScene {
             if (login(enteredUsername, enteredPass) && !enteredUsername.equals("admin")) {
                 user.setLoggedIn(true);
                 user.setUserName(enteredUsername);
-                logInMessage.setVisible(true);
-                logInError.setVisible(false);
                 new FrontPageScene();
             } else if (enteredUsername.equals("admin") && enteredPass.equals("password")){
                     admin.setLoggedIn(true);
                     new FrontPageScene();
+            } else if(!SignUpScene.userExists(enteredUsername)){
+                passwordInput.setText("");
+                usernameInput.setText("");
+                logInButton.setStyle("-fx-background-color: red");
+                usernameInput.setStyle("-fx-background-color: #FEE4DF");
+                passwordInput.setStyle("-fx-background-color: #FEE4DF");
+                logInButton.setText("User does not exist");
+                usernameInput.requestFocus();
             } else {
                 passwordInput.setText("");
-                logInMessage.setVisible(false);
-                logInError.setVisible(true);
+                logInButton.setStyle("-fx-background-color: red");
+                usernameInput.setStyle(null);
+                passwordInput.setStyle("-fx-background-color: #FEE4DF");
+                logInButton.setText("Wrong password");
+                passwordInput.requestFocus();
             }
         } catch (IOException e) {
             e.printStackTrace();

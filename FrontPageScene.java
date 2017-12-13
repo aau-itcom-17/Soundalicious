@@ -20,8 +20,6 @@ public class FrontPageScene extends Main {
   Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
   Button  logOutButton, deleteButton, uploadButton, deleteUserButton;
   VBox layoutFrontpage ;
-  TableView table;
-
 
   public FrontPageScene() {
 
