@@ -22,7 +22,7 @@ public class Constants {
   public static String adminLoggedIn = "You are logged in as administrator, but you can not do anything";
 
   public static String newUserText = "✓ New username:";
-  public static String deleteUserText = "⌦ Delete your user and log out";
+  public static String deleteUserText = "⌦ Delete your user";
   public static String uploadSound = "↑ Upload sound";
 
   //custom game

@@ -69,8 +69,13 @@ public class FrontPageScene extends Main {
       deleteButton = new Button(Constants.deleteUserText);
       deleteButton.getStyleClass().add("button-menu");
       deleteButton.setOnAction(e -> {
-        removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
-        window.setScene(frontPageScene);
+        deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        deleteButton.setText("Are you sure?");
+        deleteButton.setOnAction(f -> {
+          removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
+          user.setLoggedIn(false);
+          new FrontPageScene();
+        });
       });
 
       //Upload a sound button
