@@ -35,6 +35,8 @@ public class Constants {
   public static int[] questionNums = new int[] {5, 10, 15, 20, 25, 30};
   public static String[] questionNumNames = new String[] {"5 questions", "10 questions", "15 questions", "20 questions", "25 questions", "30 questions"};
 
+  public static String[] themeNames = new String[] {"Theme1", "Theme2", "Theme3", "Theme4", "Theme5"};
+
   public static String questionChoice0 = "Choose amount of questions";
   public static String questionChoice1 = "3 questions";
   public static String questionChoice2 = "15 questions";
