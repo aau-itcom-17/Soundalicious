@@ -60,9 +60,6 @@ public class Main extends Application {
       teams = new ArrayList<>();
       n = 0;
 
-
-
      Questions.readQuestionsFromFile(questions, rQuestions);
-
   }
 }

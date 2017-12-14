@@ -32,15 +32,12 @@ public class PlayGameScene extends FrontPageScene {
     public PlayGameScene() throws IOException, SAXException, ParserConfigurationException {
         //Buttons
 
-
         radioBut2 = new RadioButton(rQuestions.get(n).getDummyAnswers1());
         radioBut3 = new RadioButton(rQuestions.get(n).getDummyAnswers2());
         radioBut4 = new RadioButton(rQuestions.get(n).getDummyAnswers3());
         radioBut1 = new RadioButton(rQuestions.get(n).getCorrectAnswer());
         question1 = new ToggleGroup();
         checkCorrect = rQuestions.get(n).getCorrectAnswer();
-
-
 
         radioBut1.setToggleGroup(question1);
         radioBut2.setToggleGroup(question1);
@@ -107,7 +104,6 @@ public class PlayGameScene extends FrontPageScene {
         });
 
 
-
         nextQuestion.setOnAction(f -> {
             playSound.getStyleClass().add("button-menuSelected");
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(false));
@@ -121,9 +117,7 @@ public class PlayGameScene extends FrontPageScene {
             if (teams.size() > counter2) {
                 teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (n+1));
                 nextQuestion.setText("Commit Answer");
-
             }
-
 
             System.out.println("n " + n);
             Soundfiles.noSound();
@@ -131,13 +125,6 @@ public class PlayGameScene extends FrontPageScene {
 
             if (radioBut1.isSelected()) {
                 teams.get(i).setPointScore(teams.get(i).getPointScore() + 1);
-            } else {
-                /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Wrong Answer");
-                alert.showAndWait();
-                */
             }
             i++;
 
@@ -145,18 +132,6 @@ public class PlayGameScene extends FrontPageScene {
                 n++;
                 i = 0;
                 new ScoreboardPageScene();
-                /*
-                try {
-                    new PlayGameScene();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (SAXException e) {
-                    e.printStackTrace();
-                } catch (ParserConfigurationException e) {
-                    e.printStackTrace();
-                }
-                */
-
 
             }
             for (int j = 0; j < teams.size(); j++) {
@@ -175,11 +150,8 @@ public class PlayGameScene extends FrontPageScene {
             radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
             radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
 
-
             question1.selectedToggleProperty().addListener((observable, oldVal, newVal) ->  nextQuestion.setVisible(true));
-
         });
-
 
 
         //Button back to front on custom game page
@@ -200,8 +172,6 @@ public class PlayGameScene extends FrontPageScene {
 
         playGameScene.getStylesheets().add("Theme.css");
         window.setScene(playGameScene);
-
-
     }
 
     private static void handle(ActionEvent f) {
@@ -213,14 +183,6 @@ public class PlayGameScene extends FrontPageScene {
         numOfQuestions = Constants.questionChoice1Num;
         window.setScene(frontPageScene);
 
-
         Constants.click = 1;
-        /*
-        try {
-            Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
-        }
-        */
     }
 }

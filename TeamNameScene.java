@@ -37,7 +37,6 @@ public class TeamNameScene extends QuickPlayScene {
         selectYourTeamName = new TextField();
         selectYourTeamName.requestFocus();
         selectYourTeamName.setOnAction(e -> {
-
         });
 
 
@@ -53,9 +52,7 @@ public class TeamNameScene extends QuickPlayScene {
             });
 
             saveTeams.setOnAction(e -> nextTeamName());
-
         }
-
 
         teamNameSceneLayout = new VBox(20);
         teamNameSceneLayout.setAlignment(Pos.CENTER);
@@ -64,8 +61,6 @@ public class TeamNameScene extends QuickPlayScene {
 
         logInPageScene.getStylesheets().add("Theme.css");
         window.setScene(logInPageScene);
-
-
     }
 
     public void nextTeamName(){
