@@ -20,14 +20,14 @@ public class Main extends Application {
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
     public static int numOfQuestions = 10;
-    public static int numOfTeams = 1;
+    public static int numOfTeams = 2;
     public static List<Question> questions, rQuestions, themeQuestions;
     public static List<RadioButton> answers;
     public static List<Team> teams;
     public static int n;
     public static User user = new User();
     public static Admin admin = new Admin();
-    public static int tCount = 0, qCount = 1;
+    public static int tCount = 1, qCount = 1;
 
 
     public static void main(String[] args)
