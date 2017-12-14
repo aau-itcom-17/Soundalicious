@@ -25,7 +25,7 @@ public class LogInScene extends FrontPageScene {
     public LogInScene(){
 
         //Label login page
-        labelLogin = new Label(Constants.gameName);
+        labelLogin = new Label("Log in");
         labelLogin.getStyleClass().add("label-headline");
 
         //Username label
