@@ -40,8 +40,9 @@ public class SaveFiles
     private static final String titleTxt = "Save your sounds";
     private TextField questionText, correctAnswer, wronganswer1, wronganswer2, wronganswer3;
     private Label questionLabel, correctAnswerLabel, wrongAnswerLabel, label, themeLabel;
-    private ChoiceBox themesChoice;
+    private ChoiceBox <String>  themesChoice;
     Question question = new Question();
+    private HBox answersHBox;
     private Button btn1, btn2;
     private int number = 1000;
     private VBox saveFilesLayout;
@@ -59,31 +60,42 @@ public class SaveFiles
         questionLabel = new Label("Write questionText below: ");
         //Username input
         questionText = new TextField();
+        questionLabel.setStyle("-fx-padding: -30px");
+        questionText.setStyle("-fx-max-width: 300px; -fx-min-width: 300px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         questionText.setOnKeyPressed((event) -> {
             question.setTextOfQuestion(questionText.getText());
         });
 
         correctAnswerLabel = new Label("Write the correct answer below: ");
-        correctAnswerLabel.setStyle("-fx-padding: -30px");
         correctAnswer = new TextField();
+        correctAnswerLabel.setStyle("-fx-padding: -30px");
+        correctAnswer.setStyle("-fx-max-width: 300px; -fx-min-width: 300px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         correctAnswer.setOnKeyPressed((event) -> {
             question.setCorrectAnswer(correctAnswer.getText());
         });
 
+
         wrongAnswerLabel = new Label("Write the wrong answers below: ");
         wrongAnswerLabel.setStyle("-fx-padding: -30px");
         wronganswer1 = new TextField();
+        wronganswer1.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer1.setOnKeyPressed((event) -> {
             question.setDummyAnswers1(wronganswer1.getText());
         });
         wronganswer2 = new TextField();
+        wronganswer2.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer2.setOnKeyPressed((event) -> {
             question.setDummyAnswers2(wronganswer2.getText());
         });
         wronganswer3 = new TextField();
+        wronganswer3.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer3.setOnKeyPressed((event) -> {
             question.setDummyAnswers3(wronganswer3.getText());
         });
+
+        answersHBox = new HBox();
+        answersHBox.setAlignment(Pos.CENTER);
+        answersHBox.getChildren().addAll(wronganswer1, wronganswer2, wronganswer3);
 
         // Window label
         label = new Label("Make your own questions");
@@ -97,7 +109,7 @@ public class SaveFiles
         // theme choosing
         themeLabel = new Label("Choose theme for your question");
         themeLabel.setStyle("-fx-padding: -30px");
-        themesChoice = new ChoiceBox(FXCollections.observableArrayList(Constants.themeNames[0], Constants.themeNames[1], Constants.themeNames[2], Constants.themeNames[3], Constants.themeNames[4]));
+        themesChoice = new <String> ChoiceBox(FXCollections.observableArrayList(Constants.themeNames[0], Constants.themeNames[1], Constants.themeNames[2], Constants.themeNames[3], Constants.themeNames[4]));
 
 
         // Button
@@ -109,8 +121,8 @@ public class SaveFiles
         buttonHb1.getChildren().addAll(btn1);
         // Button 2
         System.out.println(questions.size());
-        btn2 = new Button("Save Question");
-        btn2.getStyleClass().add("button-continue");
+        btn2 = new Button("Save question");
+        btn2.getStyleClass().add("button-menu");
         btn2.setOnAction(new SaveQuestionListener());
         HBox buttonHb2 = new HBox(10);
         buttonHb2.setAlignment(Pos.CENTER);
@@ -130,7 +142,7 @@ public class SaveFiles
         saveFilesLayout = new VBox(30);
         saveFilesLayout.setPadding(new Insets(25, 25, 25, 25));
         saveFilesLayout.setAlignment(Pos.CENTER);
-        saveFilesLayout.getChildren().addAll(labelHb, questionLabel, questionText, correctAnswerLabel, correctAnswer, wrongAnswerLabel, wronganswer1, wronganswer2, wronganswer3, themeLabel, themesChoice, buttonHb1, buttonHb2, frontButton1, actionStatus);
+        saveFilesLayout.getChildren().addAll(questionLabel, questionText, correctAnswerLabel, correctAnswer, wrongAnswerLabel, answersHBox, themeLabel, themesChoice, buttonHb1, buttonHb2, frontButton1, actionStatus);
 
         // Scene
         saveFilesScene = new Scene(saveFilesLayout,400, 700); // w x h
@@ -144,8 +156,9 @@ public class SaveFiles
         public void handle(ActionEvent e) {
             if (question.getSoundFile() != null) {
                 question.setId(Main.questions.size()+2);
+                question.setTheme(themesChoice.getValue());
                 try {
-                    question.writeToFile(question.getId(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
+                    question.writeToFile(question.getId(), question.getTheme(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
                             question.getDummyAnswers1(), question.getDummyAnswers2(), question.getDummyAnswers3());
 
                 } catch (IOException e1) {
