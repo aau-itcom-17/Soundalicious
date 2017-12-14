@@ -19,8 +19,6 @@ public class Questions {
         //r = new SecureRandom();
         random = new Random();
         readQuestionsFromFile(questions, rQuestions);
-
-
     }
 
 
@@ -83,42 +81,6 @@ public class Questions {
             }
 
         }
-
-        /*
-
-            if (CustomGameScene.radioBut1.isSelected()) {
-                    for (int i = 0; i < questions.size(); i++) {
-                        while (questions.get(i).getTheme().equals("Theme1")) {
-                            themeQuestions.add(questions.get(i));
-                        }
-                    }
-            } else if (CustomGameScene.radioBut2.isSelected()) {
-                for (int i = 0; i < questions.size(); i++) {
-                    while (questions.get(i).getTheme().equals("Theme2")) {
-                        themeQuestions.add(questions.get(i));
-                    }
-                    System.out.println("I'm in getThemeQuestions!!");
-                }
-            } else if (CustomGameScene.radioBut3.isSelected()) {
-                    for (int i = 0; i < questions.size(); i++) {
-                        while (questions.get(i).getTheme().equals("Theme3")) {
-                            themeQuestions.add(questions.get(i));
-                        }
-                    }
-            } else if (CustomGameScene.radioBut4.isSelected()) {
-                for (int i = 0; i < questions.size(); i++) {
-                while (questions.get(i).getTheme().equals("Theme4")) {
-                    themeQuestions.add(questions.get(i));
-                }
-                    }
-            } else if (CustomGameScene.radioBut5.isSelected()) {
-                for (int i = 0; i < questions.size(); i++) {
-                while (questions.get(i).getTheme().equals("Theme5")) {
-                    themeQuestions.add(questions.get(i));
-                }
-            }
-        }
-        */
         rQuestions.clear();
         Question q;
         while (themeQuestions.size() != rQuestions.size()) {
@@ -132,23 +94,6 @@ public class Questions {
             }
         }
     }
-
-
-        /*
-        Question t;
-
-        while (questions.size() != rQuestions.size()) {
-            SecureRandom r = new SecureRandom();
-
-
-            //readQuestionsFromFile(questions);
-            q = questions.get(r.nextInt(questions.size()));
-
-            if (!rQuestions.contains(q)) {  // should implement the Comparable interface.
-                rQuestions.add(q);
-            }
-        }
-        */
 
 
 
