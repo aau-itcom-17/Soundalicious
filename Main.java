@@ -37,6 +37,7 @@ public class Main extends Application {
     public static int n;
     public static User user = new User();
     public static Admin admin = new Admin();
+    public static int tCount = 0, qCount = 1;
 
 
     public static void main(String[] args)
