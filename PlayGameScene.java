@@ -116,10 +116,12 @@ public class PlayGameScene extends FrontPageScene {
             playersNum++;
             if (teams.size() > counter2) {
                 teamName.setText(teams.get(counter2).getTeamName() + " answering question " + (n+1));
+            }
+            counterQuestion++;
+            if (teams.size() == counterQuestion){
                 nextQuestion.setText("Commit Answer");
             }
 
-            System.out.println("n " + n);
             Soundfiles.noSound();
             answers.clear();
 
