@@ -119,7 +119,7 @@ public class PlayGameScene extends FrontPageScene {
             }
             counterQuestion++;
             if (teams.size() == counterQuestion){
-                nextQuestion.setText("Commit Answer");
+                nextQuestion.setText("See Answers");
             }
 
             Soundfiles.noSound();
