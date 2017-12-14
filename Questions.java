@@ -52,6 +52,7 @@ public class Questions {
 
     public static void getThemeQuestions(List<Question> questions, List<Question> rQuestions, List<Question> themeQuestions, String selection) throws ParserConfigurationException, SAXException, IOException {
         System.out.println(selection + "!!!!!!!!!!!!!!!!!");
+        themeQuestions.clear();
 
         for (int i = 0; i < questions.size(); i++) {
             if (selection.equals(Constants.topicText1)) {
