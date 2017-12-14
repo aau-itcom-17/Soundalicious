@@ -25,10 +25,8 @@ public class TeamNameScene extends QuickPlayScene {
 
     public TeamNameScene() {
 
-        labelHeadline = new Label(Constants.gameName);
-        labelSelectTeamName = new Label("Customize your team name");
-
-        teamNumber = new Label("Team " + 1);
+        teamNumber = new Label("Name for team " + 1 + ":");
+        teamNumber.getStyleClass().add("label-headline");
 
         teamNameError = new Label("Please enter a team name.");
         teamNameError.setStyle("-fx-text-fill: red");
@@ -37,7 +35,6 @@ public class TeamNameScene extends QuickPlayScene {
         selectYourTeamName = new TextField();
         selectYourTeamName.requestFocus();
         selectYourTeamName.setOnAction(e -> {
-
         });
 
 
@@ -53,19 +50,15 @@ public class TeamNameScene extends QuickPlayScene {
             });
 
             saveTeams.setOnAction(e -> nextTeamName());
-
         }
-
 
         teamNameSceneLayout = new VBox(20);
         teamNameSceneLayout.setAlignment(Pos.CENTER);
-        teamNameSceneLayout.getChildren().addAll(labelHeadline, labelSelectTeamName, teamNumber, selectYourTeamName, saveTeams, teamNameError);
+        teamNameSceneLayout.getChildren().addAll(teamNumber, selectYourTeamName, saveTeams, teamNameError);
         logInPageScene = new Scene(teamNameSceneLayout, 400, 700);
 
         logInPageScene.getStylesheets().add("Theme.css");
         window.setScene(logInPageScene);
-
-
     }
 
     public void nextTeamName(){
@@ -78,7 +71,7 @@ public class TeamNameScene extends QuickPlayScene {
 
             //changes team number for player.
             teamNr++;
-            teamNumber.setText("Team " + teamNr);
+            teamNumber.setText("Name for team " + teamNr + ":");
 
 
 

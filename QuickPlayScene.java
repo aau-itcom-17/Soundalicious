@@ -1,5 +1,6 @@
 import javafx.application.*;
 import javafx.geometry.Pos;
+import javafx.scene.layout.HBox;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -19,8 +20,10 @@ import java.io.IOException;
 public class QuickPlayScene extends Main {
 
   Label labelQuick, labelChoiceBox, labelChoiceBox2;
+  Button teamChoice, questionsChoice;
+  Label teamNumLabel, questNumLabel;
   ChoiceBox<String> choiceBox, choiceBox2;
-  Button startGameButton, buttonHowToPlay, frontPageButton1;
+  Button startGameButton, buttonHowToPlay, frontPageButton1, minButtonT, plusButtonT, minButtonQ, plusButtonQ;
   VBox quickPlayLayout;
 
   public QuickPlayScene(){
@@ -28,61 +31,101 @@ public class QuickPlayScene extends Main {
     //Label Quick play
     labelQuick = new Label(Constants.quickPlayName);
     labelQuick.getStyleClass().add("label-headline");
+    teamNumLabel = new Label("Choose number of teams");
+    questNumLabel = new Label("Choose number of questions");
 
-    //Amount of teams in a choice box
-    choiceBox = new ChoiceBox<>();
-    choiceBox.getItems().addAll(Constants.teamChoice0, Constants.teamChoice1, Constants.teamChoice2, Constants.teamChoice3, Constants.teamChoice4, Constants.teamChoice5);
-    //Set default value
-    choiceBox.setValue(Constants.teamChoice0);
-    //Amount of questions in a choice box
-    choiceBox.setOnAction(e -> {
-      switch (choiceBox.getValue()){
-        case "1 Team":
-          numOfTeams = Constants.teamChoice1Num;
-          break;
-        case "2 Teams":
-          numOfTeams = Constants.teamChoice2Num;
-          break;
-        case "3 Teams":
-          numOfTeams = Constants.teamChoice3Num;
-          break;
-        case "4 Teams":
-          numOfTeams = Constants.teamChoice4Num;
-          break;
-        case "5 Teams":
-          numOfTeams = Constants.teamChoice5Num;
-          break;
-        default:
-          numOfTeams = Constants.teamChoice1Num;
-          break;
+
+    HBox hbox1 = new HBox();
+    minButtonT = new Button("-");
+    minButtonT.getStyleClass().add("controlButtonMinus");
+    minButtonT.setStyle("-fx-background-color: #eaf2ff");
+    minButtonT.setOnAction(e -> {
+              if(tCount == 1){
+                tCount--;
+                teamChoice.setText(Constants.teamNumNames[tCount]);
+                numOfTeams = Constants.teamNums[tCount];
+                plusButtonT.setStyle(null);
+                minButtonT.setStyle("-fx-background-color: #eaf2ff");
+              }
+              else if (tCount > 0) {
+                tCount--;
+                teamChoice.setText(Constants.teamNumNames[tCount]);
+                numOfTeams = Constants.teamNums[tCount];
+                plusButtonT.setStyle(null);
+              }
+            });
+    teamChoice = new Button(Constants.teamNumNames[tCount]);
+    teamChoice.getStyleClass().add("controlText");
+    plusButtonT = new Button("+");
+    plusButtonT.getStyleClass().add("controlButtonPlus");
+    plusButtonT.setOnAction(e -> {
+              if(tCount == 3){
+                tCount++;
+                teamChoice.setText(Constants.teamNumNames[tCount]);
+                numOfTeams = Constants.teamNums[tCount];
+                minButtonT.setStyle(null);
+                plusButtonT.setStyle("-fx-background-color: #eaf2ff");
+              }
+              else if(tCount < 4) {
+                tCount++;
+                teamChoice.setText(Constants.teamNumNames[tCount]);
+                numOfTeams = Constants.teamNums[tCount];
+                minButtonT.setStyle(null);
+              }
+    }
+    );
+
+
+    hbox1.setAlignment(Pos.CENTER);
+    hbox1.getChildren().addAll(minButtonT, teamChoice, plusButtonT);
+
+    HBox hbox2 = new HBox();
+    minButtonQ = new Button("-");
+    minButtonQ.getStyleClass().add("controlButtonMinus");
+    minButtonQ.setOnAction(e -> {
+      if(qCount == 1){
+        qCount--;
+        questionsChoice.setText(Constants.questionNumNames[qCount]);
+        numOfQuestions= Constants.questionNums[qCount];
+        plusButtonQ.setStyle(null);
+        minButtonQ.setStyle("-fx-background-color: #eaf2ff");
+      }
+      else if (qCount > 0) {
+        qCount--;
+        questionsChoice.setText(Constants.questionNumNames[qCount]);
+        numOfQuestions = Constants.teamNums[qCount];
+        plusButtonQ.setStyle(null);
       }
     });
+    questionsChoice = new Button(Constants.questionNumNames[qCount]);
+    questionsChoice.getStyleClass().add("controlText");
+    plusButtonQ = new Button("+");
+    plusButtonQ.getStyleClass().add("controlButtonPlus");
+    plusButtonQ.setOnAction(e -> {
+              if(qCount == 4){
+                qCount++;
+                questionsChoice.setText(Constants.questionNumNames[qCount]);
+                numOfQuestions = Constants.questionNums[qCount];
+                minButtonQ.setStyle(null);
+                plusButtonQ.setStyle("-fx-background-color: #eaf2ff");
+              }
+              else if (qCount < 5) {
+                qCount++;
+                questionsChoice.setText(Constants.questionNumNames[qCount]);
+                numOfQuestions = Constants.questionNums[qCount];
+                minButtonQ.setStyle(null);
+              }
+            }
+    );
+    hbox2.setAlignment(Pos.CENTER);
+    hbox2.getChildren().addAll(minButtonQ, questionsChoice, plusButtonQ);
 
-    //Amount of questions in a choice box
-    choiceBox2 = new ChoiceBox<>();
-    choiceBox2.getItems().addAll(Constants.questionChoice0, Constants.questionChoice1, Constants.questionChoice2, Constants.questionChoice3);
-    //Set default value
-    choiceBox2.setValue(Constants.questionChoice0);
 
     //Quick Play play button button
     startGameButton = new Button(Constants.startGameText);
     startGameButton.getStyleClass().add("button-continue");
     startGameButton.setOnAction(e -> {
       //sets numOfQuestions according to choice box
-      switch (choiceBox2.getValue()){
-        case "10 questions":
-          numOfQuestions = Constants.questionChoice1Num;
-          break;
-        case "15 questions":
-          numOfQuestions = Constants.questionChoice2Num;
-          break;
-        case "25 questions":
-          numOfQuestions = Constants.questionChoice3Num;
-          break;
-        default:
-          numOfQuestions = Constants.questionChoice1Num;
-          break;
-      }
       new TeamNameScene();
 
     });
@@ -91,20 +134,6 @@ public class QuickPlayScene extends Main {
     buttonHowToPlay = new Button(Constants.howToPlayText);
     buttonHowToPlay.getStyleClass().add("button-menu");
     buttonHowToPlay.setOnAction(e -> {
-      switch (choiceBox2.getValue()){
-        case "10 questions":
-          numOfQuestions = Constants.questionChoice1Num;
-          break;
-        case "15 questions":
-          numOfQuestions = Constants.questionChoice2Num;
-          break;
-        case "25 questions":
-          numOfQuestions = Constants.questionChoice3Num;
-          break;
-        default:
-          numOfQuestions = Constants.questionChoice1Num;
-          break;
-      }
       new HowToPlayScene();
     });
 
@@ -115,7 +144,7 @@ public class QuickPlayScene extends Main {
         teams.clear();
         n = 0;
         answers.clear();
-        numOfTeams = Constants.teamChoice1Num;
+        numOfTeams = 1;
         window.setScene(frontPageScene);
 
     });
@@ -124,7 +153,7 @@ public class QuickPlayScene extends Main {
     //Layout quickplay
     quickPlayLayout = new VBox(20);
     quickPlayLayout.setAlignment(Pos.CENTER);
-    quickPlayLayout.getChildren().addAll(labelQuick, choiceBox, choiceBox2, startGameButton, buttonHowToPlay, frontPageButton1);
+    quickPlayLayout.getChildren().addAll(labelQuick, teamNumLabel, hbox1, questNumLabel, hbox2, startGameButton, buttonHowToPlay, frontPageButton1);
     quickPlayScene = new Scene(quickPlayLayout, 400, 700);
 
     quickPlayScene.getStylesheets().add("Theme.css");

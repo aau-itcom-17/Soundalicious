@@ -1,18 +1,8 @@
-import javafx.application.*;
-import javafx.geometry.Pos;
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.layout.VBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.layout.AnchorPane;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +19,7 @@ public class Main extends Application {
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static boolean loggedIn = false;
-    public static int numOfQuestions = 2;
+    public static int numOfQuestions = 10;
     public static int numOfTeams = 1;
     public static List<Question> questions, rQuestions, themeQuestions;
     public static List<RadioButton> answers;
@@ -37,6 +27,7 @@ public class Main extends Application {
     public static int n;
     public static User user = new User();
     public static Admin admin = new Admin();
+    public static int tCount = 0, qCount = 1;
 
 
     public static void main(String[] args)
@@ -60,9 +51,6 @@ public class Main extends Application {
       teams = new ArrayList<>();
       n = 0;
 
-
-
      Questions.readQuestionsFromFile(questions, rQuestions);
-
   }
 }

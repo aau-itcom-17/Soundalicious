@@ -4,7 +4,7 @@ public class Constants {
   public static String userDatabase = "text.txt";
 
   public static String gameName = "Soundalicious";
-  public static String goToMainText = "⌫ Go back to the front page";
+  public static String goToMainText = "Go back to the front page";
   public static String goToNextText = "Go to next page";
 
   //log in and sign up
@@ -28,18 +28,14 @@ public class Constants {
   //custom game
   public static String customGameText = "Custom game";
 
-  public static String teamChoice0 = "Choose amount of teams";
-  public static String teamChoice1 = "1 Team";
-  public static String teamChoice2 = "2 Teams";
-  public static String teamChoice3 = "3 Teams";
-  public static String teamChoice4 = "4 Teams";
-  public static String teamChoice5 = "5 Teams";
-  public static int teamChoice1Num = 1;
-  public static int teamChoice2Num = 2;
-  public static int teamChoice3Num = 3;
-  public static int teamChoice4Num = 4;
-  public static int teamChoice5Num = 5;
   public static int click = 1;
+  public static int[] teamNums = new int[] {1, 2, 3, 4, 5};
+  public static String[] teamNumNames = new String[] {"1 Team", "2 Teams", "3 Teams", "4 Teams", "5 Teams"};
+
+  public static int[] questionNums = new int[] {5, 10, 15, 20, 25, 30};
+  public static String[] questionNumNames = new String[] {"5 questions", "10 questions", "15 questions", "20 questions", "25 questions", "30 questions"};
+
+  public static String[] themeNames = new String[] {"Theme1", "Theme2", "Theme3", "Theme4", "Theme5"};
 
   public static String questionChoice0 = "Choose amount of questions";
   public static String questionChoice1 = "3 questions";

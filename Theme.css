@@ -17,9 +17,7 @@
     -fx-background-color: #AAD7FF;
 }
 /* edits the way the button looks, when you hover the mouse over it*/
-.button:hover{
-    -fx-background-color: linear-gradient(maroon, crimson);
-}
+
 /*edits the radiobuttons (different choices in the game)*/
 
 
@@ -118,7 +116,6 @@
 }
 /* edits the way the button looks, when you hover the mouse over it*/
 .button:hover{
-    -fx-background-color: linear-gradient(maroon, crimson);
 }
 /*edits the radiobuttons (different choices in the game)*/
 
@@ -160,7 +157,7 @@
 
 .button-quickplay{
     -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 4em;
+    -fx-background-radius: 6em;
     -fx-min-width: 100px;
     -fx-min-height: 100px;
     -fx-max-height: 100px;
@@ -176,6 +173,8 @@
 .button-quickplay:hover{
     /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
     -fx-background-color: #004A8C;
+    -fx-background-insets: 5px;
+    -fx-padding: 5px;
 
 }
 
@@ -222,6 +221,85 @@
     /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
     -fx-background-color: #004A8C;
 
+}
+
+.controlButtonPlus{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-max-width: 40px;
+    -fx-background-color: #128FFF;
+    -fx-padding: 0px;
+    -fx-font-size: 11pt;
+    -fx-border-insets: -3px;
+    -fx-background-insets: -3px;
+    weight: bold;
+}
+
+.controlButtonPlus:hover{
+    /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-max-width: 40px;
+    -fx-background-color: green;
+    -fx-border-insets: -7px;
+    -fx-background-insets: -7px;
+    -fx-padding: 0px;
+    -fx-font-size: 11pt;
+    weight: bold;
+
+}
+
+.controlButtonMinus{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-max-width: 40px;
+    -fx-background-color: #128FFF;
+    -fx-padding: 0px;
+    -fx-font-size: 11pt;
+    -fx-border-insets: -3px;
+    -fx-background-insets: -3px;
+    weight: bold;
+}
+
+.controlButtonMinus:hover{
+    /*-fx-background-color: linear-gradient(#004A8C, #129FF);*/
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4em;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-max-width: 40px;
+    -fx-background-color: red;
+    -fx-border-insets: -7px;
+    -fx-background-insets: -7px;
+    -fx-padding: 0px;
+    -fx-font-size: 11pt;
+    weight: bold;
+
+}
+
+.controlText{
+    -fx-text-fill: #004A8C;
+    -fx-background-radius: 4em;
+    -fx-min-width: 200px;
+    -fx-min-height: 80px;
+    -fx-max-height: 80px;
+    -fx-max-width: 200px;
+    -fx-background-color: #AAD7FF;
+    -fx-background-insets: 10px;
+    -fx-padding: 8px;
+    -fx-text-alignment: center;
+    -fx-font-size: 11pt;
+    weight: bold;
 }
 
 .button-continue{

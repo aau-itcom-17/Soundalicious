@@ -1,3 +1,5 @@
 admin password
+user1 pass1
 user2 pass2
-mother fucker
+user3 pass3
+user4 pass4
