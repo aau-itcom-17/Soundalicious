@@ -107,7 +107,7 @@ public class CustomGameScene extends FrontPageScene {
         customGameLayout = new VBox(20);
         customGameLayout.setAlignment(Pos.CENTER);
         customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, radioBut1, radioBut2, radioBut3, radioBut4, radioBut5, buttonCustomGameNext, frontPageButton2);
-        customGameScene = new Scene(customGameLayout, 400, 600);
+        customGameScene = new Scene(customGameLayout, 400, 700);
 
         customGameScene.getStylesheets().add("Theme.css");
         window.setScene(customGameScene);
