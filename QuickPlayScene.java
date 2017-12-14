@@ -31,14 +31,12 @@ public class QuickPlayScene extends Main {
     //Label Quick play
     labelQuick = new Label(Constants.quickPlayName);
     labelQuick.getStyleClass().add("label-headline");
-    teamNumLabel = new Label("Choose number of teams");
-    questNumLabel = new Label("Choose number of questions");
 
 
     HBox hbox1 = new HBox();
     minButtonT = new Button("-");
     minButtonT.getStyleClass().add("controlButtonMinus");
-    minButtonT.setStyle("-fx-background-color: #eaf2ff");
+    //minButtonT.setStyle("-fx-background-color: #eaf2ff");
     minButtonT.setOnAction(e -> {
               if(tCount == 1){
                 tCount--;
@@ -153,7 +151,7 @@ public class QuickPlayScene extends Main {
     //Layout quickplay
     quickPlayLayout = new VBox(20);
     quickPlayLayout.setAlignment(Pos.CENTER);
-    quickPlayLayout.getChildren().addAll(labelQuick, teamNumLabel, hbox1, questNumLabel, hbox2, startGameButton, buttonHowToPlay, frontPageButton1);
+    quickPlayLayout.getChildren().addAll(labelQuick, hbox1, hbox2, startGameButton, buttonHowToPlay, frontPageButton1);
     quickPlayScene = new Scene(quickPlayLayout, 400, 700);
 
     quickPlayScene.getStylesheets().add("Theme.css");

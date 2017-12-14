@@ -181,9 +181,9 @@ public class PlayGameScene extends FrontPageScene {
         n = 0;
         rQuestions.clear();
         answers.clear();
-        numOfTeams = 1;
+        numOfTeams = 2;
         numOfQuestions = 10;
-        tCount = 0;
+        tCount = 1;
         qCount = 1;
         window.setScene(frontPageScene);
 
