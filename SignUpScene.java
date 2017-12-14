@@ -23,9 +23,10 @@ import java.io.IOException;
 
 public class SignUpScene extends FrontPageScene {
 
-  Label labelSignUp, usernameSignUpLabel, passwordSignUpLabel, passwordRepeatSignUpLabel, signUpError;
+  Label labelSignUp, usernameSignUpLabel, passwordSignUpLabel, passwordRepeatSignUpLabel;
   TextField usernameSignUpInput, passwordSignUpInput;
   PasswordField passwordRepeatSignUpInput;
+  Button createUserButton;
 
   public SignUpScene(){
     //Sign up Scene
@@ -67,12 +68,10 @@ public class SignUpScene extends FrontPageScene {
           });
 
 
-        //signup error/message
-        signUpError = new Label("Passwords do not match");
-        signUpError.setVisible(false);
 
         //Create new user Button
-        Button createUserButton = new Button("Create a new user");
+      createUserButton = new Button("Create a new user");
+      createUserButton.getStyleClass().add("button-continue");
       createUserButton.getStyleClass().add("button-menu");
       //Action when the button is clicked on
         createUserButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -89,7 +88,7 @@ public class SignUpScene extends FrontPageScene {
 
         VBox signUpLayout = new VBox(20);
         signUpLayout.setAlignment(Pos.CENTER);
-        signUpLayout.getChildren().addAll(labelSignUp, usernameSignUpLabel, usernameSignUpInput, passwordSignUpLabel, passwordSignUpInput, passwordRepeatSignUpLabel, passwordRepeatSignUpInput, signUpError, createUserButton, frontPageButton4);
+        signUpLayout.getChildren().addAll(labelSignUp, usernameSignUpLabel, usernameSignUpInput, passwordSignUpLabel, passwordSignUpInput, passwordRepeatSignUpLabel, passwordRepeatSignUpInput, createUserButton, frontPageButton4);
         signUpScene = new Scene(signUpLayout, 400, 700);
 
       signUpScene.getStylesheets().add("Theme.css");
@@ -97,50 +96,59 @@ public class SignUpScene extends FrontPageScene {
   }
 
   public void signUp (){
-      signUpError.setVisible(false); //do not show message from the previous time
       enteredUsername = usernameSignUpInput.getText(); //save text from TextField to String
       enteredUsername = enteredUsername.toLowerCase(); //convert String to lowercase
       enteredPass = passwordSignUpInput.getText(); //save password to String
       try{
-          if(enteredUsername.isEmpty() || enteredUsername.isEmpty() || passwordRepeatSignUpInput.getText().isEmpty()){ //checks if any line is empty
-              signUpError.setText("You left some fields empty");
-              signUpError.setStyle("-fx-text-fill: red");
-              signUpError.setVisible(true);
+          if(enteredUsername.isEmpty() || enteredPass.isEmpty() || passwordRepeatSignUpInput.getText().isEmpty()){ //checks if any line is empty
+              createUserButton.setStyle("-fx-background-color: red");
+              createUserButton.setText("You left some fields empty");
+              if(enteredUsername.isEmpty()) usernameSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+              if(enteredPass.isEmpty()) passwordSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+              if(passwordRepeatSignUpInput.getText().isEmpty()) passwordRepeatSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+
           }
-          else
-          if(containsSpecChar(enteredUsername)){ //checks if username contains spec chars
-              signUpError.setText("Username should not contain special characters");
-              signUpError.setStyle("-fx-text-fill: red");
-              signUpError.setVisible(true);
+          else if(containsSpecChar(enteredUsername)){ //checks if username contains spec chars
+              createUserButton.setStyle("-fx-background-color: red");
+              createUserButton.setText("Name contains spec. chars");
+              usernameSignUpInput.setText("");
+              usernameSignUpInput.requestFocus();
+              usernameSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+
           }
           else if(containsSpecChar(enteredPass)){ //checks if username contains spec chars
-              signUpError.setText("Password should not contain special characters");
-              signUpError.setStyle("-fx-text-fill: red");
-              signUpError.setVisible(true);
+              createUserButton.setStyle("-fx-background-color: red");
+              createUserButton.setText("Pass contains spec. chars");
+              passwordSignUpInput.setText("");
+              passwordRepeatSignUpInput.setText("");
+              passwordSignUpInput.requestFocus();
+              passwordSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+              passwordRepeatSignUpInput.setStyle("-fx-background-color: #FEE4DF");
           }
           else if(passwordSignUpInput.getText().equals((passwordRepeatSignUpInput.getText()))){ //checking if two TextFields with passwords match
               if(!userExists(enteredUsername)){ //checking if username does not exist
-                  signUpError.setStyle("-fx-text-fill: green");
-                  signUpError.setText("New user created");  //changing error message
-                  signUpError.setVisible(true); //showing error message
+                  System.out.println("New user created" + enteredUsername + " " + enteredPass);
                   writeToFile(enteredUsername, enteredPass);
                   new LogInScene();
               }
               else{
-                  signUpError.setText("Username already exists");
-                  signUpError.setStyle("-fx-text-fill: red");
-                  signUpError.setVisible(true);
+                  createUserButton.setStyle("-fx-background-color: red");
+                  createUserButton.setText("Username already exists");
                   usernameSignUpInput.setText("");
                   passwordSignUpInput.setText("");
                   passwordRepeatSignUpInput.setText("");
+                  usernameSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+                  passwordSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+                  passwordRepeatSignUpInput.setStyle("-fx-background-color: #FEE4DF");
               }
           }
           else {
-              signUpError.setText("Passwords do not match");
-              signUpError.setStyle("-fx-text-fill: red");
-              signUpError.setVisible(true);
+              createUserButton.setStyle("-fx-background-color: red");
+              createUserButton.setText("Passwords do not match");
               passwordSignUpInput.setText("");
               passwordRepeatSignUpInput.setText("");
+              passwordSignUpInput.setStyle("-fx-background-color: #FEE4DF");
+              passwordRepeatSignUpInput.setStyle("-fx-background-color: #FEE4DF");
           }
       }
       catch (IOException e) {
