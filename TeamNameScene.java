@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TeamNameScene extends QuickPlayScene {
 
-    Label labelSelectTeamName, labelHeadline, teamNumber, teamNameError;
+    Label labelSelectTeamName, labelHeadline, teamNumber;
     TextField selectYourTeamName;
     Button saveTeams;
     VBox teamNameSceneLayout;
@@ -27,10 +27,6 @@ public class TeamNameScene extends QuickPlayScene {
 
         teamNumber = new Label("Name for team " + 1 + ":");
         teamNumber.getStyleClass().add("label-headline");
-
-        teamNameError = new Label("Please enter a team name.");
-        teamNameError.setStyle("-fx-text-fill: red");
-        teamNameError.setVisible(false);
 
         selectYourTeamName = new TextField();
         selectYourTeamName.requestFocus();
@@ -54,7 +50,7 @@ public class TeamNameScene extends QuickPlayScene {
 
         teamNameSceneLayout = new VBox(20);
         teamNameSceneLayout.setAlignment(Pos.CENTER);
-        teamNameSceneLayout.getChildren().addAll(teamNumber, selectYourTeamName, saveTeams, teamNameError);
+        teamNameSceneLayout.getChildren().addAll(teamNumber, selectYourTeamName, saveTeams);
         logInPageScene = new Scene(teamNameSceneLayout, 400, 700);
 
         logInPageScene.getStylesheets().add("Theme.css");
@@ -67,7 +63,9 @@ public class TeamNameScene extends QuickPlayScene {
 
         //checks if user type anything at all.
         if (!selectYourTeamName.getText().equals("")){
-            teamNameError.setVisible(false);
+            saveTeams.setStyle(null);
+            saveTeams.setText("✮ Save Team");
+
 
             //changes team number for player.
             teamNr++;
@@ -101,7 +99,8 @@ public class TeamNameScene extends QuickPlayScene {
             }
 
         }else{
-            teamNameError.setVisible(true);
+            saveTeams.setStyle("-fx-background-color: red");
+            saveTeams.setText("Field left empty");
         }
     }
     }
