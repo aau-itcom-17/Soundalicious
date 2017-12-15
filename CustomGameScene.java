@@ -29,7 +29,7 @@ public class CustomGameScene extends FrontPageScene {
       //ALL THIS IS CUSTOM GAME PAGE:
 
         //Label Custom page
-        labelCustom = new Label(Constants.gameName);
+        labelCustom = new Label("Custom game");
         labelCustom.getStyleClass().add("label-headline");
 
         //Label choose cards
@@ -54,6 +54,11 @@ public class CustomGameScene extends FrontPageScene {
         radioBut3.getStyleClass().add("button-menuSelected");
         radioBut4.getStyleClass().add("button-menuSelected");
         radioBut5.getStyleClass().add("button-menuSelected");
+        radioBut1.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        radioBut2.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        radioBut3.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        radioBut4.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        radioBut5.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
 
 
         //Custom game next button
@@ -90,11 +95,11 @@ public class CustomGameScene extends FrontPageScene {
 
         theme.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
         {
-            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-            radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
-            radioBut5.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C;");
+            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            radioBut5.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
             buttonCustomGameNext.getStyleClass().add("button-menuSelected");
         });
 
