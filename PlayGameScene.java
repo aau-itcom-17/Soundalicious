@@ -14,7 +14,7 @@ import java.io.IOException;
 public class PlayGameScene extends FrontPageScene {
 
     private int i = 0;
-    private int counter =1;
+    private int teamsAnsweredCounter =1;
     private int counter2 = 0;
     private int counterQuestion = 1;
     RadioButton radioBut1, radioBut2, radioBut3, radioBut4;
@@ -130,7 +130,7 @@ public class PlayGameScene extends FrontPageScene {
             }
             i++;
 
-            if (counter == teams.size()) {
+            if (teamsAnsweredCounter == teams.size()) {
                 n++;
                 i = 0;
                 new ScoreboardPageScene();
@@ -140,7 +140,7 @@ public class PlayGameScene extends FrontPageScene {
                 System.out.println(teams.get(j).getPointScore());
             }
 
-            counter++;
+            teamsAnsweredCounter++;
 
             radioBut1.setSelected(false);
             radioBut2.setSelected(false);

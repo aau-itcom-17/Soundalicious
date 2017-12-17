@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.input.KeyCode;
@@ -21,6 +24,7 @@ public class LogInScene extends FrontPageScene {
     public static TextField usernameInput, passwordInput;
     VBox logInPageLayout;
     Button logInButton, frontPageButton3;
+
 
     public LogInScene(){
 
@@ -107,9 +111,14 @@ public class LogInScene extends FrontPageScene {
             if (login(enteredUsername, enteredPass) && !enteredUsername.equals("admin")) {
                 user.setLoggedIn(true);
                 user.setUserName(enteredUsername);
+                user.createHistoryFile();
+                user.writeOnHistoryFile("Logged in");
                 new FrontPageScene();
             } else if (enteredUsername.equals("admin") && enteredPass.equals("password")){
                     admin.setLoggedIn(true);
+                    user.setUserName("admin");
+                    user.createHistoryFile();
+                    user.writeOnHistoryFile("Logged in");
                     new FrontPageScene();
             } else if(!SignUpScene.userExists(enteredUsername)){
                 passwordInput.setText("");

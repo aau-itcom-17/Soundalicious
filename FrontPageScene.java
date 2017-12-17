@@ -69,6 +69,11 @@ public class FrontPageScene extends Main {
       logOutButton = new Button(Constants.logOutText);
       logOutButton.getStyleClass().add("button-menu");
       logOutButton.setOnAction(e -> {
+        try {
+          user.writeOnHistoryFile("Logged out");
+        } catch (IOException e1) {
+          e1.printStackTrace();
+        }
         user.setLoggedIn(false);
         admin.setLoggedIn(false);
         new FrontPageScene();
@@ -85,6 +90,11 @@ public class FrontPageScene extends Main {
         deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         deleteButton.setText("Are you sure?");
         deleteButton.setOnAction(f -> {
+          try {
+            user.writeOnHistoryFile("User deleted");
+          } catch (IOException e1) {
+            e1.printStackTrace();
+          }
           removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
           user.setLoggedIn(false);
           new FrontPageScene();

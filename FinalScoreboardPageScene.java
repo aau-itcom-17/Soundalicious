@@ -95,6 +95,12 @@ public class FinalScoreboardPageScene extends Main
         finGame = new Button("Exit game");
         finGame.getStyleClass().add("button-menu");
 
+        try {
+            user.writeOnHistoryFile("Team: " + teams.get(Team.getWinner()).getTeamName() + " won the game and got " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " right answers out of " + numOfQuestions + " questions.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         finGame.setOnAction(f -> {
             teams.clear();
             n = 0;
@@ -105,6 +111,8 @@ public class FinalScoreboardPageScene extends Main
             tCount = 0;
             qCount = 1;
             window.setScene(frontPageScene);
+
+
 
 
             Constants.click = 1;

@@ -1,15 +1,24 @@
-public class User {
+import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+public class User  extends Main{
     public String username;
     public String password;
     public int ID;
     public boolean isLoggedIn;
 
 
+
     public User(){
 
     }
     public User(String username, String password){
-
     }
 
     public boolean isLoggedIn() {
@@ -44,4 +53,38 @@ public class User {
         this.ID = ID;
     }
 
+    public void createHistoryFile(){
+        // Section needs to be here so the time is checked every time method is called
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String time  = localDateTime.format(formatter);
+        //
+        File historyFile = new File (user.getUserName() + ".txt");
+
+        if (!historyFile.exists() && !enteredUsername.equals("admin")) {
+            try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(user.getUserName() + ".txt"), "utf-8"))) {
+                writer.write(time + " User: " +  user.getUserName() +  ". " + "File has been created" + "\n");
+                System.out.println("History file has been created");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+    }
+    public void writeOnHistoryFile(String writeToFile) throws IOException {
+        //Section needs to be here so the time is checked every time method is called
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String time  = localDateTime.format(formatter);
+        //Copied from signUpScene¨
+        BufferedWriter toUser = new BufferedWriter(new FileWriter(user.getUserName() + ".txt", true));
+        toUser.write(time + " User: " + user.getUserName() + ". " + writeToFile);
+        toUser.newLine();
+        toUser.close();
+
+
+    }
 }

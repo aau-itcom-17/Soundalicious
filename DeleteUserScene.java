@@ -38,6 +38,11 @@ public class DeleteUserScene extends FrontPageScene{
                 username = usernameInput.getText();
                 try {
                     if(findAndDeleteUser(username)) {
+                        try {
+                            user.writeOnHistoryFile("User with username: "+ username + " was deleted");
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                         deleteButton.setText("User deleted");
                         deleteButton.setStyle("-fx-background-color: green");
                         usernameInput.setText("");
