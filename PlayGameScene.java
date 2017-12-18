@@ -124,7 +124,7 @@ public class PlayGameScene extends QuickPlayScene {
                 teamName.setText(teams.get(counterOfCurrentTeam + 1).getTeamName() + " " + Constants.textAnsweringQuestion + " " + (counterOfQuestions + 1));
             }
 
-            if (teams.size() == counterOfCurrentTeam + 1) {
+            if (teams.size() == counterOfCurrentTeam + 2) {
                 buttonNextTeamOrQuestion.setText(Constants.textSeeAnswers);
             }
 
