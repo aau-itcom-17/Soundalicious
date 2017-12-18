@@ -84,6 +84,12 @@ public class User  extends Main{
         toUser.write(time + " User: " + user.getUserName() + ". " + writeToFile);
         toUser.newLine();
         toUser.close();
+        if (!user.getUserName().equals("admin")){
+            BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
+            toAdmin.write(time + " User: " + user.getUserName() + ". " + writeToFile);
+            toAdmin.newLine();
+            toAdmin.close();
+        }
 
 
     }
