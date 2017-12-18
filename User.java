@@ -59,17 +59,15 @@ public class User extends Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String time = localDateTime.format(formatter);
         //
-        File historyFile = new File(user.getUserName() + ".txt");
+        File historyFile = new File(Constants.userHistoryPath + "/" + user.getUserName() + ".txt");
 
         if (!historyFile.exists() && !enteredUsername.equals(Constants.nameAdmin)) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(Constants.userHistoryPath + "/" + user.getUserName() + ".txt"), "utf-8"))) {
-                writer.write(time + " User: " + user.getUserName() + ". " + "File has been created" + "\n");
-                System.out.println("History file has been created");
+                writer.write(time + " User: " + user.getUserName() + ". " +  + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 

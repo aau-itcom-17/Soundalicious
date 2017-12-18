@@ -73,6 +73,7 @@ public class Constants {
     public static String textSeeHistory = "See history";
     public static String textCancel = "Cancel";
     public static String textPoints = "points";
+    public static String textFileCreated = "File has been created";
 
     //button texts
     public static String goToNextText = "Go to next page";
@@ -89,6 +90,7 @@ public class Constants {
     public static String warningUserNotExists = "User does not exist";
     public static String warningWrongPassword = "Wrong password";
     public static String warningUserDeleted = "User deleted";
+
     //custom game
     public static int click = 1;
     public static int[] teamNums = new int[]{1, 2, 3, 4, 5};

@@ -36,7 +36,7 @@ public class HistoryScene extends FrontPageScene {
         historyScene.getStylesheets().add(Constants.StyleSheetPath);
         layoutHistory.setAlignment(Pos.CENTER);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(Constants.userHistoryPath + "/" + user.getUserName() + ".txt")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(Constants.userHistoryPath + "/ " + Constants.textFileCreated  + " " + user.getUserName() + ".txt")))) {
             String line;
             while ((line = reader.readLine()) != null)
                 allLines = allLines + line + "\n";
