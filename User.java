@@ -53,7 +53,7 @@ public class User  extends Main{
         this.ID = ID;
     }
 
-    public void createHistoryFile(){
+    public void createHistoryFile() throws IOException {
         // Section needs to be here so the time is checked every time method is called
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -64,11 +64,16 @@ public class User  extends Main{
         if (!historyFile.exists()) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(user.getUserName() + ".txt"), "utf-8"))) {
-                writer.write(time +"\t"+ " User: " +  user.getUserName() +  ". " + "File has been created" + "\n");
+                writer.write(time +"\t"+ " User: " +  user.getUserName() +  ". " + "User created" + "\n");
                 System.out.println("History file has been created");
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
+            toAdmin.write(time + "\t"+ " User: " + user.getUserName() + ". New user created");
+            toAdmin.newLine();
+            toAdmin.close();
+
 
         }
 
@@ -84,7 +89,7 @@ public class User  extends Main{
         toUser.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
         toUser.newLine();
         toUser.close();
-        if (!user.getUserName().equals("admin")){
+        if (!user.getUserName().equals("admin") ){
             BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
             toAdmin.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
             toAdmin.newLine();

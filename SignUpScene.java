@@ -129,7 +129,8 @@ public class SignUpScene extends FrontPageScene {
               if(!userExists(enteredUsername)){ //checking if username does not exist
                   System.out.println("New user created" + enteredUsername + " " + enteredPass);
                   writeToFile(enteredUsername, enteredPass);
-                  user.writeOnHistoryFile("New user created");
+                  user.setUserName(enteredUsername);
+                  user.createHistoryFile();
                   new LogInScene();
               }
               else{

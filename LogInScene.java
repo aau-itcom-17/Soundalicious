@@ -111,13 +111,11 @@ public class LogInScene extends FrontPageScene {
             if (login(enteredUsername, enteredPass) && !enteredUsername.equals("admin")) {
                 user.setLoggedIn(true);
                 user.setUserName(enteredUsername);
-                user.createHistoryFile();
                 user.writeOnHistoryFile("Logged in");
                 new FrontPageScene();
             } else if (enteredUsername.equals("admin") && enteredPass.equals("password")){
                     admin.setLoggedIn(true);
                     user.setUserName("admin");
-                    user.createHistoryFile();
                     user.writeOnHistoryFile("Logged in");
                     new FrontPageScene();
             } else if(!SignUpScene.userExists(enteredUsername)){
