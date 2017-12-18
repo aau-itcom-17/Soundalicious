@@ -61,10 +61,10 @@ public class User  extends Main{
         //
         File historyFile = new File (user.getUserName() + ".txt");
 
-        if (!historyFile.exists() && !enteredUsername.equals("admin")) {
+        if (!historyFile.exists()) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(user.getUserName() + ".txt"), "utf-8"))) {
-                writer.write(time + " User: " +  user.getUserName() +  ". " + "File has been created" + "\n");
+                writer.write(time +"\t"+ " User: " +  user.getUserName() +  ". " + "File has been created" + "\n");
                 System.out.println("History file has been created");
             } catch (IOException e) {
                 e.printStackTrace();
