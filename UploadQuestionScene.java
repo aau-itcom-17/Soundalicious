@@ -1,3 +1,4 @@
+import com.sun.tools.internal.jxc.ap.Const;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,7 +13,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.xml.sax.SAXException;
 
@@ -32,116 +32,97 @@ import java.util.ArrayList;
 public class UploadQuestionScene extends FrontPageScene {
 
     private Text actionStatus;
-    private Stage savedStage;
-    private TextArea txtArea;
-    private static final String titleTxt = "Save your sounds";
-    private TextField questionText, correctAnswer, wronganswer1, wronganswer2, wronganswer3;
+    private TextField questionText, correctAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3;
     private Label questionLabel, correctAnswerLabel, wrongAnswerLabel, label, themeLabel;
     private ChoiceBox<String> themesChoice;
     Question question = new Question();
     private HBox answersHBox;
     private Button btn1, btn2;
-    private int number = 1000;
     private VBox saveFilesLayout;
 
-    // Make a method that makes sure the ID is different each time you upload a question!!!!!!!!!!!!!
     public UploadQuestionScene() {
 
         actionStatus = new Text();
+        questionLabel = new Label(Constants.textWriteQuestion + ": ");
+        questionText = new TextField();
+        correctAnswerLabel = new Label(Constants.textWriteCorrectAnswer + ": ");
+        correctAnswer = new TextField();
+        wrongAnswerLabel = new Label(Constants.textWriteWrongAnswers + ": ");
+        wrongAnswer1 = new TextField();
+        wrongAnswer2 = new TextField();
+        wrongAnswer3 = new TextField();
+        answersHBox = new HBox();
+        label = new Label(Constants.textMakeYourQuestion);
+        HBox labelHb = new HBox();
+        themeLabel = new Label(Constants.textChooseTheme);
+        themesChoice = new <String>ChoiceBox(FXCollections.observableArrayList(Constants.topicText1, Constants.topicText2));
+        btn1 = new Button(Constants.textChooseFile);
+        HBox buttonHb1 = new HBox(10);
+        btn2 = new Button(Constants.textSaveQuestion);
+        Button buttonBackToMain = new Button(Constants.textBackToMain);
+        HBox buttonHb2 = new HBox(10);
+
         actionStatus.setFont(Font.font("Calibri", FontWeight.NORMAL, 18));
         actionStatus.setFill(Color.FIREBRICK);
-
-
-        //primaryStage.setTitle(titleTxt);
-
-        questionLabel = new Label("Write questionText below: ");
-        //Username input
-        questionText = new TextField();
         questionLabel.setStyle("-fx-padding: -30px");
         questionText.setStyle("-fx-max-width: 300px; -fx-min-width: 300px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
+        correctAnswerLabel.setStyle("-fx-padding: -30px");
+        correctAnswer.setStyle("-fx-max-width: 300px; -fx-min-width: 300px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
+        wrongAnswerLabel.setStyle("-fx-padding: -30px");
+        wrongAnswer1.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
+        wrongAnswer2.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
+        wrongAnswer3.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
+        answersHBox.setAlignment(Pos.CENTER);
+        label.setStyle("-fx-padding: -30px");
+        label.setTextFill(Color.BLACK);
+        label.setFont(Font.font("Calibri", FontWeight.BOLD, 22));
+        themeLabel.setStyle("-fx-padding: -30px");
+        btn1.getStyleClass().add("button-menu");
+        btn2.getStyleClass().add("button-menu");
+        buttonBackToMain.getStyleClass().add("button-menu");
+        labelHb.setAlignment(Pos.CENTER);
+        buttonHb1.setAlignment(Pos.CENTER);
+        buttonHb2.setAlignment(Pos.CENTER);
+
+        labelHb.getChildren().add(label);
+        buttonHb1.getChildren().addAll(btn1);
+        buttonHb2.getChildren().addAll(btn2);
+
+        answersHBox.getChildren().addAll(wrongAnswer1, wrongAnswer2, wrongAnswer3);
+
         questionText.setOnKeyPressed((event) -> {
             question.setTextOfQuestion(questionText.getText());
         });
 
-        correctAnswerLabel = new Label("Write the correct answer below: ");
-        correctAnswer = new TextField();
-        correctAnswerLabel.setStyle("-fx-padding: -30px");
-        correctAnswer.setStyle("-fx-max-width: 300px; -fx-min-width: 300px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
-        correctAnswer.setOnKeyPressed((event) -> {
+       correctAnswer.setOnKeyPressed((event) -> {
             question.setCorrectAnswer(correctAnswer.getText());
         });
 
-
-        wrongAnswerLabel = new Label("Write the wrong answers below: ");
-        wrongAnswerLabel.setStyle("-fx-padding: -30px");
-        wronganswer1 = new TextField();
-        wronganswer1.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
-        wronganswer1.setOnKeyPressed((event) -> {
-            question.setwrongAnswers1(wronganswer1.getText());
-        });
-        wronganswer2 = new TextField();
-        wronganswer2.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
-        wronganswer2.setOnKeyPressed((event) -> {
-            question.setwrongAnswers2(wronganswer2.getText());
-        });
-        wronganswer3 = new TextField();
-        wronganswer3.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
-        wronganswer3.setOnKeyPressed((event) -> {
-            question.setwrongAnswers3(wronganswer3.getText());
+        wrongAnswer1.setOnKeyPressed((event) -> {
+            question.setwrongAnswers1(wrongAnswer1.getText());
         });
 
-        answersHBox = new HBox();
-        answersHBox.setAlignment(Pos.CENTER);
-        answersHBox.getChildren().addAll(wronganswer1, wronganswer2, wronganswer3);
+        wrongAnswer2.setOnKeyPressed((event) -> {
+            question.setwrongAnswers2(wrongAnswer2.getText());
+        });
+        wrongAnswer3.setOnKeyPressed((event) -> {
+            question.setwrongAnswers3(wrongAnswer3.getText());
+        });
 
-        // Window label
-        label = new Label("Make your own questions");
-        label.setStyle("-fx-padding: -30px");
-        label.setTextFill(Color.BLACK);
-        label.setFont(Font.font("Calibri", FontWeight.BOLD, 22));
-        HBox labelHb = new HBox();
-        labelHb.setAlignment(Pos.CENTER);
-        labelHb.getChildren().add(label);
-
-        // theme choosing
-        themeLabel = new Label("Choose theme for your question");
-        themeLabel.setStyle("-fx-padding: -30px");
-        themesChoice = new <String>ChoiceBox(FXCollections.observableArrayList(Constants.themeNames[0], Constants.themeNames[1], Constants.themeNames[2], Constants.themeNames[3], Constants.themeNames[4]));
-
-
-        // Button
-        btn1 = new Button("Choose file");
-        btn1.getStyleClass().add("button-menu");
         btn1.setOnAction(new SaveButtonListener());
-        HBox buttonHb1 = new HBox(10);
-        buttonHb1.setAlignment(Pos.CENTER);
-        buttonHb1.getChildren().addAll(btn1);
-        // Button 2
-        System.out.println(questions.size());
-        btn2 = new Button("Save question");
-        btn2.getStyleClass().add("button-menu");
-        btn2.setOnAction(new SaveQuestionListener());
-        HBox buttonHb2 = new HBox(10);
-        buttonHb2.setAlignment(Pos.CENTER);
-        buttonHb2.getChildren().addAll(btn2);
 
-        Button frontPageButton = new Button("Back to frontpage");
-        frontPageButton.getStyleClass().add("button-menu");
-        frontPageButton.setOnAction(e -> new FrontPageScene());
+        btn2.setOnAction(new SaveQuestionListener());
+
+        buttonBackToMain.setOnAction(e -> new FrontPageScene());
         HBox frontButton1 = new HBox(10);
         frontButton1.setAlignment(Pos.CENTER);
-        frontButton1.getChildren().addAll(frontPageButton);
+        frontButton1.getChildren().addAll(buttonBackToMain);
 
-
-        // Status message text
-
-        // Vbox
         saveFilesLayout = new VBox(30);
         saveFilesLayout.setPadding(new Insets(25, 25, 25, 25));
         saveFilesLayout.setAlignment(Pos.CENTER);
         saveFilesLayout.getChildren().addAll(questionLabel, questionText, correctAnswerLabel, correctAnswer, wrongAnswerLabel, answersHBox, themeLabel, themesChoice, buttonHb1, buttonHb2, frontButton1, actionStatus);
 
-        // Scene
         saveFilesScene = new Scene(saveFilesLayout, Constants.screenWidth, Constants.screenHeight); // w x h
         saveFilesScene.getStylesheets().add(Constants.StyleSheetPath);
         window.setScene(saveFilesScene);
@@ -152,7 +133,6 @@ public class UploadQuestionScene extends FrontPageScene {
     /**
      * It calls the writing to file method from the Questions class.
      */
-
     private class SaveQuestionListener implements EventHandler<ActionEvent> {
 
         public void handle(ActionEvent e) {
@@ -178,13 +158,13 @@ public class UploadQuestionScene extends FrontPageScene {
                 }
                 questionText.clear();
                 correctAnswer.clear();
-                wronganswer1.clear();
-                wronganswer2.clear();
-                wronganswer3.clear();
+                wrongAnswer1.clear();
+                wrongAnswer2.clear();
+                wrongAnswer3.clear();
                 question.setSoundFile(null);
                 actionStatus.setText(null);
             } else {
-                actionStatus.setText("You need to choose a file");
+                actionStatus.setText(Constants.warningChooseFile);
             }
 
         }
@@ -205,8 +185,6 @@ public class UploadQuestionScene extends FrontPageScene {
     /**
      * Method copies the new file to the user's personal documents.
      */
-
-
     public static void CopyFile(File source, File dest) throws IOException {
         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
@@ -214,7 +192,6 @@ public class UploadQuestionScene extends FrontPageScene {
     /**
      * Method handles the file upload, checks if file is correct and does not repeat already.
      */
-
     private void showSingleFileChooser() {
 
         FileChooser fileChooser = new FileChooser();
@@ -232,13 +209,9 @@ public class UploadQuestionScene extends FrontPageScene {
         // getting path of folder to save the files in.
         String homePath = System.getProperty("user.home");
         String soundFolderPath = homePath + File.separator + "p1" + File.separator + "Sounds";
-        System.out.println("User folder path: " + soundFolderPath);
         File dest = new File(soundFolderPath + File.separator + dF);
 
-
         File source = new File(selectedFile.getPath());
-        System.out.println("Source: " + source);
-        System.out.println("Destination " + dest);
 
         long destSize = 0;
         if (dest.exists()) {
@@ -264,25 +237,25 @@ public class UploadQuestionScene extends FrontPageScene {
                         } catch (IOException e) {
 
                             e.printStackTrace();
-                            actionStatus.setText("An ERROR occurred while saving the file!" +
+                            actionStatus.setText(Constants.warningErrorSaving +
                                     selectedFile.toString());
                             return;
                         }
-                        actionStatus.setText("File is saved to Sound folder");
+                        actionStatus.setText(Constants.warningFileSaved);
                     } else {
-                        actionStatus.setText("File save cancelled.");
+                        actionStatus.setText(Constants.warningFileSavedCanceled);
                     }
                 } else {
-                    actionStatus.setText("Filename already exists");
+                    actionStatus.setText(Constants.warningFileNameExists);
                 }
 
             } else {
-                actionStatus.setText("File already exist...");
+                actionStatus.setText(Constants.warningFileExists);
 
             }
 
         } else {
-            actionStatus.setText("Filetype is not supported");
+            actionStatus.setText(Constants.warningTypeNotSupported);
         }
 
 

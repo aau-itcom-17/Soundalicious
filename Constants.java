@@ -74,6 +74,13 @@ public class Constants {
     public static String textCancel = "Cancel";
     public static String textPoints = "points";
     public static String textFileCreated = "File has been created";
+    public static String textSaveQuestion = "Save question";
+    public static String textChooseTheme = "Choose theme for your question";
+    public static String textMakeYourQuestion = "Make your own questions";
+    public static String textWriteWrongAnswers = "Write the wrong questions below";
+    public static String textWriteCorrectAnswer = "Write the correct answer below";
+    public static String textWriteQuestion = "Write question text below";
+    public static String textChooseFile = "Choose file";
 
     //button texts
     public static String goToNextText = "Go to next page";
@@ -90,6 +97,13 @@ public class Constants {
     public static String warningUserNotExists = "User does not exist";
     public static String warningWrongPassword = "Wrong password";
     public static String warningUserDeleted = "User deleted";
+    public static String warningChooseFile = "You need to choose a file";
+    public static String warningErrorSaving = "An ERROR occurred while saving the file!";
+    public static String warningFileSaved = "File is saved to Sound folder";
+    public static String warningFileSavedCanceled = "File save cancelled";
+    public static String warningFileNameExists = "Filename already exists";
+    public static String warningFileExists = "File already exists";
+    public static String warningTypeNotSupported = "Filetype is not supported";
 
     //custom game
     public static int click = 1;
