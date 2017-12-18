@@ -20,7 +20,7 @@ public class FrontPageScene extends Main {
 
   Label labelFront;
   Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
-  Button  logOutButton, deleteButton, uploadButton, deleteUserButton;
+  Button  logOutButton, deleteButton, uploadButton, deleteUserButton, historyButton;
   VBox layoutFrontpage ;
 
   public FrontPageScene() {
@@ -133,6 +133,10 @@ public class FrontPageScene extends Main {
     signUpButton.getStyleClass().add("button-menu");
     signUpButton.setOnAction(e -> new SignUpScene());
 
+    historyButton = new Button("See history");
+    historyButton.getStyleClass().add("button-menu");
+    historyButton.setOnAction(e -> new HistoryScene());
+
 
     System.out.println("USER IS LOGGED IN/OUT :" + user.isLoggedIn());
     System.out.println("ADMIN IS LOGGED IN/OUT :" + admin.isLoggedIn());
@@ -141,10 +145,10 @@ public class FrontPageScene extends Main {
     layoutFrontpage.setAlignment(Pos.CENTER);
     if (user.isLoggedIn) {
       System.out.println("user is logged in");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton);
+      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton, historyButton);
     }else if(admin.isLoggedIn) {
       System.out.println("admin is logged in");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton);
+      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton, historyButton);
     }
     else {
       layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);

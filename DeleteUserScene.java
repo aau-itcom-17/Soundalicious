@@ -39,7 +39,7 @@ public class DeleteUserScene extends FrontPageScene{
                 try {
                     if(findAndDeleteUser(username)) {
                         try {
-                            user.writeOnHistoryFile("User with username: "+ username + " was deleted");
+                            user.writeOnHistoryFile("\""+ username + "\" was deleted");
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }

@@ -81,12 +81,12 @@ public class User  extends Main{
         String time  = localDateTime.format(formatter);
         //Copied from signUpScene¨
         BufferedWriter toUser = new BufferedWriter(new FileWriter(user.getUserName() + ".txt", true));
-        toUser.write(time + " User: " + user.getUserName() + ". " + writeToFile);
+        toUser.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
         toUser.newLine();
         toUser.close();
         if (!user.getUserName().equals("admin")){
             BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
-            toAdmin.write(time + " User: " + user.getUserName() + ". " + writeToFile);
+            toAdmin.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
             toAdmin.newLine();
             toAdmin.close();
         }
