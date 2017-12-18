@@ -1,151 +1,136 @@
 import javafx.geometry.Pos;
-import javafx.scene.*;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
-import javafx.event.ActionEvent;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javafx.scene.input.KeyCode;
 
-
-import java.io.IOException;
-
+/**
+ * Login scene can be reached through the main menu when nobody is logged in.
+ * Also, after a completed signup user is redirected here.
+ * It includes two textfields for username and password as well as a button to confirm the login.
+ */
 public class LogInScene extends FrontPageScene {
 
-    public static Label labelLogin, usernameLabel, passwordLabel;
-    public static TextField usernameInput, passwordInput;
-    VBox logInPageLayout;
-    Button logInButton, frontPageButton3;
+    private Label labelScreenTitle;
+    private Label labelUsername, labelPassword;
+    private TextField textfieldUsername, textfieldPassword;
+    private VBox layoutLogin;
+    private Button buttonLoginAction, buttonBackToMain;
 
 
     public LogInScene(){
 
-        //Label login page
-        labelLogin = new Label("Log in");
-        labelLogin.getStyleClass().add("label-headline");
+        layoutLogin = new VBox(Constants.vBoxSpacing);
+        labelScreenTitle = new Label(Constants.nameLogin);
+        labelUsername = new Label(Constants.textUsername);
+        textfieldUsername = new TextField();
+        labelPassword = new Label(Constants.textPassword);
+        textfieldPassword = new PasswordField();
+        buttonLoginAction = new Button(Constants.nameLogin);
+        buttonBackToMain = new Button(Constants.textBackToMain);
+        logInPageScene = new Scene(layoutLogin, Constants.screenWidth, Constants.screenHeight);
 
-        //Username label
-        usernameLabel = new Label(Constants.usernameText);
+        layoutLogin.getChildren().addAll(labelScreenTitle, labelUsername, textfieldUsername, labelPassword, textfieldPassword, buttonLoginAction, buttonBackToMain);
 
-        //Username input
-        usernameInput = new TextField();
-        usernameInput.setOnKeyPressed((event) -> {
+        labelScreenTitle.getStyleClass().add("label-headline");
+        buttonLoginAction.getStyleClass().add("button-continue");
+        buttonBackToMain.getStyleClass().add("button-menu");
+        logInPageScene.getStylesheets().add(Constants.StyleSheetPath);
+        layoutLogin.setAlignment(Pos.CENTER);
+
+        //if button Enter is pressed on username textfield focus moves on the next field
+        textfieldUsername.setOnKeyPressed((event) -> {
             if(event.getCode() == KeyCode.ENTER) {
-                passwordInput.requestFocus();
+                textfieldPassword.requestFocus();
             }
         });
 
-
-        //Password label
-        passwordLabel = new Label(Constants.passwordText);
-
-        //Password input
-        passwordInput = new PasswordField();
-
-        logInButton = new Button(Constants.logInText);
-        logInButton.getStyleClass().add("button-continue");
-        usernameInput.setOnMouseClicked(e -> {
-            usernameInput.setStyle(null);
-            passwordInput.setStyle(null);
-            logInButton.setStyle(null);
-            logInButton.setText(Constants.logInText);
+        //if error was displayed when clicked on field it resets
+        textfieldUsername.setOnMouseClicked(e -> {
+            textfieldUsername.setStyle(null);
+            textfieldPassword.setStyle(null);
+            buttonLoginAction.setStyle(null);
+            buttonLoginAction.setText(Constants.nameLogin);
         });
-        passwordInput.setOnMouseClicked(e -> {
-            usernameInput.setStyle(null);
-            passwordInput.setStyle(null);
-            logInButton.setStyle(null);
-            logInButton.setText(Constants.logInText);
+        textfieldPassword.setOnMouseClicked(e -> {
+            textfieldUsername.setStyle(null);
+            textfieldPassword.setStyle(null);
+            buttonLoginAction.setStyle(null);
+            buttonLoginAction.setText(Constants.nameLogin);
         });
 
-        // The addEventHandler handles more than one event, which makes it so we don't have to click the login button twice.
-        passwordInput.setOnKeyPressed((event) -> {
+        textfieldPassword.setOnKeyPressed((event) -> {
             if(event.getCode() == KeyCode.ENTER) {
-                {
                     startingLogin();
-                }
-                }});
+            }});
 
+        buttonLoginAction.setOnAction(e -> startingLogin());
 
+        buttonBackToMain.setOnAction(e -> window.setScene(frontPageScene));
 
-
-        logInButton.addEventHandler(ActionEvent.ACTION, event -> {
-            startingLogin();
-        });
-
-        //Button back to front on login page
-        frontPageButton3 = new Button(Constants.goToMainText);
-        frontPageButton3.getStyleClass().add("button-menu");
-        frontPageButton3.setOnAction(e -> window.setScene(frontPageScene));
-
-        //Layout custom game
-        logInPageLayout = new VBox(20);
-        logInPageLayout.setAlignment(Pos.CENTER);
-        logInPageLayout.getChildren().addAll(labelLogin, usernameLabel, usernameInput, passwordLabel,  passwordInput, logInButton, frontPageButton3);
-        logInPageScene = new Scene(logInPageLayout, 400, 700);
-
-        logInPageScene.getStylesheets().add("Theme.css");
         window.setScene(logInPageScene);
     }
 
-    public static boolean containsSpecChar (String enteredString){
-          Pattern p = Pattern.compile("[^a-z0-9]");
-          Matcher m = p.matcher(enteredString);
-          boolean b = m.find();
-          if(b) return true;
-          return false;
-      }
-
-    public void startingLogin(){
-        enteredUsername = usernameInput.getText();
+    /**
+     * The method deals with the most of the login logic and displays common errors.
+     */
+     private void startingLogin(){
+        enteredUsername = textfieldUsername.getText();
         enteredUsername = enteredUsername.toLowerCase();
-        enteredPass = passwordInput.getText();
+        enteredPass = textfieldPassword.getText();
         try {
-            if (login(enteredUsername, enteredPass) && !enteredUsername.equals("admin")) {
+            if (login(enteredUsername, enteredPass) && !enteredUsername.equals(Constants.adminUsername)) {
                 user.setLoggedIn(true);
                 user.setUserName(enteredUsername);
-                user.writeOnHistoryFile("Logged in");
+                user.createHistoryFile();
+                user.writeOnHistoryFile(Constants.textLoggedIn);
                 new FrontPageScene();
-            } else if (enteredUsername.equals("admin") && enteredPass.equals("password")){
-                    admin.setLoggedIn(true);
-                    user.setUserName("admin");
-                    user.writeOnHistoryFile("Logged in");
-                    new FrontPageScene();
+            } else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){
+                admin.setLoggedIn(true);
+                user.setUserName(Constants.adminUsername);
+                user.createHistoryFile();
+                user.writeOnHistoryFile(Constants.textLoggedIn);
+                new FrontPageScene();
             } else if(!SignUpScene.userExists(enteredUsername)){
-                passwordInput.setText("");
-                usernameInput.setText("");
-                logInButton.setStyle("-fx-background-color: red");
-                usernameInput.setStyle("-fx-background-color: #FEE4DF");
-                passwordInput.setStyle("-fx-background-color: #FEE4DF");
-                logInButton.setText("User does not exist");
-                usernameInput.requestFocus();
+                textfieldPassword.setText("");
+                textfieldUsername.setText("");
+                buttonLoginAction.setStyle("-fx-background-color: red");
+                textfieldUsername.setStyle("-fx-background-color: #FEE4DF");
+                textfieldPassword.setStyle("-fx-background-color: #FEE4DF");
+                buttonLoginAction.setText(Constants.warningUserNotExists);
+                textfieldUsername.requestFocus();
             } else {
-                passwordInput.setText("");
-                logInButton.setStyle("-fx-background-color: red");
-                usernameInput.setStyle(null);
-                passwordInput.setStyle("-fx-background-color: #FEE4DF");
-                logInButton.setText("Wrong password");
-                passwordInput.requestFocus();
+                textfieldPassword.setText("");
+                buttonLoginAction.setStyle("-fx-background-color: red");
+                textfieldUsername.setStyle(null);
+                textfieldPassword.setStyle("-fx-background-color: #FEE4DF");
+                buttonLoginAction.setText(Constants.warningWrongPassword);
+                textfieldPassword.requestFocus();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static boolean login(String enteredUsername, String enteredPass) throws IOException {
-        FileReader fileReader = new FileReader("text.txt");
-        byte[] bytes = Files.readAllBytes(Paths.get("text.txt"));
+    /**
+     * The method only checks if username and password exist in the database.
+     * Returns false if does not exist or wrong password, returns true and changes user state to logged in when user and password matches.
+     */
+    private boolean login(String enteredUsername, String enteredPass) throws IOException {
+        FileReader fileReader = new FileReader(Constants.userDatabaseFilePath);
+        byte[] bytes = Files.readAllBytes(Paths.get(Constants.userDatabaseFilePath));
         String s = new String(bytes);
         try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((bufferedReader.readLine()) != null) {
                 if (enteredUsername.equals("") || enteredPass.equals("")) {
                     return false;
                 } else if (s.contains(enteredUsername + " " + enteredPass)) {
@@ -153,7 +138,6 @@ public class LogInScene extends FrontPageScene {
                     loggedUsersPass = enteredPass;
                     return true;
                 }
-                // process the line.
             }
         }
         return false;

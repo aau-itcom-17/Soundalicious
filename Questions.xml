@@ -3,422 +3,422 @@
 <Questions>
 	<Question>
 		<id>0</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Kanye_IAmShakespeare.wav</soundfile>
 		<correctAnswer>Kanye West</correctAnswer>
-		<dummyAnswer1>Jay-Z</dummyAnswer1>
-		<dummyAnswer2>Walt Disney</dummyAnswer2>
-		<dummyAnswer3>Steve Harvey</dummyAnswer3>
+		<wrongAnswer1>Jay-Z</wrongAnswer1>
+		<wrongAnswer2>Walt Disney</wrongAnswer2>
+		<wrongAnswer3>Steve Harvey</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>1</id>
-		<theme>Theme1</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Where is this from?</textOfQuestion>
 		<soundfile>TheXFiles_Illuminati.wav</soundfile>
 		<correctAnswer>The X Files</correctAnswer>
-		<dummyAnswer1>Illuminati</dummyAnswer1>
-		<dummyAnswer2>Shrek</dummyAnswer2>
-		<dummyAnswer3>Breaking Bad</dummyAnswer3>
+		<wrongAnswer1>Illuminati</wrongAnswer1>
+		<wrongAnswer2>Shrek</wrongAnswer2>
+		<wrongAnswer3>Breaking Bad</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>2</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is telling you to never play yourself?</textOfQuestion>
 		<soundfile>DjKhaled_YouPlayedYourself.wav</soundfile>
 		<correctAnswer>Dj Khaled</correctAnswer>
-		<dummyAnswer1>Kanye West</dummyAnswer1>
-		<dummyAnswer2>Jay-Z</dummyAnswer2>
-		<dummyAnswer3>Kevin Hart</dummyAnswer3>
+		<wrongAnswer1>Kanye West</wrongAnswer1>
+		<wrongAnswer2>Jay-Z</wrongAnswer2>
+		<wrongAnswer3>Kevin Hart</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>3</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is behind this voice?</textOfQuestion>
 		<soundfile>Kanye_IsDead.wav</soundfile>
 		<correctAnswer>Kanye West</correctAnswer>
-		<dummyAnswer1>P-Diddy</dummyAnswer1>
-		<dummyAnswer2>Beyoncé's boyfriend</dummyAnswer2>
-		<dummyAnswer3>The Rock</dummyAnswer3>
+		<wrongAnswer1>P-Diddy</wrongAnswer1>
+		<wrongAnswer2>Beyoncé's boyfriend</wrongAnswer2>
+		<wrongAnswer3>The Rock</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>4</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is dis guy?</textOfQuestion>
 		<soundfile>TRUMP_GrabEmByThePussy.wav</soundfile>
 		<correctAnswer>The President of USA</correctAnswer>
-		<dummyAnswer1>A guy that likes cats</dummyAnswer1>
-		<dummyAnswer2>Bill Cosby</dummyAnswer2>
-		<dummyAnswer3>Mike Tyson</dummyAnswer3>
+		<wrongAnswer1>A guy that likes cats</wrongAnswer1>
+		<wrongAnswer2>Bill Cosby</wrongAnswer2>
+		<wrongAnswer3>Mike Tyson</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>5</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who dis mayn?</textOfQuestion>
 		<soundfile>CristianoRonaldo.wav</soundfile>
 		<correctAnswer>Cristiano Ronaldo</correctAnswer>
-		<dummyAnswer1>Zlatan Ibrahimovic</dummyAnswer1>
-		<dummyAnswer2>Usain Bolt</dummyAnswer2>
-		<dummyAnswer3>Conor McGregor</dummyAnswer3>
+		<wrongAnswer1>Zlatan Ibrahimovic</wrongAnswer1>
+		<wrongAnswer2>Usain Bolt</wrongAnswer2>
+		<wrongAnswer3>Conor McGregor</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>6</id>
-		<theme>Theme1</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>From what cartoon is this from?</textOfQuestion>
 		<soundfile>TRUMP_CartmanSwearing.wav</soundfile>
 		<correctAnswer>South Park</correctAnswer>
-		<dummyAnswer1>The Simpsons</dummyAnswer1>
-		<dummyAnswer2>Rick and Morty</dummyAnswer2>
-		<dummyAnswer3>Bojack Horseman</dummyAnswer3>
+		<wrongAnswer1>The Simpsons</wrongAnswer1>
+		<wrongAnswer2>Rick and Morty</wrongAnswer2>
+		<wrongAnswer3>Bojack Horseman</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>7</id>
-		<theme>Theme1</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>From what cartoon is this from?</textOfQuestion>
 		<soundfile>Morty_OhGeez.wav</soundfile>
 		<correctAnswer>Rick and Morty</correctAnswer>
-		<dummyAnswer1>Futurama</dummyAnswer1>
-		<dummyAnswer2>South Park</dummyAnswer2>
-		<dummyAnswer3>The Simpsons</dummyAnswer3>
+		<wrongAnswer1>Futurama</wrongAnswer1>
+		<wrongAnswer2>South Park</wrongAnswer2>
+		<wrongAnswer3>The Simpsons</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>8</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who said this?</textOfQuestion>
 		<soundfile>TRUMP_IDidTryAndFuckHer.wav</soundfile>
 		<correctAnswer>Donald Trump</correctAnswer>
-		<dummyAnswer1>Bill Clinton</dummyAnswer1>
-		<dummyAnswer2>Hugh Hefner</dummyAnswer2>
-		<dummyAnswer3>Harvey Weinstein</dummyAnswer3>
+		<wrongAnswer1>Bill Clinton</wrongAnswer1>
+		<wrongAnswer2>Hugh Hefner</wrongAnswer2>
+		<wrongAnswer3>Harvey Weinstein</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>9</id>
-		<theme>Theme1</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>BigShaq.wav</soundfile>
 		<correctAnswer>Big Shaq</correctAnswer>
-		<dummyAnswer1>Stormzy</dummyAnswer1>
-		<dummyAnswer2>Skepta</dummyAnswer2>
-		<dummyAnswer3>Dj Khaled</dummyAnswer3>
+		<wrongAnswer1>Stormzy</wrongAnswer1>
+		<wrongAnswer2>Skepta</wrongAnswer2>
+		<wrongAnswer3>Dj Khaled</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>10</id>
-		<theme>Theme2</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>BeetleJuice_IGetThePussy.wav</soundfile>
 		<correctAnswer>Beetlejuice</correctAnswer>
-		<dummyAnswer1>Gary the retard</dummyAnswer1>
-		<dummyAnswer2>Rich Chigga</dummyAnswer2>
-		<dummyAnswer3>Jayden Smith</dummyAnswer3>
+		<wrongAnswer1>Gary the retard</wrongAnswer1>
+		<wrongAnswer2>Rich Chigga</wrongAnswer2>
+		<wrongAnswer3>Jayden Smith</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>11</id>
-		<theme>Theme2</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is the person behind this voice?</textOfQuestion>
 		<soundfile>ArnoldSchwarzeneger_IllBeBack.wav</soundfile>
 		<correctAnswer>Arnold Schwarznegger</correctAnswer>
-		<dummyAnswer1>Brad Pitt</dummyAnswer1>
-		<dummyAnswer2>George Clooney</dummyAnswer2>
-		<dummyAnswer3>Bruce Willis</dummyAnswer3>
+		<wrongAnswer1>Brad Pitt</wrongAnswer1>
+		<wrongAnswer2>George Clooney</wrongAnswer2>
+		<wrongAnswer3>Bruce Willis</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>12</id>
-		<theme>Theme2</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Gordon_WhereIsTheLambSauce.wav</soundfile>
 		<correctAnswer>Gordon Ramsey</correctAnswer>
-		<dummyAnswer1>Jamie Oliver</dummyAnswer1>
-		<dummyAnswer2>Wolfgang Puck</dummyAnswer2>
-		<dummyAnswer3>Donald Trump</dummyAnswer3>
+		<wrongAnswer1>Jamie Oliver</wrongAnswer1>
+		<wrongAnswer2>Wolfgang Puck</wrongAnswer2>
+		<wrongAnswer3>Donald Trump</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>13</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which movie is this song from?</textOfQuestion>
 		<soundfile>HarryPotter_Flute.wav</soundfile>
 		<correctAnswer>Harry Potter</correctAnswer>
-		<dummyAnswer1>Fantastic Beasts and Where to Find Them</dummyAnswer1>
-		<dummyAnswer2>Lord Of The Rings</dummyAnswer2>
-		<dummyAnswer3>Monsters Inc.</dummyAnswer3>
+		<wrongAnswer1>Fantastic Beasts and Where to Find Them</wrongAnswer1>
+		<wrongAnswer2>Lord Of The Rings</wrongAnswer2>
+		<wrongAnswer3>Monsters Inc.</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>14</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which movie is this song from?</textOfQuestion>
 		<soundfile>KillBill.wav</soundfile>
 		<correctAnswer>Kill Bill</correctAnswer>
-		<dummyAnswer1>Django Unchained</dummyAnswer1>
-		<dummyAnswer2>Inglorious Bastards</dummyAnswer2>
-		<dummyAnswer3>Pulp Fiction</dummyAnswer3>
+		<wrongAnswer1>Django Unchained</wrongAnswer1>
+		<wrongAnswer2>Inglorious Bastards</wrongAnswer2>
+		<wrongAnswer3>Pulp Fiction</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>15</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which character from Starwars is this?</textOfQuestion>
 		<soundfile>DarthVader.wav</soundfile>
 		<correctAnswer>Anakin Skywalker</correctAnswer>
-		<dummyAnswer1>Luke Skywalker</dummyAnswer1>
-		<dummyAnswer2>Kylo Ren</dummyAnswer2>
-		<dummyAnswer3>Yoda</dummyAnswer3>
+		<wrongAnswer1>Luke Skywalker</wrongAnswer1>
+		<wrongAnswer2>Kylo Ren</wrongAnswer2>
+		<wrongAnswer3>Yoda</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>16</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>PeterGriffin_WhoTheHellCares.wav</soundfile>
 		<correctAnswer>Peter Griffin</correctAnswer>
-		<dummyAnswer1>Homer Simpson</dummyAnswer1>
-		<dummyAnswer2>American Dad</dummyAnswer2>
-		<dummyAnswer3>Bender</dummyAnswer3>
+		<wrongAnswer1>Homer Simpson</wrongAnswer1>
+		<wrongAnswer2>American Dad</wrongAnswer2>
+		<wrongAnswer3>Bender</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>17</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>What movie is this?</textOfQuestion>
 		<soundfile>300_ThisIsSparta.wav</soundfile>
 		<correctAnswer>300</correctAnswer>
-		<dummyAnswer1>Gladiator</dummyAnswer1>
-		<dummyAnswer2>Troy</dummyAnswer2>
-		<dummyAnswer3>The Lord of the Rings</dummyAnswer3>
+		<wrongAnswer1>Gladiator</wrongAnswer1>
+		<wrongAnswer2>Troy</wrongAnswer2>
+		<wrongAnswer3>The Lord of the Rings</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>18</id>
-		<theme>Theme2</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Samueljackson.wav</soundfile>
 		<correctAnswer>Samuel L. Jackson</correctAnswer>
-		<dummyAnswer1>Will Smith</dummyAnswer1>
-		<dummyAnswer2>Eddie Murphy</dummyAnswer2>
-		<dummyAnswer3>Kevin Hart</dummyAnswer3>
+		<wrongAnswer1>Will Smith</wrongAnswer1>
+		<wrongAnswer2>Eddie Murphy</wrongAnswer2>
+		<wrongAnswer3>Kevin Hart</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>19</id>
-		<theme>Theme2</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>What movie is this?</textOfQuestion>
 		<soundfile>Apollo13_Houston.wav</soundfile>
 		<correctAnswer>Apollo 13</correctAnswer>
-		<dummyAnswer1>Apollo 11</dummyAnswer1>
-		<dummyAnswer2>Apollo 18</dummyAnswer2>
-		<dummyAnswer3>Interstellar</dummyAnswer3>
+		<wrongAnswer1>Apollo 11</wrongAnswer1>
+		<wrongAnswer2>Apollo 18</wrongAnswer2>
+		<wrongAnswer3>Interstellar</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>20</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>michaeljackson.wav</soundfile>
 		<correctAnswer>Michael Jackson</correctAnswer>
-		<dummyAnswer1>Prince</dummyAnswer1>
-		<dummyAnswer2>Rick James</dummyAnswer2>
-		<dummyAnswer3>Curtis Mayfield</dummyAnswer3>
+		<wrongAnswer1>Prince</wrongAnswer1>
+		<wrongAnswer2>Rick James</wrongAnswer2>
+		<wrongAnswer3>Curtis Mayfield</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>21</id>
-		<theme>Theme3</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Spongebob_Laugh.wav</soundfile>
 		<correctAnswer>Spongebob SquarePants</correctAnswer>
-		<dummyAnswer1>Bart Simpson</dummyAnswer1>
-		<dummyAnswer2>Lois Griffin</dummyAnswer2>
-		<dummyAnswer3>Jake the Dog</dummyAnswer3>
+		<wrongAnswer1>Bart Simpson</wrongAnswer1>
+		<wrongAnswer2>Lois Griffin</wrongAnswer2>
+		<wrongAnswer3>Jake the Dog</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>22</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>christianbale.wav</soundfile>
 		<correctAnswer>Christian Bale</correctAnswer>
-		<dummyAnswer1>Brad Pitt</dummyAnswer1>
-		<dummyAnswer2>Matthew McConaughey</dummyAnswer2>
-		<dummyAnswer3>Bradley Cooper</dummyAnswer3>
+		<wrongAnswer1>Brad Pitt</wrongAnswer1>
+		<wrongAnswer2>Matthew McConaughey</wrongAnswer2>
+		<wrongAnswer3>Bradley Cooper</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>23</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>TheOffice_PleaseNo.wav</soundfile>
 		<correctAnswer>Steve Carell</correctAnswer>
-		<dummyAnswer1>Ricky Gervais</dummyAnswer1>
-		<dummyAnswer2>Jim Carrey</dummyAnswer2>
-		<dummyAnswer3>Louis C.K.</dummyAnswer3>
+		<wrongAnswer1>Ricky Gervais</wrongAnswer1>
+		<wrongAnswer2>Jim Carrey</wrongAnswer2>
+		<wrongAnswer3>Louis C.K.</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>24</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>jonahhill.wav</soundfile>
 		<correctAnswer>Jonah Hill</correctAnswer>
-		<dummyAnswer1>Seth Rogan</dummyAnswer1>
-		<dummyAnswer2>Michael Cera</dummyAnswer2>
-		<dummyAnswer3>James Franco</dummyAnswer3>
+		<wrongAnswer1>Seth Rogan</wrongAnswer1>
+		<wrongAnswer2>Michael Cera</wrongAnswer2>
+		<wrongAnswer3>James Franco</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>25</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>kimkardashian.wav</soundfile>
 		<correctAnswer>Kim Kardashian</correctAnswer>
-		<dummyAnswer1>Paris Hilton</dummyAnswer1>
-		<dummyAnswer2>Britney Spears</dummyAnswer2>
-		<dummyAnswer3>Demi Lovato</dummyAnswer3>
+		<wrongAnswer1>Paris Hilton</wrongAnswer1>
+		<wrongAnswer2>Britney Spears</wrongAnswer2>
+		<wrongAnswer3>Demi Lovato</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>27</id>
-		<theme>Theme3</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>leonardodicaprio.wav</soundfile>
 		<correctAnswer>Leonardo Dicaprio</correctAnswer>
-		<dummyAnswer1>Matt Damon</dummyAnswer1>
-		<dummyAnswer2>Tom Hardy</dummyAnswer2>
-		<dummyAnswer3>Tom Cruise</dummyAnswer3>
+		<wrongAnswer1>Matt Damon</wrongAnswer1>
+		<wrongAnswer2>Tom Hardy</wrongAnswer2>
+		<wrongAnswer3>Tom Cruise</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>28</id>
-		<theme>Theme3</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>What game is this?</textOfQuestion>
 		<soundfile>GTA_MissionComplete.wav</soundfile>
 		<correctAnswer>Grand Theft Auto: San Andreas</correctAnswer>
-		<dummyAnswer1>Need for Speed: Nitro</dummyAnswer1>
-		<dummyAnswer2>Grand Theft Auto IV</dummyAnswer2>
-		<dummyAnswer3>Need for Speed: Most Wanted</dummyAnswer3>
+		<wrongAnswer1>Need for Speed: Nitro</wrongAnswer1>
+		<wrongAnswer2>Grand Theft Auto IV</wrongAnswer2>
+		<wrongAnswer3>Need for Speed: Most Wanted</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>30</id>
-		<theme>Theme4</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>desiigner.wav</soundfile>
 		<correctAnswer>Desiigner</correctAnswer>
-		<dummyAnswer1>Chief Keef</dummyAnswer1>
-		<dummyAnswer2>Lil Uzi Vert</dummyAnswer2>
-		<dummyAnswer3>Guccimane</dummyAnswer3>
+		<wrongAnswer1>Chief Keef</wrongAnswer1>
+		<wrongAnswer2>Lil Uzi Vert</wrongAnswer2>
+		<wrongAnswer3>Guccimane</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>31</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which character is this?</textOfQuestion>
 		<soundfile>gandalf-flyyoufools.wav</soundfile>
 		<correctAnswer>Gandalf</correctAnswer>
-		<dummyAnswer1>Magneto</dummyAnswer1>
-		<dummyAnswer2>Aragorn</dummyAnswer2>
-		<dummyAnswer3>Obi Wan Kenobi</dummyAnswer3>
+		<wrongAnswer1>Magneto</wrongAnswer1>
+		<wrongAnswer2>Aragorn</wrongAnswer2>
+		<wrongAnswer3>Obi Wan Kenobi</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>32</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which movie is this from?</textOfQuestion>
 		<soundfile>godfather-keepyourfriendsclose.wav</soundfile>
 		<correctAnswer>The Godfather</correctAnswer>
-		<dummyAnswer1>Scarface</dummyAnswer1>
-		<dummyAnswer2>Goodfellas</dummyAnswer2>
-		<dummyAnswer3>Pulp Fiction</dummyAnswer3>
+		<wrongAnswer1>Scarface</wrongAnswer1>
+		<wrongAnswer2>Goodfellas</wrongAnswer2>
+		<wrongAnswer3>Pulp Fiction</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>33</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>gollum.wav</soundfile>
 		<correctAnswer>Gollum</correctAnswer>
-		<dummyAnswer1>Dobby, The House Elf</dummyAnswer1>
-		<dummyAnswer2>Nazgûl</dummyAnswer2>
-		<dummyAnswer3>Balrog</dummyAnswer3>
+		<wrongAnswer1>Dobby, The House Elf</wrongAnswer1>
+		<wrongAnswer2>Nazgûl</wrongAnswer2>
+		<wrongAnswer3>Balrog</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>34</id>
-		<theme>Theme4</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>morganfreeman.wav</soundfile>
 		<correctAnswer>Morgan Freeman</correctAnswer>
-		<dummyAnswer1>Michael Caine</dummyAnswer1>
-		<dummyAnswer2>Samuel L. Jackson</dummyAnswer2>
-		<dummyAnswer3>David Attenborough</dummyAnswer3>
+		<wrongAnswer1>Michael Caine</wrongAnswer1>
+		<wrongAnswer2>Samuel L. Jackson</wrongAnswer2>
+		<wrongAnswer3>David Attenborough</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>35</id>
-		<theme>Theme4</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>samueljackson-saywhatagain.wav</soundfile>
 		<correctAnswer>Samuel L. Jackson</correctAnswer>
-		<dummyAnswer1>Jamie Foxx</dummyAnswer1>
-		<dummyAnswer2>John Travolta</dummyAnswer2>
-		<dummyAnswer3>Vin Diesel</dummyAnswer3>
+		<wrongAnswer1>Jamie Foxx</wrongAnswer1>
+		<wrongAnswer2>John Travolta</wrongAnswer2>
+		<wrongAnswer3>Vin Diesel</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>36</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which movie is this from?</textOfQuestion>
 		<soundfile>scarface-sayhellotomylittlefriend.wav</soundfile>
 		<correctAnswer>Scarface</correctAnswer>
-		<dummyAnswer1>Godfather</dummyAnswer1>
-		<dummyAnswer2>Goodfellas</dummyAnswer2>
-		<dummyAnswer3>Pulp Fiction</dummyAnswer3>
+		<wrongAnswer1>Godfather</wrongAnswer1>
+		<wrongAnswer2>Goodfellas</wrongAnswer2>
+		<wrongAnswer3>Pulp Fiction</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>37</id>
-		<theme>Theme4</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>shialebeouf.wav</soundfile>
 		<correctAnswer>Shia Lebeouf</correctAnswer>
-		<dummyAnswer1>Mark Whalberg</dummyAnswer1>
-		<dummyAnswer2>Channing Tatum</dummyAnswer2>
-		<dummyAnswer3>Matt Damon</dummyAnswer3>
+		<wrongAnswer1>Mark Whalberg</wrongAnswer1>
+		<wrongAnswer2>Channing Tatum</wrongAnswer2>
+		<wrongAnswer3>Matt Damon</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>38</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>From which movie is this?</textOfQuestion>
 		<soundfile>youshallnotpass.wav</soundfile>
 		<correctAnswer>Lord of the Rings</correctAnswer>
-		<dummyAnswer1>Star Wars</dummyAnswer1>
-		<dummyAnswer2>Harry Potter</dummyAnswer2>
-		<dummyAnswer3>Hunger Games</dummyAnswer3>
+		<wrongAnswer1>Star Wars</wrongAnswer1>
+		<wrongAnswer2>Harry Potter</wrongAnswer2>
+		<wrongAnswer3>Hunger Games</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>39</id>
-		<theme>Theme4</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which cartoon is this from?</textOfQuestion>
 		<soundfile>Cartman_NoMeansNoBillCosby.wav</soundfile>
 		<correctAnswer>South Park</correctAnswer>
-		<dummyAnswer1>The Simpsons</dummyAnswer1>
-		<dummyAnswer2>Futurama</dummyAnswer2>
-		<dummyAnswer3>Family Guy</dummyAnswer3>
+		<wrongAnswer1>The Simpsons</wrongAnswer1>
+		<wrongAnswer2>Futurama</wrongAnswer2>
+		<wrongAnswer3>Family Guy</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>40</id>
-		<theme>Theme5</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>DjKhaled_AnotherOne.wav</soundfile>
 		<correctAnswer>Dj Khaled</correctAnswer>
-		<dummyAnswer1>21 Savage</dummyAnswer1>
-		<dummyAnswer2>A$AP Rocky</dummyAnswer2>
-		<dummyAnswer3>Drake</dummyAnswer3>
+		<wrongAnswer1>21 Savage</wrongAnswer1>
+		<wrongAnswer2>A$AP Rocky</wrongAnswer2>
+		<wrongAnswer3>Drake</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>41</id>
-		<theme>Theme5</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Kanye_ItAintNoRalphDoe.wav</soundfile>
 		<correctAnswer>Kanye West</correctAnswer>
-		<dummyAnswer1>Kendrick Lamar</dummyAnswer1>
-		<dummyAnswer2>Snoop Dogg</dummyAnswer2>
-		<dummyAnswer3>50 Cent</dummyAnswer3>
+		<wrongAnswer1>Kendrick Lamar</wrongAnswer1>
+		<wrongAnswer2>Snoop Dogg</wrongAnswer2>
+		<wrongAnswer3>50 Cent</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>42</id>
-		<theme>Theme5</theme>
+		<theme>Celebrities</theme>
 		<textOfQuestion>Who is this?</textOfQuestion>
 		<soundfile>Kanye_YouAintGotTheAnswersMan.wav</soundfile>
 		<correctAnswer>Kanye West</correctAnswer>
-		<dummyAnswer1>Kendrick Lamar</dummyAnswer1>
-		<dummyAnswer2>21 Savage</dummyAnswer2>
-		<dummyAnswer3>xxxTentacion</dummyAnswer3>
+		<wrongAnswer1>Kendrick Lamar</wrongAnswer1>
+		<wrongAnswer2>21 Savage</wrongAnswer2>
+		<wrongAnswer3>xxxTentacion</wrongAnswer3>
 	</Question>
 	<Question>
 		<id>43</id>
-		<theme>Theme5</theme>
+		<theme>Movies</theme>
 		<textOfQuestion>Which cartoon is this from?</textOfQuestion>
 		<soundfile>Rick_Wubalubadubdub.wav</soundfile>
 		<correctAnswer>Rick and Morty</correctAnswer>
-		<dummyAnswer1>South Park</dummyAnswer1>
-		<dummyAnswer2>The Simpons</dummyAnswer2>
-		<dummyAnswer3>Futurama</dummyAnswer3>
+		<wrongAnswer1>South Park</wrongAnswer1>
+		<wrongAnswer2>The Simpons</wrongAnswer2>
+		<wrongAnswer3>Futurama</wrongAnswer3>
 	</Question>
 </Questions>

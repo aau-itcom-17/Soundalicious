@@ -1,195 +1,187 @@
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.*;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 
+/**
+ * It is the first screen that user sees, it is called from the Main.java.
+ * It has different menu options when nobody is logged in or admin/user is logged in.
+ * When nobody is logged in it shows Quick play, Custom games (when pressed just goes to login), Log in and Sign up options as buttons.
+ * Admin sees Quick play, Custom game, Upload sound, Delete users and Log out options as buttons.
+ * Regular user sees Quick play, Custom game, Upload sound, Delete your user and Log out option as buttons.
+ * The program goes next to the item that is chosen in menu, if somebody is logged in title displays the name of the user.
+ */
 public class FrontPageScene extends Main {
 
-  Label labelFront;
-  Button quickPlayButton, customGameButton, loginPageButton, signUpButton;
-  Button  logOutButton, deleteButton, uploadButton, deleteUserButton, historyButton;
-  VBox layoutFrontpage ;
 
-  public FrontPageScene() {
+    private Label labelScreenTitle;
+    private Button buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup, buttonCancel;
+    private Button buttonUserHistory, buttonUserLogOut, buttonUserDeleteYourAcc, buttonUserUploadSound, buttonAdminDeleteOtherUsers;
+    private VBox layoutFrontpage;
 
+    public FrontPageScene() {
 
-    //Label front page
-    labelFront = new Label(Constants.gameName);
-    labelFront.getStyleClass().add("label-headline");
-
-    if(user.isLoggedIn){
-      labelFront.setText("HI " + user.getUserName().toUpperCase() + "!");
-    }else if (admin.isLoggedIn){
-      labelFront.setText("HI ADMIN!");
-    }
-
-    //Quick play button -> Goes to Quickplay page
-    quickPlayButton = new Button(Constants.quickPlayName);
-    quickPlayButton.getStyleClass().add("button-quickplay");
-    quickPlayButton.setOnAction(e -> {
-      try {
-        Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
-      } catch (ParserConfigurationException e1) {
-        e1.printStackTrace();
-      } catch (SAXException e1) {
-        e1.printStackTrace();
-      } catch (IOException e1) {
-        e1.printStackTrace();
-      }
-      new QuickPlayScene();
-    });
+        labelScreenTitle = new Label(Constants.nameGame);
+        buttonQuickPlay = new Button(Constants.nameQuickPlay);
+        buttonCustomGame = new Button(Constants.nameCustomGame);
+        buttonLogin = new Button(Constants.nameLogin);
+        buttonSignup = new Button(Constants.nameSignup);
+        buttonUserLogOut = new Button(Constants.nameLogout);
+        buttonUserDeleteYourAcc = new Button(Constants.nameDeleteYouUser);
+        buttonUserUploadSound = new Button(Constants.nameUploadQuestion);
+        buttonAdminDeleteOtherUsers = new Button(Constants.nameDeleteOtherUsers);
+        layoutFrontpage = new VBox(Constants.vBoxSpacing);
+        buttonUserHistory = new Button(Constants.textSeeHistory);
+        buttonCancel = new Button(Constants.textCancel);
+        frontPageScene = new Scene(layoutFrontpage, Constants.screenWidth, Constants.screenHeight);
 
 
-    //Custom game button -> Goes to login page  page
-    customGameButton = new Button(Constants.customGameText);
-    customGameButton.getStyleClass().add("button-menu");
+        labelScreenTitle.getStyleClass().add("label-headline");
+        buttonQuickPlay.getStyleClass().add("button-quickplay");
+        buttonCustomGame.getStyleClass().add("button-menu");
+        buttonLogin.getStyleClass().add("button-menu");
+        buttonSignup.getStyleClass().add("button-menu");
+        buttonUserLogOut.getStyleClass().add("button-menu");
+        buttonUserDeleteYourAcc.getStyleClass().add("button-menu");
+        buttonUserUploadSound.getStyleClass().add("button-menu");
+        buttonAdminDeleteOtherUsers.getStyleClass().add("button-menu");
+        buttonUserHistory.getStyleClass().add("button-menu");
+        layoutFrontpage.setAlignment(Pos.CENTER);
+        frontPageScene.getStylesheets().add(Constants.StyleSheetPath);
 
-
-    if(user.isLoggedIn || admin.isLoggedIn){
-      customGameButton.setOnAction(e -> new CustomGameScene());
-    }else{
-      customGameButton.setOnAction(e -> new LogInScene());
-    }
-
-    if (user.isLoggedIn || admin.isLoggedIn) {
-      //Logout button
-      logOutButton = new Button(Constants.logOutText);
-      logOutButton.getStyleClass().add("button-menu");
-      logOutButton.setOnAction(e -> {
-        try {
-          user.writeOnHistoryFile("Logged out");
-        } catch (IOException e1) {
-          e1.printStackTrace();
+        //if statement for displaying different layout for user, admin and not logged in user
+        if (user.isLoggedIn) {
+            labelScreenTitle.setText(Constants.messageGreetingWord + " " + user.getUserName().toUpperCase() + "!");
+            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonUserHistory, buttonUserDeleteYourAcc, buttonUserLogOut);
+        } else if (admin.isLoggedIn) {
+            labelScreenTitle.setText(Constants.messageGreetingWord + " " + Constants.nameAdmin);
+            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonUserHistory, buttonAdminDeleteOtherUsers, buttonUserLogOut);
+        } else {
+            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup);
         }
-        user.setLoggedIn(false);
-        admin.setLoggedIn(false);
-        new FrontPageScene();
-      });
 
-    }
-
-
-    //delete your user button
-    if(user.isLoggedIn || admin.isLoggedIn) {
-      deleteButton = new Button(Constants.deleteUserText);
-      deleteButton.getStyleClass().add("button-menu");
-      deleteButton.setOnAction(e -> {
-        deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-        deleteButton.setText("Are you sure?");
-        deleteButton.setOnAction(f -> {
-          try {
-            user.writeOnHistoryFile("User deleted");
-          } catch (IOException e1) {
-            e1.printStackTrace();
-          }
-          removeLineFromFile("text.txt", loggedUser + " " + loggedUsersPass);
-          user.setLoggedIn(false);
-          new FrontPageScene();
+        buttonQuickPlay.setOnAction(e -> {
+            try {
+                Questions.getRandomQuestions(questions, rQuestions);
+            } catch (ParserConfigurationException e1) {
+                e1.printStackTrace();
+            } catch (SAXException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            new QuickPlayScene();
         });
-      });
 
-      //Upload a sound button
-      uploadButton = new Button(Constants.uploadSound);
-      uploadButton.getStyleClass().add("button-menu");
-      uploadButton.setOnAction(e -> new SaveFiles());
+        /*
+         * custom game scene should be available only to logged in users
+         * so if user is not logged in it goes to log in scene for user to log in
+         * this is the only one main menu button which is for logged in users, but can be seen by everybody
+         */
+        buttonCustomGame.setOnAction(e -> {
+            if (user.isLoggedIn || admin.isLoggedIn) {
+                selectedCustomGame = true;
+                new CustomGameScene();
+            } else {
+                new LogInScene();
+            }
+        });
 
+        buttonUserHistory.setOnAction(e -> new HistoryScene());
+
+        buttonLogin.setOnAction(e -> new LogInScene());
+
+        buttonSignup.setOnAction(e -> new SignUpScene());
+
+        buttonUserLogOut.setOnAction(e -> {
+            try {
+                user.writeOnHistoryFile(Constants.textLoggedOut);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            user.setLoggedIn(false);
+            admin.setLoggedIn(false);
+            new FrontPageScene();
+        });
+
+        /*
+         * before user can delete his/her profile button asks again to confirm the action
+         */
+        buttonUserDeleteYourAcc.setOnAction(e -> {
+            buttonUserDeleteYourAcc.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+            buttonUserDeleteYourAcc.setText(Constants.warningConfirmAction);
+            frontPageScene = new Scene(layoutFrontpage, Constants.screenWidth, Constants.screenHeight);
+            frontPageScene.getStylesheets().add(Constants.StyleSheetPath);
+            window.setScene(frontPageScene);
+            buttonUserDeleteYourAcc.setOnAction(f -> {
+                try {
+                    user.writeOnHistoryFile(Constants.textUserDeletedSelf);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                removeLineFromFile(Constants.userDatabaseFilePath, loggedUser + " " + loggedUsersPass);
+                File fileForDeleting = new File( Constants.userHistoryPath + "/" + user.getUserName() + ".txt");
+                fileForDeleting.delete();
+                user.setLoggedIn(false);
+                new FrontPageScene();
+            });
+        });
+
+        buttonUserUploadSound.setOnAction(e -> new UploadQuestionScene());
+
+        buttonAdminDeleteOtherUsers.setOnAction(event -> {
+            try {
+                new DeleteUserScene();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        window.setScene(frontPageScene);
     }
 
-    if(admin.isLoggedIn){
-      deleteUserButton = new Button("Delete a user");
-      deleteUserButton.getStyleClass().add("button-menu");
-      deleteUserButton.setOnAction(event -> {
+    /**
+     * Method used for removing user from a file
+     * Takes input of two Strings (file name and the line to remove from the file (in this case "username + " " + password").
+     * Used in several places in the code
+     */
+    public static void removeLineFromFile(String file, String lineToRemove) {
         try {
-          new DeleteUserScene();
-        } catch (IOException e) {
-          e.printStackTrace();
+            File inFile = new File(file);
+            //Construct the new file that will later be renamed to the original filename.
+            // ".tmp makes sure we don't delete the entire .txt file"
+            File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+            String line;
+            //Read from the original file and write to the new
+            //unless content matches data to be removed.
+            while ((line = br.readLine()) != null) {
+                if (!line.trim().equals(lineToRemove)) {
+                    pw.println(line);
+                    pw.flush();
+                }
+            }
+
+            pw.close();
+            br.close();
+
+            if (!inFile.delete()) {
+                System.out.println("Could not delete file");
+                return;
+            }
+            //Rename the new file to the filename the original file had.
+            if (!tempFile.renameTo(inFile))
+                System.out.println("Could not rename file");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-
-      });
-
     }
-
-    //Login page button -> Goes to login page
-    loginPageButton = new Button(Constants.logInText);
-    loginPageButton.getStyleClass().add("button-menu");
-    loginPageButton.setOnAction(e -> new LogInScene());
-
-
-    //sign up button -> Goes to sign up page
-    signUpButton = new Button(Constants.signUpText);
-    signUpButton.getStyleClass().add("button-menu");
-    signUpButton.setOnAction(e -> new SignUpScene());
-
-    historyButton = new Button("See history");
-    historyButton.getStyleClass().add("button-menu");
-    historyButton.setOnAction(e -> new HistoryScene());
-
-
-    System.out.println("USER IS LOGGED IN/OUT :" + user.isLoggedIn());
-    System.out.println("ADMIN IS LOGGED IN/OUT :" + admin.isLoggedIn());
-    //Layout Front Page
-    layoutFrontpage = new VBox(20);
-    layoutFrontpage.setAlignment(Pos.CENTER);
-    if (user.isLoggedIn) {
-      System.out.println("user is logged in");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteButton, logOutButton, historyButton);
-    }else if(admin.isLoggedIn) {
-      System.out.println("admin is logged in");
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, uploadButton, deleteUserButton,logOutButton, historyButton);
-    }
-    else {
-      layoutFrontpage.getChildren().addAll(labelFront, quickPlayButton, customGameButton, loginPageButton, signUpButton);
-    }
-    frontPageScene = new Scene(layoutFrontpage, 400, 700);
-    frontPageScene.getStylesheets().add("Theme.css");
-    window.setScene(frontPageScene);
-  }
-
-  public static void  removeLineFromFile(String file, String lineToRemove) {
-    System.out.println(lineToRemove);
-    try {
-      File inFile = new File(file);
-      //Construct the new file that will later be renamed to the original filename.
-      // ".tmp makes sure we don't delete the entire .txt file"
-      File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
-      BufferedReader br = new BufferedReader(new FileReader(file));
-      PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-      String line;
-      //Read from the original file and write to the new
-      //unless content matches data to be removed.
-      while ((line = br.readLine()) != null) {
-        if (!line.trim().equals(lineToRemove)) {
-          pw.println(line);
-          pw.flush();
-        }
-      }
-
-      pw.close();
-      br.close();
-
-      if (!inFile.delete()) {
-        System.out.println("Could not delete file");
-        return;
-      }
-      //Rename the new file to the filename the original file had.
-      if (!tempFile.renameTo(inFile))
-        System.out.println("Could not rename file");
-
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-  }
 }

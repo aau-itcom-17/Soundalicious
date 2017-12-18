@@ -1,13 +1,10 @@
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
+/**
+ * Sound files class deals with sound playback that is used in the play game scene.
+ */
 
 public class Soundfiles
 {
@@ -15,7 +12,10 @@ public class Soundfiles
     
     private static AudioInputStream audio;
     private static Clip clip = null;
-// Makes the sound stop. 
+
+    /**
+     * This method is activated when user has not played sound to indicate warning.
+     */
     public static void noSound() throws NullPointerException {
         try {
 
@@ -27,12 +27,14 @@ public class Soundfiles
         }
     }
 
-// Only this method has been changed to clip. The other methods remain.
+    /**
+     * Gets the right sound for the question and displays errors.
+     */
     public static void readingSound() {
         //Play sound
         try {
              String homePath = System.getProperty("user.home");
-            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.rQuestions.get(Main.n).getSoundFile());
+            File soundFolder = new File(homePath + File.separator + "p1" + File.separator + "Sounds" + File.separator + Main.rQuestions.get(Main.counterOfQuestions).getSoundFile());
             String soundFolderName = soundFolder.getPath();
             System.out.println(soundFolderName);
             audio = AudioSystem.getAudioInputStream(new File(soundFolderName));

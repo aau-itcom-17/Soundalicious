@@ -1,16 +1,18 @@
 import javafx.scene.control.Alert;
 
+/**
+ * Class used for counting and showing points.
+ */
+
 public class PointSystem
 {
     private static int count = 0;
 
-    public static void countPoints()
-    {
+    public static void countPoints() {
         count++;
     }
 
-    public static void showPoints()
-    {
+    public static void showPoints() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
@@ -19,8 +21,7 @@ public class PointSystem
         alert.showAndWait();
     }
 
-    public static void resetCountPoints()
-    {
+    public static void resetCountPoints() {
         count = 0;
     }
 }

@@ -1,24 +1,24 @@
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
-public class User  extends Main{
+/**
+ * Deals with keeping track of which user is logged in now.
+ * Has true and false states for login.
+ */
+public class User extends Main {
     public String username;
     public String password;
     public int ID;
     public boolean isLoggedIn;
 
-
-
-    public User(){
-
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
-    public User(String username, String password){
+
+    public User() {
+        this("guest user", "null");
     }
 
     public boolean isLoggedIn() {
@@ -53,49 +53,44 @@ public class User  extends Main{
         this.ID = ID;
     }
 
-    public void createHistoryFile() throws IOException {
+    public void createHistoryFile() {
         // Section needs to be here so the time is checked every time method is called
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String time  = localDateTime.format(formatter);
+        String time = localDateTime.format(formatter);
         //
-        File historyFile = new File (user.getUserName() + ".txt");
+        File historyFile = new File(Constants.userHistoryPath + "/" + user.getUserName() + ".txt");
 
-        if (!historyFile.exists()) {
+        if (!historyFile.exists() && !enteredUsername.equals(Constants.nameAdmin)) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(user.getUserName() + ".txt"), "utf-8"))) {
-                writer.write(time +"\t"+ " User: " +  user.getUserName() +  ". " + "User created" + "\n");
-                System.out.println("History file has been created");
+                    new FileOutputStream(Constants.userHistoryPath + "/" + user.getUserName() + ".txt"), "utf-8"))) {
+                writer.write(time + " User: " + user.getUserName() + ". " + Constants.textFileCreated + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
-            toAdmin.write(time + "\t"+ " User: " + user.getUserName() + ". New user created");
-            toAdmin.newLine();
-            toAdmin.close();
-
-
         }
-
-
     }
+  
     public void writeOnHistoryFile(String writeToFile) throws IOException {
         //Section needs to be here so the time is checked every time method is called
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String time  = localDateTime.format(formatter);
-        //Copied from signUpScene¨
-        BufferedWriter toUser = new BufferedWriter(new FileWriter(user.getUserName() + ".txt", true));
-        toUser.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
+
+        String time = localDateTime.format(formatter);
+
+        BufferedWriter toUser = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + user.getUserName() + ".txt", true));
+        toUser.write(time + ": " + user.getUserName() + ". " + writeToFile);
         toUser.newLine();
         toUser.close();
-        if (!user.getUserName().equals("admin") ){
-            BufferedWriter toAdmin = new BufferedWriter(new FileWriter("admin" + ".txt", true));
-            toAdmin.write(time + "\t"+ " User: " + user.getUserName() + ". " + writeToFile);
+        /*
+         * If admin is not logged in actions are still written to admin file
+         * If admin is logged in, the activity is written as a normal user above, to not repeat same lines
+         */
+        if (!admin.isLoggedIn()) {
+            BufferedWriter toAdmin = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + Constants.nameAdmin + ".txt", true));
+            toAdmin.write(time + ": " + user.getUserName() + ". " + writeToFile);
             toAdmin.newLine();
             toAdmin.close();
         }
-
-
     }
 }

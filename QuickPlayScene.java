@@ -1,161 +1,146 @@
-import javafx.application.*;
 import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Popup;
-import org.xml.sax.SAXException;
 
-import javax.swing.*;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+/**
+ * Quick play scene appears right after user press the start game button in FrontPageScene.java
+ * It includes two boxes for choosing number of teams and questions (with incrementals by the sides.
+ * Also, there are 3 buttons: start the game, explain the rules or go back to main.
+ */
 
-public class QuickPlayScene extends Main {
+public class QuickPlayScene extends FrontPageScene {
 
-  Label labelQuick, labelChoiceBox, labelChoiceBox2;
-  Button teamChoice, questionsChoice;
-  Label teamNumLabel, questNumLabel;
-  ChoiceBox<String> choiceBox, choiceBox2;
-  Button startGameButton, buttonHowToPlay, frontPageButton1, minButtonT, plusButtonT, minButtonQ, plusButtonQ;
-  VBox quickPlayLayout;
+    Button buttonContainerTeams, buttonContainerQuestions;
+    private Label labelScreenTitle;
+    private Button buttonStartGame, buttonHowToPlay,
+            buttonBackToMain, buttonDecTeams, buttonIncTeams, buttonDecQuestions, buttonIncQuestions;
+    private VBox layoutQuickPlay;
+    private HBox layoutIncrementTeams, layoutIncrementQuestions;
 
-  public QuickPlayScene(){
+    public QuickPlayScene() {
 
-    //Label Quick play
-    labelQuick = new Label(Constants.quickPlayName);
-    labelQuick.getStyleClass().add("label-headline");
+        labelScreenTitle = new Label(Constants.nameQuickPlay);
+        buttonDecTeams = new Button(Constants.textDecrease);
+        buttonIncTeams = new Button(Constants.textIncrease);
+        buttonDecQuestions = new Button(Constants.textDecrease);
+        buttonIncQuestions = new Button(Constants.textIncrease);
+        buttonStartGame = new Button(Constants.startGameText);
+        buttonBackToMain = new Button(Constants.textBackToMain);
+        buttonHowToPlay = new Button(Constants.howToPlayText);
+        buttonContainerQuestions = new Button(Constants.questionNumNames[qCount]); //this button is not clickable, but was chosen as a button for better alignment with increments
+        buttonContainerTeams = new Button(Constants.teamNumNames[tCount]); //this button is not clickable, but was chosen as a button for better alignment with increments
+        layoutIncrementTeams = new HBox();
+        layoutIncrementQuestions = new HBox();
+        layoutQuickPlay = new VBox(Constants.vBoxSpacing);
+        quickPlayScene = new Scene(layoutQuickPlay, Constants.screenWidth, Constants.screenHeight);
 
+        layoutIncrementTeams.getChildren().addAll(buttonDecTeams, buttonContainerTeams, buttonIncTeams);
+        layoutIncrementQuestions.getChildren().addAll(buttonDecQuestions, buttonContainerQuestions, buttonIncQuestions);
 
-    HBox hbox1 = new HBox();
-    minButtonT = new Button("-");
-    minButtonT.getStyleClass().add("controlButtonMinus");
-    //minButtonT.setStyle("-fx-background-color: #eaf2ff");
-    minButtonT.setOnAction(e -> {
-              if(tCount == 1){
+        //there are not enough questions in xml file for every theme, so now starting point for every custom game is limited questions
+        if(selectedCustomGame){
+            numOfQuestions = Constants.numberQuestionCustomGame;
+            selectedCustomGame = false;
+            layoutQuickPlay.getChildren().addAll(labelScreenTitle, layoutIncrementTeams, buttonStartGame, buttonHowToPlay, buttonBackToMain);
+        } else {
+            layoutQuickPlay.getChildren().addAll(labelScreenTitle, layoutIncrementTeams, layoutIncrementQuestions, buttonStartGame, buttonHowToPlay, buttonBackToMain);
+        }
+
+        labelScreenTitle.getStyleClass().add("label-headline");
+        buttonDecTeams.getStyleClass().add("controlButtonMinus");
+        buttonContainerTeams.getStyleClass().add("controlText");
+        buttonIncTeams.getStyleClass().add("controlButtonPlus");
+        buttonStartGame.getStyleClass().add("button-continue");
+        buttonBackToMain.getStyleClass().add("button-menu");
+        buttonDecQuestions.getStyleClass().add("controlButtonMinus");
+        buttonContainerQuestions.getStyleClass().add("controlText");
+        buttonHowToPlay.getStyleClass().add("button-menu");
+        buttonIncQuestions.getStyleClass().add("controlButtonPlus");
+        layoutIncrementTeams.setAlignment(Pos.CENTER);
+        layoutIncrementQuestions.setAlignment(Pos.CENTER);
+        layoutQuickPlay.setAlignment(Pos.CENTER);
+        quickPlayScene.getStylesheets().add(Constants.StyleSheetPath);
+
+        /*
+         * Buttons for decreasing/increasing numbers of teams and questions work the same
+         * If number reaches corner values, buttons changes color and value can not be changed with it
+         * If corner value is not reached it changes the value itself and the text inside the middle textbox-button (buttonContainerTeams)
+         */
+        buttonDecTeams.setOnAction(e -> {
+            if (tCount == 1) {
                 tCount--;
-                teamChoice.setText(Constants.teamNumNames[tCount]);
+                buttonContainerTeams.setText(Constants.teamNumNames[tCount]);
                 numOfTeams = Constants.teamNums[tCount];
-                plusButtonT.setStyle(null);
-                minButtonT.setStyle("-fx-background-color: #eaf2ff");
-              }
-              else if (tCount > 0) {
+                buttonIncTeams.setStyle(null);
+                buttonDecTeams.setStyle("-fx-background-color: #eaf2ff");
+            } else if (tCount > 0) {
                 tCount--;
-                teamChoice.setText(Constants.teamNumNames[tCount]);
+                buttonContainerTeams.setText(Constants.teamNumNames[tCount]);
                 numOfTeams = Constants.teamNums[tCount];
-                plusButtonT.setStyle(null);
-              }
-            });
-    teamChoice = new Button(Constants.teamNumNames[tCount]);
-    teamChoice.getStyleClass().add("controlText");
-    plusButtonT = new Button("+");
-    plusButtonT.getStyleClass().add("controlButtonPlus");
-    plusButtonT.setOnAction(e -> {
-              if(tCount == 3){
-                tCount++;
-                teamChoice.setText(Constants.teamNumNames[tCount]);
-                numOfTeams = Constants.teamNums[tCount];
-                minButtonT.setStyle(null);
-                plusButtonT.setStyle("-fx-background-color: #eaf2ff");
-              }
-              else if(tCount < 4) {
-                tCount++;
-                teamChoice.setText(Constants.teamNumNames[tCount]);
-                numOfTeams = Constants.teamNums[tCount];
-                minButtonT.setStyle(null);
-              }
-    }
-    );
-
-
-    hbox1.setAlignment(Pos.CENTER);
-    hbox1.getChildren().addAll(minButtonT, teamChoice, plusButtonT);
-
-    HBox hbox2 = new HBox();
-    minButtonQ = new Button("-");
-    minButtonQ.getStyleClass().add("controlButtonMinus");
-    minButtonQ.setOnAction(e -> {
-      if(qCount == 1){
-        qCount--;
-        questionsChoice.setText(Constants.questionNumNames[qCount]);
-        numOfQuestions= Constants.questionNums[qCount];
-        plusButtonQ.setStyle(null);
-        minButtonQ.setStyle("-fx-background-color: #eaf2ff");
-      }
-      else if (qCount > 0) {
-        qCount--;
-        questionsChoice.setText(Constants.questionNumNames[qCount]);
-        numOfQuestions = Constants.teamNums[qCount];
-        plusButtonQ.setStyle(null);
-      }
-    });
-    questionsChoice = new Button(Constants.questionNumNames[qCount]);
-    questionsChoice.getStyleClass().add("controlText");
-    plusButtonQ = new Button("+");
-    plusButtonQ.getStyleClass().add("controlButtonPlus");
-    plusButtonQ.setOnAction(e -> {
-              if(qCount == 4){
-                qCount++;
-                questionsChoice.setText(Constants.questionNumNames[qCount]);
-                numOfQuestions = Constants.questionNums[qCount];
-                minButtonQ.setStyle(null);
-                plusButtonQ.setStyle("-fx-background-color: #eaf2ff");
-              }
-              else if (qCount < 5) {
-                qCount++;
-                questionsChoice.setText(Constants.questionNumNames[qCount]);
-                numOfQuestions = Constants.questionNums[qCount];
-                minButtonQ.setStyle(null);
-              }
+                buttonIncTeams.setStyle(null);
             }
-    );
-    hbox2.setAlignment(Pos.CENTER);
-    hbox2.getChildren().addAll(minButtonQ, questionsChoice, plusButtonQ);
+        });
+        buttonIncTeams.setOnAction(e -> {
+                    if (tCount == 3) {
+                        tCount++;
+                        buttonContainerTeams.setText(Constants.teamNumNames[tCount]);
+                        numOfTeams = Constants.teamNums[tCount];
+                        buttonDecTeams.setStyle(null);
+                        buttonIncTeams.setStyle("-fx-background-color: #eaf2ff");
+                    } else if (tCount < 4) {
+                        tCount++;
+                        buttonContainerTeams.setText(Constants.teamNumNames[tCount]);
+                        numOfTeams = Constants.teamNums[tCount];
+                        buttonDecTeams.setStyle(null);
+                    }
+                }
+        );
+        buttonDecQuestions.setOnAction(e -> {
+            if (qCount == 1) {
+                qCount--;
+                buttonContainerQuestions.setText(Constants.questionNumNames[qCount]);
+                numOfQuestions = Constants.questionNums[qCount];
+                buttonIncQuestions.setStyle(null);
+                buttonDecQuestions.setStyle("-fx-background-color: #eaf2ff");
+            } else if (qCount > 0) {
+                qCount--;
+                buttonContainerQuestions.setText(Constants.questionNumNames[qCount]);
+                numOfQuestions = Constants.teamNums[qCount];
+                buttonIncQuestions.setStyle(null);
+            }
+        });
+        buttonIncQuestions.setOnAction(e -> {
+                    if (qCount == 4) {
+                        qCount++;
+                        buttonContainerQuestions.setText(Constants.questionNumNames[qCount]);
+                        numOfQuestions = Constants.questionNums[qCount];
+                        buttonDecQuestions.setStyle(null);
+                        buttonIncQuestions.setStyle("-fx-background-color: #eaf2ff");
+                    } else if (qCount < 5) {
+                        qCount++;
+                        buttonContainerQuestions.setText(Constants.questionNumNames[qCount]);
+                        numOfQuestions = Constants.questionNums[qCount];
+                        buttonDecQuestions.setStyle(null);
+                    }
+                }
+        );
 
+        buttonStartGame.setOnAction(e -> new TeamNameScene());
 
-    //Quick Play play button button
-    startGameButton = new Button(Constants.startGameText);
-    startGameButton.getStyleClass().add("button-continue");
-    startGameButton.setOnAction(e -> {
-      //sets numOfQuestions according to choice box
-      new TeamNameScene();
+        buttonHowToPlay.setOnAction(e -> new GameRulesScene());
 
-    });
+        //before moving to front page, it clears values that have been changed by user
+        buttonBackToMain.setOnAction(e -> {
+            teams.clear();
+            counterOfQuestions = 0;
+            answers.clear();
+            numOfTeams = 1;
+            window.setScene(frontPageScene);
+        });
 
-    //How to play button button
-    buttonHowToPlay = new Button(Constants.howToPlayText);
-    buttonHowToPlay.getStyleClass().add("button-menu");
-    buttonHowToPlay.setOnAction(e -> {
-      new HowToPlayScene();
-    });
-
-
-    //Button back to front on custom game page
-    frontPageButton1 = new Button(Constants.goToMainText);
-    frontPageButton1.setOnAction(e -> {
-        teams.clear();
-        n = 0;
-        answers.clear();
-        numOfTeams = 1;
-        window.setScene(frontPageScene);
-
-    });
-    frontPageButton1.getStyleClass().add("button-menu");
-
-    //Layout quickplay
-    quickPlayLayout = new VBox(20);
-    quickPlayLayout.setAlignment(Pos.CENTER);
-    quickPlayLayout.getChildren().addAll(labelQuick, hbox1, hbox2, startGameButton, buttonHowToPlay, frontPageButton1);
-    quickPlayScene = new Scene(quickPlayLayout, 400, 700);
-
-    quickPlayScene.getStylesheets().add("Theme.css");
-    window.setScene(quickPlayScene);
-
-  }
+        window.setScene(quickPlayScene);
+    }
 }
