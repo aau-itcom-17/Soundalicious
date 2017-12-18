@@ -116,9 +116,6 @@ public class FrontPageScene extends Main {
         buttonUserDeleteYourAcc.setOnAction(e -> {
             buttonUserDeleteYourAcc.setStyle("-fx-background-color: red; -fx-text-fill: white;");
             buttonUserDeleteYourAcc.setText(Constants.warningConfirmAction);
-            frontPageScene = new Scene(layoutFrontpage, Constants.screenWidth, Constants.screenHeight);
-            frontPageScene.getStylesheets().add(Constants.StyleSheetPath);
-            window.setScene(frontPageScene);
             buttonUserDeleteYourAcc.setOnAction(f -> {
                 try {
                     user.writeOnHistoryFile(Constants.textUserDeletedSelf);
