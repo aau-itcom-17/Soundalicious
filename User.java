@@ -63,7 +63,7 @@ public class User extends Main {
 
         if (!historyFile.exists() && !enteredUsername.equals(Constants.nameAdmin)) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(user.getUserName() + ".txt"), "utf-8"))) {
+                    new FileOutputStream(Constants.userHistoryPath + "/" + user.getUserName() + ".txt"), "utf-8"))) {
                 writer.write(time + " User: " + user.getUserName() + ". " + "File has been created" + "\n");
                 System.out.println("History file has been created");
             } catch (IOException e) {
