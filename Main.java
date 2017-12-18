@@ -28,7 +28,7 @@ import java.util.List;
 public class Main extends Application {
 
     public static Stage window;
-    public static Scene frontPageScene, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, scoreBoardPageScene, finalScoreBoardPageScene, saveFilesScene, deleteUserScene, gameRulesScene, teamNameScene;
+    public static Scene frontPageScene, quickPlayScene, customGameScene, logInPageScene, signUpScene, playGameScene, scoreBoardPageScene, finalScoreBoardPageScene, saveFilesScene, deleteUserScene, gameRulesScene, teamNameScene, historyScene;
     public static String enteredUsername, enteredPass;
     public static String loggedUser, loggedUsersPass;
     public static int numOfQuestions = 10;

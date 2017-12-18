@@ -77,6 +77,8 @@ public class PlayGameScene extends QuickPlayScene {
         buttonNextTeamOrQuestion.setStyle("-fx-max-width: 250px");
         playGameLayout.setAlignment(Pos.CENTER);
         playGameScene.getStylesheets().add(Constants.StyleSheetPath);
+        labelQuestionText.setWrapText(true);
+        labelQuestionText.setStyle("-fx-text-alignment: center");
 
         //when play sound is clicked, the sound plays and buttons for answer changes style
         buttonPlaySound.setOnAction(new EventHandler<ActionEvent>() {
@@ -119,7 +121,7 @@ public class PlayGameScene extends QuickPlayScene {
             if (radioAnswer4.isSelected()) answersChosenByPlayersTexts[counterOfCurrentTeam] = radioAnswer4.getText();
 
             if (teams.size() > counterOfCurrentTeam + 1) {
-                teamName.setText(teams.get(counterOfCurrentTeam + 1).getTeamName() + Constants.textAnsweringQuestion + (counterOfQuestions + 1));
+                teamName.setText(teams.get(counterOfCurrentTeam + 1).getTeamName() + " " + Constants.textAnsweringQuestion + " " + (counterOfQuestions + 1));
             }
 
             if (teams.size() == counterOfCurrentTeam + 1) {

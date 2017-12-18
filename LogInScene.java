@@ -6,13 +6,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Login scene can be reached through the main menu when nobody is logged in.
@@ -92,7 +91,12 @@ public class LogInScene extends FrontPageScene {
                 user.setLoggedIn(true);
                 user.setUserName(enteredUsername);
                 new FrontPageScene();
+                user.createHistoryFile();
+                user.writeOnHistoryFile(Constants.textLoggedIn);
             } else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){
+                user.setUserName(Constants.adminUsername);
+                user.createHistoryFile();
+                user.writeOnHistoryFile(Constants.textLoggedOut);
                 admin.setLoggedIn(true);
                 new FrontPageScene();
             } else if(!SignUpScene.userExists(enteredUsername)){

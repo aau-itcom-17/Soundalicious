@@ -19,7 +19,7 @@ public class GameRulesScene extends QuickPlayScene {
     private Button buttonShowRules, buttonBackToMain;
     VBox layout;
 
-    public GameRulesScene() {
+    GameRulesScene() {
         labelScreenTitle = new Label(Constants.nameGame);
         buttonShowRules = new Button(Constants.textHowToPlay);
         labelRulesText = new Label(Constants.textRules);

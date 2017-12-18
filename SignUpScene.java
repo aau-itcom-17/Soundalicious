@@ -1,3 +1,4 @@
+import com.sun.tools.internal.jxc.ap.Const;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -111,6 +112,7 @@ public class SignUpScene extends FrontPageScene {
                 passwordRepeatSignUpInput.setStyle("-fx-background-color: #FEE4DF");
             } else if (textfieldPassword.getText().equals((passwordRepeatSignUpInput.getText()))) { //checking if two TextFields with passwords match
                 if (!userExists(enteredUsername)) { //checking if username does not exist
+                    user.writeOnHistoryFile(Constants.textNewUserCreated);
                     writeToFile(enteredUsername, enteredPass);
                     new LogInScene();
                 } else {

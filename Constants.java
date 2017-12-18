@@ -6,6 +6,7 @@ public class Constants {
     //files
     public static String userDatabaseFilePath = "userDatabase.txt";
     public static String StyleSheetPath = "Theme.css";
+    public static String userHistoryPath = "UserHistoryFiles";
 
     //dimensions, sizes, numbers
     public static int screenWidth = 400;
@@ -30,6 +31,12 @@ public class Constants {
     public static String nameQuestion = "Question";
     public static String nameScoreboard = "Scoreboard";
     public static String nameLeaderboard = "Leaderboard";
+    public static String nameExitGame = "Exit game";
+    public static String namePoints = "Points";
+    public static String nameGold = "Gold";
+    public static String nameSilver = "Silver";
+    public static String nameBronze = "Bronze";
+    public static String nameHistory = "Game history";
 
     //admin
     public static String nameAdmin = "Admin";
@@ -55,11 +62,16 @@ public class Constants {
     public static String textDeleteUser = "Delete user";
     public static String textSaveTeam = "Save team";
     public static String textNameYourTeam = "Name your team";
-    public static String nameExitGame = "Exit game";
-    public static String namePoints = "Points";
-    public static String nameGold = "Gold";
-    public static String nameSilver = "Silver";
-    public static String nameBronze = "Bronze";
+    public static String textUserXDeleted = "was deleted";
+    public static String textTeamXWonAndGot = "won the game and got";
+    public static String textXAnswerRightOutOfX = "right answers out of";
+    public static String textQuestions = "questions";
+    public static String textLoggedOut = "Logged out";
+    public static String textUserDeletedSelf = "User deleted himself/herself";
+    public static String textNewUserCreated = "New user created";
+    public static String textLoggedIn = "Logged in";
+    public static String textSeeHistory = "See history";
+    public static String textCancel = "Cancel";
 
     //button texts
     public static String goToNextText = "Go to next page";
@@ -76,7 +88,6 @@ public class Constants {
     public static String warningUserNotExists = "User does not exist";
     public static String warningWrongPassword = "Wrong password";
     public static String warningUserDeleted = "User deleted";
-
     //custom game
     public static int click = 1;
     public static int[] teamNums = new int[]{1, 2, 3, 4, 5};

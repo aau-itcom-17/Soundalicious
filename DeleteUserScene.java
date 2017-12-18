@@ -46,6 +46,11 @@ public class DeleteUserScene extends FrontPageScene {
             if (event.getCode() == KeyCode.ENTER) {
                 try {
                     if (findAndDeleteUser(textfieldUsernameForDeleting.getText())) {
+                        try {
+                            user.writeOnHistoryFile(textfieldUsernameForDeleting.getText() + Constants.textUserXDeleted);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                         buttonDeleteUser.setText(Constants.warningUserDeleted);
                         buttonDeleteUser.setStyle("-fx-background-color: green");
                         textfieldUsernameForDeleting.setText("");

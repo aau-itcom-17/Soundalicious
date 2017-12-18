@@ -33,9 +33,13 @@ public class Question implements Comparable<Question> {
         this.id = id;
     }
 
-    public String getTheme () { return theme;}
+    public String getTheme() {
+        return theme;
+    }
 
-    public void setTheme (String theme) { this.theme = theme; }
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
 
     public String getSoundFile() {
         return soundFile;
@@ -64,14 +68,16 @@ public class Question implements Comparable<Question> {
     public String getwrongAnswers1() {
         return wrongAnswers1;
     }
-    public void setwrongAnswers1(String wrongAnswers1){
+
+    public void setwrongAnswers1(String wrongAnswers1) {
         this.wrongAnswers1 = wrongAnswers1;
     }
 
     public String getwrongAnswers2() {
         return wrongAnswers2;
     }
-    public void setwrongAnswers2(String wrongAnswers2){
+
+    public void setwrongAnswers2(String wrongAnswers2) {
         this.wrongAnswers2 = wrongAnswers2;
     }
 
@@ -79,7 +85,8 @@ public class Question implements Comparable<Question> {
     public String getwrongAnswers3() {
         return wrongAnswers3;
     }
-    public void setwrongAnswers3(String wrongAnswers3){
+
+    public void setwrongAnswers3(String wrongAnswers3) {
         this.wrongAnswers3 = wrongAnswers3;
     }
 
@@ -88,12 +95,9 @@ public class Question implements Comparable<Question> {
     public int compareTo(Question o) {
         return 0;
     }
-
-
     /**
      * Method writes question to Questions.xml file
      */
-
     public void writeToFile(int ID, String themeFromScene, String questionFromScene, String soundFileName, String correctAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) throws IOException {
         FrontPageScene.removeLineFromFile("Questions.xml", "</Questions>");
         BufferedWriter out = new BufferedWriter(new FileWriter("Questions.xml", true));
@@ -104,8 +108,5 @@ public class Question implements Comparable<Question> {
         out.newLine();
         out.close();
     }
-
-
-
-    }
+}
 

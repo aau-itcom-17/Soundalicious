@@ -2,6 +2,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.xml.sax.SAXException;
 
@@ -19,8 +20,8 @@ import java.io.*;
 public class FrontPageScene extends Main {
 
     private Label labelScreenTitle;
-    private Button buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup;
-    private Button buttonUserLogOut, buttonUserDeleteYourAcc, buttonUserUploadSound, buttonAdminDeleteOtherUsers;
+    private Button buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup, buttonCancel;
+    private Button buttonUserHistory, buttonUserLogOut, buttonUserDeleteYourAcc, buttonUserUploadSound, buttonAdminDeleteOtherUsers;
     private VBox layoutFrontpage;
 
     public FrontPageScene() {
@@ -35,7 +36,10 @@ public class FrontPageScene extends Main {
         buttonUserUploadSound = new Button(Constants.nameUploadQuestion);
         buttonAdminDeleteOtherUsers = new Button(Constants.nameDeleteOtherUsers);
         layoutFrontpage = new VBox(Constants.vBoxSpacing);
+        buttonUserHistory = new Button(Constants.textSeeHistory);
+        buttonCancel = new Button(Constants.textCancel);
         frontPageScene = new Scene(layoutFrontpage, Constants.screenWidth, Constants.screenHeight);
+
 
         labelScreenTitle.getStyleClass().add("label-headline");
         buttonQuickPlay.getStyleClass().add("button-quickplay");
@@ -46,16 +50,17 @@ public class FrontPageScene extends Main {
         buttonUserDeleteYourAcc.getStyleClass().add("button-menu");
         buttonUserUploadSound.getStyleClass().add("button-menu");
         buttonAdminDeleteOtherUsers.getStyleClass().add("button-menu");
+        buttonUserHistory.getStyleClass().add("button-menu");
         layoutFrontpage.setAlignment(Pos.CENTER);
         frontPageScene.getStylesheets().add(Constants.StyleSheetPath);
 
         //if statement for displaying different layout for user, admin and not logged in user
         if (user.isLoggedIn) {
             labelScreenTitle.setText(Constants.messageGreetingWord + " " + user.getUserName().toUpperCase() + "!");
-            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonUserDeleteYourAcc, buttonUserLogOut);
+            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonUserHistory, buttonUserDeleteYourAcc, buttonUserLogOut);
         } else if (admin.isLoggedIn) {
             labelScreenTitle.setText(Constants.messageGreetingWord + " " + Constants.nameAdmin);
-            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonAdminDeleteOtherUsers, buttonUserLogOut);
+            layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonUserUploadSound, buttonUserHistory, buttonAdminDeleteOtherUsers, buttonUserLogOut);
         } else {
             layoutFrontpage.getChildren().addAll(labelScreenTitle, buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup);
         }
@@ -87,11 +92,18 @@ public class FrontPageScene extends Main {
             }
         });
 
+        buttonUserHistory.setOnAction(e -> new HistoryScene());
+
         buttonLogin.setOnAction(e -> new LogInScene());
 
         buttonSignup.setOnAction(e -> new SignUpScene());
 
         buttonUserLogOut.setOnAction(e -> {
+            try {
+                user.writeOnHistoryFile(Constants.textLoggedOut);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             user.setLoggedIn(false);
             admin.setLoggedIn(false);
             new FrontPageScene();
@@ -103,8 +115,18 @@ public class FrontPageScene extends Main {
         buttonUserDeleteYourAcc.setOnAction(e -> {
             buttonUserDeleteYourAcc.setStyle("-fx-background-color: red; -fx-text-fill: white;");
             buttonUserDeleteYourAcc.setText(Constants.warningConfirmAction);
+            frontPageScene = new Scene(layoutFrontpage, Constants.screenWidth, Constants.screenHeight);
+            frontPageScene.getStylesheets().add(Constants.StyleSheetPath);
+            window.setScene(frontPageScene);
             buttonUserDeleteYourAcc.setOnAction(f -> {
+                try {
+                    user.writeOnHistoryFile(Constants.textUserDeletedSelf);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 removeLineFromFile(Constants.userDatabaseFilePath, loggedUser + " " + loggedUsersPass);
+                File fileForDeleting = new File( Constants.userHistoryPath + "/" + user.getUserName() + ".txt");
+                fileForDeleting.delete();
                 user.setLoggedIn(false);
                 new FrontPageScene();
             });

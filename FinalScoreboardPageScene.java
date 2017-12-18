@@ -89,6 +89,13 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
             }
         }
 
+        try {
+            user.writeOnHistoryFile( Constants.nameTeam + " " + teams.get(Team.getWinner()).getTeamName() + " " + Constants.textTeamXWonAndGot +
+                    " " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + "  " +  Constants.textXAnswerRightOutOfX + "  " + numOfQuestions + " " + Constants.textQuestions + ".");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         buttonFinishGame.setOnAction(f -> {
             teams.clear();
             counterOfQuestions = 0;
@@ -99,7 +106,6 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
             tCount = 0;
             qCount = 1;
             window.setScene(frontPageScene);
-
 
             Constants.click = 1;
             try {
