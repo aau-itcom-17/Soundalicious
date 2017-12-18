@@ -1,38 +1,35 @@
-import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.stage.FileChooser;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.paint.Color;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
-import java.io.*;
-import java.nio.file.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class SaveFiles
-        extends Main {
+/**
+ * This class and scenes lets user to upload a question with a sound to the game.
+ * It can be accessed only when user is logged in.
+ * It includes text fields for the question, right and wrong answers, choice box with theme options, upload button for a sound, submit button and go back to main button.
+ */
+
+public class UploadQuestionScene extends FrontPageScene {
 
     private Text actionStatus;
     private Stage savedStage;
@@ -40,7 +37,7 @@ public class SaveFiles
     private static final String titleTxt = "Save your sounds";
     private TextField questionText, correctAnswer, wronganswer1, wronganswer2, wronganswer3;
     private Label questionLabel, correctAnswerLabel, wrongAnswerLabel, label, themeLabel;
-    private ChoiceBox <String>  themesChoice;
+    private ChoiceBox<String> themesChoice;
     Question question = new Question();
     private HBox answersHBox;
     private Button btn1, btn2;
@@ -48,7 +45,7 @@ public class SaveFiles
     private VBox saveFilesLayout;
 
     // Make a method that makes sure the ID is different each time you upload a question!!!!!!!!!!!!!
-    public SaveFiles() {
+    public UploadQuestionScene() {
 
         actionStatus = new Text();
         actionStatus.setFont(Font.font("Calibri", FontWeight.NORMAL, 18));
@@ -80,17 +77,17 @@ public class SaveFiles
         wronganswer1 = new TextField();
         wronganswer1.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer1.setOnKeyPressed((event) -> {
-            question.setDummyAnswers1(wronganswer1.getText());
+            question.setwrongAnswers1(wronganswer1.getText());
         });
         wronganswer2 = new TextField();
         wronganswer2.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer2.setOnKeyPressed((event) -> {
-            question.setDummyAnswers2(wronganswer2.getText());
+            question.setwrongAnswers2(wronganswer2.getText());
         });
         wronganswer3 = new TextField();
         wronganswer3.setStyle("-fx-max-width: 100px; -fx-min-width: 100px; -fx-max-height: 30px; -fx-min-height: 30px; -fx-font-size: 10pt;");
         wronganswer3.setOnKeyPressed((event) -> {
-            question.setDummyAnswers3(wronganswer3.getText());
+            question.setwrongAnswers3(wronganswer3.getText());
         });
 
         answersHBox = new HBox();
@@ -109,7 +106,7 @@ public class SaveFiles
         // theme choosing
         themeLabel = new Label("Choose theme for your question");
         themeLabel.setStyle("-fx-padding: -30px");
-        themesChoice = new <String> ChoiceBox(FXCollections.observableArrayList(Constants.themeNames[0], Constants.themeNames[1], Constants.themeNames[2], Constants.themeNames[3], Constants.themeNames[4]));
+        themesChoice = new <String>ChoiceBox(FXCollections.observableArrayList(Constants.themeNames[0], Constants.themeNames[1], Constants.themeNames[2], Constants.themeNames[3], Constants.themeNames[4]));
 
 
         // Button
@@ -145,21 +142,26 @@ public class SaveFiles
         saveFilesLayout.getChildren().addAll(questionLabel, questionText, correctAnswerLabel, correctAnswer, wrongAnswerLabel, answersHBox, themeLabel, themesChoice, buttonHb1, buttonHb2, frontButton1, actionStatus);
 
         // Scene
-        saveFilesScene = new Scene(saveFilesLayout,400, 700); // w x h
-        saveFilesScene.getStylesheets().add("Theme.css");
+        saveFilesScene = new Scene(saveFilesLayout, Constants.screenWidth, Constants.screenHeight); // w x h
+        saveFilesScene.getStylesheets().add(Constants.StyleSheetPath);
         window.setScene(saveFilesScene);
 
 
     }
-    private class SaveQuestionListener implements  EventHandler<ActionEvent>{
+
+    /**
+     * It calls the writing to file method from the Questions class.
+     */
+
+    private class SaveQuestionListener implements EventHandler<ActionEvent> {
 
         public void handle(ActionEvent e) {
             if (question.getSoundFile() != null) {
-                question.setId(Main.questions.size()+2);
+                question.setId(Main.questions.size() + 2);
                 question.setTheme(themesChoice.getValue());
                 try {
                     question.writeToFile(question.getId(), question.getTheme(), question.getTextOfQuestion(), question.getSoundFile(), question.getCorrectAnswer(),
-                            question.getDummyAnswers1(), question.getDummyAnswers2(), question.getDummyAnswers3());
+                            question.getwrongAnswers1(), question.getwrongAnswers2(), question.getwrongAnswers3());
 
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -188,6 +190,10 @@ public class SaveFiles
         }
     }
 
+    /**
+     *
+     */
+
     private class SaveButtonListener implements EventHandler<ActionEvent> {
 
         @Override
@@ -195,11 +201,19 @@ public class SaveFiles
             showSingleFileChooser();
         }
     }
-    public static void CopyFile (File source, File dest) throws IOException {
+
+    /**
+     * Method copies the new file to the user's personal documents.
+     */
+
+
+    public static void CopyFile(File source, File dest) throws IOException {
         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-
     }
+
+    /**
+     * Method handles the file upload, checks if file is correct and does not repeat already.
+     */
 
     private void showSingleFileChooser() {
 
@@ -258,7 +272,7 @@ public class SaveFiles
                     } else {
                         actionStatus.setText("File save cancelled.");
                     }
-                } else{
+                } else {
                     actionStatus.setText("Filename already exists");
                 }
 

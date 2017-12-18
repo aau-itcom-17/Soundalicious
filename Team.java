@@ -1,3 +1,7 @@
+/**
+ * Class deals with team scores and names.
+ * Mostly used for leaderbord.
+ */
 public class Team {
 
     static int max = Integer.MIN_VALUE;
@@ -39,6 +43,10 @@ public class Team {
         this.teamName = teamName;
     }
 
+    /**
+     * Gets the first place winner's index when game is finished.
+     */
+
     public static int getWinner()
     {
         for (int i = 0; i < Main.teams.size(); i++) {
@@ -50,6 +58,9 @@ public class Team {
         return maxPos;
     }
 
+    /**
+     * Gets the second place team's index when game is finished.
+     */
     public static int get2ndPlace()
     {
 
@@ -66,6 +77,9 @@ public class Team {
         return secondPos;
     }
 
+    /**
+     * Gets the third place team's index when game is finished.
+     */
     public static int get3rdPlace()
     {
         for (int i = 0; i < Main.teams.size(); i++) {
@@ -85,6 +99,9 @@ public class Team {
         return thirdPos;
     }
 
+    /**
+     * Gets index of the team that got the same score?
+     */
     public static int getSameScore() {
         for (int i = 0; i < Main.teams.size(); i++) {
             if (Main.teams.get(i).getPointScore() > max) {
@@ -109,6 +126,9 @@ public class Team {
         return sameScorePos;
     }
 
+    /**
+     * Gets index of the teams that got the same score
+     */
     public static int getSameScoreForThree() {
         for (int i = 0; i < Main.teams.size(); i++) {
             if (Main.teams.get(i).getPointScore() > max) {

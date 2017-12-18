@@ -1,12 +1,10 @@
 import org.apache.commons.io.FileUtils;
-
 import java.io.File;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
+
+/**
+ * This class run at the startup of the program and creates new folder for saving sounds locally.
+ */
 
 public class StartUpSavingFolders {
 

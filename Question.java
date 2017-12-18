@@ -2,15 +2,20 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Class that defines question properties in a game.
+ * They are question id, theme, sound file path, texts of questions, correct and wrong answers.
+ */
+
 public class Question implements Comparable<Question> {
     private int id;
     private String theme;
     private String soundFile;
     private String textOfQuestion;
     private String correctAnswer;
-    private String dummyAnswers1;
-    private String dummyAnswers2;
-    private String dummyAnswers3;
+    private String wrongAnswers1;
+    private String wrongAnswers2;
+    private String wrongAnswers3;
 
     Question(int id) {
         this.id = id;
@@ -56,26 +61,26 @@ public class Question implements Comparable<Question> {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getDummyAnswers1() {
-        return dummyAnswers1;
+    public String getwrongAnswers1() {
+        return wrongAnswers1;
     }
-    public void setDummyAnswers1(String dummyAnswers1){
-        this.dummyAnswers1 = dummyAnswers1;
-    }
-
-    public String getDummyAnswers2() {
-        return dummyAnswers2;
-    }
-    public void setDummyAnswers2(String dummyAnswers2){
-        this.dummyAnswers2 = dummyAnswers2;
+    public void setwrongAnswers1(String wrongAnswers1){
+        this.wrongAnswers1 = wrongAnswers1;
     }
 
-
-    public String getDummyAnswers3() {
-        return dummyAnswers3;
+    public String getwrongAnswers2() {
+        return wrongAnswers2;
     }
-    public void setDummyAnswers3(String dummyAnswers3){
-        this.dummyAnswers3 = dummyAnswers3;
+    public void setwrongAnswers2(String wrongAnswers2){
+        this.wrongAnswers2 = wrongAnswers2;
+    }
+
+
+    public String getwrongAnswers3() {
+        return wrongAnswers3;
+    }
+    public void setwrongAnswers3(String wrongAnswers3){
+        this.wrongAnswers3 = wrongAnswers3;
     }
 
 
@@ -84,13 +89,18 @@ public class Question implements Comparable<Question> {
         return 0;
     }
 
+
+    /**
+     * Method writes question to Questions.xml file
+     */
+
     public void writeToFile(int ID, String themeFromScene, String questionFromScene, String soundFileName, String correctAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) throws IOException {
         FrontPageScene.removeLineFromFile("Questions.xml", "</Questions>");
         BufferedWriter out = new BufferedWriter(new FileWriter("Questions.xml", true));
         out.write("\t<Question>\n" + "\t\t<id>" + ID + "</id>\n" + "\t\t<theme>" + themeFromScene + "</theme>\n" + "\t\t<textOfQuestion>" + questionFromScene + "</textOfQuestion>\n" +
                 "\t\t<soundfile>" + soundFileName + "</soundfile>\n" + "\t\t<correctAnswer>" + correctAnswer + "</correctAnswer>\n" +
-                "\t\t<dummyAnswer1>" + wrongAnswer1 + "</dummyAnswer1>\n" + "\t\t<dummyAnswer2>" + wrongAnswer2 + "</dummyAnswer2>\n" +
-                "\t\t<dummyAnswer3>" + wrongAnswer3 + "</dummyAnswer3>\n" + "\t</Question>\n" + "</Questions>");
+                "\t\t<wrongAnswer1>" + wrongAnswer1 + "</wrongAnswer1>\n" + "\t\t<wrongAnswer2>" + wrongAnswer2 + "</wrongAnswer2>\n" +
+                "\t\t<wrongAnswer3>" + wrongAnswer3 + "</wrongAnswer3>\n" + "\t</Question>\n" + "</Questions>");
         out.newLine();
         out.close();
     }

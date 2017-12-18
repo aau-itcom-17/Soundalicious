@@ -1,84 +1,61 @@
-import javafx.application.*;
 import javafx.geometry.Pos;
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.layout.AnchorPane;
 import org.xml.sax.SAXException;
 
-import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
+/**
+ * Scene for choosing custom game.
+ * It includes radio buttons with different theme choices.
+ * Goes to the PlayGameScene.class next
+ */
 public class CustomGameScene extends FrontPageScene {
 
-    Label labelCustom, labelChooseQuestions;
-    static RadioButton radioBut1, radioBut2, radioBut3, radioBut4, radioBut5;
-    static ToggleGroup theme;
-    Button buttonCustomGameNext, frontPageButton2;
+    Label labelChooseQuestions, labelScreenTitle;
+    RadioButton radioButTheme1, radioButTheme2;
+    ToggleGroup groupContainerTheme;
+    Button buttonNextQuestionOrTeam, buttonBackToMain;
     VBox customGameLayout;
     String selection;
 
-    public CustomGameScene(){
+    public CustomGameScene() {
 
-      //ALL THIS IS CUSTOM GAME PAGE:
-
-        //Label Custom page
-        labelCustom = new Label("Custom game");
-        labelCustom.getStyleClass().add("label-headline");
-
-        //Label choose cards
+        labelScreenTitle = new Label(Constants.nameCustomGame);
         labelChooseQuestions = new Label(Constants.chooseTopicTitle);
+        buttonNextQuestionOrTeam = new Button(Constants.goToNextText);
+        buttonBackToMain = new Button(Constants.textBackToMain);
+        radioButTheme1 = new RadioButton(Constants.topicText1);
+        radioButTheme2 = new RadioButton(Constants.topicText2);
+        groupContainerTheme = new ToggleGroup();
+        customGameLayout = new VBox(Constants.vBoxSpacing);
+        customGameScene = new Scene(customGameLayout, Constants.screenWidth, Constants.screenHeight);
 
-        //Radiobuttons for choosing cards
-        radioBut1 = new RadioButton(Constants.topicText1);
-        radioBut2 = new RadioButton(Constants.topicText2);
-        radioBut3 = new RadioButton(Constants.topicText3);
-        radioBut4 = new RadioButton(Constants.topicText4);
-        radioBut5 = new RadioButton(Constants.topicText5);
-        theme = new ToggleGroup();
+        radioButTheme1.setToggleGroup(groupContainerTheme);
+        radioButTheme2.setToggleGroup(groupContainerTheme);
 
-        radioBut1.setToggleGroup(theme);
-        radioBut2.setToggleGroup(theme);
-        radioBut3.setToggleGroup(theme);
-        radioBut4.setToggleGroup(theme);
-        radioBut5.setToggleGroup(theme);
+        customGameLayout.getChildren().addAll(labelScreenTitle, labelChooseQuestions, radioButTheme1, radioButTheme2, buttonNextQuestionOrTeam, buttonBackToMain);
 
-        radioBut1.getStyleClass().add("button-menuSelected");
-        radioBut2.getStyleClass().add("button-menuSelected");
-        radioBut3.getStyleClass().add("button-menuSelected");
-        radioBut4.getStyleClass().add("button-menuSelected");
-        radioBut5.getStyleClass().add("button-menuSelected");
-        radioBut1.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
-        radioBut2.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
-        radioBut3.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
-        radioBut4.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
-        radioBut5.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        labelScreenTitle.getStyleClass().add("label-headline");
+        buttonNextQuestionOrTeam.getStyleClass().add("button-menu");
+        buttonBackToMain.getStyleClass().add("button-menu");
+        radioButTheme1.getStyleClass().add("button-menuSelected");
+        radioButTheme2.getStyleClass().add("button-menuSelected");
+        radioButTheme1.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        radioButTheme2.setStyle("-fx-min-width: 250px; -fx-max-width: 250px;");
+        customGameLayout.setAlignment(Pos.CENTER);
+        customGameScene.getStylesheets().add(Constants.StyleSheetPath);
 
-
-        //Custom game next button
-        buttonCustomGameNext = new Button(Constants.goToNextText);
-        buttonCustomGameNext.getStyleClass().add("button-menu");
-        buttonCustomGameNext.setOnAction(e -> {
-            if (radioBut1.isSelected()) {
+        buttonNextQuestionOrTeam.setOnAction(e -> {
+            if (radioButTheme1.isSelected()) {
                 selection = Constants.topicText1;
-            }
-            else if (radioBut2.isSelected()) {
+            } else if (radioButTheme2.isSelected()) {
                 selection = Constants.topicText2;
-            }
-            else if (radioBut3.isSelected()) {
-                selection = Constants.topicText3;
-            }
-            else if (radioBut4.isSelected()) {
-                selection = Constants.topicText4;
-            }
-            else if (radioBut5.isSelected()) {
-                selection = Constants.topicText5;
             }
             try {
                 Questions.getThemeQuestions(questions, rQuestions, themeQuestions, selection);
@@ -93,28 +70,15 @@ public class CustomGameScene extends FrontPageScene {
 
         });
 
-        theme.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
+        groupContainerTheme.selectedToggleProperty().addListener((observable, oldVal, newVal) ->
         {
-            radioBut1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
-            radioBut2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
-            radioBut3.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
-            radioBut4.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
-            radioBut5.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
-            buttonCustomGameNext.getStyleClass().add("button-menuSelected");
+            radioButTheme1.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            radioButTheme2.setStyle("-fx-background-color: #AAD7FF;  -fx-text-fill: #004A8C; -fx-min-width: 250px; -fx-max-width: 250px;");
+            buttonNextQuestionOrTeam.getStyleClass().add("button-menuSelected");
         });
 
-        //Button back to front on custom game page
-        frontPageButton2 = new Button(Constants.goToMainText);
-        frontPageButton2.getStyleClass().add("button-menu");
-        frontPageButton2.setOnAction(e -> new FrontPageScene());
+        buttonBackToMain.setOnAction(e -> new FrontPageScene());
 
-        //Layout custom game
-        customGameLayout = new VBox(20);
-        customGameLayout.setAlignment(Pos.CENTER);
-        customGameLayout.getChildren().addAll(labelCustom, labelChooseQuestions, radioBut1, radioBut2, radioBut3, radioBut4, radioBut5, buttonCustomGameNext, frontPageButton2);
-        customGameScene = new Scene(customGameLayout, 400, 700);
-
-        customGameScene.getStylesheets().add("Theme.css");
         window.setScene(customGameScene);
     }
 }

@@ -1,16 +1,15 @@
 public class Admin extends User {
 
-    public Admin(){
+    public Admin() {
     }
 
 
-
-    public void deleteUser(String username){
+    public void deleteUser(String username) {
         //FrontPageScene.removeLineFromFile("text.txt",username + " " + );
 
     }
 
-    public void deleteUserQuestion(){
+    public void deleteUserQuestion() {
 
     }
 

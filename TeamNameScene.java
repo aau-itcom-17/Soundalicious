@@ -1,4 +1,3 @@
-import com.sun.xml.internal.bind.v2.model.annotation.Quick;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,83 +8,70 @@ import javafx.scene.layout.VBox;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+/**
+ * Class runs after the quick play scene to add team names.
+ * After the first team saves its name, screen repeats until all teams have chosen team name.
+ * It includes title with team number, text field for name and button for confirming.
+ * After this, app proceeds to the play game scene.
+ */
 
 public class TeamNameScene extends QuickPlayScene {
 
-    Label labelSelectTeamName, labelHeadline, teamNumber;
-    TextField selectYourTeamName;
-    Button saveTeams;
-    VBox teamNameSceneLayout;
-    int teamNr = 1;
-
+    private Label labelTeamNumber;
+    private TextField textfieldNewTeamName;
+    private Button buttonSaveTeam;
+    private VBox layoutTeamName;
+    private int counterOfTeams = 1;
 
     public TeamNameScene() {
 
-        teamNumber = new Label("Name for team " + 1 + ":");
-        teamNumber.getStyleClass().add("label-headline");
+        labelTeamNumber = new Label(Constants.textNameYourTeam + 1 + ":");
+        layoutTeamName = new VBox(Constants.vBoxSpacing);
+        textfieldNewTeamName = new TextField();
+        textfieldNewTeamName.requestFocus();
+        buttonSaveTeam = new Button(Constants.textSaveTeam);
+        layoutTeamName.getChildren().addAll(labelTeamNumber, textfieldNewTeamName, buttonSaveTeam);
+        teamNameScene = new Scene(layoutTeamName, Constants.screenWidth, Constants.screenHeight);
 
-        selectYourTeamName = new TextField();
-        selectYourTeamName.requestFocus();
-        selectYourTeamName.setOnAction(e -> {
-        });
+        labelTeamNumber.getStyleClass().add("label-headline");
+        layoutTeamName.setAlignment(Pos.CENTER);
+        buttonSaveTeam.getStyleClass().add("button-continue");
+        teamNameScene.getStylesheets().add(Constants.StyleSheetPath);
 
 
-        for (int i = 1; i <= QuickPlayScene.numOfTeams; i++) {
+        for (int i = 1; i <= numOfTeams; i++) {
 
-            saveTeams = new Button("✮ Save Team");
-            saveTeams.getStyleClass().add("button-continue");
-            selectYourTeamName.setOnKeyPressed(event -> {
-                if(event.getCode() == KeyCode.ENTER) {
+            textfieldNewTeamName.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
                     nextTeamName();
-
                 }
             });
 
-            saveTeams.setOnAction(e -> nextTeamName());
+            buttonSaveTeam.setOnAction(e -> nextTeamName());
         }
 
-        teamNameSceneLayout = new VBox(20);
-        teamNameSceneLayout.setAlignment(Pos.CENTER);
-        teamNameSceneLayout.getChildren().addAll(teamNumber, selectYourTeamName, saveTeams);
-        logInPageScene = new Scene(teamNameSceneLayout, 400, 700);
-
-        logInPageScene.getStylesheets().add("Theme.css");
-        window.setScene(logInPageScene);
+        window.setScene(teamNameScene);
     }
 
-    public void nextTeamName(){
+    public void nextTeamName() {
         Team teamClassTemp = new Team(null, 0, 0);
 
+        if (!textfieldNewTeamName.getText().equals("")) {
+            buttonSaveTeam.setStyle(null);
+            buttonSaveTeam.setText(Constants.textSaveTeam);
 
-        //checks if user type anything at all.
-        if (!selectYourTeamName.getText().equals("")){
-            saveTeams.setStyle(null);
-            saveTeams.setText("✮ Save Team");
+            counterOfTeams++;
 
-
-            //changes team number for player.
-            teamNr++;
-            teamNumber.setText("Name for team " + teamNr + ":");
-
-
-
+            labelTeamNumber.setText(Constants.textNameYourTeam + " " + counterOfTeams + ":");
 
             teamClassTemp.setID(teams.size() + 1);
-            teamClassTemp.setTeamName(selectYourTeamName.getText());
+            teamClassTemp.setTeamName(textfieldNewTeamName.getText());
             teams.add(teamClassTemp);
-            selectYourTeamName.clear();
-
-
-            System.out.println("number of teams chosen " + QuickPlayScene.numOfTeams);
-            System.out.println(teams.size());
-            System.out.println(QuickPlayScene.numOfTeams);
+            textfieldNewTeamName.clear();
 
             if (QuickPlayScene.numOfTeams == teams.size()) {
-                // method that show the user number of teams chosen in the quickplayScene.
                 try {
                     new PlayGameScene();
                 } catch (IOException e1) {
@@ -95,12 +81,11 @@ public class TeamNameScene extends QuickPlayScene {
                 } catch (ParserConfigurationException e1) {
                     e1.printStackTrace();
                 }
-
             }
 
-        }else{
-            saveTeams.setStyle("-fx-background-color: red");
-            saveTeams.setText("Field left empty");
+        } else {
+            buttonSaveTeam.setStyle("-fx-background-color: red");
+            buttonSaveTeam.setText(Constants.warningEmptyField);
         }
     }
-    }
+}

@@ -1,125 +1,118 @@
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import org.xml.sax.SAXException;
 
-import javax.print.attribute.standard.Finishings;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-public class ScoreboardPageScene extends Main{
+/**
+ * Scoreboard is displayed after all teams have answered the same question.
+ * At the top stage shows the correct answer.
+ * Below it, there are text label for every team's name and overall score as well as line with chosen answer.
+ * The line after every team with chosen answer is either green or red accordingly if it was right or wrong answer.
+ * At the bottom - button to continue the game to the next question.
+ */
 
-    VBox layoutScoreboard;
-    Label gameName, team1, team2, team3, team4, team5, t1, t2, t3, t4, t5;
-    Label answer1, answer2, answer3, answer4, answer5, correctA;
-    Button nextQuest, finGame;
-    String finalOrQuest = null;
+public class ScoreboardPageScene extends PlayGameScene {
 
-    public ScoreboardPageScene(){
+    private VBox layoutScoreboard;
+    private Label labelScreenTitle, labelTeamNameAndScore1, labelTeamNameAndScore2, labelTeamNameAndScore3, labelTeamNameAndScore4, labelTeamNameAndScore5;
+    private Label labelTeamAnswerText1, labelTeamAnswerText2, labelTeamAnswerText3, labelTeamAnswerText4, labelTeamAnswerText5, labelCorrectAnswerText;
+    private Button buttonNextQuestion;
 
-        gameName = new Label("Scoreboard");
-        gameName.getStyleClass().add("label-board");
-        correctA = new Label("Correct answer: " + PlayGameScene.checkCorrect);
-        team1 = new Label();
-        team1.getStyleClass().add("label-scores");
-        team2 = new Label();
-        team2.getStyleClass().add("label-scores");
-        team3 = new Label();
-        team3.getStyleClass().add("label-scores");
-        team4 = new Label();
-        team4.getStyleClass().add("label-scores");
-        team5 = new Label();
-        team5.getStyleClass().add("label-scores");
-        t1 = new Label();
-        t1.getStyleClass().add("label-team");
-        t2 = new Label();
-        t2.getStyleClass().add("label-team");
-        t3 = new Label();
-        t3.getStyleClass().add("label-team");
-        t4 = new Label();
-        t4.getStyleClass().add("label-team");
-        t5 = new Label();
-        t5.getStyleClass().add("label-team");
-        answer1 = new Label();
-        answer2 = new Label();
-        answer3 = new Label();
-        answer4 = new Label();
-        answer5 = new Label();
+    public ScoreboardPageScene() throws IOException, SAXException, ParserConfigurationException {
 
+        labelScreenTitle = new Label(Constants.nameScoreboard);
+        labelTeamNameAndScore1 = new Label();
+        labelTeamNameAndScore2 = new Label();
+        labelTeamNameAndScore3 = new Label();
+        labelTeamNameAndScore4 = new Label();
+        labelTeamNameAndScore5 = new Label();
+        labelTeamAnswerText1 = new Label();
+        labelTeamAnswerText2 = new Label();
+        labelTeamAnswerText3 = new Label();
+        labelTeamAnswerText4 = new Label();
+        labelTeamAnswerText5 = new Label();
+        labelCorrectAnswerText = new Label(Constants.textCorrectAnswer + ": " + PlayGameScene.correctAnswerText);
+        buttonNextQuestion = new Button((counterOfQuestions == QuickPlayScene.numOfQuestions) ? Constants.nameLeaderboard : (Constants.textNext + " " + Constants.nameQuestion));
+        layoutScoreboard = new VBox(Constants.vBoxSpacing);
 
-         if (teams.size() >= 1) {
-            team1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " points");
-           // t1.setText(Integer.toString(teams.get(0).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[0])){
-                answer1.setStyle("-fx-text-fill: green");
-            } else  {
-                answer1.setStyle("-fx-text-fill: red");
+        labelScreenTitle.getStyleClass().add("label-board");
+        labelTeamNameAndScore1.getStyleClass().add("label-scores");
+        labelTeamNameAndScore2.getStyleClass().add("label-scores");
+        labelTeamNameAndScore3.getStyleClass().add("label-scores");
+        labelTeamNameAndScore4.getStyleClass().add("label-scores");
+        labelTeamNameAndScore5.getStyleClass().add("label-scores");
+        buttonNextQuestion.getStyleClass().add("button-continue");
+        layoutScoreboard.setAlignment(Pos.CENTER);
+
+        if (teams.size() >= 1) {
+            labelTeamNameAndScore1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " points");
+            if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[0])) {
+                labelTeamAnswerText1.setStyle("-fx-text-fill: green");
+            } else {
+                labelTeamAnswerText1.setStyle("-fx-text-fill: red");
             }
-            answer1.setText("Selected answer: " + PlayGameScene.playersChoices[0]);
+            labelTeamAnswerText1.setText(Constants.textSelectedAnswer + ": " + PlayGameScene.answersChosenByPlayersTexts[0] + "\n ");
         }
+
         if (teams.size() >= 2) {
-            team2.setText(teams.get(1).getTeamName() + ": " + Integer.toString(teams.get(1).getPointScore()) + " points");
-            //t2.setText(Integer.toString(teams.get(1).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[1])){
-                answer2.setStyle("-fx-text-fill: green");
-            } else  {
-                answer2.setStyle("-fx-text-fill: red");
+            labelTeamNameAndScore2.setText(teams.get(1).getTeamName() + ": " + Integer.toString(teams.get(1).getPointScore()) + " points");
+            if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[1])) {
+                labelTeamAnswerText2.setStyle("-fx-text-fill: green");
+            } else {
+                labelTeamAnswerText2.setStyle("-fx-text-fill: red");
             }
-            answer2.setText("Selected answer: " + PlayGameScene.playersChoices[1]);
+            labelTeamAnswerText2.setText(Constants.textSelectedAnswer + ": " + PlayGameScene.answersChosenByPlayersTexts[1] + "\n ");
         }
+
         if (teams.size() >= 3) {
-            team3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " points");
-           // t3.setText(Integer.toString(teams.get(2).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[2])){
-                answer3.setStyle("-fx-text-fill: green");
-            } else  {
-                answer3.setStyle("-fx-text-fill: red");
+            labelTeamNameAndScore3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " points");
+            if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[2])) {
+                labelTeamAnswerText3.setStyle("-fx-text-fill: green");
+            } else {
+                labelTeamAnswerText3.setStyle("-fx-text-fill: red");
             }
-            answer3.setText("Selected answer: " + PlayGameScene.playersChoices[2]);
+            labelTeamAnswerText3.setText(Constants.textSelectedAnswer + ": " + PlayGameScene.answersChosenByPlayersTexts[2] + "\n ");
         }
+
         if (teams.size() >= 4) {
-            team4.setText(teams.get(3).getTeamName() + ": " + Integer.toString(teams.get(3).getPointScore()) + " points");
-            //t4.setText(Integer.toString(teams.get(3).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[3])){
-                answer4.setStyle("-fx-text-fill: green");
-            } else  {
-                answer4.setStyle("-fx-text-fill: red");
+            labelTeamNameAndScore4.setText(teams.get(3).getTeamName() + ": " + Integer.toString(teams.get(3).getPointScore()) + " points");
+            if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[3])) {
+                labelTeamAnswerText4.setStyle("-fx-text-fill: green");
+            } else {
+                labelTeamAnswerText4.setStyle("-fx-text-fill: red");
             }
-            answer4.setText("Selected answer: " + PlayGameScene.playersChoices[3]);
+            labelTeamAnswerText4.setText(Constants.textSelectedAnswer + ": " + PlayGameScene.answersChosenByPlayersTexts[3] + "\n ");
+
         }
 
         if (teams.size() == 5) {
-            team5.setText(teams.get(4).getTeamName() + ": " + Integer.toString(teams.get(4).getPointScore()) + " points");
-            //t5.setText(Integer.toString(teams.get(4).getPointScore()));
-            if(PlayGameScene.checkCorrect.equals(PlayGameScene.playersChoices[4])){
-                answer5.setStyle("-fx-text-fill: green");
-            } else  {
-                answer5.setStyle("-fx-text-fill: red");
-            }
-            answer5.setText("Selected answer: " + PlayGameScene.playersChoices[4]);
-        }
-
-
-        if (n == QuickPlayScene.numOfQuestions){
-            finalOrQuest = "Leaderboard";
-        } else{
-            finalOrQuest = "Next Question";
-        }
-        nextQuest = new Button(finalOrQuest);
-        nextQuest.getStyleClass().add("button-continue");
-        nextQuest.setOnAction(e -> {
-            if (n == QuickPlayScene.numOfQuestions) {
-                new FinalScoreboardPageScene();
+            labelTeamNameAndScore5.setText(teams.get(4).getTeamName() + ": " + Integer.toString(teams.get(4).getPointScore()) + " points");
+            if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[4])) {
+                labelTeamAnswerText5.setStyle("-fx-text-fill: green");
             } else {
+                labelTeamAnswerText5.setStyle("-fx-text-fill: red");
+            }
+            labelTeamAnswerText5.setText(Constants.textSelectedAnswer + " " + PlayGameScene.answersChosenByPlayersTexts[4] + "\n ");
+        }
+
+        buttonNextQuestion.setOnAction(e -> {
+            if (counterOfQuestions == QuickPlayScene.numOfQuestions) {
+                try {
+                    new FinalScoreboardPageScene();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (SAXException e1) {
+                    e1.printStackTrace();
+                } catch (ParserConfigurationException e1) {
+                    e1.printStackTrace();
+                }
+            } else {
+                counterOfQuestions++;
                 try {
                     new PlayGameScene();
                 } catch (IOException e1) {
@@ -134,16 +127,20 @@ public class ScoreboardPageScene extends Main{
 
         });
 
+        if (teams.size() == 1) {
+            layoutScoreboard.getChildren().addAll(labelScreenTitle, labelCorrectAnswerText, labelTeamNameAndScore1, labelTeamAnswerText1, buttonNextQuestion);
+        } else if (teams.size() == 2) {
+            layoutScoreboard.getChildren().addAll(labelScreenTitle, labelCorrectAnswerText, labelTeamNameAndScore1, labelTeamAnswerText1, labelTeamNameAndScore2, labelTeamAnswerText2, buttonNextQuestion);
+        } else if (teams.size() == 3) {
+            layoutScoreboard.getChildren().addAll(labelScreenTitle, labelCorrectAnswerText, labelTeamNameAndScore1, labelTeamAnswerText1, labelTeamNameAndScore2, labelTeamAnswerText2, labelTeamNameAndScore3, labelTeamAnswerText3, buttonNextQuestion);
+        } else if (teams.size() == 4) {
+            layoutScoreboard.getChildren().addAll(labelScreenTitle, labelCorrectAnswerText, labelTeamNameAndScore1, labelTeamAnswerText1, labelTeamNameAndScore2, labelTeamAnswerText2, labelTeamNameAndScore3, labelTeamAnswerText3, labelTeamNameAndScore4, labelTeamAnswerText4, buttonNextQuestion);
+        } else if (teams.size() == 5) {
+            layoutScoreboard.getChildren().addAll(labelScreenTitle, labelCorrectAnswerText, labelTeamNameAndScore1, labelTeamAnswerText1, labelTeamNameAndScore2, labelTeamAnswerText2, labelTeamNameAndScore3, labelTeamAnswerText3, labelTeamNameAndScore4, labelTeamAnswerText4, labelTeamNameAndScore5, labelTeamAnswerText5, buttonNextQuestion);
+        }
 
-
-        layoutScoreboard = new VBox(20);
-        layoutScoreboard.setAlignment(Pos.CENTER);
-        layoutScoreboard.getChildren().addAll(gameName, correctA, t1, team1, answer1, t2, team2, answer2, t3,  team3, answer3,  t4, team4, answer4,  t5, team5, answer5, nextQuest);
-        scoreBoardPageScene = new Scene(layoutScoreboard, 400, 700);
-        scoreBoardPageScene.getStylesheets().add("Theme.css");
-
+        scoreBoardPageScene = new Scene(layoutScoreboard, Constants.screenWidth, Constants.screenHeight);
+        scoreBoardPageScene.getStylesheets().add(Constants.StyleSheetPath);
         window.setScene(scoreBoardPageScene);
-        
-
     }
 }

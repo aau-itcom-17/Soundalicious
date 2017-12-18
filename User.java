@@ -1,3 +1,8 @@
+/**
+ * Deals with keeping track of which user is logged in now.
+ * Has true and false states for login.
+ */
+
 public class User {
     public String username;
     public String password;
