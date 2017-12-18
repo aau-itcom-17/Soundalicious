@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,6 @@ public class Main extends Application {
     public static Admin admin = new Admin();
     public static int tCount = 1, qCount = 1; //used in quickplay scene for settings
     public static Boolean selectedCustomGame = false;
-
 
     public static void main(String[] args) {
         launch(args);

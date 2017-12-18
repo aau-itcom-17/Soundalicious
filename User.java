@@ -70,11 +70,12 @@ public class User extends Main {
             }
         }
     }
-
+  
     public void writeOnHistoryFile(String writeToFile) throws IOException {
         //Section needs to be here so the time is checked every time method is called
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
         String time = localDateTime.format(formatter);
 
         BufferedWriter toUser = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + user.getUserName() + ".txt", true));
@@ -91,7 +92,5 @@ public class User extends Main {
             toAdmin.newLine();
             toAdmin.close();
         }
-
     }
-
 }

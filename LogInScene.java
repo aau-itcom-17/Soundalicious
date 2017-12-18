@@ -26,6 +26,7 @@ public class LogInScene extends FrontPageScene {
     private VBox layoutLogin;
     private Button buttonLoginAction, buttonBackToMain;
 
+
     public LogInScene(){
 
         layoutLogin = new VBox(Constants.vBoxSpacing);

@@ -19,6 +19,7 @@ import java.io.*;
  */
 public class FrontPageScene extends Main {
 
+
     private Label labelScreenTitle;
     private Button buttonQuickPlay, buttonCustomGame, buttonLogin, buttonSignup, buttonCancel;
     private Button buttonUserHistory, buttonUserLogOut, buttonUserDeleteYourAcc, buttonUserUploadSound, buttonAdminDeleteOtherUsers;

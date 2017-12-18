@@ -96,7 +96,18 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
             e.printStackTrace();
         }
 
+
         buttonFinishGame.setOnAction(f -> {
+
+            if(!user.isLoggedIn) {
+                user.setUserName("guest user");
+            }
+            try {
+                user.writeOnHistoryFile("Team: " + teams.get(Team.getWinner()).getTeamName() + " won the game and got " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " right answers out of " + numOfQuestions + " questions.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             teams.clear();
             counterOfQuestions = 0;
             rQuestions.clear();
