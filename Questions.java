@@ -71,23 +71,14 @@ public class Questions {
             }
 
         }
-        rQuestions.clear();
-        Question q;
-        while (themeQuestions.size() != rQuestions.size()) {
-            SecureRandom r = new SecureRandom();
 
-            q = themeQuestions.get(r.nextInt(themeQuestions.size()));
-
-            if (!rQuestions.contains(q)) {  // should implement the Comparable interface.
-                rQuestions.add(q);
-            }
-        }
+        getRandomQuestions(themeQuestions, rQuestions);
     }
 
     /**
      * Gets defined number of random questions from the list and saves it to the new list.
      */
-    public static void getRandomQuestions(List<Question> questions, List<Question> rQuestions, List<Question> themeQuestions) throws ParserConfigurationException, SAXException, IOException {
+    public static void getRandomQuestions(List<Question> questions, List<Question> rQuestions) throws ParserConfigurationException, SAXException, IOException {
 
         rQuestions.clear();
         Question q;

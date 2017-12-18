@@ -67,7 +67,7 @@ public class FrontPageScene extends Main {
 
         buttonQuickPlay.setOnAction(e -> {
             try {
-                Questions.getRandomQuestions(questions, rQuestions, themeQuestions);
+                Questions.getRandomQuestions(questions, rQuestions);
             } catch (ParserConfigurationException e1) {
                 e1.printStackTrace();
             } catch (SAXException e1) {

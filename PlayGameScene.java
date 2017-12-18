@@ -41,7 +41,7 @@ public class PlayGameScene extends QuickPlayScene {
         buttonPlaySound = new Button(Constants.textPlaySound);
         groupAnswerOptions = new ToggleGroup();
         playGameLayout = new VBox(Constants.vBoxSpacing);
-        teamName = new Label(teams.get(counterOfCurrentTeam).getTeamName() + Constants.textAnsweringQuestion + (counterOfQuestions + 1));
+        teamName = new Label(teams.get(counterOfCurrentTeam).getTeamName() + " " + Constants.textAnsweringQuestion + " " + (counterOfQuestions + 1));
         correctAnswerText = rQuestions.get(counterOfQuestions).getCorrectAnswer();
         buttonNextTeamOrQuestion = new Button(Constants.textNext + " " + (teams.size() > 1 ? Constants.nameTeam : Constants.nameQuestion)); // if one team playing - button says next question, if more than one - next team
 

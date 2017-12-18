@@ -72,6 +72,7 @@ public class Constants {
     public static String textLoggedIn = "Logged in";
     public static String textSeeHistory = "See history";
     public static String textCancel = "Cancel";
+    public static String textPoints = "points";
 
     //button texts
     public static String goToNextText = "Go to next page";

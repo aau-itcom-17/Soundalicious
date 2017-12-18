@@ -37,7 +37,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         labelTeamAnswerText4 = new Label();
         labelTeamAnswerText5 = new Label();
         labelCorrectAnswerText = new Label(Constants.textCorrectAnswer + ": " + PlayGameScene.correctAnswerText);
-        buttonNextQuestion = new Button((counterOfQuestions == QuickPlayScene.numOfQuestions) ? Constants.nameLeaderboard : (Constants.textNext + " " + Constants.nameQuestion));
+        buttonNextQuestion = new Button((counterOfQuestions == numOfQuestions - 1) ? Constants.nameLeaderboard : (Constants.textNext + " " + Constants.nameQuestion));
         layoutScoreboard = new VBox(Constants.vBoxSpacing);
 
         labelScreenTitle.getStyleClass().add("label-board");
@@ -50,7 +50,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         layoutScoreboard.setAlignment(Pos.CENTER);
 
         if (teams.size() >= 1) {
-            labelTeamNameAndScore1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " points");
+            labelTeamNameAndScore1.setText(teams.get(0).getTeamName() + ": " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.textPoints);
             if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[0])) {
                 labelTeamAnswerText1.setStyle("-fx-text-fill: green");
             } else {
@@ -60,7 +60,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         }
 
         if (teams.size() >= 2) {
-            labelTeamNameAndScore2.setText(teams.get(1).getTeamName() + ": " + Integer.toString(teams.get(1).getPointScore()) + " points");
+            labelTeamNameAndScore2.setText(teams.get(1).getTeamName() + ": " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.textPoints);
             if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[1])) {
                 labelTeamAnswerText2.setStyle("-fx-text-fill: green");
             } else {
@@ -70,7 +70,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         }
 
         if (teams.size() >= 3) {
-            labelTeamNameAndScore3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " points");
+            labelTeamNameAndScore3.setText(teams.get(2).getTeamName() + ": " + Integer.toString(teams.get(2).getPointScore()) + " " + Constants.textPoints);
             if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[2])) {
                 labelTeamAnswerText3.setStyle("-fx-text-fill: green");
             } else {
@@ -80,7 +80,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         }
 
         if (teams.size() >= 4) {
-            labelTeamNameAndScore4.setText(teams.get(3).getTeamName() + ": " + Integer.toString(teams.get(3).getPointScore()) + " points");
+            labelTeamNameAndScore4.setText(teams.get(3).getTeamName() + ": " + Integer.toString(teams.get(3).getPointScore()) + " " + Constants.textPoints);
             if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[3])) {
                 labelTeamAnswerText4.setStyle("-fx-text-fill: green");
             } else {
@@ -91,7 +91,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         }
 
         if (teams.size() == 5) {
-            labelTeamNameAndScore5.setText(teams.get(4).getTeamName() + ": " + Integer.toString(teams.get(4).getPointScore()) + " points");
+            labelTeamNameAndScore5.setText(teams.get(4).getTeamName() + ": " + Integer.toString(teams.get(4).getPointScore()) + " " + Constants.textPoints);
             if (PlayGameScene.correctAnswerText.equals(PlayGameScene.answersChosenByPlayersTexts[4])) {
                 labelTeamAnswerText5.setStyle("-fx-text-fill: green");
             } else {
@@ -101,7 +101,7 @@ public class ScoreboardPageScene extends PlayGameScene {
         }
 
         buttonNextQuestion.setOnAction(e -> {
-            if (counterOfQuestions == QuickPlayScene.numOfQuestions) {
+            if (counterOfQuestions == numOfQuestions - 1) {
                 try {
                     new FinalScoreboardPageScene();
                 } catch (IOException e1) {
