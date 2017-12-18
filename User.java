@@ -12,13 +12,13 @@ public class User extends Main {
     public int ID;
     public boolean isLoggedIn;
 
-
-    public User() {
-
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public User(String username, String password) {
-
+    public User() {
+        this("guest user", "null");
     }
 
     public boolean isLoggedIn() {
@@ -64,7 +64,7 @@ public class User extends Main {
         if (!historyFile.exists() && !enteredUsername.equals(Constants.nameAdmin)) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(Constants.userHistoryPath + "/" + user.getUserName() + ".txt"), "utf-8"))) {
-                writer.write(time + " User: " + user.getUserName() + ". " +  + "\n");
+                writer.write(time + " User: " + user.getUserName() + ". " + Constants.textFileCreated + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -77,23 +77,21 @@ public class User extends Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String time = localDateTime.format(formatter);
 
-        if (admin.isLoggedIn() || user.isLoggedIn()) {
-            BufferedWriter toUser = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + user.getUserName() + ".txt", true));
-            toUser.write(time + ": " + user.getUserName() + ". " + writeToFile);
-            toUser.newLine();
-            toUser.close();
-
-            /*
-             * If admin is not logged in actions are still written to admin file
-             * If admin is logged in, the activity is written as a normal user above, to not repeat same lines
-             */
-            if (!admin.isLoggedIn()) {
-                BufferedWriter toAdmin = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + Constants.nameAdmin + ".txt", true));
-                toAdmin.write(time + ": " + user.getUserName() + ". " + writeToFile);
-                toAdmin.newLine();
-                toAdmin.close();
-            }
+        BufferedWriter toUser = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + user.getUserName() + ".txt", true));
+        toUser.write(time + ": " + user.getUserName() + ". " + writeToFile);
+        toUser.newLine();
+        toUser.close();
+        /*
+         * If admin is not logged in actions are still written to admin file
+         * If admin is logged in, the activity is written as a normal user above, to not repeat same lines
+         */
+        if (!admin.isLoggedIn()) {
+            BufferedWriter toAdmin = new BufferedWriter(new FileWriter(Constants.userHistoryPath + "/" + Constants.nameAdmin + ".txt", true));
+            toAdmin.write(time + ": " + user.getUserName() + ". " + writeToFile);
+            toAdmin.newLine();
+            toAdmin.close();
         }
+
     }
 
 }

@@ -16,11 +16,11 @@ import java.io.IOException;
  */
 public class HistoryScene extends FrontPageScene {
 
-    Label historyLabel;
-    VBox layoutHistory;
-    Button buttonBackToMain;
-    TextArea text;
-    String allLines;
+    private Label historyLabel;
+    private VBox layoutHistory;
+    private Button buttonBackToMain;
+    private TextArea text;
+    private String allLines;
 
     HistoryScene() {
         historyLabel = new Label(Constants.nameHistory);
@@ -36,7 +36,7 @@ public class HistoryScene extends FrontPageScene {
         historyScene.getStylesheets().add(Constants.StyleSheetPath);
         layoutHistory.setAlignment(Pos.CENTER);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(Constants.userHistoryPath + "/ " + Constants.textFileCreated  + " " + user.getUserName() + ".txt")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(Constants.userHistoryPath + "/" + user.getUserName() + ".txt")))) {
             String line;
             while ((line = reader.readLine()) != null)
                 allLines = allLines + line + "\n";

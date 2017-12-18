@@ -39,7 +39,7 @@ public class Constants {
     public static String nameHistory = "Game history";
 
     //admin
-    public static String nameAdmin = "Admin";
+    public static String nameAdmin = "admin";
     public static String adminUsername = "admin";
     public static String adminPass = "password";
 

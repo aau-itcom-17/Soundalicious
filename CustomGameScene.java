@@ -17,12 +17,12 @@ import java.io.IOException;
  */
 public class CustomGameScene extends FrontPageScene {
 
-    Label labelChooseQuestions, labelScreenTitle;
-    RadioButton radioButTheme1, radioButTheme2;
-    ToggleGroup groupContainerTheme;
-    Button buttonNextQuestionOrTeam, buttonBackToMain;
-    VBox customGameLayout;
-    String selection;
+    private String selection;
+    private Label labelChooseQuestions, labelScreenTitle;
+    private RadioButton radioButTheme1, radioButTheme2;
+    private ToggleGroup groupContainerTheme;
+    private Button buttonNextQuestionOrTeam, buttonBackToMain;
+    private VBox customGameLayout;
 
     public CustomGameScene() {
 

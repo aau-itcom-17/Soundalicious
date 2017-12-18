@@ -23,8 +23,8 @@ public class LogInScene extends FrontPageScene {
     private Label labelScreenTitle;
     private Label labelUsername, labelPassword;
     private TextField textfieldUsername, textfieldPassword;
-    VBox layoutLogin;
-    Button buttonLoginAction, buttonBackToMain;
+    private VBox layoutLogin;
+    private Button buttonLoginAction, buttonBackToMain;
 
     public LogInScene(){
 
@@ -94,10 +94,10 @@ public class LogInScene extends FrontPageScene {
                 user.writeOnHistoryFile(Constants.textLoggedIn);
                 new FrontPageScene();
             } else if (enteredUsername.equals(Constants.adminUsername) && enteredPass.equals(Constants.adminPass)){
+                admin.setLoggedIn(true);
                 user.setUserName(Constants.adminUsername);
                 user.createHistoryFile();
-                user.writeOnHistoryFile(Constants.textLoggedOut);
-                admin.setLoggedIn(true);
+                user.writeOnHistoryFile(Constants.textLoggedIn);
                 new FrontPageScene();
             } else if(!SignUpScene.userExists(enteredUsername)){
                 textfieldPassword.setText("");
@@ -124,7 +124,7 @@ public class LogInScene extends FrontPageScene {
      * The method only checks if username and password exist in the database.
      * Returns false if does not exist or wrong password, returns true and changes user state to logged in when user and password matches.
      */
-    private Boolean login(String enteredUsername, String enteredPass) throws IOException {
+    private boolean login(String enteredUsername, String enteredPass) throws IOException {
         FileReader fileReader = new FileReader(Constants.userDatabaseFilePath);
         byte[] bytes = Files.readAllBytes(Paths.get(Constants.userDatabaseFilePath));
         String s = new String(bytes);
