@@ -156,7 +156,7 @@
 		<theme>Movies</theme>
 		<textOfQuestion>Which character from Starwars is this?</textOfQuestion>
 		<soundfile>DarthVader.wav</soundfile>
-		<correctAnswer>Anakin Skywalker</correctAnswer>
+		<correctAnswer>Darth Vader</correctAnswer>
 		<wrongAnswer1>Luke Skywalker</wrongAnswer1>
 		<wrongAnswer2>Kylo Ren</wrongAnswer2>
 		<wrongAnswer3>Yoda</wrongAnswer3>
