@@ -64,7 +64,7 @@ public class TeamNameScene extends QuickPlayScene {
 
             counterOfTeams++;
 
-            labelTeamNumber.setText(Constants.textNameYourTeam + " " + counterOfTeams + ":");
+            labelTeamNumber.setText(Constants.textNameYourTeam + counterOfTeams + ":");
 
             teamClassTemp.setID(teams.size() + 1);
             teamClassTemp.setTeamName(textfieldNewTeamName.getText());
