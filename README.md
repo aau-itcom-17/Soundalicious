@@ -6,7 +6,7 @@ It is a social game that capitalises on the apparent trend of pop-culture on the
 
 It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install it. It is included in the folder "Plugin for StartUpSavingFolder", also can be downloaded  from https://commons.apache.org/proper/commons-io/index.html .
 
-How to add plugin with IntelliJ?
+### How to add plugin with IntelliJ?
 1. Extract the file "commons-io-2.6-bin.tar.gz" from the archive in "Plugin for StartUpSavingFolder"
 2. Import the project to IntelliJ
 2. Select: File > Project Structure
