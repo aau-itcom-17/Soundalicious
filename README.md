@@ -1,5 +1,7 @@
 # Soundalicious 
 
+![alt text](http://pichoster.net/images/2017/12/19/e10c840d9a7b14d727e47d32650cbe05.png)
+
 It is a social game that capitalises on the apparent trend of pop-culture on the internet. We have done this by making a quiz, where the object is to hear a sound and then guess where this sound comes from. Whether it is a celebrity, from a movie or a song. There is an option to upload your own questions with sounds, which makes Souncalicious also a sound based questions quiz platform. 
 
 It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install it. It is included in the folder "Plugin for StartUpSavingFolder", also can be downloaded  from https://commons.apache.org/proper/commons-io/index.html .
