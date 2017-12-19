@@ -4,7 +4,7 @@
 
 It is a social game that capitalises on the apparent trend of pop-culture on the internet. We have done this by making a quiz, where the object is to hear a sound and then guess where this sound comes from. Whether it is a celebrity, from a movie or a song. There is an option to upload your own questions with sounds, which makes Souncalicious also a sound based questions quiz platform. 
 
-It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install it. It is included in the main folder "commons-io-2.6-bin.tar.gz", also can be downloaded  from https://commons.apache.org/proper/commons-io/index.html .
+It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install the plugin. It is included in the main folder "commons-io-2.6-bin.tar.gz", also can be downloaded from https://commons.apache.org/proper/commons-io/index.html .
 
 ### How to add plugin with IntelliJ?
 1. Extract the file "commons-io-2.6-bin.tar.gz" from the archive in the main folder
@@ -18,7 +18,7 @@ It is based on Java FX with Apache Commons IO 2.6. Before running program you ne
 ## Scene classes:
 
 #### Main.class
-The main function that creates window.
+The main function that creates window. Also, iniates moving the sound files to user's personal directory.
 #### FrontPageScene.class 
 Creates frontPageScene that can go to quickPlayScene, customGameScene, logInScene or signUpScene. Also, an option to delete your user and log out, then application goes to the first screen of frontPageScene.
 #### QuickPlayScene.class
@@ -42,7 +42,7 @@ Scoreboard that appears after the final question
 #### TeamNameScene.class
 Scene that follows quickPlayScene, it contains textfield for team to enter their name
 #### UploadQuestionScene.class
-Scene for uploading sound and question to the game
+Scene for uploading sound and question to the game. Sounds are moved user's private directory.
 
 ### Other files:
 
@@ -66,8 +66,6 @@ Text file for saving usernames and passwords
 Called in the Main.java, moves files to user's directories.
 #### CopyFolder.class
 Used in StartUpSavingFolders.java
-#### SaveFiles.class
-Class that deals with uploading sounds to the game. Not implemented in actual game yet.
 #### Questions.xml 
 Database for questions
 #### Questions.class
@@ -76,5 +74,7 @@ Class that deals with reading/saving questions from file, should create a random
 Constructor of class question, used in Questions.java
 #### Sounds folder
 All sounds are here
-#### Plugin for StartUpSavingFolder folder
-Plugin that you need to install
+#### commons-io-2.6-bin.tar.gz
+Plugin that you need to install, explained at the start
+#### UserHistoryFiles folder
+Includes text files of user history, "admin.txt" and "guest user.txt" is already there, but will be created again if deleted. This is the place where new user .txt files will be created.
