@@ -110,7 +110,7 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
 
         try {
             user.writeOnHistoryFile( Constants.nameTeam + " " + teams.get(0).getTeamName() + " " + Constants.textTeamXWonAndGot +
-                    " " + Integer.toString(teams.get(0).getPointScore()) + "  " +  Constants.textXAnswerRightOutOfX + "  " + numOfQuestions + " " + Constants.textQuestions + ".");
+                    " " + Integer.toString(teams.get(0).getPointScore()) + " " +  Constants.textXAnswerRightOutOfX + " " + numOfQuestions + " " + Constants.textQuestions + ".");
         } catch (IOException e) {
             e.printStackTrace();
         }
