@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.Comparator;
 
 /**
  * Final Scoreboard Scene is displayed when all teams answered all questions.
@@ -16,82 +17,100 @@ import java.io.IOException;
  */
 public class FinalScoreboardPageScene extends ScoreboardPageScene {
     private VBox layoutFinalScoreboard;
-    private Label labelScreenTitle, gold, silver, bronze, t1, t2, t3;
+    private Label labelScreenTitle, labelPlaceName1, labelPlaceName2, labelPlaceName3, labelLeader1, labelLeader2, labelLeader3;
     private Button buttonFinishGame;
 
     FinalScoreboardPageScene() throws IOException, SAXException, ParserConfigurationException {
 
         labelScreenTitle = new Label(Constants.nameLeaderboard);
-        gold = new Label();
-        silver = new Label();
-        bronze = new Label();
-        t1 = new Label();
-        t2 = new Label();
-        t3 = new Label();
+        labelPlaceName1 = new Label();
+        labelPlaceName2 = new Label();
+        labelPlaceName3 = new Label();
+        labelLeader1 = new Label();
+        labelLeader2 = new Label();
+        labelLeader3 = new Label();
         buttonFinishGame = new Button(Constants.nameExitGame);
 
         labelScreenTitle.getStyleClass().add("label-board");
-        gold.getStyleClass().add("label-scores");
-        silver.getStyleClass().add("label-scores");
-        bronze.getStyleClass().add("label-scores");
-        t1.getStyleClass().add("label-team");
-        t2.getStyleClass().add("label-team");
-        t3.getStyleClass().add("label-team");
-        buttonFinishGame.getStyleClass().add("button-menu");
+        labelPlaceName1.getStyleClass().add("label-scores");
+        labelPlaceName2.getStyleClass().add("label-scores");
+        labelPlaceName3.getStyleClass().add("label-scores");
+        labelLeader1.getStyleClass().add("label-scores");
+        labelLeader2.getStyleClass().add("label-scores");
+        labelLeader3.getStyleClass().add("label-scores");
+        buttonFinishGame.getStyleClass().add("button-continue");
+
+        teams.sort(Comparator.comparingInt(Team::getPointScore).reversed());
 
         if (teams.size() == 1) {
-            gold.setText(Constants.nameGold + ": " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " " + Constants.namePoints);
-            gold.setStyle("-fx-text-fill: #ffd700");
+            labelPlaceName1.setText(Constants.nameGold + ": ");
+            labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+            labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
         }
-
         if (teams.size() == 2) {
-            gold.setText(Constants.nameGold + ": " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " " + Constants.namePoints);
-            gold.setStyle("-fx-text-fill: #ffd700");
-            if (Team.getSameScore() != 0) //If two teams have same amount of points
-            {
-                silver.setText(Constants.nameGold + ": " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #ffd700");
+            if (teams.get(0).getPointScore() == teams.get(1).getPointScore()) {
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameGold + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
             } else {
-                silver.setText(Constants.nameSilver + ": " + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #c0c0c0");
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameSilver + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: darkgray; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
             }
         }
-
         if (teams.size() >= 3) {
-            gold.setText(Constants.nameGold + ": " + teams.get(Team.getWinner()).getTeamName() + " with " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " " + Constants.namePoints);
-            gold.setStyle("-fx-text-fill: #ffd700");
-
-            if (Team.getSameScoreForThree() > -1) {
-                silver.setText(Constants.nameGold + ": " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #ffd700");
-
-                bronze.setText(Constants.nameGold + ": " + teams.get(Team.getSameScoreForThree()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScoreForThree()).getPointScore()) + " " + Constants.namePoints);
-                bronze.setStyle("-fx-text-fill: #ffd700");
-            } else if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.getWinner()).getPointScore()) //If two teams have same amount of points
-            {
-                silver.setText(Constants.nameGold + ": " + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #ffd700");
-
-                bronze.setText(Constants.nameSilver + ": "  + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " " + Constants.namePoints);
-                bronze.setStyle("-fx-text-fill: #c0c0c0");
-            } else if (teams.get(Team.getSameScore()).getPointScore() == teams.get(Team.get2ndPlace()).getPointScore()) {
-                silver.setText(Constants.nameSilver + ": "  + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #c0c0c0");
-
-                bronze.setText(Constants.nameSilver + ": "  + teams.get(Team.getSameScore()).getTeamName() + " with " + Integer.toString(teams.get(Team.getSameScore()).getPointScore()) + " " + Constants.namePoints);
-                bronze.setStyle("-fx-text-fill: #c0c0c0");
+            if (teams.get(0).getPointScore() == teams.get(1).getPointScore() && teams.get(0).getPointScore() == teams.get(2).getPointScore()) {
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameGold + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName3.setText(Constants.nameGold + ": ");
+                labelPlaceName3.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
+                labelLeader3.setText(teams.get(2).getTeamName() + " with " + Integer.toString(teams.get(2).getPointScore()) + " " + Constants.namePoints);
+            } else if (teams.get(0).getPointScore() == teams.get(1).getPointScore()) {
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameGold + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName3.setText(Constants.nameSilver + ": ");
+                labelPlaceName3.setStyle("-fx-background-color: darkgray; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
+                labelLeader3.setText(teams.get(2).getTeamName() + " with " + Integer.toString(teams.get(2).getPointScore()) + " " + Constants.namePoints);
+            } else if (teams.get(1).getPointScore() == teams.get(2).getPointScore()) {
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameSilver + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: darkgray; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName3.setText(Constants.nameSilver + ": ");
+                labelPlaceName3.setStyle("-fx-background-color: darkgray; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
+                labelLeader3.setText(teams.get(2).getTeamName() + " with " + Integer.toString(teams.get(2).getPointScore()) + " " + Constants.namePoints);
             } else {
-                silver.setText(Constants.nameSilver + ": "  + teams.get(Team.get2ndPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get2ndPlace()).getPointScore()) + " " + Constants.namePoints);
-                silver.setStyle("-fx-text-fill: #c0c0c0");
-
-                bronze.setText(Constants.nameBronze + ": "  + teams.get(Team.get3rdPlace()).getTeamName() + " with " + Integer.toString(teams.get(Team.get3rdPlace()).getPointScore()) + " " + Constants.namePoints);
-                bronze.setStyle("-fx-text-fill: #cd7f32");
+                labelPlaceName1.setText(Constants.nameGold + ": ");
+                labelPlaceName1.setStyle("-fx-background-color: gold; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName2.setText(Constants.nameSilver + ": ");
+                labelPlaceName2.setStyle("-fx-background-color: darkgray; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelPlaceName3.setText(Constants.nameBronze + ": ");
+                labelPlaceName3.setStyle("-fx-background-color: sandybrown; -fx-padding: 10px 30px 10px 30px; -fx-text-fill: #FFFFFF;");
+                labelLeader1.setText(teams.get(0).getTeamName() + " with " + Integer.toString(teams.get(0).getPointScore()) + " " + Constants.namePoints);
+                labelLeader2.setText(teams.get(1).getTeamName() + " with " + Integer.toString(teams.get(1).getPointScore()) + " " + Constants.namePoints);
+                labelLeader3.setText(teams.get(2).getTeamName() + " with " + Integer.toString(teams.get(2).getPointScore()) + " " + Constants.namePoints);
             }
         }
 
         try {
-            user.writeOnHistoryFile( Constants.nameTeam + " " + teams.get(Team.getWinner()).getTeamName() + " " + Constants.textTeamXWonAndGot +
-                    " " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + "  " +  Constants.textXAnswerRightOutOfX + "  " + numOfQuestions + " " + Constants.textQuestions + ".");
+            user.writeOnHistoryFile( Constants.nameTeam + " " + teams.get(0).getTeamName() + " " + Constants.textTeamXWonAndGot +
+                    " " + Integer.toString(teams.get(0).getPointScore()) + "  " +  Constants.textXAnswerRightOutOfX + "  " + numOfQuestions + " " + Constants.textQuestions + ".");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +122,7 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
                 user.setUserName("guest user");
             }
             try {
-                user.writeOnHistoryFile("Team: " + teams.get(Team.getWinner()).getTeamName() + " won the game and got " + Integer.toString(teams.get(Team.getWinner()).getPointScore()) + " right answers out of " + numOfQuestions + " questions.");
+                user.writeOnHistoryFile("Team: " + teams.get(0).getTeamName() + " won the game and got " + Integer.toString(teams.get(0).getPointScore()) + " right answers out of " + numOfQuestions + " questions.");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -133,7 +152,7 @@ public class FinalScoreboardPageScene extends ScoreboardPageScene {
 
         layoutFinalScoreboard = new VBox(Constants.vBoxSpacing);
         layoutFinalScoreboard.setAlignment(Pos.CENTER);
-        layoutFinalScoreboard.getChildren().addAll(labelScreenTitle, t1, gold, t2, silver, t3, bronze, buttonFinishGame);
+        layoutFinalScoreboard.getChildren().addAll(labelScreenTitle, labelPlaceName1, labelLeader1, labelPlaceName2, labelLeader2, labelPlaceName3, labelLeader3, buttonFinishGame);
         finalScoreBoardPageScene = new Scene(layoutFinalScoreboard, Constants.screenWidth, Constants.screenHeight);
         finalScoreBoardPageScene.getStylesheets().add(Constants.StyleSheetPath);
 
