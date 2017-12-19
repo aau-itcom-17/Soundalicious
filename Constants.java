@@ -61,7 +61,7 @@ public class Constants {
     public static String textEnterUserForDeleting = "Enter username which you want to delete";
     public static String textDeleteUser = "Delete user";
     public static String textSaveTeam = "Save team";
-    public static String textNameYourTeam = "Name your team";
+    public static String textNameYourTeam = "Name team ";
     public static String textUserXDeleted = "was deleted";
     public static String textTeamXWonAndGot = "won the game and got";
     public static String textXAnswerRightOutOfX = "right answers out of";
