@@ -4,10 +4,10 @@
 
 It is a social game that capitalises on the apparent trend of pop-culture on the internet. We have done this by making a quiz, where the object is to hear a sound and then guess where this sound comes from. Whether it is a celebrity, from a movie or a song. There is an option to upload your own questions with sounds, which makes Souncalicious also a sound based questions quiz platform. 
 
-It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install it. It is included in the folder "Plugin for StartUpSavingFolder", also can be downloaded  from https://commons.apache.org/proper/commons-io/index.html .
+It is based on Java FX with Apache Commons IO 2.6. Before running program you need to install it. It is included in the main folder "commons-io-2.6-bin.tar.gz", also can be downloaded  from https://commons.apache.org/proper/commons-io/index.html .
 
 ### How to add plugin with IntelliJ?
-1. Extract the file "commons-io-2.6-bin.tar.gz" from the archive in "Plugin for StartUpSavingFolder"
+1. Extract the file "commons-io-2.6-bin.tar.gz" from the archive in the main folder
 2. Import the project to IntelliJ
 2. Select: File > Project Structure
 3. In the opened window select Libraries and press plus ("+") icon in the left section and select the extracted file
