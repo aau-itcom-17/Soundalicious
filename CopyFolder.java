@@ -14,7 +14,7 @@ public class CopyFolder {
         //Check if sourceFolder is a directory or file
         //If sourceFolder is file; then copy the file directly to new location
         if (sourceFolder.isDirectory()) {
-            //Verify if destinationFolder is already present; If not then create it
+            //Check if if the destinationFolder is already present; If not then create it
             if (!destFolder.exists()) {
                 destFolder.mkdir();
                 System.out.println("Directory created :: " + destFolder);
@@ -23,12 +23,10 @@ public class CopyFolder {
             //Get all files from source directory
             String files[] = sourceFolder.list();
 
-            //Iterate over all files and copy them to destinationFolder one by one
             for (String file : files) {
                 File srcFile = new File(sourceFolder, file);
                 File destFile = new File(destFolder, file);
 
-                //Recursive function call
                 copyFolder(srcFile, destFile);
             }
         } else {
