@@ -77,7 +77,7 @@ public class Constants {
     public static String textSaveQuestion = "Save question";
     public static String textChooseTheme = "Choose theme for your question";
     public static String textMakeYourQuestion = "Make your own questions";
-    public static String textWriteWrongAnswers = "Write the wrong questions below";
+    public static String textWriteWrongAnswers = "Write the wrong answers below";
     public static String textWriteCorrectAnswer = "Write the correct answer below";
     public static String textWriteQuestion = "Write question text below";
     public static String textChooseFile = "Choose file";
